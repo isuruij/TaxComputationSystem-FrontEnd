@@ -20,10 +20,8 @@ function App() {
      <Loginform />
      <PersonalDetails />
      <Sidenavbar/>
-     <Header/>
      <Incomedetails/>
-    
-
+     <Header/>
     </>
   );
 }

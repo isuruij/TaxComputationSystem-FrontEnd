@@ -3,7 +3,7 @@ import React from "react";
 function Loginform() {
   return (
     <div>
-      <form style={{borderRadius:"15px", padding:"20px 40px", backgroundColor:"#D3E9FE", width: "25%", marginLeft: "35%", marginTop: "10%" }}>
+      <form style={{borderRadius:"15px", padding:"20px 40px", backgroundColor:"#D3E9FE", width: "25%", marginLeft: "35%", marginTop: "10%",boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
         <h2 style={{marginBottom:"10%", marginLeft:"30%", color:"#0085FF", fontWeight:"bold"}}>Log in</h2>
         <div class="form-group" style={{marginLeft:"10%"}}>
           <label className="lables" for="email">Email</label>

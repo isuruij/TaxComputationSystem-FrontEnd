@@ -13,36 +13,36 @@ function Sidenavbar() {
   return (
     <div>
       <div
-        className="box"
-        style={{ marginLeft: "1%", backgroundColor: "#D3E9FE", width: "20%" }}
+        
+        style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",borderRadius:"10px",padding:"10px",marginRight:"10%",marginBottom:"10px" ,marginTop:"10px", marginLeft: "10%", backgroundColor: "#D3E9FE", width: "20%" }}
       >
         <br></br>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={home} className="navbar-icon" alt="Icon" />
+        <button type="button" className="btn btn-primary" style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={home} style={{alignItems:"left",textAlign:"left"}}  alt="Icon" />
           Home
         </button>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={changeincome} alt="Icon" />
+        <button type="button" className="btn btn-primary menue-button" style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={changeincome} alt="Icon" style={{alignItems:"left",textAlign:"left"}}/>
           Primary
         </button>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={viewtax} alt="Icon" />
+        <button type="button" className="btn btn-primary menue-button"style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={viewtax} alt="Icon" style={{alignItems:"left",textAlign:"left"}}/>
           View Tax
         </button>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={taxhistory} alt="Icon" />
+        <button type="button" className="btn btn-primary menue-button" style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={taxhistory} alt="Icon" style={{alignItems:"left",textAlign:"left"}}/>
           Tax History
         </button>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={DownloadTaxreport} alt="Icon" />
+        <button type="button" className="btn btn-primary menue-button"style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={DownloadTaxreport} alt="Icon" style={{alignItems:"left",textAlign:"left"}}/>
           Download Tax report
         </button>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={registration} alt="Icon" />
+        <button type="button" className="btn btn-primary menue-button" style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={registration} alt="Icon" style={{alignItems:"left",textAlign:"left"}}/>
           Registration
         </button>
-        <button type="button" className="btn btn-primary menue-button">
-          <img src={logout} alt="Icon" />
+        <button type="button" className="btn btn-primary menue-button" style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>
+          <img src={logout} alt="Icon" style={{alignItems:"left",textAlign:"left"}}/>
           Log out
         </button>
         <br></br>
