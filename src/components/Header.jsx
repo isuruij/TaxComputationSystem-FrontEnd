@@ -33,6 +33,7 @@ function Header() {
         </span>
       )}
       <img src={Profile} alt="Profile" />
+      <h6>abc perera</h6>
     </div>
   );
 }

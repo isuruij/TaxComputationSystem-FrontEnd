@@ -10,19 +10,23 @@ import PersonalDetails from "./components/PersonalDetails.jsx";
 import Sidenavbar from "./components/Sidenavbar.jsx";
 import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
+import { BrowserRouter, Routes,Route } from "react-router-dom";
 
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-     {/* <Loginform />
-     <PersonalDetails />
-     <Sidenavbar/>
-     <Incomedetails/> */}
-     <Header/>
-    </>
+    
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<PersonalDetails/>}></Route>
+    <Route path="/login" element={<Loginform/>}></Route>
+    <Route path="/signup" element={<PersonalDetails/>}></Route>
+    <Route path="/de" element={<PersonalDetails/>}></Route>
+    
+  </Routes>
+  </BrowserRouter>    
   );
 }
 
