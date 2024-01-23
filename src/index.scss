@@ -4,12 +4,12 @@
 #root{
 	font-family: 'Poppins', sans-serif;
 }
-.custom_input {
-	display: flex;
-	align-items: center;
-	position: relative;
-	max-width: 100%;
-}
+// .custom_input {
+// 	display: flex;
+// 	align-items: center;
+// 	position: relative;
+// 	max-width: 100%;
+// }
 
 .input {
 	font-size: 10px;
@@ -43,10 +43,6 @@
 	border-radius: 10px;
 }
 
-.input::placeholder {
-	color: #DDDDDD;
-}
-
 
 .lables{
     
@@ -59,47 +55,18 @@
 }
 
 button{
-    // color: #0085FF;
+    
     background-color:#0085FF !important;
     border-radius: 10px !important;
     
 }
 
-form{
-    
-    box-shadow: 1px 5px 3px -3px rgba(0,0,0,0.44);
-}
 
-.contact{
-    margin-left: 10%;
-}
 
-.menue-button{
-	display:"block";
-	margin-bottom: 12px;
-	width: 90%;
-	margin-left: 4%;
-	
-}
 
-.navbar-icon{
-	align-items: left;
-	
-	text-align: left;
-}
 
-.menue-button{
-	display: block;
-	text-align: left;
-	box-shadow: 0px 5px 14px -10px rgba(0,0,0,1);
-}
 
-.box{
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: 10%;
-	margin-right: 10%;
-	padding: 10px;
-	border-radius: 10px;
-	box-shadow: 1px 5px 3px -3px rgba(0,0,0,0.44);
-}
+
+
+
+

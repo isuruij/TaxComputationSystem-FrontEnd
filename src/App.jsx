@@ -17,13 +17,11 @@ function App() {
 
   return (
     <>
-     <Loginform />
+     {/* <Loginform />
      <PersonalDetails />
      <Sidenavbar/>
+     <Incomedetails/> */}
      <Header/>
-     <Incomedetails/>
-    
-
     </>
   );
 }
