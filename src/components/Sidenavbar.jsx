@@ -14,7 +14,7 @@ function Sidenavbar() {
     <div>
       <div
         
-        style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",borderRadius:"10px",padding:"10px",marginRight:"10%",marginBottom:"10px" ,marginTop:"10px", marginLeft: "10%", backgroundColor: "#D3E9FE", width: "20%" }}
+        style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",borderRadius:"10px",padding:"10px",marginRight:"10%",marginBottom:"10px" ,marginTop:"0.5%", marginLeft: "0.5%", backgroundColor: "#D3E9FE", width: "20%" }}
       >
         <br></br>
         <button type="button" className="btn btn-primary" style={{textAlign:"left",display:"block" ,marginBottom:"12px",width:"90%",marginLeft:"4%",boxShadow:"0px 5px 14px -10px rgba(0,0,0,1)"}}>

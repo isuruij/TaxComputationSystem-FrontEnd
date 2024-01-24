@@ -10,6 +10,7 @@ import PersonalDetails from "./components/PersonalDetails.jsx";
 import Sidenavbar from "./components/Sidenavbar.jsx";
 import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
+import Dashboard from "./components/Dashboard.jsx";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 
 
@@ -24,6 +25,7 @@ function App() {
     <Route path="/login" element={<Loginform/>}></Route>
     <Route path="/signup" element={<PersonalDetails/>}></Route>
     <Route path="/de" element={<PersonalDetails/>}></Route>
+    <Route path="/dashboard" element={<Dashboard/>}></Route>
     
   </Routes>
   </BrowserRouter>    

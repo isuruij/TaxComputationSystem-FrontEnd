@@ -5,9 +5,10 @@ import { useState } from "react";
 function PersonalDetails() {
 
   const [values, setvalues] = useState({
-    name:"",
+
     email:"",
     password:"",
+    name:"",
     address:"",
     tin:"",
     nameofemployer:"",
