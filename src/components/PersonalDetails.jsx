@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PersonalDetails() {
 
@@ -18,11 +19,18 @@ function PersonalDetails() {
     birthday:""
   });
 
+  const navigate = useNavigate();
+
   //submiting PersonalDetails to backend
   const handleSubmit =async (event)=>{
       event.preventDefault();
       try {
         const res = await Axios.post("http://localhost:3000/api/employees/register",values);
+        if(res.data.Status === "Success"){
+          navigate("/dashboard")
+        }else{
+          alert(`${res.data.Status}`+" Enter details correctly")
+        }
         console.log(res)
       } catch (error) {
         console.log(error);
