@@ -11,6 +11,7 @@ import Sidenavbar from "./components/Sidenavbar.jsx";
 import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
 import FileUpload from "./components/FileUpload.jsx";
+import TaxView from "./components/TaxView.jsx";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Sidenavbar/>
       <Incomedetails/>
       <FileUpload />
+      <TaxView />
     </>
   );
 }

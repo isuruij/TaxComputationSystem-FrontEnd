@@ -1,10 +1,11 @@
 .Upload-Doc-div{
     margin-left: 30%;
     margin: 10%;
-    border: solid 1px black;
     padding: 30px;
     border-radius: 20px;
     background-color: #D3E9FE;
+    min-width: max-content;
+    box-shadow: #acacac 2px 4px;
 }
 
 .main-topic{

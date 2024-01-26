@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./FileUpload.css";
+import "../styles/FileUpload.css";
 
 
 
@@ -42,7 +42,7 @@ function FileUpload() {
         {show1 && <div className="Container1">
           <div className="div1-1">
             <div className="div1-1-1">
-              <label>Employment Income</label>
+              <label><h6>Employment Income</h6></label>
             </div>
             <div className="div1-1-2">
               <input type="file" name="file" onChange={handleFile} />
@@ -51,7 +51,7 @@ function FileUpload() {
 
           <div className="div1-2">
             <div className="div1-2-1">
-              <label>Business Income</label>
+              <label><h6>Business Income</h6></label>
             </div>
             <div className="div1-2-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -60,7 +60,7 @@ function FileUpload() {
 
           <div className="div1-3">
             <div className="div1-3-1">
-              <label>Investment Income</label>
+              <label><h6>Investment Income</h6></label>
             </div>
             <div className="div1-3-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -69,7 +69,7 @@ function FileUpload() {
 
           <div className="div1-4">
             <div className="div1-4-1">
-              <label>Other Income</label>
+              <label><h6>Other Income</h6></label>
             </div>
             <div className="div1-4-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -82,7 +82,7 @@ function FileUpload() {
         {show2 && <div className="Container2">
           <div className="div2-1">
             <div className="div2-1-1">
-              <label>Relief for Rent Income(For last year)</label>
+              <label><h6>Relief for Rent Income(For last year)</h6></label>
             </div>
             <div className="div2-1-2">
               <input type="file" name="file" onChange={handleFile} />
@@ -91,7 +91,7 @@ function FileUpload() {
 
           <div className="div2-2">
             <div className="div2-2-1">
-              <label>Relief for Expenditure</label>
+              <label><h6>Relief for Expenditure</h6></label>
             </div>
             <div className="div2-2-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -100,7 +100,7 @@ function FileUpload() {
 
           <div className="div2-3">
             <div className="div2-3-1">
-              <label>Qualifying Payments</label>
+              <label><h6>Qualifying Payments</h6></label>
             </div>
             <div className="div2-3-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -113,7 +113,7 @@ function FileUpload() {
         {show3 && <div className="Container3">
           <div className="div3-1">
             <div className="div3-1-1">
-              <label>APIT</label>
+              <label><h6>APIT</h6></label>
             </div>
             <div className="div3-1-2">
               <input type="file" name="file" onChange={handleFile} />
@@ -122,7 +122,7 @@ function FileUpload() {
 
           <div className="div3-2">
             <div className="div3-2-1">
-              <label>WHT on Investment Income</label>
+              <label><h6>WHT on Investment Income</h6></label>
             </div>
             <div className="div3-2-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -131,7 +131,7 @@ function FileUpload() {
 
           <div className="div3-3">
             <div className="div3-3-1">
-              <label>WHT on Service Fee Received</label>
+              <label><h6>WHT on Service Fee Received</h6></label>
             </div>
             <div className="div3-3-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -140,7 +140,7 @@ function FileUpload() {
 
           <div className="div3-4">
             <div className="div3-4-1">
-              <label>Self Assessment Payments</label>
+              <label><h6>Self Assessment Payments</h6></label>
             </div>
             <div className="div3-4-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -153,7 +153,7 @@ function FileUpload() {
         {show4 && <div className="Container4">
           <div className="div4-1">
             <div className="div4-1-1">
-              <label>Terminal Benefits</label>
+              <label><h6>Terminal Benefits</h6></label>
             </div>
             <div className="div4-1-2">
               <input type="file" name="file" onChange={handleFile} />
@@ -162,7 +162,7 @@ function FileUpload() {
 
           <div className="div4-2">
             <div className="div4-2-1">
-              <label>Capital Value & Gain</label>
+              <label><h6>Capital Value & Gain</h6></label>
             </div>
             <div className="div4-2-2">
              <input type="file" name="file" onChange={handleFile} />
@@ -171,7 +171,7 @@ function FileUpload() {
 
           <div className="div4-3">
             <div className="div4-3-1">
-              <label>WHT which is not deducted</label>
+              <label><h6>WHT which is not deducted</h6></label>
             </div>
             <div className="div4-3-2">
              <input type="file" name="file" onChange={handleFile} />
