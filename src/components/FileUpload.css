@@ -1,0 +1,86 @@
+.Upload-Doc-div{
+    margin-left: 30%;
+    margin: 10%;
+    border: solid 1px black;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #D3E9FE;
+}
+
+.main-topic{
+    text-align: center;
+    text-decoration: solid;
+    font-weight: 700;
+    color:#0085FF;
+}
+
+.sub-topic{
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 3%;
+    color:#0085FF;
+    text-decoration: solid;
+    font-size: larger;
+    font-weight: 700;
+}
+
+label{
+    text-align: left;
+    color:#0085FF;
+    text-decoration: solid;
+    font-size: small;
+    font-weight: 500;
+    padding: 10px;
+}
+
+
+
+.Container1, .Container2, .Container3, .Container4{
+    margin-left: 8%;
+    margin-right: 5%;
+}
+
+.div1-1, .div1-2, .div1-3, .div1-4, .div2-1, .div2-2, .div2-3, .div3-1, .div3-2, .div3-3, .div3-4, .div4-1, .div4-2, .div4-3{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+/* input{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: initial;
+    color: #0085FF;
+} */
+
+input::-webkit-file-upload-button{
+    visibility: hidden;
+}
+
+.input::before{
+    content: "Upload PDF";
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+}
+
+
+.fa-caret-down{
+    color: #0085ff;
+    margin-left: 20px;
+}
+
+/* .fa-caret-down:hover{
+    transform: scale(1.3);
+    transition: 0.4s;
+} */
+
+/* #uparrow:hover{
+    transform: scale(1.3);
+    rotate: 90;
+    transition: 0.4s; 
+} */
+
+.Button-div{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}

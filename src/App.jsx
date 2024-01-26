@@ -10,6 +10,7 @@ import PersonalDetails from "./components/PersonalDetails.jsx";
 import Sidenavbar from "./components/Sidenavbar.jsx";
 import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
+import FileUpload from "./components/FileUpload.jsx";
 
 
 function App() {
@@ -17,11 +18,12 @@ function App() {
 
   return (
     <>
-     {/* <Loginform />
-     <PersonalDetails />
-     <Sidenavbar/>
-     <Incomedetails/> */}
-     <Header/>
+      <Header/>
+      <Loginform />
+      <PersonalDetails />
+      <Sidenavbar/>
+      <Incomedetails/>
+      <FileUpload />
     </>
   );
 }
