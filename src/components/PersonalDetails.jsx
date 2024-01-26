@@ -2,8 +2,13 @@ import React from "react";
 import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function PersonalDetails() {
+
+  useEffect(() => {
+    console.log("Cookies:", document.cookie);
+  }, [])
 
   const [values, setvalues] = useState({
 
