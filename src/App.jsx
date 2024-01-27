@@ -12,21 +12,26 @@ import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
 import FileUpload from "./components/FileUpload.jsx";
 import TaxView from "./components/TaxView.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import { BrowserRouter, Routes,Route } from "react-router-dom";
+
 
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  
   return (
-    <>
-      <Header/>
-      <Loginform />
-      <PersonalDetails />
-      <Sidenavbar/>
-      <Incomedetails/>
-      <FileUpload />
-      <TaxView />
-    </>
+    
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<PersonalDetails/>}></Route>
+    <Route path="/login" element={<Loginform/>}></Route>
+    <Route path="/signup" element={<PersonalDetails/>}></Route>
+    <Route path="/de" element={<PersonalDetails/>}></Route>
+    <Route path="/dashboard" element={<Dashboard/>}></Route>
+    
+  </Routes>
+  </BrowserRouter>    
+
   );
 }
 
