@@ -10,13 +10,15 @@ import PersonalDetails from "./components/PersonalDetails.jsx";
 import Sidenavbar from "./components/Sidenavbar.jsx";
 import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
+import FileUpload from "./components/FileUpload.jsx";
+import TaxView from "./components/TaxView.jsx";
 import Dashboard from "./components/Dashboard.jsx";
 import { BrowserRouter, Routes,Route } from "react-router-dom";
 
 
+
 function App() {
   
-
   return (
     
   <BrowserRouter>
@@ -29,6 +31,7 @@ function App() {
     
   </Routes>
   </BrowserRouter>    
+
   );
 }
 

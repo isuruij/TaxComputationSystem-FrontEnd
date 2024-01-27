@@ -1,0 +1,102 @@
+.Tax-view-page{
+    margin-left: 30%;
+    margin: 10%;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #D3E9FE;
+    min-width: min-content;
+    box-shadow: #acacac 2px 4px;
+}
+
+.Tax-view-header{
+    margin: 0 auto;
+    width: fit-content;
+    background-color: #0085FF;
+    color: white;
+    padding: 5px 40px;
+    border-radius: 25px;
+    margin-bottom: 10px;
+}
+
+.Tax-view-header h6{
+    text-align: left;
+}
+
+.Total-liability, .Cal-nine-months, .Cal-three-months{
+    margin: 0 auto;
+    width: max-content;
+    min-width: max-content;
+    background-color: #ffffff;
+    color: #0085FF;
+    padding: 10px 40px;
+    border-radius: 10px;
+    box-shadow: #acacac 2px 4px;
+    margin-top: 20px;
+}
+
+.Topic-1, .Topic-2, .Topic-3{
+    text-align: center;
+}
+
+.Tot-amount{
+    background-color: #0085FF;
+    color: #ffffff;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 5px 40px 5px 20px;
+    border-radius: 10px;
+}
+
+.Tot-amount h1{
+    text-align: center;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.Tot-amount p{
+    font-size: small;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.small-p-one{
+    margin-left: 10%;
+    font-size: small;
+}
+
+.small-p-two{
+    margin-left: 10%;
+    font-size: small;
+}
+
+.nine-months, .three-months{
+    margin-left: 10%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.Cal-nine-months div, .Cal-three-months div{
+    margin-left: 2%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.nine-liability h4, .three-liability h4{
+    font-weight: 1000;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.Cal-nine-months, .Cal-three-months{
+    width: fit-content;
+    flex-grow: 1;
+}
