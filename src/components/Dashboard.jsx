@@ -13,6 +13,7 @@ function Dashboard() {
   let res;
   const handle = async ()=>{
     let res = await Axios.get("http://localhost:3000/api/employees/auth");
+    console.log("testingggggggg")
     console.log("test")
     console.log(res)
     if(res.data.Status === "Success"){
@@ -26,6 +27,7 @@ function Dashboard() {
 
   useEffect(() => {
     try {
+      
       handle();
 
     } catch (error) {

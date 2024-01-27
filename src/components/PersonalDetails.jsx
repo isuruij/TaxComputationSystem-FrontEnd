@@ -25,6 +25,7 @@ function PersonalDetails() {
   });
 
   const navigate = useNavigate();
+  Axios.defaults.withCredentials = true;
 
   //submiting PersonalDetails to backend
   const handleSubmit =async (event)=>{
