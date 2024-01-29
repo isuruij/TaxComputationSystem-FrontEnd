@@ -10,18 +10,19 @@ import PersonalDetails from "./components/PersonalDetails.jsx";
 import Sidenavbar from "./components/Sidenavbar.jsx";
 import Header from "./components/Header.jsx";
 import Incomedetails from "./components/Incomedetails.jsx";
-
+import TaxPaymentHistory from "./components/TaxPaymentHistory.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-     {/* <Loginform />
+     <Loginform />
      <PersonalDetails />
      <Sidenavbar/>
-     <Incomedetails/> */}
+     <Incomedetails/>
      <Header/>
+     <TaxPaymentHistory />
     </>
   );
 }

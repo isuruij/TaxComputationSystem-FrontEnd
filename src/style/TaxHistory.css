@@ -1,0 +1,71 @@
+#root{
+	font-family: 'Poppins', sans-serif;
+}
+
+button{
+    
+    background-color:#0085FF !important;
+    border-radius: 10px !important;
+    
+}
+
+.divbuttongroup{
+    margin-left: 250px;
+    margin-top: 50px;
+    width: 75%;
+    height: 35%;
+    background-color: #D3E9FE;
+    padding: 10px;
+}
+
+.divbuttongroup button{
+    margin-left: 45px;
+}
+
+h1{
+    text-align: center;
+    
+}
+
+.btn-primary{
+  margin-left: 20px;
+  padding: 5px;
+  border: none;
+  display: inline-flex;
+  justify-content: space-between;
+  
+}
+
+.dropdownPage{
+    display: flex;
+    margin-left: 250px;
+}
+
+
+
+/* .dropdown{
+    background-color: #D3E9FE;
+    padding: 10px;
+    margin-top: 10px;
+    width: 75%;
+    height: 35%;
+    margin-left: 250px;
+
+} */
+
+.divtable{
+    background-color: #D3E9FE;
+    padding: 10px;
+    margin-top: 0px;
+    width: 75%;
+    height: 55%;
+    margin-left: 250px;
+}
+
+.table td, .table th{
+    border: 1px solid black;
+}
+
+.dropdown button{
+    margin-left: 20px;
+}
