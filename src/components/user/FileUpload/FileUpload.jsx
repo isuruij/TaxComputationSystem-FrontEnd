@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "../styles/FileUpload.css";
+import "./FileUpload.css";
 
 
 

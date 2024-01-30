@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/TaxView.css"
+import "./TaxView.css"
 
 function TaxView() {
   return (

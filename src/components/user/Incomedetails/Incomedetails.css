@@ -1,0 +1,36 @@
+.details-input{
+    font-size: 12px;
+	padding: 5px 10px;
+	width: 30%;
+	outline: none;
+	background: #DBE8FE;
+	color: #000000;
+	border: 1px solid #C4D1EB;
+	border-radius: 5px;
+	box-shadow: 0px 3px 3px 1px #9D9D9D;
+	transition: .3s ease;
+}
+
+.input:focus {
+	background: #F2F2F2;
+	border: 1px solid #5A7EC7;
+	border-radius: 10px;
+}
+
+
+.lables{
+    
+    color: #0085FF;
+    font-weight: 700;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+button{
+    
+    background-color:#0085FF !important;
+    border-radius: 10px !important;
+    
+}

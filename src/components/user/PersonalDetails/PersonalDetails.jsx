@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import "./PersonalDetails.css";
 
 function PersonalDetails() {
 
