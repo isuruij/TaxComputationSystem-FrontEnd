@@ -23,7 +23,7 @@ function Header(props) {
       />
       {count != 0 ? (
         <span
-          style={{ marginLeft: "83%", marginTop: "1%" }}
+          style={{ marginLeft: "83%", marginTop:"1.1%"}}
           className="position-absolute translate-middle badge rounded-pill bg-danger"
         >
           {count}

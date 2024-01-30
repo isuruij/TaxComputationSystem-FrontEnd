@@ -11,8 +11,8 @@ function Dashboard() {
   const [name, setname] = useState("");
   Axios.defaults.withCredentials = true;
   let res;
-  const handle = async ()=>{
-    let res = await Axios.get("http://localhost:3000/api/employees/auth");
+  const handle = async ()=>{    
+    let res = await Axios.get("http://localhost:3000/api/taxpayer/auth");
     // console.log("testingggggggg")
     // console.log("test")
     console.log(res)

@@ -3,8 +3,7 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import "./PersonalDetails.css";
-
+import "../PersonalDetails/PersonalDetails.css";
 function PersonalDetails() {
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function PersonalDetails() {
   const handleSubmit =async (event)=>{
       event.preventDefault();
       try {
-        const res = await Axios.post("http://localhost:3000/api/employees/register",values);
+        const res = await Axios.post("http://localhost:3000/api/taxpayer/register",values);
         if(res.data.Status === "Success"){
           navigate("/dashboard")
         }else{

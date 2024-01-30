@@ -17,7 +17,7 @@ function Loginform() {
   const handleSubmit =async (event)=>{
     event.preventDefault();
     try {
-      const res = await Axios.post("http://localhost:3000/api/employees/login",values);
+      const res = await Axios.post("http://localhost:3000/api/taxpayer/login",values);
       if(res.data.Status === "Success"){
         navigate("/dashboard")
       }else{
