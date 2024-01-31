@@ -9,9 +9,9 @@ function Incomedetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "65%",
-          marginLeft: "20%",
-          marginTop: "10%",
+          width: "65VW",
+          // marginLeft: "20%",
+          // marginTop: "10%",
           boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
         }}
       >

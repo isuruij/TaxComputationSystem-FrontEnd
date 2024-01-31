@@ -17,6 +17,11 @@ import Profile from "../src/components/user/Profile/Profile.jsx";
 import RegisterPersonalDetails from "../src/pages/RegisterPersonalDetails.jsx"
 import SignupPersonalDetails from "../src/components/user/PersonalDetails/PersonalDetails.jsx"
 import { BrowserRouter, Routes,Route } from "react-router-dom";
+import RegisterIncomeDetails from "./pages/RegisterIncomeDetails.jsx";
+import RegisterUploadDocuments from "./pages/RegisterUploadDocuments.jsx";
+import SettingSubMenue from "./components/user/SettingSubMenue/SettingSubMenue.jsx";
+
+
 
 
 
@@ -27,8 +32,10 @@ function App() {
     
   <BrowserRouter>
   <Routes>
-    <Route path="/" element={<SignupPersonalDetails/>}></Route>
-    <Route path="/personaldetails" element={<RegisterPersonalDetails/>}></Route>
+    <Route path="/" element={<SettingSubMenue/>}></Route>
+    <Route path="/register/uploadfiles" element={<RegisterUploadDocuments/>}></Route>
+    <Route path="/register/incomedetails" element={<RegisterIncomeDetails/>}></Route>
+    <Route path="/register/personaldetails" element={<RegisterPersonalDetails/>}></Route>
     <Route path="/login" element={<Login/>}></Route>
     <Route path="/incomedetails" element={<Incomedetails/>}></Route>
     <Route path="/dashboard" element={<Dashboard/>}></Route>

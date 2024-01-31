@@ -51,9 +51,10 @@ function PersonalDetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "65%",
-          marginLeft: "20%",
-          marginTop: "10%",
+          // width: "100%",
+          // marginLeft: "20%",
+          width: "65vw",
+          
           boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
         }}
       >
@@ -68,6 +69,20 @@ function PersonalDetails() {
         >
           Personal Details
         </h2>
+        <div class="form-group">
+          <label className="lables" for="email">
+            User Name
+          </label>
+          <div className="custom_input">
+            <input
+              class="details-input form-control"
+              type="text"
+              id="username"
+              placeholder=""
+              onChange={(e)=>{setvalues({...values,email:e.target.value})}}
+            />
+          </div>
+        </div>
         <div class="form-group">
           <label className="lables" for="email">
             Email

@@ -21,20 +21,20 @@ function Sidenavbar() {
   };
 
   return (
-    <div>
+    
       <div
         style={{
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
           borderRadius: "10px",
           padding: "10px",
-          marginRight: "10%",
+          // marginRight: "10%",
           marginBottom: "10px",
-          marginTop: "0.5%",
           marginLeft: "0.5%",
           backgroundColor: "#D3E9FE",
-          width: "20%",
-          display: "flex", // Set display to flex
-          flexDirection: "column", // Arrange buttons vertically
+          
+          width: "20vw",
+          // display: "flex", // Set display to flex
+          // flexDirection: "column", // Arrange buttons vertically
         }}
       >
         <br></br>
@@ -97,7 +97,7 @@ function Sidenavbar() {
         {/* ... (Repeat the pattern for other buttons) */}
         <br></br>
       </div>
-    </div>
+    
   );
 }
 

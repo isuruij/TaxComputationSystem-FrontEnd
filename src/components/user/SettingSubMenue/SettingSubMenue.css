@@ -1,0 +1,14 @@
+button{
+    margin-left: 3vw !important;
+    
+}
+
+.group{
+    display: flex;
+    background-color: #D3E9FF;
+    width: 45vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius: 20px
+}
+

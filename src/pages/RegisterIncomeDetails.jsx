@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 import Header from "../components/user/Header/Header";
 import Sidenavbar from "../components/user/Sidenavbar";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import PersonalDetails from "../components/user/PersonalDetails/PersonalDetails";
+import Incomedetails from '../components/user/Incomedetails/Incomedetails';
 
-function RegisterPersonalDetails() {
+function RegisterIncomeDetails() {
   return (
     <div>
       <Header />
@@ -14,11 +14,11 @@ function RegisterPersonalDetails() {
           <Sidenavbar />
         </div>
         <div style={{marginLeft:"5px",marginTop:"5px"}} >
-          <PersonalDetails />
+          <Incomedetails />
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default RegisterPersonalDetails;
+export default RegisterIncomeDetails
