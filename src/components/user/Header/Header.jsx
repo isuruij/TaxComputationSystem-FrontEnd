@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Notification from "../../../assets/Notification.svg";
 import Profile from "../../../assets/Profile.svg";
-import { useState } from "react";
 
 function Header(props) {
   const [count, setcount] = useState(0);
@@ -11,7 +10,7 @@ function Header(props) {
   return (
     <div
       style={{
-        backgroundColor:"black",
+        backgroundColor: "#D3E9FE",
         display: "flex",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
       }}
