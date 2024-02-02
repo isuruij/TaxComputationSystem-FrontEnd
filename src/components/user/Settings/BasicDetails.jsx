@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import "../PersonalDetails/PersonalDetails.css";
-function PersonalDetails() {
+function BasicDetails() {
 
   useEffect(() => {
     console.log("Cookies:", document.cookie);
@@ -13,7 +13,6 @@ function PersonalDetails() {
   const [values, setvalues] = useState({
 
     email:"",
-    username:"",
     password:"",
     name:"",
     address:"",
@@ -68,20 +67,7 @@ function PersonalDetails() {
         >
           Personal Details
         </h2>
-        <div class="form-group">
-          <label className="lables" for="email">
-            User Name
-          </label>
-          <div className="custom_input">
-            <input
-              class="details-input form-control"
-              type="text"
-              id="username"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,username:e.target.value})}}
-            />
-          </div>
-        </div>
+
         <div class="form-group">
           <label className="lables" for="email">
             Email
@@ -264,4 +250,4 @@ function PersonalDetails() {
   );
 }
 
-export default PersonalDetails;
+export default BasicDetails;

@@ -103,7 +103,9 @@ function TaxView() {
                 </div>
             </div>
         </div>
+        
     </div>
+    
   )
 }
 
