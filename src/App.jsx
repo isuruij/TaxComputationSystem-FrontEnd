@@ -23,6 +23,7 @@ import SettingsBasicDetails from "./pages/SettingsBasicDetails.jsx";
 import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
+import Test from "./components/user/Settings/Test.jsx";
 
 
 
@@ -45,6 +46,7 @@ function App() {
     <Route path="/signup" element={<Signup/>}></Route>
     <Route path="/dashboard" element={<Dashboard/>}></Route>
     <Route path="/viewtax" element={<Viewtax/>}></Route>
+    <Route path="/" element={<Test/>}></Route>
     
     
   </Routes>
