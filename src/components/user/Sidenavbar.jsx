@@ -27,12 +27,10 @@ function Sidenavbar() {
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
           borderRadius: "10px",
           padding: "10px",
-          marginRight: "10%",
           marginBottom: "10px",
-          marginTop: "0.5%",
-          marginLeft: "0.5%",
+          marginLeft: "20%",
           backgroundColor: "#D3E9FE",
-          width: "20%",
+          width: "80%",
           display: "flex", // Set display to flex
           flexDirection: "column", // Arrange buttons vertically
         }}
@@ -41,7 +39,7 @@ function Sidenavbar() {
         <button type="button" className="btn btn-primary" style={buttonStyle}>
           <img
             src={home}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px" }}
             alt="Icon"
           />
           Home
@@ -49,7 +47,7 @@ function Sidenavbar() {
         <button type="button" className="btn btn-primary" style={buttonStyle}>
           <img
             src={registration}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px"  }}
             alt="Icon"
           />
           Registration
@@ -57,7 +55,7 @@ function Sidenavbar() {
         <button type="button" className="btn btn-primary" style={buttonStyle}>
           <img
             src={DownloadTaxreport}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px"  }}
             alt="Icon"
           />
           Download report
@@ -65,7 +63,7 @@ function Sidenavbar() {
         <button type="button" className="btn btn-primary" style={buttonStyle}>
           <img
             src={viewtax}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px"  }}
             alt="Icon"
           />
           viewtax
@@ -73,7 +71,7 @@ function Sidenavbar() {
         <button type="button" className="btn btn-primary" style={buttonStyle}>
           <img
             src={taxhistory}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px"  }}
             alt="Icon"
           />
           taxhistory
@@ -81,15 +79,20 @@ function Sidenavbar() {
         <button type="button" className="btn btn-primary" style={buttonStyle}>
           <img
             src={Settings}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px"  }}
             alt="Icon"
           />
           Settings
         </button>
-        <button type="button" className="btn btn-primary" style={buttonStyle}>
+        <button type="button" className="btn btn-primary" style={{textAlign: "left",
+    display: "block",
+    marginBottom: "12px",
+    width: "90%",
+    marginLeft: "4%",
+    boxShadow: "0px 5px 14px -10px rgba(0,0,0,1)", marginTop:"100%"}}>
           <img
             src={logout}
-            style={{ alignItems: "left", textAlign: "left" }}
+            style={{ alignItems: "left", textAlign: "left",marginRight:"10px"  }}
             alt="Icon"
           />
           logout
