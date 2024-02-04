@@ -1,0 +1,19 @@
+.bt{
+    margin-left: 3vw !important;
+    width: 15vw;
+   
+    
+}
+
+.group{
+    
+    display: flex;
+    background-color: #D3E9FF;
+    width: 65vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    border-radius: 20px;
+    box-shadow: 1px 5px 3px -3px rgba(0,0,0,0.44);
+    
+}
+

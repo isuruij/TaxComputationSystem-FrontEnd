@@ -5,24 +5,53 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.scss";
-import Loginform from "./components/Loginform.jsx";
-import PersonalDetails from "./components/PersonalDetails.jsx";
-import Sidenavbar from "./components/Sidenavbar.jsx";
-import Header from "./components/Header.jsx";
-import Incomedetails from "./components/Incomedetails.jsx";
+import Login from "../src/components/user/Loginform.jsx"
+import Signup from "./pages/Signup.jsx";
+import Sidenavbar from "../src/components/user/Sidenavbar.jsx";
+import Header from "../src/components/user/Header/Header.jsx";
+import Incomedetails from "../src/components/user/Incomedetails/Incomedetails.jsx";
+import FileUpload from "../src/components/user/FileUpload/FileUpload.jsx";
+
+import Dashboard from "./pages/Dashboard.jsx";
+import Profile from "../src/components/user/Profile/Profile.jsx";
+import RegisterPersonalDetails from "../src/pages/RegisterPersonalDetails.jsx"
+import SignupPersonalDetails from "../src/components/user/PersonalDetails/PersonalDetails.jsx"
+import { BrowserRouter, Routes,Route } from "react-router-dom";
+import RegisterIncomeDetails from "./pages/RegisterIncomeDetails.jsx";
+import RegisterUploadDocuments from "./pages/RegisterUploadDocuments.jsx";
+import SettingsBasicDetails from "./pages/SettingsBasicDetails.jsx";
+import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
+import Viewtax from "./pages/Viewtax.jsx";
+import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
+import Test from "./components/user/Settings/Test.jsx";
+
+
+
+
 
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  
   return (
-    <>
-     {/* <Loginform />
-     <PersonalDetails />
-     <Sidenavbar/>
-     <Incomedetails/> */}
-     <Header/>
-    </>
+    
+  <BrowserRouter>
+  <Routes>
+    <Route path="/settings/uploadfiles" element={<SettingsFileUpload/>}></Route>
+    <Route path="/settings/income" element={<SettingsIncomeDetails/>}></Route>
+    <Route path="/settings/basic" element={<SettingsBasicDetails/>}></Route>
+    <Route path="/register/uploadfiles" element={<RegisterUploadDocuments/>}></Route>
+    <Route path="/register/incomedetails" element={<RegisterIncomeDetails/>}></Route>
+    <Route path="/register/personaldetails" element={<RegisterPersonalDetails/>}></Route>
+    <Route path="/login" element={<Login/>}></Route>
+    <Route path="/signup" element={<Signup/>}></Route>
+    <Route path="/dashboard" element={<Dashboard/>}></Route>
+    <Route path="/viewtax" element={<Viewtax/>}></Route>
+    <Route path="/" element={<Test/>}></Route>
+    
+    
+  </Routes>
+  </BrowserRouter>    
+
   );
 }
 
