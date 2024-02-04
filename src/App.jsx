@@ -5,7 +5,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.scss";
-import Login from "../src/components/user/Loginform.jsx"
+import Login from "./pages/LoginPage.jsx"
 import Signup from "./pages/Signup.jsx";
 import Sidenavbar from "../src/components/user/Sidenavbar.jsx";
 import Header from "../src/components/user/Header/Header.jsx";
