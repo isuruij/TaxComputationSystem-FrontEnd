@@ -206,7 +206,7 @@ function Incomedetails() {
           style={{ marginTop: "3%", marginLeft: "70%" }}
           type="submit"
         >
-          Save & Continue
+          Update
         </button>
         <br></br>
         <br></br>
