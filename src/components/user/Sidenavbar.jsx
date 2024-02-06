@@ -90,16 +90,17 @@ function Sidenavbar() {
         />
         Settings
       </button>
-      <div style={{marginTop:"10vw"}}>
+      <div style={{marginTop:"22vh"}}>
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
-          src={Settings}
+          src={logout}
           style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         Logout
       </button>
       </div>
+      
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
     </div>
