@@ -1,15 +1,13 @@
 import React from "react";
 
-import reactlogo from "../../assets/react.svg";
-import home from "../../assets/home.svg";
-import changeincome from "../../assets/changeincome.svg";
-import DownloadTaxreport from "../../assets/DownloadTaxreport.svg";
-import viewtax from "../../assets/viewtax.svg";
-import taxhistory from "../../assets/taxhistory.svg";
-import registration from "../../assets/registration.svg";
-import logout from "../../assets/logout.svg";
-import Settings from "../../assets/Settings.svg";
 import { useNavigate } from "react-router-dom";
+import DownloadTaxreport from "../../assets/DownloadTaxreport.svg";
+import Settings from "../../assets/Settings.svg";
+import home from "../../assets/home.svg";
+import logout from "../../assets/logout.svg";
+import registration from "../../assets/registration.svg";
+import taxhistory from "../../assets/taxhistory.svg";
+import viewtax from "../../assets/viewtax.svg";
 
 function Sidenavbar() {
   const buttonStyle = {
@@ -33,13 +31,14 @@ function Sidenavbar() {
         marginLeft: "0.5%",
         backgroundColor: "#D3E9FE",
         width: "20vw",
+        height: "90vh",
       }}
     >
       <br></br>
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
           src={home}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         Home
@@ -54,7 +53,7 @@ function Sidenavbar() {
       >
         <img
           src={registration}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         Registration
@@ -62,7 +61,7 @@ function Sidenavbar() {
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
           src={DownloadTaxreport}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         Download report
@@ -70,7 +69,7 @@ function Sidenavbar() {
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
           src={viewtax}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         viewtax
@@ -78,7 +77,7 @@ function Sidenavbar() {
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
           src={taxhistory}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         taxhistory
@@ -86,19 +85,21 @@ function Sidenavbar() {
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
           src={Settings}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
         Settings
       </button>
+      <div style={{marginTop:"10vw"}}>
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
-          src={logout}
-          style={{ alignItems: "left", textAlign: "left" }}
+          src={Settings}
+          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
           alt="Icon"
         />
-        logout
+        Logout
       </button>
+      </div>
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
     </div>
