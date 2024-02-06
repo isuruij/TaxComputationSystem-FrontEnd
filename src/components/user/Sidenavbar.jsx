@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import DownloadTaxreport from "../../assets/DownloadTaxreport.svg";
@@ -20,6 +21,17 @@ function Sidenavbar() {
   };
 
   const navigate = useNavigate();
+
+  const handleLogout = async (event) => {
+    
+    try {
+      const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
+      navigate("/login");
+      // location.reload(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
@@ -45,7 +57,7 @@ function Sidenavbar() {
       </button>
       <button
         onClick={() => {
-          navigate("/register/incomedetails");
+          navigate("/register/incomedetail");
         }}
         type="button"
         className="btn btn-primary"
@@ -90,17 +102,28 @@ function Sidenavbar() {
         />
         Settings
       </button>
-      <div style={{marginTop:"22vh"}}>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
-        <img
-          src={logout}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
-          alt="Icon"
-        />
-        Logout
-      </button>
+      <div style={{ marginTop: "22vh" }}>
+        <button
+          onClick={() => {
+            handleLogout();
+          }}
+          type="button"
+          className="btn btn-primary"
+          style={buttonStyle}
+        >
+          <img
+            src={logout}
+            style={{
+              alignItems: "left",
+              textAlign: "left",
+              marginRight: "10px",
+            }}
+            alt="Icon"
+          />
+          Logout
+        </button>
       </div>
-      
+
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
     </div>
