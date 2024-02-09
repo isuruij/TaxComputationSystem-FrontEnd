@@ -14,7 +14,7 @@ function SettingSubMenue() {
             navigate("/settings/basic")
           }}
         >
-          Basic Details
+          <div className="setting-option">Basic Details</div>
         </button>
         <button
           class="btn btn-primary bt"
@@ -23,7 +23,7 @@ function SettingSubMenue() {
             navigate("/settings/income")
           }}
         >
-          Income Details
+          <div className="setting-option">Income Details</div>
         </button>
         <button
           class="btn btn-primary bt"
@@ -32,7 +32,7 @@ function SettingSubMenue() {
             navigate("/settings/uploadfiles")
           }}
         >
-          Update Files
+          <div className="setting-option">Update Files</div>
         </button>
       </div>
 

@@ -7,7 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.scss";
 import Login from "./pages/LoginPage.jsx"
 import Signup from "./pages/Signup.jsx";
-import Sidenavbar from "../src/components/user/Sidenavbar.jsx";
+import Sidenavbar from "./components/user/Sidenavbar/Sidenavbar.jsx";
 import Header from "../src/components/user/Header/Header.jsx";
 import Incomedetails from "../src/components/user/Incomedetails/Incomedetails.jsx";
 import FileUpload from "../src/components/user/FileUpload/FileUpload.jsx";
