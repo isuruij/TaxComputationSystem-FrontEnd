@@ -30,6 +30,7 @@ import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
 
 
 
+
 function App() {
   
   return (
@@ -46,6 +47,7 @@ function App() {
     <Route path="/signup" element={<Signup/>}></Route>
     <Route path="/dashboard" element={<Dashboard/>}></Route>
     <Route path="/viewtax" element={<Viewtax/>}></Route>
+    
    
     
     

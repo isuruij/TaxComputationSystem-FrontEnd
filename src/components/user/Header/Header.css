@@ -1,0 +1,47 @@
+
+
+
+  @media screen and (max-width: 900px) {
+
+    .ncount{
+        margin-left:84vw !important ;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+
+    .ncount{
+        margin-left:84.5vw !important ;
+    }
+  }
+
+
+  @media screen and (max-width: 700px) {
+
+    .ncount{
+        margin-left:85.5vw !important ;
+    }
+  }
+
+
+  @media screen and (max-width: 550px) {
+
+    .ncount{
+        margin-left:86.5vw !important ;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+
+    .ncount{
+        margin-left:87.5vw !important ;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+
+    .ncount{
+        margin-left:88.5vw !important ;
+    }
+  }
+  
