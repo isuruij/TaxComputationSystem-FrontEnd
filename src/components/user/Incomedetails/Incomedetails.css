@@ -12,6 +12,12 @@
 	transition: .3s ease;
 }
 
+@media screen and (max-width: 800px) {
+    .details-input {
+		width: 50%;
+    }
+  }
+
 .input:focus {
 	background: #F2F2F2;
 	border: 1px solid #5A7EC7;
