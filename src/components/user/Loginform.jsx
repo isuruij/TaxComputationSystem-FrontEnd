@@ -3,36 +3,37 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
-function Loginform() { 
-
+function Loginform() {
   const [values, setvalues] = useState({
-
-    email:"",
-    password:"",
+    email: "",
+    password: "",
   });
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
-  const handleSubmit =async (event)=>{
+  const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await Axios.post("http://localhost:3000/api/taxpayer/login",values);
-      if(res.data.Status === "Success"){
-        navigate("/dashboard")
-      }else{
-        alert(`${res.data.Status}`+" Enter details correctly")
+      const res = await Axios.post(
+        "http://localhost:3000/api/taxpayer/login",
+        values
+      );
+      if (res.data.Status === "Success") {
+        navigate("/dashboard");
+      } else {
+        alert(`${res.data.Status}` + " Enter details correctly");
       }
-      console.log(res)
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
-
-}
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}
+      <form
+        onSubmit={handleSubmit}
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
@@ -64,7 +65,9 @@ function Loginform() {
               type="email"
               id="exampleInputEmail1"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,email:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, email: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -80,7 +83,9 @@ function Loginform() {
               type="password"
               id="exampleInputPassword1"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,password:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, password: e.target.value });
+              }}
             />
           </div>
           <p style={{ color: "#049370", fontSize: "13px", marginTop: "5%" }}>

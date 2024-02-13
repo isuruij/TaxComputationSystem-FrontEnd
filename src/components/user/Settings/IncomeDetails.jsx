@@ -110,6 +110,8 @@ function Incomedetails() {
           </div>
         ))}
 
+        <br></br>
+
         {/* Investment Income */}
         {investmentIncomes.map((income, index) => (
           <div className="form-group contact" key={`investment${index}`}>
@@ -140,6 +142,7 @@ function Incomedetails() {
           </div>
         ))}
 
+        <br></br>
         {/* Business Income */}
         {businessIncomes.map((income, index) => (
           <div className="form-group contact" key={`business${index}`}>
@@ -169,7 +172,7 @@ function Incomedetails() {
             </div>
           </div>
         ))}
-
+        <br></br>
         {/* Other Income */}
         {otherIncomes.map((income, index) => (
           <div className="form-group contact" key={`other${index}`}>
