@@ -23,8 +23,6 @@ import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 
 
-import UserHome from "./pages/UserHome.jsx";
-import Viewtax from "./pages/Viewtax.jsx";
 
 
 
@@ -50,7 +48,7 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     
-    <Route path="/" element={<Test/>}></Route>
+   
     
     
   </Routes>
