@@ -1,17 +1,17 @@
 
 
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1000px) {
 
     .ncount{
-        margin-left:84vw !important ;
+        margin-left:82vw !important ;
     }
   }
 
   @media screen and (max-width: 800px) {
 
     .ncount{
-        margin-left:84.5vw !important ;
+        margin-left:82.5vw !important ;
     }
   }
 
@@ -19,15 +19,15 @@
   @media screen and (max-width: 700px) {
 
     .ncount{
-        margin-left:85.5vw !important ;
+        margin-left:82.5vw !important ;
     }
   }
 
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 600px) {
 
     .ncount{
-        margin-left:86.5vw !important ;
+        margin-left:82.5vw !important ;
     }
   }
 

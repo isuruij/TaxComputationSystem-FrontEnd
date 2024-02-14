@@ -74,6 +74,7 @@ function PersonalDetails() {
           </label>
           <div className="custom_input">
             <input
+              
               class="details-input form-control"
               type="text"
               id="username"
