@@ -4,7 +4,7 @@ import SettingSubMenueTax from '../components/user/Settings/SettingSubMenueTax';
 
 import TaxPayment from '../components/user/TaxPayments/TaxPayment';
 
-import Sidenavbar from '../components/user/Sidenavbar';
+import Sidenavbar from '../components/user/Sidenavbar/Sidenavbar';
 
 export default function TaxPayments() {
   return (
