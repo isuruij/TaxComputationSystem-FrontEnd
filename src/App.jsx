@@ -23,6 +23,7 @@ import SettingsBasicDetails from "./pages/SettingsBasicDetails.jsx";
 import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
+import TaxPaymentHistory from "./components/user/TaxPaymentHistory/TaxPaymentHistory.jsx";
 
 
 
@@ -46,6 +47,7 @@ function App() {
     <Route path="/signup" element={<Signup/>}></Route>
     <Route path="/dashboard" element={<Dashboard/>}></Route>
     <Route path="/viewtax" element={<Viewtax/>}></Route>
+    <Route path="/" element={<TaxPaymentHistory/>}></Route>
    
     
     
