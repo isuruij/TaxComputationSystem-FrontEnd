@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from "../components/user/Loginform"
+import Login from "../components/user/Login/Loginform"
 
 function LoginPage() {
   return (

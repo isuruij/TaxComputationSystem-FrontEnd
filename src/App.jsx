@@ -4,10 +4,13 @@ import "./App.css";
 import "./index.scss";
 import Login from "./pages/LoginPage.jsx";
 import Signup from "./pages/Signup.jsx";
+import Sidenavbar from "../src/components/user/Sidenavbar/Sidenavbar.jsx";
+import Header from "../src/components/user/Header/Header.jsx";
+import Incomedetails from "../src/components/user/Incomedetails/Incomedetails.jsx";
+import FileUpload from "../src/components/user/FileUpload/FileUpload.jsx";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RegisterPersonalDetails from "../src/pages/RegisterPersonalDetails.jsx";
-import Test from "./components/user/Settings/Test.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import RegisterIncomeDetails from "./pages/RegisterIncomeDetails.jsx";
 import RegisterUploadDocuments from "./pages/RegisterUploadDocuments.jsx";
@@ -19,6 +22,8 @@ import TaxStatus from "./pages/TaxStatus.jsx";
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import TaxPayments from "./pages/TaxPayments.jsx";
+
+
 
 
 
@@ -44,9 +49,6 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
-    
-    <Route path="/" element={<Test/>}></Route>
-    
     
   </Routes>
   </BrowserRouter>    

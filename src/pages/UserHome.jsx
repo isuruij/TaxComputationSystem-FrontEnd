@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Header from '../components/user/Header/Header';
 
-import Sidenavbar from '../components/user/Sidenavbar';
+import Sidenavbar from '../components/user/Sidenavbar/Sidenavbar';
 
 import Homepage from '../components/user/UserHomepage/Homepage';
 

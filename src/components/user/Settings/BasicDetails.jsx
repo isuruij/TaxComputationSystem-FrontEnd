@@ -51,7 +51,7 @@ function BasicDetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "65vw",
+          width: "78vw",
           
           boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
         }}
@@ -225,12 +225,7 @@ function BasicDetails() {
 
 
         
-        <button
-          className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "0%" }}
-        >
-          Back
-        </button>
+
 
         <button
           
@@ -238,7 +233,7 @@ function BasicDetails() {
           className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "70%" }}
         >
-          Save & Continue
+          Update
         </button>
         <br></br>
         <br></br>

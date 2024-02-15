@@ -1,17 +1,23 @@
 .details-input{
     font-size: 12px;
 	padding: 5px 10px;
-	width: 30%;
+	width: 30vw !important;
 	height: 26px; 
 	outline: none;
 	background: #f3f9ff;
 	color: #000000;
 	border: 1px solid #C4D1EB;
-	border-radius: 10px;
+	border-radius: 15px !important;
 	box-shadow: 0px 3px 3px 1px #9D9D9D;
 	transition: .3s ease;
 }
 
+@media screen and (max-width: 800px) {
+    .details-input {
+		width: 70%;
+    }
+	
+  }
 .input:focus {
 	background: #F2F2F2;
 	border: 1px solid #5A7EC7;

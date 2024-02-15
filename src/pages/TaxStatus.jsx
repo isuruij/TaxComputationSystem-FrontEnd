@@ -3,7 +3,7 @@ import Header from '../components/user/Header/Header';
 import SettingSubMenue from '../components/user/Settings/SettingSubMenue';
 import TaxStatusBody from '../components/user/TaxStatus/TaxStatusBody';
 
-import Sidenavbar from '../components/user/Sidenavbar';
+import Sidenavbar from '../components/user/Sidenavbar/Sidenavbar';
 
 export default function TaxStatus() {
   return (
