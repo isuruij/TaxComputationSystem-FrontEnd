@@ -44,7 +44,32 @@ function TaxPaymentHistory() {
             </ul>
           </div>
 
+          <div className="date_feild">
+          
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="date"
+              id="Ddate"
+              onChange={dateValue}
+            />
+          </div>
+        </div>
 
+        <div className="date_feild">
+          
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="date"
+              id="Ddate"
+              onChange={dateValue}
+            />
+          </div>
+        </div>
+         
+
+        
           
           
           
