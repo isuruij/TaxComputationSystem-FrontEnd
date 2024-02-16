@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function NotificationCentre() {
+function Notification() {
   useEffect(() => {
     
     showNotification('You have to submit Employement income document');
@@ -34,4 +34,4 @@ function NotificationCentre() {
   );
 }
 
-export default NotificationCentre;
+export default Notification;

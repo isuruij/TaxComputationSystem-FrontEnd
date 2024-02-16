@@ -3,7 +3,7 @@ import Header from "../components/user/Header/Header";
 import Sidenavbar from "../components/user/Sidenavbar";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import NotificationCentre from "../components/user/NotificationCentre"
+import Notification from "../components/user/NotificationCentre/Notification"
 
 function NotificationCentre() {
   return (
@@ -14,7 +14,7 @@ function NotificationCentre() {
           <Sidenavbar />
         </div>
         <div style={{marginLeft:"5px",marginTop:"5px"}} >
-          <NotificationCentre />
+          <Notification />
         </div>
       </div>
     </div>

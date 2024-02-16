@@ -23,8 +23,8 @@ import SettingsBasicDetails from "./pages/SettingsBasicDetails.jsx";
 import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
-import TaxPaymentHistory from "./components/user/TaxPaymentHistory/TaxPaymentHistory.jsx";
-import NotificationCentre from "./components/user/NotificationCentre/NotificationCentre.jsx"
+
+import NotificationCentre from "./pages/NotificationCentre.jsx";
 
 
 
@@ -47,7 +47,7 @@ function App() {
     <Route path="/signup" element={<Signup/>}></Route>
     <Route path="/dashboard" element={<Dashboard/>}></Route>
     <Route path="/viewtax" element={<Viewtax/>}></Route>
-    <Route path="/taxhistory/taxpaymenthistory" element={<TaxPaymentHistory/>}></Route>
+    
     <Route path="/notification" element={<NotificationCentre/>}></Route>
     
    
