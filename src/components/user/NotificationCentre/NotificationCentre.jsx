@@ -4,26 +4,31 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function NotificationCentre() {
   useEffect(() => {
-    // Show three notifications when the component mounts
-    showNotification('Notification 1');
-    showNotification('Notification 2');
-    showNotification('Notification 3');
+    
+    showNotification('You have to submit Employement income document');
+    showNotification('Congratulations! Your profile is verified');
+    showNotification('You have an upcoming payment next month');
   }, []);
 
   const showNotification = (message) => {
     toast.success(message, {
-      position: 'top-right',
-      autoClose: 3000,
+      position: 'top-left',
+      autoClose: false,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
+      style: {
+        color: '#049370', 
+        width: '600px',    
+        height: '80px',
+      },
     });
   };
 
   return (
     <div>
-      {/* Your app content */}
+      
       <ToastContainer />
     </div>
   );
