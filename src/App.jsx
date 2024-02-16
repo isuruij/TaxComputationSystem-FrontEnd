@@ -24,7 +24,7 @@ import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
 import TaxPaymentHistory from "./components/user/TaxPaymentHistory/TaxPaymentHistory.jsx";
-import NotificationCentre from "./components/user/TaxPaymentHistory/NotificationCentre.jsx"
+import NotificationCentre from "./components/user/NotificationCentre/NotificationCentre.jsx"
 
 
 
