@@ -45,7 +45,7 @@ function TaxPaymentHistory() {
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          style={{ padding: '2px', fontSize: '22px', height: '51px' }}
+          style={{ padding: '2px', fontSize: '18px', height: '45px' }}
         >
           {selectedValue1 || 'Paid Taxes'}
         </button>
@@ -70,7 +70,7 @@ function TaxPaymentHistory() {
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          style={{ padding: '2px', fontSize: '22px', height: '51px' }}
+          style={{ padding: '2px', fontSize: '18px', height: '45px' }}
         >
           {selectedValue2 || 'All Transactions'}
         </button>
@@ -97,7 +97,7 @@ function TaxPaymentHistory() {
               type="date"
               id="Ddate"
               onChange={dateValue}
-              style={{height:51+'px'}}
+              style={{height:45+'px'}}
             />
           </div>
         </div>
@@ -110,7 +110,7 @@ function TaxPaymentHistory() {
               type="date"
               id="Ddate"
               onChange={dateValue}
-              style={{height:51+'px'}}
+              style={{height:45+'px'}}
             />
           </div>
         </div>
@@ -119,14 +119,14 @@ function TaxPaymentHistory() {
           
             
         
-        <div>
+        {/* <div>
           <button class="btn btn-primary d-inline-block" type="button"  aria-expanded="false" style={{padding: 2 + 'px',fontSize:20+'px',width:250+'px'}}>
               Serial Number
             <button class="btn btn-primary d-inline-block" type="button"   aria-expanded="false"style={{fontSize:20+'px'}}>
                 11569
             </button>
           </button>
-       </div>
+       </div> */}
         </div>
 
         <div className="divtable">
