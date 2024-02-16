@@ -59,12 +59,14 @@ h1{
 .dropdownPage{
     display: flex;
     
+    
 }
 
 .divtable{
     background-color: #D3E9FE;
     padding: 10px;
     margin-top: 0px;
+    margin-left: 90px;
     width: 90%;
     height: 55%;
     
@@ -101,4 +103,13 @@ h1{
     width: 16vw;
     border-radius: 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    color:#fefeff;
+    
+    font-size: 24px;
+
 }
+
+.custom_input .icon {
+    color:#fefeff; 
+  }
+  
