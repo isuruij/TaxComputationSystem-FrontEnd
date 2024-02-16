@@ -22,7 +22,7 @@ import TaxStatus from "./pages/TaxStatus.jsx";
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import TaxPayments from "./pages/TaxPayments.jsx";
-import TaxPaymentHistory from "./pages/TaxHistory.jsx"
+import TaxHistory from "./pages/TaxHistory.jsx";
 
 
 
@@ -50,8 +50,7 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
-    <Route path="/Taxhistory" element={<TaxPaymentHistory/>}></Route>
-    
+    <Route path="/Taxhistory" element={<TaxHistory/>}></Route>
   </Routes>
   </BrowserRouter>    
 
