@@ -24,29 +24,7 @@ function TaxPaymentHistory() {
     <div>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>
 
-      <div className="divbuttongroup">
-        <h1 style={{fontSize:30+'px', marginBottom:20+'px'}}>TAX Payment History</h1>
-        <div className="divbutton">
-          <button type="button" className="btn btn-primary " style={{fontSize:20+'px'}}>
-            <span className="icon">
-              <img src="" alt="" />
-            </span>
-            Tax Status
-          </button>
-          <button type="button" className="btn btn-primary " style={{fontSize:20+'px'}}>
-            <span className="icon">
-              <img src="" alt="" />
-            </span>
-            Tax History
-            </button>
-          <button type="button" className="btn btn-primary " style={{fontSize:20+'px'}}>
-          <span className="icon">
-              <img src="" alt="" />
-            </span>
-            Tax Payment Update
-            </button>
-        </div>
-      </div>
+
 
       <div className='dropdowntable'>
         <div className="dropdownPage">
@@ -79,7 +57,7 @@ function TaxPaymentHistory() {
           
           <div className="custom_input">
             <input
-              className="details-input form-control"
+              className="d form-control"
               type="date"
               id="Ddate"
               onChange={dateValue}
@@ -92,7 +70,7 @@ function TaxPaymentHistory() {
           
           <div className="custom_input">
             <input
-              className="details-input form-control"
+              className="d form-control"
               type="date"
               id="Ddate"
               onChange={dateValue}
