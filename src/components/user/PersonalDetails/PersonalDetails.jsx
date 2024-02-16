@@ -264,7 +264,7 @@ function PersonalDetails() {
 
           <button
             onClick={()=>{
-              
+              navigate("/register/incomedetails")
             }}
             type="submit"
             className="btn btn-primary"
