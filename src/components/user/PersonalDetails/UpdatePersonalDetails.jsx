@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import "../PersonalDetails/PersonalDetails.css";
-function PersonalDetails() {
+function UpdatePersonalDetails() {
   useEffect(() => {
     console.log("Cookies:", document.cookie);
   }, []);
@@ -264,7 +264,7 @@ function PersonalDetails() {
 
           <button
             onClick={()=>{
-              
+              navigate("/register/incomedetails")
             }}
             type="submit"
             className="btn btn-primary"
@@ -283,4 +283,4 @@ function PersonalDetails() {
   );
 }
 
-export default PersonalDetails;
+export default UpdatePersonalDetails;
