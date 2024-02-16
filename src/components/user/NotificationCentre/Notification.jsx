@@ -24,6 +24,7 @@ function NotificationCentre() {
         height: '80px',
         top: '70px', 
         right: '880px', 
+        backgroundColor: '#D3E9FE',
         //transform: 'translate(-55%, -35%)',
       },
     });
