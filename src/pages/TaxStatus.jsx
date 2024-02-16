@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/user/Header/Header';
-import SettingSubMenue from '../components/user/Settings/SettingSubMenue';
+import SettingSubMenueTax from '../components/user/Settings/SettingSubMenueTax';
 import TaxStatusBody from '../components/user/TaxStatus/TaxStatusBody';
 
 import Sidenavbar from '../components/user/Sidenavbar/Sidenavbar';
@@ -14,7 +14,7 @@ export default function TaxStatus() {
         <Sidenavbar />
       </div>
       <div style={{width:'65vw',marginLeft:"5px",marginTop:"5px",display:"block"}} >
-        <div><SettingSubMenue/></div>
+        <div><SettingSubMenueTax/></div>
         <div><TaxStatusBody/></div>
       </div>
     </div>

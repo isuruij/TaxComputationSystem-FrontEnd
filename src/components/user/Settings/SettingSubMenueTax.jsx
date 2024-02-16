@@ -11,7 +11,7 @@ function SettingSubMenueTax() {
           class="btn btn-primary bt"
           style={{ }}
           onClick={()=>{
-            navigate("/settings/basic")
+            navigate("/TaxStatus")
           }}
         >
           Tax Status
@@ -29,7 +29,7 @@ function SettingSubMenueTax() {
           class="btn btn-primary bt"
           style={{  }}
           onClick={()=>{
-            navigate("/settings/uploadfiles")
+            navigate("/TaxPayments")
           }}
         >
           Tax Payments Update

@@ -92,7 +92,14 @@ function Sidenavbar() {
         />
         <span>View Tax</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/TaxStatus");
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={taxhistory}
           style={{ alignItems: "left", textAlign: "left" }}
