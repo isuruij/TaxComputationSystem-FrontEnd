@@ -13,10 +13,18 @@ function TaxPaymentHistory() {
   }
 
   
-    const [selectedValue, setSelectedValue] = useState(null);
-    const handleDropdownSelect = (value) => {
-      setSelectedValue(value);
-    }
+  const [selectedValue1, setSelectedValue1] = useState(null);
+  const handleDropdownSelect1 = (value) => {
+    setSelectedValue1(value);
+  };
+
+  const [selectedValue2, setSelectedValue2] = useState(null);
+  const handleDropdownSelect2 = (value) => {
+    setSelectedValue2(value);
+  };
+
+  const dropdownOptions1 = ['A', 'B', 'C'];
+  const dropdownOptions2 = ['D', 'E', 'F'];
 
   return (
 
@@ -31,31 +39,59 @@ function TaxPaymentHistory() {
           
 
           
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{padding: 2 + 'px',fontSize:22 +'px',height:51+'px'}}>
-              {selectedValue || 'Paid Taxes'}
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" onClick={() => handleDropdownSelect('Action')}>Action</a></li>
-              <li><a class="dropdown-item" href="#" onClick={() => handleDropdownSelect('Another action')}>Another action</a></li>
-              <li><a class="dropdown-item" href="#" onClick={() => handleDropdownSelect('Something else here')}>Something else here</a></li>
-            </ul>
-          </div>
+        <div className="dropdown">
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={{ padding: '2px', fontSize: '22px', height: '51px' }}
+        >
+          {selectedValue1 || 'Paid Taxes'}
+        </button>
+        <ul className="dropdown-menu">
+          {dropdownOptions1.map((option) => (
+            <li key={option}>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleDropdownSelect1(option)}
+              >
+                {option}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style={{padding: 2 + 'px',fontSize:22 +'px',height:51+'px'}}>
-              All Transactions
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" onClick={() => handleDropdownSelect('Action')}>Action</a></li>
-              <li><a class="dropdown-item" href="#" onClick={() => handleDropdownSelect('Another action')}>Another action</a></li>
-              <li><a class="dropdown-item" href="#" onClick={() => handleDropdownSelect('Something else here')}>Something else here</a></li>
-            </ul>
-          </div>
+      <div className="dropdown">
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          style={{ padding: '2px', fontSize: '22px', height: '51px' }}
+        >
+          {selectedValue2 || 'All Transactions'}
+        </button>
+        <ul className="dropdown-menu">
+          {dropdownOptions2.map((option) => (
+            <li key={option}>
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={() => handleDropdownSelect2(option)}
+              >
+                {option}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
           <div className="date_feild">
           
-          <div className="custom_input">
+          <div className="date_input">
             <input
               className="d form-control"
               type="date"
@@ -68,7 +104,7 @@ function TaxPaymentHistory() {
 
         <div className="date_feild">
           
-          <div className="custom_input">
+          <div className="date_input">
             <input
               className="d form-control"
               type="date"
