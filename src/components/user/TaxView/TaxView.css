@@ -1,11 +1,11 @@
 .Tax-view-page{
-
+    width: 78vw;
     padding: 30px;
     border-radius: 20px;
     background-color: #D3E9FE;
-    min-width: min-content;
-    /* box-shadow: #acacac 2px 4px; */
+    /* min-width: min-content; */
     box-shadow: 1px 5px 3px -3px rgba(0,0,0,0.44);
+    
     
 }
 

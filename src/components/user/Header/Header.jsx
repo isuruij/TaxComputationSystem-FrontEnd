@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Notification from "../../../assets/Notification.svg";
 import Profile from "../../../assets/Profile.svg";
 import { useState } from "react";
+import "./Header.css";
 
 function Header(props) {
   const [count, setcount] = useState(0);
@@ -24,8 +25,8 @@ function Header(props) {
       {count != 0 ? (
         <span
           style={{ marginLeft: "83%", marginTop:"1.1%"}}
-          className="position-absolute translate-middle badge rounded-pill bg-danger"
-        >
+          className="ncount position-absolute translate-middle badge rounded-pill bg-danger"
+        > 
           {count}
         </span>
       ) : (
@@ -34,6 +35,7 @@ function Header(props) {
       <img src={Profile} alt="Profile" />
       <span style={{ display: "flex", marginTop: "1%", marginLeft: "1%" }}>
         <h6>{props.name}</h6>
+        
       </span>
     </div>
   );
