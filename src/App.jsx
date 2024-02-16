@@ -21,6 +21,7 @@ import TaxStatus from "./pages/TaxStatus.jsx";
 
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
+import TaxPayments from "./pages/TaxPayments.jsx";
 
 
 
@@ -47,6 +48,7 @@ function App() {
     <Route path="/viewtax" element={<Viewtax/>}></Route>
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
+    <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
     
    
     
