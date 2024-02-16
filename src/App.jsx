@@ -48,7 +48,7 @@ function App() {
     <Route path="/dashboard" element={<Dashboard/>}></Route>
     <Route path="/viewtax" element={<Viewtax/>}></Route>
     <Route path="/taxhistory/taxpaymenthistory" element={<TaxPaymentHistory/>}></Route>
-    <Route path="/notification" element={<NotificationCentrey/>}></Route>
+    <Route path="/notification" element={<NotificationCentre/>}></Route>
     
    
     
