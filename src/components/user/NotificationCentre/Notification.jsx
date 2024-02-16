@@ -22,7 +22,7 @@ function NotificationCentre() {
         color: '#049370', 
         width: '600px',    
         height: '80px',
-        top: '140px', 
+        top: '70px', 
         right: '880px', 
         //transform: 'translate(-55%, -35%)',
       },
