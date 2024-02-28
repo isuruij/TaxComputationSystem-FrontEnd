@@ -8,7 +8,7 @@ function Header(props) {
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
-  },[]);
+  });
   return ( 
     <div
       style={{
