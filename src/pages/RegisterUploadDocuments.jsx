@@ -13,7 +13,7 @@ function RegisterUploadDocuments() {
         <div style={{marginTop:"5px",}}>
           <Sidenavbar />
         </div>
-        <div style={{marginLeft:"5px",marginTop:"5px", width:"65vw"}} >
+        <div style={{marginLeft:"5px",marginTop:"5px", width:"78vw"}} >
           <FileUpload />
         </div>
       </div>

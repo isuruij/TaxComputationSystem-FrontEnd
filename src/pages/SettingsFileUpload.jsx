@@ -18,7 +18,7 @@ function SettingsFileUpload() {
             <div>
               <SettingSubMenue />
             </div>
-            <div style={{marginTop:"5px"}}>
+            <div style={{marginTop:"5px", width:"78vw"} }>
               <FileUpload/>
             </div>
           </div>
