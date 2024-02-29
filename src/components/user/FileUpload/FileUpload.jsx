@@ -1,34 +1,52 @@
 import React from "react";
 import { useState } from "react";
 import "./FileUpload.css";
+import axios from "axios";
+
 
 
 
 function FileUpload() {
-  const [file, setFile] = useState();
+  const [file1, setFile1] = useState();
+  // const [file2, setFile2] = useState();
+  // const [file3, setFile3] = useState();
+  // const [file4, setFile4] = useState();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
 
-  function handleFile(event) {
-    setFile(event.target.files[0]);
+
+  const handleFile = (e) =>  {
+    
+    setFile1(e.target.files[0]);
+    // switch (type) {
+    //   case "doc1":
+    //     setFile1(event.target.files[0]);
+    //     break;
+    //     case "doc2":
+    //     setFile2(event.target.files[0]);
+    //     break;
+    //     case "doc3":
+    //     setFile3(event.target.files[0]);
+    //     break;
+    //     case "doc4":
+    //     setFile4(event.target.files[0]);
+    //     break;
+    // };
+
+
     //console.log(event.target.files[0])
   }
+
   function handleUpload() {
     const formData = new FormData();
-    formData.append("file", file);
-    fetch("*****URL****", {
-      method: "POST",
-      body: formData,
+    formData.append("doc", file1);
+    axios.post('http://localhost:8001/create', formData)
+    .then((response) => {
+      console.log(response);
     })
-      .then((Response) => Response.json())
-      .then((result) => {
-        console.log("Success", result);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    .catch(er => console.log(er))
   }
 
 
@@ -45,7 +63,7 @@ function FileUpload() {
               <label><h6>Employment Income</h6></label>
             </div>
             <div className="div1-1-2">
-              <input type="file" name="file" onChange={handleFile} />
+              <input type="file" name="file" onChange={(e) => setFile1(e.target.files[0])} />
             </div>
           </div>
 

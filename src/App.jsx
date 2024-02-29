@@ -51,6 +51,7 @@ function App() {
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
     <Route path="/Taxhistory" element={<TaxHistory/>}></Route>
+
   </Routes>
   </BrowserRouter>    
 

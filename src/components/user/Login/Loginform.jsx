@@ -22,7 +22,7 @@ function Loginform() {
       if (res.data.Status === "Success") {
         navigate("/dashboard");
       } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+        alert("Invalid credentials! Please enter correct details.");
       }
       console.log(res);
     } catch (error) {
@@ -60,8 +60,18 @@ function Loginform() {
           </label>
           <div class="custom_input">
             <input
-              style={{ width: "95%" }}
-              class="details-input form-control "
+              style={{ width: "15vw",
+                      fontSize: "12px",
+                        height:"26px",
+                        outline: "none",
+                        background: "#f3f9ff",
+                        color: "#000000",
+                        border: "1px solid #C4D1EB",
+                        borderRadius: "10px",
+                        boxShadow: "0px 3px 3px 1px #9D9D9D",
+                        transition: ".3s ease",
+            }}
+              class=" form-control "
               type="email"
               id="exampleInputEmail1"
               placeholder=""
@@ -78,8 +88,18 @@ function Loginform() {
           </label>
           <div class="custom_input">
             <input
-              style={{ width: "95%" }}
-              class="details-input form-control"
+                            style={{ width: "15vw",
+                            fontSize: "12px",
+                              height:"26px",
+                              outline: "none",
+                              background: "#f3f9ff",
+                              color: "#000000",
+                              border: "1px solid #C4D1EB",
+                              borderRadius: "10px",
+                              boxShadow: "0px 3px 3px 1px #9D9D9D",
+                              transition: ".3s ease",
+                  }}
+              class="form-control"
               type="password"
               id="exampleInputPassword1"
               placeholder=""
