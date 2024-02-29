@@ -4,6 +4,8 @@ import Sidenavbar from "../components/user/Sidenavbar/Sidenavbar";
 import { useState } from "react";
 import Axios from "axios";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 // import './Dashboard.css';  // Import a CSS file for styling
 
@@ -18,6 +20,8 @@ function Dashboard() {
       if (res.data.Status === "Success") {
         setauth(true);
         setname(res.data.name);
+        const cookieValue = Cookies.get('token');
+        console.log('Cookie Value:', cookieValue, jwtDecode(cookieValue));
       } else {
         alert("Enter details correctly");
       }
