@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'; // Import axios
 import { useLocation } from 'react-router-dom'; // Import useLocation
 
 function VerifyUserEmail() {
     const location = useLocation();
+    const [isVerified, setisVerified] = useState(false);
 
     useEffect(()=>{
         const handle = async () => {
@@ -21,8 +22,11 @@ function VerifyUserEmail() {
                 const response = await axios.patch('http://localhost:3000/api/taxpayer/verifyemail', {
                     emailToken: emailToken
                 });
+                if(response.data.status === "Success"){
+                    setisVerified(true);
+                }
 
-                console.log(response.data);
+                console.log(response);
             } catch (error) {
               console.log(error);
             }
@@ -32,7 +36,8 @@ function VerifyUserEmail() {
 
     return (
         <div>
-            <h1>Email Verification</h1>
+            
+            {isVerified ? <h1>Your email has been verified</h1> : <h1>Verifying your email...</h1>}
         </div>
     )
 }
