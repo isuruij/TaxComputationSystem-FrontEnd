@@ -18,6 +18,7 @@ import SettingsBasicDetails from "./pages/SettingsBasicDetails.jsx";
 import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
 import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import TaxStatus from "./pages/TaxStatus.jsx";
+import VerifyUserEmail from "./pages/VerifyUserEmail.jsx";
 
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
@@ -49,6 +50,7 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
+    <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
     
 
   </Routes>
