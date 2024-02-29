@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import axios from 'axios'; // Import axios
 import { useLocation } from 'react-router-dom'; // Import useLocation
 
 function VerifyUserEmail() {
@@ -16,14 +17,18 @@ function VerifyUserEmail() {
                 // Log the value of emailToken
                 console.log(emailToken);
 
+                // Send a PATCH request to the server with the emailToken
+                const response = await axios.patch('http://localhost:3000/api/taxpayer/verifyemail', {
+                    emailToken: emailToken
+                });
 
-                
+                console.log(response.data);
             } catch (error) {
               console.log(error);
             }
         };
         handle();
-    },[location.search]) // Depend on location.search so that it runs again if the URL changes
+    },[]) // Depend on location.search so that it runs again if the URL changes
 
     return (
         <div>
