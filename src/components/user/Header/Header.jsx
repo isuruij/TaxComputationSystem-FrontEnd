@@ -3,8 +3,14 @@ import Notification from "../../../assets/Notification.svg";
 import Profile from "../../../assets/Profile.svg";
 import { useState } from "react";
 import "./Header.css";
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
-function Header(props) {
+function Header() {
+
+  const cookieValue = Cookies.get('token');
+  const name = jwtDecode(cookieValue).name;
+  
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
@@ -34,7 +40,7 @@ function Header(props) {
       )}
       <img src={Profile} alt="Profile" />
       <span style={{ display: "flex", marginTop: "1%", marginLeft: "1%" }}>
-        <h6>{props.name}</h6>
+        <h6>{name}</h6>
         
       </span>
     </div>

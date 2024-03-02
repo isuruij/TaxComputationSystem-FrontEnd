@@ -10,18 +10,19 @@ import { jwtDecode } from "jwt-decode";
 // import './Dashboard.css';  // Import a CSS file for styling
 
 function Dashboard() {
+
+  const base_url = import.meta.env.VITE_APP_BASE_URL;
+
   const [auth, setauth] = useState(false);
   const [name, setname] = useState("");
   Axios.defaults.withCredentials = true;
 
   const handle = async () => {
     try {
-      const res = await Axios.get("http://localhost:3000/api/taxpayer/auth");
+      const res = await Axios.get(`${base_url}/api/taxpayer/auth`);
       if (res.data.Status === "Success") {
         setauth(true);
         setname(res.data.name);
-        const cookieValue = Cookies.get('token');
-        console.log('Cookie Value:', cookieValue, jwtDecode(cookieValue));
       } else {
         alert("Enter details correctly");
       }
@@ -42,7 +43,7 @@ function Dashboard() {
         <>
           <div>
             <div>
-              <Header name={name}/>
+              <Header/>
               <div style={{ display: "flex" }}>
                 <div style={{ marginTop: "5px" }}>
                   <Sidenavbar />

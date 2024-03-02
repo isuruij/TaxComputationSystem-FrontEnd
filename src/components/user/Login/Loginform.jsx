@@ -3,7 +3,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 
+
 function Loginform() {
+
+  const base_url = import.meta.env.VITE_APP_BASE_URL;
+
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -16,7 +20,7 @@ function Loginform() {
     event.preventDefault();
     try {
       const res = await Axios.post(
-        "http://localhost:3000/api/taxpayer/login",
+        `${base_url}/api/taxpayer/login`,
         values
       );
       if (res.data.Status === "Success") {
@@ -24,7 +28,7 @@ function Loginform() {
       } else {
         alert("Invalid credentials! Please enter correct details.");
       }
-      console.log(res);
+      
     } catch (error) {
       console.log(error);
     }
