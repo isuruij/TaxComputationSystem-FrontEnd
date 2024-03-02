@@ -11,7 +11,7 @@ import { jwtDecode } from "jwt-decode";
 
 function Dashboard() {
 
-  const base_url = import.meta.env.VITE_APP_BASE_URL;
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState(false);
   const [name, setname] = useState("");
