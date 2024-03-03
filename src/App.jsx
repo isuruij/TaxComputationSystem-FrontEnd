@@ -1,4 +1,3 @@
-
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 import "./index.scss";
@@ -23,37 +22,43 @@ import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import TaxPayments from "./pages/TaxPayments.jsx";
 
-
-
-
-
-
-
-
 function App() {
-  
   return (
-    
-  <BrowserRouter>
-  <Routes>
-    <Route path="/settings/uploadfiles" element={<SettingsFileUpload/>}></Route>
-    <Route path="/settings/income" element={<SettingsIncomeDetails/>}></Route>
-    <Route path="/settings/basic" element={<SettingsBasicDetails/>}></Route>
-    <Route path="/register/uploadfiles" element={<RegisterUploadDocuments/>}></Route>
-    <Route path="/register/incomedetails" element={<RegisterIncomeDetails/>}></Route>
-    <Route path="/register/personaldetails" element={<RegisterPersonalDetails/>}></Route>
-    <Route path="/login" element={<Login/>}></Route>
-    <Route path="/signup" element={<Signup/>}></Route>
-    <Route path="/dashboard" element={<Dashboard/>}></Route>
-    <Route path="/viewtax" element={<Viewtax/>}></Route>
-    <Route path="/UserHomePage" element={<UserHome/>}></Route>
-    <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
-    <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
-    
-
-  </Routes>
-  </BrowserRouter>    
-
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/settings/uploadfiles"
+          element={<SettingsFileUpload />}
+        ></Route>
+        <Route
+          path="/settings/income"
+          element={<SettingsIncomeDetails />}
+        ></Route>
+        <Route
+          path="/settings/basic"
+          element={<SettingsBasicDetails />}
+        ></Route>
+        <Route
+          path="/register/uploadfiles"
+          element={<RegisterUploadDocuments />}
+        ></Route>
+        <Route
+          path="/register/incomedetails"
+          element={<RegisterIncomeDetails />}
+        ></Route>
+        <Route
+          path="/register/personaldetails"
+          element={<RegisterPersonalDetails />}
+        ></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/viewtax" element={<Viewtax />}></Route>
+        <Route path="/UserHomePage" element={<UserHome />}></Route>
+        <Route path="/TaxStatus" element={<TaxStatus />}></Route>
+        <Route path="/TaxPayments" element={<TaxPayments />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
