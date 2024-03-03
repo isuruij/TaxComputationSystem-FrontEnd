@@ -22,7 +22,7 @@ function Loginform() {
       if (res.data.Status === "Success") {
         navigate("/dashboard");
       } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+        alert("Invalid credentials! Please enter correct details.");
       }
       console.log(res);
     } catch (error) {

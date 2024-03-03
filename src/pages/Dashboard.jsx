@@ -17,9 +17,9 @@ function Dashboard() {
       const res = await Axios.get("http://localhost:3000/api/taxpayer/auth");
       if (res.data.Status === "Success") {
         setauth(true);
-        setname(res.data.Data);
+        setname(res.data.name);
       } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+        alert("Enter details correctly");
       }
     } catch (error) {
       console.log(error);
