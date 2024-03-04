@@ -3,57 +3,75 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
+
 import "../PersonalDetails/PersonalDetails.css";
 function BasicDetails() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   useEffect(() => {
-    console.log("Cookies:", document.cookie);
-  }, [])
+    getUserDetails();
+  },[]);
 
   const [values, setvalues] = useState({
-
-    email:"",
-    password:"",
-    name:"",
-    address:"",
-    tin:"",
-    nameofemployer:"",
-    mobileno:"",
-    officeno:"",
-    homeno:"",
-    birthday:""
+    email: "",
+    password: "",
+    name: "",
+    address: "",
+    tin: "",
+    nameofemployer: "",
+    mobileno: "",
+    officeno: "",
+    homeno: "",
+    birthday: "",
   });
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
-  //submiting PersonalDetails to backend
-  const handleSubmit =async (event)=>{
-      event.preventDefault();
-      try {
-        const res = await Axios.post("http://localhost:3000/api/taxpayer/register",values);
-        if(res.data.Status === "Success"){
-          navigate("/dashboard")
-        }else{
-          alert(`${res.data.Status}`+" Enter details correctly")
-        }
-        console.log(res)
-      } catch (error) {
-        console.log(error);
-      }
+  const cookieValue = Cookies.get('token');
+  const userId = jwtDecode(cookieValue);
+  
 
-  }
+  const getUserDetails = async () => {
+    try {
+      const response = await Axios.get(`${base_url}/api/taxpayer/getuserdetails/${userId}`);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //submiting PersonalDetails to backend
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await Axios.post(
+        "http://localhost:3000/api/taxpayer/register",
+        values
+      );
+      if (res.data.Status === "Success") {
+        navigate("/dashboard");
+      } else {
+        alert(`${res.data.Status}` + " Enter details correctly");
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}
+      <form
+        onSubmit={handleSubmit}
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
           width: "78vw",
-          
-          boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
+          boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
         <h2
@@ -62,7 +80,6 @@ function BasicDetails() {
             marginLeft: "35%",
             color: "#0085FF",
             fontWeight: "bold",
-            
           }}
         >
           Personal Details
@@ -77,8 +94,10 @@ function BasicDetails() {
               class="details-input form-control"
               type="email"
               id="email"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,email:e.target.value})}}
+              defaultValue="abc@gmail.com"
+              onChange={(e) => {
+                setvalues({ ...values, email: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -93,11 +112,12 @@ function BasicDetails() {
               type="password"
               id="password"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,password:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, password: e.target.value });
+              }}
             />
           </div>
         </div>
-
 
         <div class="form-group">
           <label className="lables" for="name">
@@ -109,7 +129,9 @@ function BasicDetails() {
               type="text"
               id="name"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,name:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, name: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -124,7 +146,9 @@ function BasicDetails() {
               type="text"
               id="address"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,address:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, address: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -139,7 +163,9 @@ function BasicDetails() {
               type="text"
               id="tin"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,tin:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, tin: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -154,15 +180,19 @@ function BasicDetails() {
               type="text"
               id="nameofemployer"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,nameofemployer:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, nameofemployer: e.target.value });
+              }}
             />
           </div>
         </div>
 
         <label className="lables" for="exampleInputPassword1">
-            Contact Numbers
-          </label><br></br><br></br>
-        <div className="form-group contact" >
+          Contact Numbers
+        </label>
+        <br></br>
+        <br></br>
+        <div className="form-group contact">
           <label className="lables" for="mobileno">
             Mobile
           </label>
@@ -172,11 +202,12 @@ function BasicDetails() {
               type="text"
               id="mobileno"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,mobileno:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, mobileno: e.target.value });
+              }}
             />
           </div>
         </div>
-
 
         <div className="form-group contact">
           <label className="lables" for="officeno">
@@ -188,7 +219,9 @@ function BasicDetails() {
               type="text"
               id="officeno"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,officeno:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, officeno: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -203,7 +236,9 @@ function BasicDetails() {
               type="text"
               id="homeno"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,homeno:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, homeno: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -218,17 +253,14 @@ function BasicDetails() {
               type="date"
               id="birthday"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,birthday:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, birthday: e.target.value });
+              }}
             />
           </div>
         </div>
 
-
-        
-
-
         <button
-          
           type="submit"
           className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "70%" }}
@@ -237,7 +269,6 @@ function BasicDetails() {
         </button>
         <br></br>
         <br></br>
-
       </form>
       <br></br>
       <br></br>
