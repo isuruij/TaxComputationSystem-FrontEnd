@@ -21,11 +21,13 @@ import TaxStatus from "./pages/TaxStatus.jsx";
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import TaxPayments from "./pages/TaxPayments.jsx";
+import DDashboard from "./pages/DataEntry/DDashboard.jsx";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/*User routes*/}
         <Route
           path="/settings/uploadfiles"
           element={<SettingsFileUpload />}
@@ -57,6 +59,9 @@ function App() {
         <Route path="/UserHomePage" element={<UserHome />}></Route>
         <Route path="/TaxStatus" element={<TaxStatus />}></Route>
         <Route path="/TaxPayments" element={<TaxPayments />}></Route>
+
+        {/*Data Entry routes*/}
+        <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
       </Routes>
     </BrowserRouter>
   );
