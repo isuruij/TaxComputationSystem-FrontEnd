@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../components/user/Header/Header';
-import SettingSubMenueTax from '../components/user/Settings/SettingSubMenueTax';
+import Header from '../../components/user/Header/Header';
+import SettingSubMenueTax from '../../components/user/Settings/SettingSubMenueTax';
 
-import TaxPayment from '../components/user/TaxPayments/TaxPayment';
+import TaxPayment from '../../components/user/TaxPayments/TaxPayment';
 
-import Sidenavbar from '../components/user/Sidenavbar/Sidenavbar';
+import Sidenavbar from '../../components/user/Sidenavbar/Sidenavbar';
 
 export default function TaxPayments() {
   return (

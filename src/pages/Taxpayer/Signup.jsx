@@ -1,5 +1,5 @@
 import React from 'react'
-import PersonalDetails from '../components/user/PersonalDetails/PersonalDetails'
+import PersonalDetails from '../../components/user/PersonalDetails/PersonalDetails'
 
 function Signup() {
   return (
