@@ -7,9 +7,7 @@ import DownloadTaxreport from "../../../assets/DownloadTaxreport.svg";
 import Settings from "../../../assets/Settings.svg";
 import home from "../../../assets/home.svg";
 import logout from "../../../assets/logout.svg";
-import registration from "../../../assets/registration.svg";
-import taxhistory from "../../../assets/taxhistory.svg";
-import viewtax from "../../../assets/viewtax.svg";
+import mail from "../../../assets/mail.svg";
 
 function DSideNavBar() {
   const buttonStyle = {
@@ -49,73 +47,21 @@ function DSideNavBar() {
       }}
     >
       <br></br>
-      <button type="button" style={buttonStyle}>
+      <button type="button" className="btn btn-primary custom-button">
         <img
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>Home</span>
+        <span>Dashboard</span>
       </button>
-      <button
-        onClick={() => {
-          navigate("/register/personaldetails");
-        }}
-        type="button"
-        className="btn btn-success"
-        style={buttonStyle}
-      >
-        <img
-          src={registration}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Registration</span>
-      </button>
-      <button type="button" className="btn btn-success" style={buttonStyle}>
-        <img
-          src={DownloadTaxreport}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Download Report</span>
-      </button>
-      <button
-        onClick={() => {
-          navigate("/viewtax");
-        }}
-        type="button"
-        className="btn btn-success"
-        style={buttonStyle}
-      >
-        <img
-          src={viewtax}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>View Tax</span>
-      </button>
-      <button
-        onClick={() => {
-          navigate("/TaxStatus");
-        }}
-        type="button"
-        className="btn btn-success"
-        style={buttonStyle}
-      >
-        <img
-          src={taxhistory}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>taxhistory</span>
-      </button>
+
       <button
         onClick={() => {
           navigate("/settings/basic");
         }}
         type="button"
-        className="btn btn-success"
+        className="btn btn-primary custom-button"
         style={buttonStyle}
       >
         <img
@@ -123,14 +69,43 @@ function DSideNavBar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>Settings</span>
+        <span>Account Settings</span>
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={DownloadTaxreport}
+          style={{ alignItems: "left", textAlign: "left" }}
+          alt="Icon"
+        />
+        <span>Submission</span>
+      </button>
+
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={mail}
+          style={{ alignItems: "left", textAlign: "left" }}
+          alt="Icon"
+        />
+        <span>Mail Box</span>
       </button>
       <button
         onClick={() => {
           handleLogout();
         }}
         type="button"
-        className="btn btn-success"
+        className="btn btn-primary custom-button"
         style={buttonStyle}
       >
         <img
@@ -138,7 +113,7 @@ function DSideNavBar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>logout</span>
+        <span>Log out</span>
       </button>
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>

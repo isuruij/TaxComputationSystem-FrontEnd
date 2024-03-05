@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Notification from "../../../assets/Notification.svg";
-import Profile from "../../../assets/Profile.svg";
+import Notification from "../../../assets/AdminNotification.svg";
+import Profile from "../../../assets/AdminProfile.svg";
 import { useState } from "react";
 import "./DHeader.css";
 
