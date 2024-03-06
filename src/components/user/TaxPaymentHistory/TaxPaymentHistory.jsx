@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import './TaxHistory.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import MockData from './MOCK_DATA.json';
 
 
 
 function TaxPaymentHistory() {
 
+
   const [date, setDate] = useState()
+
 
   function dateValue(){
     (e)=>{setDate({...date,date:e.target.date})}
@@ -24,7 +27,10 @@ function TaxPaymentHistory() {
   };
 
   const dropdownOptions1 = ['A', 'B', 'C'];
-  const dropdownOptions2 = ['D', 'E', 'F'];
+  const dropdownOptions2 = ['employment income', 'investment income', 'business income', 'other income'];
+
+
+  const[data,setData]= useState(MockData);
 
   return (
 
@@ -35,11 +41,11 @@ function TaxPaymentHistory() {
 
 
       <div className='dropdowntable'>
-        <div className="dropdownPage">
+        <div className="dropdownPage ">
           
 
           
-        <div className="dropdown">
+        <div className="dropdown col-lg-4 col-md-6 ">
         <button
           className="btn btn-secondary dropdown-toggle"
           type="button"
@@ -71,6 +77,7 @@ function TaxPaymentHistory() {
           data-bs-toggle="dropdown"
           aria-expanded="false"
           style={{ padding: '2px', fontSize: '18px', height: '45px' }}
+         
         >
           {selectedValue2 || 'All Transactions'}
         </button>
@@ -131,9 +138,9 @@ function TaxPaymentHistory() {
 
         <div className="divtable">
 
-          <table className="table">
+          <table className="table table-responsive text-center">
             <thead>
-              <tr>
+              <tr className=''>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
                 <th scope="col">Description</th>
@@ -142,44 +149,25 @@ function TaxPaymentHistory() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>2024-01-10</td>
-                <td>10:34:56</td>
-                <td>ABB</td>
-                <td>#das345</td>
-                <td>560900/=</td>
-                
-              </tr>
-              <tr>
-              <td>2024-01-10</td>
-                <td>10:34:56</td>
-                <td>ABB</td>
-                <td>#das345</td>
-                <td>560900/=</td>
-                
-              </tr>
-              <tr>
-              <td>2024-01-10</td>
-                <td>10:34:56</td>
-                <td>ABB</td>
-                <td>#das345</td>
-                <td>560900/=</td>
-              </tr>
-
-              <tr>
-              <td>2024-01-10</td>
-                <td>10:34:56</td>
-                <td>ABB</td>
-                <td>#das345</td>
-                <td>560900/=</td>
-              </tr>
-              <tr>
-              <td>2024-01-10</td>
-                <td>10:34:56</td>
-                <td>ABB</td>
-                <td>#das345</td>
-                <td>560900/=</td>
-              </tr>
+             
+            { data
+              .filter((d)=>{
+              return 
+              selectedValue2===' '
+              ? d 
+              : d.Description.includes(selectedValue2);
+            })
+            .map((d)=>(
+              <tr key={d.Reference}>
+              <td>{d.Date}</td>
+              <td>{d.Time}</td>
+              <td>{d.Description}</td>
+              <td>{d.Reference}</td>
+              <td>{d.Amount}</td>
+              
+            </tr>
+            ))}
+              
             </tbody>
           </table>
           <div className='taxSummarybutton'>
