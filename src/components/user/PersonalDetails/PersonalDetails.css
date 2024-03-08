@@ -1,7 +1,7 @@
 .details-input{
     font-size: 12px;
 	padding: 5px 10px;
-	width: 20vw !important;
+	width: 25vw !important;
 	height: 26px; 
 	outline: none;
 	background: #f3f9ff;
@@ -12,7 +12,7 @@
 	transition: .3s ease;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
     .details-input {
 		width: 70vw;
     }
@@ -52,7 +52,7 @@ button{
   @media screen and (max-width: 700px) {
 
     .details-input{
-		width: 40vw !important;
+		width: 50vw !important;
 	}
 
 	.twoparts{
@@ -70,7 +70,7 @@ button{
 		margin-left: 10vw !important;
 	}
 
-	h2{
+	.updatePersonalDetails h2{
 		font-size: 20px !important;
 		margin-left: -5vw !important;
 		

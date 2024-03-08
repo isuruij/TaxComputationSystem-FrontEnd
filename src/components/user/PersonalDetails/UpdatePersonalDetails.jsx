@@ -81,8 +81,8 @@ function UpdatePersonalDetails() {
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <div style={{ marginLeft: "1vw" }}>
-          <h2
+        <div className="updatePersonalDetails" style={{ marginLeft: "1vw" }}>
+          <h2 
             style={{
               marginBottom: "1%",
               marginLeft: "19vw",

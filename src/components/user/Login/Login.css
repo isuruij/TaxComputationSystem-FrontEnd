@@ -1,0 +1,15 @@
+@media screen and (max-width: 700px) {
+    .login form{
+        width: 70vw !important;
+        margin-left: 15vw !important;
+    }
+
+    .login h2{
+        font-size: 20px !important;
+        margin-left: 18vw !important;
+    }
+
+    .login-input{
+		width:40vw !important;
+    }
+  }

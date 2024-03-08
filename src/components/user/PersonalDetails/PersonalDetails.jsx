@@ -275,9 +275,9 @@ function PersonalDetails() {
               onClick={() => {}}
               type="submit"
               className="btn btn-primary"
-              style={{ marginTop: "3%", marginLeft: "17vw" }}
+              style={{ marginTop: "3%", marginLeft: "19vw" }}
             >
-              Save & Continue
+              Signup
             </button>
           </div>
         </div>
