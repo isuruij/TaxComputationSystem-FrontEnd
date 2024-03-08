@@ -3,10 +3,17 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import Tick from "../../../assets/Tick.svg";
+import Cross from "../../../assets/Cross.svg";
 import "../PersonalDetails/PersonalDetails.css";
+
 function PersonalDetails() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
   useEffect(() => {
-    console.log("Cookies:", document.cookie);
+    getUserDetails();
   }, []);
 
   const [values, setvalues] = useState({
@@ -22,8 +29,25 @@ function PersonalDetails() {
     birthday: "",
   });
 
+  const [userData, setuserData] = useState({});
+
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
+
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
+
+  const getUserDetails = async () => {
+    try {
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
+      );
+      setuserData(response.data.Data);
+      console.log(userData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
@@ -57,16 +81,16 @@ function PersonalDetails() {
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <div style={{ marginLeft: "10vw" }}>
-          <h2
+        <div className="updatePersonalDetails" style={{ marginLeft: "1vw" }}>
+          <h2 
             style={{
               marginBottom: "1%",
-              marginLeft: "10vw",
+              marginLeft: "19vw",
               color: "#0085FF",
               fontWeight: "bold",
             }}
           >
-            Enter Personal Details
+            Update Personal Details
           </h2>
           <div
             className="twoparts"
@@ -82,12 +106,36 @@ function PersonalDetails() {
                     class="details-input form-control"
                     type="email"
                     id="email"
-                    placeholder=""
+                    value={userData.email}
                     onChange={(e) => {
                       setvalues({ ...values, email: e.target.value });
                     }}
                   />
                 </div>
+
+                {userData.isVerifiedEmail ? (
+                  <div style={{ marginLeft: "5px", marginTop: "2px" }}>
+                    <img
+                      style={{ paddingRight: "2px" }}
+                      src={Tick}
+                      alt="tick"
+                    />
+                    <label style={{ fontSize: "14px", color: "green" }}>
+                      verified
+                    </label>
+                  </div>
+                ) : (
+                  <div style={{ marginLeft: "5px", marginTop: "2px" }}>
+                    <img
+                      style={{ paddingRight: "2px" }}
+                      src={Cross}
+                      alt="tick"
+                    />
+                    <label style={{ fontSize: "14px", color: "green" }}>
+                      Not verified
+                    </label>
+                  </div>
+                )}
               </div>
 
               <div class="form-group">
@@ -99,7 +147,7 @@ function PersonalDetails() {
                     class="details-input form-control"
                     type="text"
                     id="name"
-                    placeholder=""
+                    value={userData.name}
                     onChange={(e) => {
                       setvalues({ ...values, name: e.target.value });
                     }}
@@ -116,7 +164,7 @@ function PersonalDetails() {
                     class="details-input form-control"
                     type="text"
                     id="address"
-                    placeholder=""
+                    value={userData.address}
                     onChange={(e) => {
                       setvalues({ ...values, address: e.target.value });
                     }}
@@ -133,7 +181,7 @@ function PersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="tin"
-                    placeholder=""
+                    value={userData.tin}
                     onChange={(e) => {
                       setvalues({ ...values, tin: e.target.value });
                     }}
@@ -150,7 +198,7 @@ function PersonalDetails() {
                     className="details-input form-control"
                     type="date"
                     id="birthday"
-                    placeholder=""
+                    value={userData.birthday}
                     onChange={(e) => {
                       setvalues({ ...values, birthday: e.target.value });
                     }}
@@ -167,7 +215,7 @@ function PersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="nameofemployer"
-                    placeholder=""
+                    value={userData.nameofemployer}
                     onChange={(e) => {
                       setvalues({ ...values, nameofemployer: e.target.value });
                     }}
@@ -178,9 +226,9 @@ function PersonalDetails() {
 
             <div
               className="contactSection"
-              style={{ marginLeft: "5vw", marginTop: "5vh" }}
+              style={{ marginLeft: "10vw", marginTop: "5vh" }}
             >
-              <label className="lables">Contact Numbers</label>
+              {/* <label className="lables">Contact Numbers</label> */}
               <div className="form-group contact">
                 <label className="lables" for="mobileno">
                   Mobile
@@ -190,7 +238,7 @@ function PersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="mobileno"
-                    placeholder=""
+                    value={userData.mobileno}
                     onChange={(e) => {
                       setvalues({ ...values, mobileno: e.target.value });
                     }}
@@ -207,7 +255,7 @@ function PersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="officeno"
-                    placeholder=""
+                    value={userData.officeno}
                     onChange={(e) => {
                       setvalues({ ...values, officeno: e.target.value });
                     }}
@@ -224,7 +272,7 @@ function PersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="homeno"
-                    placeholder=""
+                    value={userData.homeno}
                     onChange={(e) => {
                       setvalues({ ...values, homeno: e.target.value });
                     }}
@@ -233,51 +281,49 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group ">
-              <label className="lables" for="password">
-                Password
-              </label>
-              <div className="custom_input">
-                <input
-                  class="details-input form-control"
-                  type="password"
-                  id="password"
-                  placeholder=""
-                  onChange={(e) => {
-                    setvalues({ ...values, password: e.target.value });
-                  }}
-                />
+                <label className="lables" for="password">
+                  Password
+                </label>
+                <div className="custom_input">
+                  <input
+                    class="details-input form-control"
+                    type="password"
+                    id="password"
+                    placeholder=""
+                    onChange={(e) => {
+                      setvalues({ ...values, password: e.target.value });
+                    }}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="form-group ">
-              <label className="lables" for="password">
-                Re-enter Password
-              </label>
-              <div className="custom_input">
-                <input
-                  class="details-input form-control"
-                  type="password"
-                  id="password"
-                  placeholder=""
-                  onChange={(e) => {
-                    setvalues({ ...values, password: e.target.value });
-                  }}
-                />
+              <div className="form-group ">
+                <label className="lables" for="password">
+                  Re-enter Password
+                </label>
+                <div className="custom_input">
+                  <input
+                    class="details-input form-control"
+                    type="password"
+                    id="password"
+                    placeholder=""
+                    onChange={(e) => {
+                      setvalues({ ...values, password: e.target.value });
+                    }}
+                  />
+                </div>
               </div>
-            </div>
             </div>
           </div>
-
-                 
 
           <div className="signup" style={{ display: "flex" }}>
             <button
               onClick={() => {}}
               type="submit"
               className="btn btn-primary"
-              style={{ marginTop: "3%", marginLeft: "19vw" }}
+              style={{ marginTop: "3%", marginLeft: "55vw" }}
             >
-              Signup
+              Save & Continue
             </button>
           </div>
         </div>

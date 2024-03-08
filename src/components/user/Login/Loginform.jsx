@@ -57,11 +57,11 @@ function Loginform() {
           <label className="lables" for="email">
             Email
           </label>
-          <div class="">
+          <div>
             <input
               style={{
                 width: "15vw" ,
-                fontSize: "12px",
+                fontSize: "15px",
                 height: "26px",
                 outline: "none",
                 background: "#f3f9ff",
@@ -86,11 +86,11 @@ function Loginform() {
           <label className="lables" for="exampleInputPassword1">
             Password
           </label>
-          <div class="">
+          <div>
             <input
               style={{
                 width: "15vw",
-                fontSize: "12px",
+                fontSize: "15px",
                 height: "26px",
                 outline: "none",
                 background: "#f3f9ff",
