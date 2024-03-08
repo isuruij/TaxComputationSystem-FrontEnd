@@ -3,7 +3,7 @@ import PersonalDetails from '../../components/user/PersonalDetails/PersonalDetai
 
 function Signup() {
   return (
-    <div style={{marginLeft:"15vw",marginTop:"5vh"}}>
+    <div style={{marginLeft:"10vw",marginTop:"5vh"}}>
         <PersonalDetails/>
     </div>
   ) 

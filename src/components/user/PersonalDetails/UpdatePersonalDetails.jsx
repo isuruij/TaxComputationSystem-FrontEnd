@@ -11,7 +11,6 @@ function UpdatePersonalDetails() {
 
   const [values, setvalues] = useState({
     email: "",
-    username: "",
     password: "",
     name: "",
     address: "",
@@ -68,23 +67,7 @@ function UpdatePersonalDetails() {
         >
           Personal Details
         </h2>
-        <div class="form-group">
-          <label className="lables" for="email">
-            User Name
-          </label>
-          <div className="custom_input">
-            <input
-              
-              class="details-input form-control"
-              type="text"
-              id="username"
-              placeholder=""
-              onChange={(e) => {
-                setvalues({ ...values, username: e.target.value });
-              }}
-            />
-          </div>
-        </div>
+
         <div class="form-group">
           <label className="lables" for="email">
             Email
@@ -118,6 +101,8 @@ function UpdatePersonalDetails() {
             />
           </div>
         </div>
+
+        
 
         <div class="form-group">
           <label className="lables" for="name">
@@ -260,11 +245,10 @@ function UpdatePersonalDetails() {
           </div>
         </div>
 
-        <div style={{display:"flex"}}>
-
+        <div style={{ display: "flex" }}>
           <button
-            onClick={()=>{
-              navigate("/register/incomedetails")
+            onClick={() => {
+              navigate("/register/incomedetails");
             }}
             type="submit"
             className="btn btn-primary"
