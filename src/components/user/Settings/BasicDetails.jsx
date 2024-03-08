@@ -3,8 +3,10 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Tick from "../../../assets/Tick.svg";
+import Cross from "../../../assets/Cross.svg";
 
 import "../PersonalDetails/PersonalDetails.css";
 function BasicDetails() {
@@ -12,7 +14,7 @@ function BasicDetails() {
 
   useEffect(() => {
     getUserDetails();
-  },[]);
+  }, []);
 
   const [values, setvalues] = useState({
     email: "",
@@ -32,15 +34,16 @@ function BasicDetails() {
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
-  const cookieValue = Cookies.get('token');
+  const cookieValue = Cookies.get("token");
   const userId = jwtDecode(cookieValue).id;
-  
-  
 
   const getUserDetails = async () => {
     try {
-      const response = await Axios.get(`${base_url}/api/taxpayer/getuserbasicdetails/${userId}`);
-      setuserData(response.data.Data)
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
+      );
+      setuserData(response.data.Data);
+      console.log(userData);
     } catch (error) {
       console.error(error);
     }
@@ -92,16 +95,28 @@ function BasicDetails() {
           <label className="lables" for="email">
             Email
           </label>
-          <div className="custom_input">
-            <input
-              class="details-input form-control"
-              type="email"
-              id="email"
-              value={userData.email}
-              onChange={(e) => {
-                setvalues({ ...values, email: e.target.value });
-              }}
-            />
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div className="custom_input">
+              <input
+                class="details-input form-control"
+                type="email"
+                id="email"
+                value={userData.email}
+                onChange={(e) => {
+                  setvalues({ ...values, email: e.target.value });
+                }}
+              />
+            </div>
+
+            {userData.isVerifiedEmail ? (
+              <div style={{ marginLeft: "5px",marginTop:"2px" }}>
+                <img src={Tick} alt="tick" />
+              </div>
+            ) : (
+              <div style={{ marginLeft: "5px",marginTop:"2px" }}>
+                <img src={Cross} alt="tick" />
+              </div>
+            )}
           </div>
         </div>
 
