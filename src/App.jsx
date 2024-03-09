@@ -16,8 +16,10 @@ import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
 import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import TaxStatus from "./pages/TaxStatus.jsx";
 
+import SuperAdminDashboard from "./pages/SuperAdminDashboard.jsx";
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
+
 
 
 
@@ -42,6 +44,7 @@ function App() {
     <Route path="/viewtax" element={<Viewtax/>}></Route>
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
+    <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard/>}></Route>
     
     <Route path="/" element={<Test/>}></Route>
     

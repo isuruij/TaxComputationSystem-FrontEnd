@@ -19,6 +19,7 @@ export default function TaxStatus() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [isValid, setIsValid] = useState(true);
+  const [progress, setProgress] = useState(0); 
 
   const handleStartDateChange = (event) => {
     setStartDate(event.target.value);
@@ -43,6 +44,11 @@ export default function TaxStatus() {
     }
   };
 
+  const handleViewTaxStatus = () => {
+    // You can replace this with actual logic to calculate the progress based on data.
+    // For now, setting it to 70%.
+    setProgress(70);
+  };
 
   return (
     <div><div style={{
@@ -94,14 +100,18 @@ export default function TaxStatus() {
         <div>
             
         </div>
-        <div  style={{alignItems:'center',marginTop:"50px"}}>
-        <button type="button" className="btn btn-primary d-flex justify-content-center" style={buttonStyle}>
-              View Tax Status
-        </button>
+        <div style={{alignItems:'center',marginTop:"50px"}}>
+          <button type="button" className="btn btn-primary d-flex justify-content-center" style={buttonStyle} onClick={handleViewTaxStatus}>
+            View Tax Status
+          </button>
         </div>
         <div style={{marginTop:"100px"}}>
-        <div style={{paddingTop:"10px"}}><ProgressBar now={now} label={`${now}%`} style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"}}/></div>
-         <div style={{color:'#0085FF',textAlign:"center", textShadow:"2px 2px 4px rgba(0, 0, 0,0.3)",fontSize:'20px',marginTop:"20px"}}>This progress Bar shows the progress of the taxpayer</div> 
+          <div style={{paddingTop:"10px"}}>
+            <ProgressBar now={progress} label={`${progress}%`} style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"}}/>
+          </div>
+          <div style={{color:'#0085FF',textAlign:"center", textShadow:"2px 2px 4px rgba(0, 0, 0,0.3)",fontSize:'20px',marginTop:"20px"}}>
+            This progress Bar shows the progress of the taxpayer
+          </div>
          <div style={{color:'Gray',textAlign:"justify", textShadow:"2px 2px 4px rgba(0, 0, 0,0.3)",fontSize:'20px',marginTop:"40px"}}>The progress bar serves as a visual representation of the taxpayer's financial contributions over a specified period. As it dynamically adjusts, it mirrors the proportion of taxes paid by the user during the chosen timeframe, displaying the percentage completion. This intuitive tool provides a quick and accessible way for users to gauge their tax payment progress, fostering transparency and comprehension in financial matters.</div>
         </div>
       </div></div>

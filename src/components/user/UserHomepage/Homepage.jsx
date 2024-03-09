@@ -38,11 +38,14 @@ export default function Homepage() {
         <h2 style={{paddingTop:"30px",color:" #0085FF", textShadow:"2px 2px 4px rgba(0, 0, 0,0.3)"
 }}>John Doe</h2>
         <div style={{paddingTop:"10px"}}>
-            <div style={{paddingTop:"10px"}}><ProgressBar now={now} label={`${now}%`} style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"}}/></div>
+            <div style={{paddingTop:"10px"}}><ProgressBar now={now} label={`${now}%`} style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",  transition: "width 1s ease-in-out"}}/></div>
           <p style={{paddingTop:"30px"}}></p>
-          <p>Phone: +1 (555) 123-4567</p>
-          <p>Location: City, Country</p>
-          <p>About Me: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel justo sit amet ligula cursus eleifend.</p>
+          <p>Phone: +94 (555) 123-4567</p>
+          <p>Office: +94 (555) 123-4567 </p>
+          <p>TIN Number: 1123470x</p>
+          <p>Location: Colombo 07, Sri Lanka</p>
+          <p>E-mail:jhonedoe97@gmail.com </p>
+          <p>About Me: As an account and business owner, I bring a wealth of financial expertise to effectively manage and optimize financial operations. My commitment to fiscal responsibility and strategic decision-making ensures the sustained success and growth of my business. </p>
         </div>
       </div>
     </div>
