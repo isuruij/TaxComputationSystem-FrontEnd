@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Notification from "../../../../assets/Notification.svg";
-import Profile from "../../../../assets/Profile.svg";
+import Notification from "../../../../assets/AdminNotification.svg";
+import Profile from "../../../../assets/AdminProfile.svg";
+import "./DHeader.css";
 
 function AdminHeader(props) {
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
   });
-  return ( 
+  return (
     <div
       style={{
-        backgroundColor: "#D3E9FE",
+        // backgroundColor: "#049370"darkgreeen,
+        backgroundColor: "#F3FFF5",
         display: "flex",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
       }}
@@ -22,8 +24,8 @@ function AdminHeader(props) {
       />
       {count != 0 ? (
         <span
-          style={{ marginLeft: "83%", marginTop:"1.1%"}}
-          className="position-absolute translate-middle badge rounded-pill bg-danger"
+          style={{ marginLeft: "83%", marginTop: "1.1%" }}
+          className="ncount position-absolute translate-middle badge rounded-pill bg-danger"
         >
           {count}
         </span>

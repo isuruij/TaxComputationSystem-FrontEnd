@@ -1,25 +1,23 @@
 import Axios from "axios";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
 import DownloadTaxreport from "../../../../assets/DownloadTaxreport.svg";
 import Settings from "../../../../assets/Settings.svg";
 import home from "../../../../assets/home.svg";
 import logout from "../../../../assets/logout.svg";
-import registration from "../../../../assets/registration.svg";
-import taxhistory from "../../../../assets/taxhistory.svg";
-import viewtax from "../../../../assets/viewtax.svg";
+import mail from "../../../../assets/mail.svg";
+import "./DSideNavBar.css";
 
 function Navigationbar() {
   const buttonStyle = {
+    backgroundColor: "#049370",
     textAlign: "left",
     display: "block",
     marginBottom: "12px",
     width: "90%",
     marginLeft: "4%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-    backgroundColor: "#049370",
-    // Set the background color to #049370
   };
 
   const navigate = useNavigate();
@@ -41,6 +39,7 @@ function Navigationbar() {
         borderRadius: "10px",
         padding: "10px",
         marginBottom: "10px",
+        marginTop: "5px",
         marginLeft: "0.5%",
         backgroundColor: "#F3FFF5",
         width: "20vw",
@@ -48,82 +47,74 @@ function Navigationbar() {
       }}
     >
       <br></br>
-      <button type="button" className="btn btn-success" style={buttonStyle}>
+      <button type="button" className="btn btn-primary custom-button">
         <img
           src={home}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
+          style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Dahboard
+        <span>Dashboard</span>
       </button>
+
       <button
         onClick={() => {
-          navigate("/register/incomedetail");
+          navigate("/settings/basic");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary custom-button"
         style={buttonStyle}
       >
         <img
-          src={registration}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
+          src={Settings}
+          style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Registration
+        <span>Account Settings</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+
+      <button
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
         <img
           src={DownloadTaxreport}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
+          style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Download report
+        <span>Submission</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
         <img
-          src={viewtax}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
+          src={mail}
+          style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        viewtax
+        <span>Mail Box</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
         <img
-          src={taxhistory}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
+          src={logout}
+          style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        taxhistory
+        <span>Log out</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
-        <img
-          src={Settings}
-          style={{ alignItems: "left", textAlign: "left", marginRight: "10px" }}
-          alt="Icon"
-        />
-        Settings
-      </button>
-      <div style={{ marginTop: "22vh" }}>
-        <button
-          onClick={() => {
-            handleLogout();
-          }}
-          type="button"
-          className="btn btn-primary"
-          style={buttonStyle}
-        >
-          <img
-            src={logout}
-            style={{
-              alignItems: "left",
-              textAlign: "left",
-              marginRight: "10px",
-            }}
-            alt="Icon"
-          />
-          Logout
-        </button>
-      </div>
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
     </div>
