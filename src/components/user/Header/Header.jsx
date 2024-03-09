@@ -24,13 +24,13 @@ function Header() {
       }}
     >
       <img
-        style={{ marginLeft: "81%", paddingTop: "1%", paddingRight: "1%" }}
+        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
         src={Notification}
         alt="Notification"
       />
       {count != 0 ? (
         <span
-          style={{ marginLeft: "83%", marginTop:"1.1%"}}
+          style={{ marginLeft: "73vw", marginTop:"3vh"}}
           className="ncount position-absolute translate-middle badge rounded-pill bg-danger"
         > 
           {count}
@@ -39,9 +39,8 @@ function Header() {
         <h6></h6>
       )}
       <img src={Profile} alt="Profile" />
-      <span style={{ display: "flex", marginTop: "1%", marginLeft: "1%" }}>
+      <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
         <h6>{name}</h6>
-        
       </span>
     </div>
   );

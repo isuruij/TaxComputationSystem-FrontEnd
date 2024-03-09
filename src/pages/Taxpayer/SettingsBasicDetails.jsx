@@ -3,6 +3,7 @@ import SettingSubMenue from "../../components/user/Settings/SettingSubMenue";
 import BasicDetails from "../../components/user/Settings/BasicDetails";
 import Header from "../../components/user/Header/Header";
 import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
+import UpdatePersonalDetails from "../../components/user/PersonalDetails/UpdatePersonalDetails";
 
 function SettingsBasicDetails() {
   return (
@@ -18,7 +19,7 @@ function SettingsBasicDetails() {
               <SettingSubMenue />
             </div>
             <div style={{marginTop:"5px"}}>
-              <BasicDetails />
+              <UpdatePersonalDetails/>
             </div>
           </div>
         </div>

@@ -3,8 +3,10 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Tick from "../../../assets/Tick.svg";
+import Cross from "../../../assets/Cross.svg";
 
 import "../PersonalDetails/PersonalDetails.css";
 function BasicDetails() {
@@ -12,7 +14,7 @@ function BasicDetails() {
 
   useEffect(() => {
     getUserDetails();
-  },[]);
+  }, []);
 
   const [values, setvalues] = useState({
     email: "",
@@ -27,17 +29,21 @@ function BasicDetails() {
     birthday: "",
   });
 
+  const [userData, setuserData] = useState({});
+
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
-  const cookieValue = Cookies.get('token');
-  const userId = jwtDecode(cookieValue);
-  
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
 
   const getUserDetails = async () => {
     try {
-      const response = await Axios.get(`${base_url}/api/taxpayer/getuserdetails/${userId}`);
-      console.log(response.data);
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
+      );
+      setuserData(response.data.Data);
+      console.log(userData);
     } catch (error) {
       console.error(error);
     }
@@ -89,20 +95,32 @@ function BasicDetails() {
           <label className="lables" for="email">
             Email
           </label>
-          <div className="custom_input">
-            <input
-              class="details-input form-control"
-              type="email"
-              id="email"
-              defaultValue="abc@gmail.com"
-              onChange={(e) => {
-                setvalues({ ...values, email: e.target.value });
-              }}
-            />
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div className="custom_input">
+              <input
+                class="details-input form-control"
+                type="email"
+                id="email"
+                value={userData.email}
+                onChange={(e) => {
+                  setvalues({ ...values, email: e.target.value });
+                }}
+              />
+            </div>
+
+            {userData.isVerifiedEmail ? (
+              <div style={{ marginLeft: "5px",marginTop:"2px" }}>
+                <img style={{paddingRight:"2px"}} src={Tick} alt="tick" /><label style={{fontSize:"14px",color:"green"}}>verified</label>
+              </div>
+            ) : (
+              <div style={{ marginLeft: "5px",marginTop:"2px" }}>
+                <img style={{paddingRight:"2px"}} src={Cross} alt="tick" /><label style={{fontSize:"14px",color:"green"}}>Not verified</label>
+              </div>
+            )}
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="password">
             Password
           </label>
@@ -119,7 +137,7 @@ function BasicDetails() {
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="name">
             Name
           </label>
@@ -128,7 +146,7 @@ function BasicDetails() {
               class="details-input form-control"
               type="text"
               id="name"
-              placeholder=""
+              value={userData.name}
               onChange={(e) => {
                 setvalues({ ...values, name: e.target.value });
               }}
@@ -136,16 +154,16 @@ function BasicDetails() {
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="address">
             Permanent Address
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
-              class="details-input form-control"
+              className="details-input form-control"
               type="text"
               id="address"
-              placeholder=""
+              value={userData.address}
               onChange={(e) => {
                 setvalues({ ...values, address: e.target.value });
               }}
@@ -153,16 +171,16 @@ function BasicDetails() {
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="tin">
             Tax identification number (TIN)
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
               id="tin"
-              placeholder=""
+              value={userData.tin}
               onChange={(e) => {
                 setvalues({ ...values, tin: e.target.value });
               }}
@@ -170,16 +188,16 @@ function BasicDetails() {
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="employername">
             Name of the employer
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
               id="nameofemployer"
-              placeholder=""
+              value={userData.nameofemployer}
               onChange={(e) => {
                 setvalues({ ...values, nameofemployer: e.target.value });
               }}
@@ -201,7 +219,7 @@ function BasicDetails() {
               className="details-input form-control"
               type="text"
               id="mobileno"
-              placeholder=""
+              value={userData.mobileno}
               onChange={(e) => {
                 setvalues({ ...values, mobileno: e.target.value });
               }}
@@ -218,7 +236,7 @@ function BasicDetails() {
               className="details-input form-control"
               type="text"
               id="officeno"
-              placeholder=""
+              value={userData.officeno}
               onChange={(e) => {
                 setvalues({ ...values, officeno: e.target.value });
               }}
@@ -235,7 +253,7 @@ function BasicDetails() {
               className="details-input form-control"
               type="text"
               id="homeno"
-              placeholder=""
+              value={userData.homeno}
               onChange={(e) => {
                 setvalues({ ...values, homeno: e.target.value });
               }}
@@ -252,7 +270,7 @@ function BasicDetails() {
               className="details-input form-control"
               type="date"
               id="birthday"
-              placeholder=""
+              value={userData.birthday}
               onChange={(e) => {
                 setvalues({ ...values, birthday: e.target.value });
               }}
