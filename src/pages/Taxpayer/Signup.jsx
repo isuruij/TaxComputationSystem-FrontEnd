@@ -1,10 +1,10 @@
 import React from 'react'
-import PersonalDetails from '../../components/user/PersonalDetails/PersonalDetails'
+import SignupPersonalDetails from '../../components/user/PersonalDetails/SignupPersonalDetails'
 
 function Signup() {
   return (
     <div style={{marginLeft:"10vw",marginTop:"5vh"}}>
-        <PersonalDetails/>
+        <SignupPersonalDetails/>
     </div>
   ) 
 }
