@@ -3,57 +3,81 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
+import Tick from "../../../assets/Tick.svg";
+import Cross from "../../../assets/Cross.svg";
+
 import "../PersonalDetails/PersonalDetails.css";
 function BasicDetails() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   useEffect(() => {
-    console.log("Cookies:", document.cookie);
-  }, [])
+    getUserDetails();
+  }, []);
 
   const [values, setvalues] = useState({
-
-    email:"",
-    password:"",
-    name:"",
-    address:"",
-    tin:"",
-    nameofemployer:"",
-    mobileno:"",
-    officeno:"",
-    homeno:"",
-    birthday:""
+    email: "",
+    password: "",
+    name: "",
+    address: "",
+    tin: "",
+    nameofemployer: "",
+    mobileno: "",
+    officeno: "",
+    homeno: "",
+    birthday: "",
   });
+
+  const [userData, setuserData] = useState({});
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
-  //submiting PersonalDetails to backend
-  const handleSubmit =async (event)=>{
-      event.preventDefault();
-      try {
-        const res = await Axios.post("http://localhost:3000/api/taxpayer/register",values);
-        if(res.data.Status === "Success"){
-          navigate("/dashboard")
-        }else{
-          alert(`${res.data.Status}`+" Enter details correctly")
-        }
-        console.log(res)
-      } catch (error) {
-        console.log(error);
-      }
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
 
-  }
+  const getUserDetails = async () => {
+    try {
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
+      );
+      setuserData(response.data.Data);
+      console.log(userData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //submiting PersonalDetails to backend
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await Axios.post(
+        "http://localhost:3000/api/taxpayer/register",
+        values
+      );
+      if (res.data.Status === "Success") {
+        navigate("/dashboard");
+      } else {
+        alert(`${res.data.Status}` + " Enter details correctly");
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}
+      <form
+        onSubmit={handleSubmit}
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
           width: "78vw",
-          
-          boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
+          boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
         <h2
@@ -62,7 +86,6 @@ function BasicDetails() {
             marginLeft: "35%",
             color: "#0085FF",
             fontWeight: "bold",
-            
           }}
         >
           Personal Details
@@ -72,18 +95,38 @@ function BasicDetails() {
           <label className="lables" for="email">
             Email
           </label>
-          <div className="custom_input">
-            <input
-              class="details-input form-control"
-              type="email"
-              id="email"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,email:e.target.value})}}
-            />
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <div className="custom_input">
+              <input
+                class="details-input form-control"
+                type="email"
+                id="email"
+                value={userData.email}
+                onChange={(e) => {
+                  setvalues({ ...values, email: e.target.value });
+                }}
+              />
+            </div>
+
+            {userData.isVerifiedEmail ? (
+              <div style={{ marginLeft: "5px", marginTop: "2px" }}>
+                <img style={{ paddingRight: "2px" }} src={Tick} alt="tick" />
+                <label style={{ fontSize: "14px", color: "green" }}>
+                  verified
+                </label>
+              </div>
+            ) : (
+              <div style={{ marginLeft: "5px", marginTop: "2px" }}>
+                <img style={{ paddingRight: "2px" }} src={Cross} alt="tick" />
+                <label style={{ fontSize: "14px", color: "green" }}>
+                  Not verified
+                </label>
+              </div>
+            )}
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="password">
             Password
           </label>
@@ -93,13 +136,14 @@ function BasicDetails() {
               type="password"
               id="password"
               placeholder=""
-              onChange={(e)=>{setvalues({...values,password:e.target.value})}}
+              onChange={(e) => {
+                setvalues({ ...values, password: e.target.value });
+              }}
             />
           </div>
         </div>
 
-
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="name">
             Name
           </label>
@@ -108,61 +152,71 @@ function BasicDetails() {
               class="details-input form-control"
               type="text"
               id="name"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,name:e.target.value})}}
+              value={userData.name}
+              onChange={(e) => {
+                setvalues({ ...values, name: e.target.value });
+              }}
             />
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="address">
             Permanent Address
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
-              class="details-input form-control"
+              className="details-input form-control"
               type="text"
               id="address"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,address:e.target.value})}}
+              value={userData.address}
+              onChange={(e) => {
+                setvalues({ ...values, address: e.target.value });
+              }}
             />
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="tin">
             Tax identification number (TIN)
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
               id="tin"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,tin:e.target.value})}}
+              value={userData.tin}
+              onChange={(e) => {
+                setvalues({ ...values, tin: e.target.value });
+              }}
             />
           </div>
         </div>
 
-        <div class="form-group">
+        <div className="form-group">
           <label className="lables" for="employername">
             Name of the employer
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
               id="nameofemployer"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,nameofemployer:e.target.value})}}
+              value={userData.nameofemployer}
+              onChange={(e) => {
+                setvalues({ ...values, nameofemployer: e.target.value });
+              }}
             />
           </div>
         </div>
 
         <label className="lables" for="exampleInputPassword1">
-            Contact Numbers
-          </label><br></br><br></br>
-        <div className="form-group contact" >
+          Contact Numbers
+        </label>
+        <br></br>
+        <br></br>
+        <div className="form-group contact">
           <label className="lables" for="mobileno">
             Mobile
           </label>
@@ -171,12 +225,13 @@ function BasicDetails() {
               className="details-input form-control"
               type="text"
               id="mobileno"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,mobileno:e.target.value})}}
+              value={userData.mobileno}
+              onChange={(e) => {
+                setvalues({ ...values, mobileno: e.target.value });
+              }}
             />
           </div>
         </div>
-
 
         <div className="form-group contact">
           <label className="lables" for="officeno">
@@ -187,8 +242,10 @@ function BasicDetails() {
               className="details-input form-control"
               type="text"
               id="officeno"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,officeno:e.target.value})}}
+              value={userData.officeno}
+              onChange={(e) => {
+                setvalues({ ...values, officeno: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -202,8 +259,10 @@ function BasicDetails() {
               className="details-input form-control"
               type="text"
               id="homeno"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,homeno:e.target.value})}}
+              value={userData.homeno}
+              onChange={(e) => {
+                setvalues({ ...values, homeno: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -217,18 +276,15 @@ function BasicDetails() {
               className="details-input form-control"
               type="date"
               id="birthday"
-              placeholder=""
-              onChange={(e)=>{setvalues({...values,birthday:e.target.value})}}
+              value={userData.birthday}
+              onChange={(e) => {
+                setvalues({ ...values, birthday: e.target.value });
+              }}
             />
           </div>
         </div>
 
-
-        
-
-
         <button
-          
           type="submit"
           className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "70%" }}
@@ -237,7 +293,6 @@ function BasicDetails() {
         </button>
         <br></br>
         <br></br>
-
       </form>
       <br></br>
       <br></br>

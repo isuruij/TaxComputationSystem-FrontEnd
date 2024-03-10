@@ -3,13 +3,18 @@ import Notification from "../../../assets/Notification.svg";
 import Profile from "../../../assets/Profile.svg";
 import { useState } from "react";
 import "./Header.css";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
-function Header(props) {
+function Header() {
+  const cookieValue = Cookies.get("token");
+  const name = jwtDecode(cookieValue).name;
+
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
   });
-  return ( 
+  return (
     <div
       style={{
         backgroundColor: "#D3E9FE",
@@ -18,24 +23,23 @@ function Header(props) {
       }}
     >
       <img
-        style={{ marginLeft: "81%", paddingTop: "1%", paddingRight: "1%" }}
+        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
         src={Notification}
         alt="Notification"
       />
       {count != 0 ? (
         <span
-          style={{ marginLeft: "83%", marginTop:"1.1%"}}
+          style={{ marginLeft: "73vw", marginTop: "3vh" }}
           className="ncount position-absolute translate-middle badge rounded-pill bg-danger"
-        > 
+        >
           {count}
         </span>
       ) : (
         <h6></h6>
       )}
       <img src={Profile} alt="Profile" />
-      <span style={{ display: "flex", marginTop: "1%", marginLeft: "1%" }}>
-        <h6>{props.name}</h6>
-        
+      <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
+        <h6>{name}</h6>
       </span>
     </div>
   );
