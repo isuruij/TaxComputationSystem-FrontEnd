@@ -1,49 +1,49 @@
-.Tax-view-page {
+.dTax-view-page {
   width: 78vw;
   padding: 30px;
   border-radius: 20px;
-  background-color: #d3e9fe;
+  background-color: #f3fff5;
   /* min-width: min-content; */
   box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
 }
 
-.Tax-view-header {
+.dTax-view-header {
   margin: 0 auto;
   width: fit-content;
-  background-color: #0085ff;
+  background-color: #049370;
   color: white;
   padding: 5px 40px;
   border-radius: 25px;
   margin-bottom: 10px;
 }
 
-.Tax-view-header h6 {
+.dTax-view-header h6 {
   text-align: left;
 }
 
-.Total-liability,
-.Cal-nine-months,
-.Cal-three-months {
+.dTotal-liability,
+.dCal-nine-months,
+.dCal-three-months {
   margin: 0 auto;
   width: max-content;
   min-width: max-content;
   background-color: #ffffff;
-  color: #0085ff;
+  color: #049370;
   padding: 10px 40px;
   border-radius: 10px;
   box-shadow: #acacac 2px 4px;
   margin-top: 20px;
 }
 
-.Topic-1,
-.Topic-2,
-.Topic-3 {
+.dTopic-1,
+.dTopic-2,
+.dTopic-3 {
   text-align: center;
-  color: #0085ff;
+  color: #049370;
 }
 
-.Tot-amount {
-  background-color: #0085ff;
+.dTot-amount {
+  background-color: #049370;
   color: #ffffff;
   margin: 0 auto;
   width: fit-content;
@@ -51,35 +51,34 @@
   border-radius: 10px;
 }
 
-.Tot-amount h1 {
+.dTot-amount h1 {
   text-align: center;
-  color: #ffffff;
   padding-bottom: 0;
   margin-bottom: 0;
 }
 
-.Tot-amount p {
-  color: #ffffff;
+.dTot-amount p {
   font-size: small;
+  color: #ffffff;
   padding: 0;
   margin: 0;
   text-align: right;
 }
 
-.small-p-one {
+.dsmall-p-one {
   margin-left: 10%;
+  color: #049370;
   font-size: small;
-  color: #0085ff;
 }
 
-.small-p-two {
+.dsmall-p-two {
+  color: #049370;
   margin-left: 10%;
   font-size: small;
-  color: #0085ff;
 }
 
-.nine-months,
-.three-months {
+.dnine-months,
+.dthree-months {
   margin-left: 10%;
   margin-right: 20%;
   display: flex;
@@ -87,8 +86,8 @@
   margin-top: 20px;
 }
 
-.Cal-nine-months div,
-.Cal-three-months div {
+.dCal-nine-months div,
+.dCal-three-months div {
   margin-left: 2%;
   margin-right: 5%;
   display: flex;
@@ -96,19 +95,19 @@
   margin-top: 5px;
 }
 
-.nine-liability h4,
-.three-liability h4 {
+.dnine-liability h4,
+.dthree-liability h4 {
   font-weight: 1000;
 }
 
-.container {
+.dcontainer {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
 }
 
-.Cal-nine-months,
-.Cal-three-months {
+.dCal-nine-months,
+.dCal-three-months {
   width: fit-content;
   flex-grow: 1;
 }

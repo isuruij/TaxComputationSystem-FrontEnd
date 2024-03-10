@@ -1,9 +1,9 @@
 import React from "react";
-import DSideNavBar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
 import DHeader from "../../components/DataEntry/Header/DHeader";
+import DSideNavBar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
 import DDocUpload from "../../components/DataEntry/DDocUpload/DDocUpload";
 
-function DDashboard() {
+function DFileUploadPage() {
   return (
     <div>
       <div>
@@ -13,9 +13,12 @@ function DDashboard() {
         <div>
           <DSideNavBar />
         </div>
+        <div style={{ marginLeft: "5px", marginTop: "5px", width: "80vw" }}>
+          <DDocUpload />
+        </div>
       </div>
     </div>
   );
 }
 
-export default DDashboard;
+export default DFileUploadPage;

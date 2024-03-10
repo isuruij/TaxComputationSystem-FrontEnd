@@ -1,0 +1,87 @@
+.dUpload-Doc-div {
+  margin-left: 0%;
+  margin: 0%;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #f3fff5;
+  width: "78vw";
+  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+}
+
+.dmain-topic {
+  text-align: center;
+  text-decoration: solid;
+  font-weight: 700;
+  color: #049370;
+}
+
+.dsub-topic {
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 3%;
+  color: #049370;
+  text-decoration: solid;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.dContainer1,
+.dContainer2,
+.dContainer3,
+.dContainer4 {
+  margin-left: 8%;
+  margin-right: 5%;
+}
+
+.ddiv1-1,
+.ddiv1-2,
+.ddiv1-3,
+.ddiv1-4,
+.ddiv2-1,
+.ddiv2-2,
+.ddiv2-3,
+.ddiv3-1,
+.ddiv3-2,
+.ddiv3-3,
+.ddiv3-4,
+.ddiv4-1,
+.ddiv4-2,
+.ddiv4-3 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.input::before {
+  content: "Upload PDF";
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+}
+
+.fa-caret-down {
+  margin-left: 20px;
+}
+
+.d-custom {
+  color: #049370;
+}
+
+.dButton-div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.dcustom-button {
+  background-color: #049370 !important;
+  text-align: center;
+  display: block;
+  margin-bottom: 12px;
+  width: 100%;
+  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  border: 1px #008060;
+}

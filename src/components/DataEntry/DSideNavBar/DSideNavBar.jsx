@@ -47,7 +47,14 @@ function DSideNavBar() {
       }}
     >
       <br></br>
-      <button type="button" className="btn btn-primary custom-button">
+      <button
+        onClick={() => {
+          navigate("/dataEntry/dashboard");
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
         <img
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
@@ -58,7 +65,7 @@ function DSideNavBar() {
 
       <button
         onClick={() => {
-          navigate("/settings/basic");
+          navigate("/dataEntry/dashboard");
         }}
         type="button"
         className="btn btn-primary custom-button"
@@ -76,6 +83,9 @@ function DSideNavBar() {
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
+        onClick={() => {
+          navigate("/dataEntry/dashboard");
+        }}
       >
         <img
           src={DownloadTaxreport}
@@ -87,7 +97,7 @@ function DSideNavBar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/dataEntry/dashboard");
         }}
         type="button"
         className="btn btn-primary custom-button"
