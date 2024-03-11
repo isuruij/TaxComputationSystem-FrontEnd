@@ -258,7 +258,7 @@ function SignupPersonalDetails() {
               value={Password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                setvalues({ ...values, password: Password });
+                setvalues({ ...values, password: e.target.value });
               }}
             />
           </div>
