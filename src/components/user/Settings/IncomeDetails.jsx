@@ -60,7 +60,7 @@ function Incomedetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "65VW",
+          width: "78VW",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
@@ -110,6 +110,8 @@ function Incomedetails() {
           </div>
         ))}
 
+        <br></br>
+
         {/* Investment Income */}
         {investmentIncomes.map((income, index) => (
           <div className="form-group contact" key={`investment${index}`}>
@@ -140,6 +142,7 @@ function Incomedetails() {
           </div>
         ))}
 
+        <br></br>
         {/* Business Income */}
         {businessIncomes.map((income, index) => (
           <div className="form-group contact" key={`business${index}`}>
@@ -169,7 +172,7 @@ function Incomedetails() {
             </div>
           </div>
         ))}
-
+        <br></br>
         {/* Other Income */}
         {otherIncomes.map((income, index) => (
           <div className="form-group contact" key={`other${index}`}>

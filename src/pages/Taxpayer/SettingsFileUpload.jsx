@@ -1,9 +1,9 @@
 import React from "react";
-import SettingSubMenue from "../components/user/Settings/SettingSubMenue";
-import BasicDetails from "../components/user/Settings/BasicDetails";
-import Header from "../components/user/Header/Header";
-import Sidenavbar from "../components/user/Sidenavbar";
-import FileUpload from "../components/user/FileUpload/FileUpload";
+import SettingSubMenue from "../../components/user/Settings/SettingSubMenue";
+import BasicDetails from "../../components/user/Settings/BasicDetails";
+import Header from "../../components/user/Header/Header";
+import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
+import FileUpload from "../../components/user/Settings/FileUpload";
 
 function SettingsFileUpload() {
   return (
@@ -18,7 +18,7 @@ function SettingsFileUpload() {
             <div>
               <SettingSubMenue />
             </div>
-            <div style={{marginTop:"5px"}}>
+            <div style={{marginTop:"5px", width:"78vw"} }>
               <FileUpload/>
             </div>
           </div>

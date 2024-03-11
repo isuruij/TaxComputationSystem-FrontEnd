@@ -1,16 +1,23 @@
 .details-input{
     font-size: 12px;
 	padding: 5px 10px;
-	width: 30%;
+	width: 25vw !important;
+	height: 26px; 
 	outline: none;
-	background: #DBE8FE;
+	background: #f3f9ff;
 	color: #000000;
 	border: 1px solid #C4D1EB;
-	border-radius: 5px;
+	border-radius: 15px !important;
 	box-shadow: 0px 3px 3px 1px #9D9D9D;
 	transition: .3s ease;
 }
 
+@media screen and (max-width: 700px) {
+    .details-input {
+		width: 70vw;
+    }
+	
+  }
 .input:focus {
 	background: #F2F2F2;
 	border: 1px solid #5A7EC7;
@@ -24,9 +31,7 @@
     font-weight: 700;
 }
 
-.form-group{
-    margin-bottom: 10px;
-}
+
 
 button{
     
@@ -34,3 +39,47 @@ button{
     border-radius: 10px !important;
     
 }
+
+
+@media screen and (min-width: 700px) {
+
+
+
+	
+  }
+
+
+  @media screen and (max-width: 700px) {
+
+    .details-input{
+		width: 50vw !important;
+	}
+
+	.twoparts{
+		display: flex;
+		flex-direction: column !important;
+	}
+
+	.contactSection{
+		margin-top: 0vh !important;
+		margin-left: 0vw !important;
+	}
+
+	.signup button{
+		font-size: 12px;
+		margin-left: 10vw !important;
+	}
+
+	.updatePersonalDetails h2{
+		font-size: 20px !important;
+		margin-left: -5vw !important;
+		
+	}
+
+  }
+
+
+
+
+
+	

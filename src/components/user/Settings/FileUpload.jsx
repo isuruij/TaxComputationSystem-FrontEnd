@@ -1,52 +1,34 @@
 import React from "react";
 import { useState } from "react";
 import "./FileUpload.css";
-import axios from "axios";
-
 
 
 
 function FileUpload() {
-  const [file1, setFile1] = useState();
-  // const [file2, setFile2] = useState();
-  // const [file3, setFile3] = useState();
-  // const [file4, setFile4] = useState();
+  const [file, setFile] = useState();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
 
-
-  const handleFile = (e) =>  {
-    
-    setFile1(e.target.files[0]);
-    // switch (type) {
-    //   case "doc1":
-    //     setFile1(event.target.files[0]);
-    //     break;
-    //     case "doc2":
-    //     setFile2(event.target.files[0]);
-    //     break;
-    //     case "doc3":
-    //     setFile3(event.target.files[0]);
-    //     break;
-    //     case "doc4":
-    //     setFile4(event.target.files[0]);
-    //     break;
-    // };
-
-
+  function handleFile(event) {
+    setFile(event.target.files[0]);
     //console.log(event.target.files[0])
   }
-
   function handleUpload() {
     const formData = new FormData();
-    formData.append("doc", file1);
-    axios.post('http://localhost:8001/create', formData)
-    .then((response) => {
-      console.log(response);
+    formData.append("file", file);
+    fetch("*****URL****", {
+      method: "POST",
+      body: formData,
     })
-    .catch(er => console.log(er))
+      .then((Response) => Response.json())
+      .then((result) => {
+        console.log("Success", result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
 
@@ -63,7 +45,7 @@ function FileUpload() {
               <label><h6>Employment Income</h6></label>
             </div>
             <div className="div1-1-2">
-              <input type="file" name="file" onChange={(e) => setFile1(e.target.files[0])} />
+              <input type="file" name="file" onChange={handleFile} />
             </div>
           </div>
 
@@ -198,7 +180,7 @@ function FileUpload() {
         </div>}
 
         <div className="Button-div">
-          <div className="Button-div-1"><button id="back" className="btn btn-primary">Back</button></div>
+          
           <div className="Button-div-2"><button id="submit" className="btn btn-primary" onClick={handleUpload}>
           Save & Continue
           </button></div>

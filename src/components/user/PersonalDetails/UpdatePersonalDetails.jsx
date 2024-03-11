@@ -9,7 +9,7 @@ import Tick from "../../../assets/Tick.svg";
 import Cross from "../../../assets/Cross.svg";
 import "../PersonalDetails/PersonalDetails.css";
 
-function PersonalDetails() {
+function UpdatePersonalDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   useEffect(() => {
@@ -323,7 +323,7 @@ function PersonalDetails() {
               className="btn btn-primary"
               style={{ marginTop: "3%", marginLeft: "55vw" }}
             >
-              Save & Continue
+              Update
             </button>
           </div>
         </div>
@@ -334,4 +334,4 @@ function PersonalDetails() {
   );
 }
 
-export default PersonalDetails;
+export default UpdatePersonalDetails;

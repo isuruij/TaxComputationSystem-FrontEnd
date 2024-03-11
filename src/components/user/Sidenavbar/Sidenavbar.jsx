@@ -1,15 +1,14 @@
 import React from "react";
-
-import reactlogo from "../../assets/react.svg";
-import home from "../../assets/home.svg";
-import changeincome from "../../assets/changeincome.svg";
-import DownloadTaxreport from "../../assets/DownloadTaxreport.svg";
-import viewtax from "../../assets/viewtax.svg";
-import taxhistory from "../../assets/taxhistory.svg";
-import registration from "../../assets/registration.svg";
-import logout from "../../assets/logout.svg";
-import Settings from "../../assets/Settings.svg";
+import Axios from "axios";
+import "./Sidenavbar.css";
 import { useNavigate } from "react-router-dom";
+import DownloadTaxreport from "../../../assets/DownloadTaxreport.svg";
+import Settings from "../../../assets/Settings.svg";
+import home from "../../../assets/home.svg";
+import logout from "../../../assets/logout.svg";
+import registration from "../../../assets/registration.svg";
+import taxhistory from "../../../assets/taxhistory.svg";
+import viewtax from "../../../assets/viewtax.svg";
 
 function Sidenavbar() {
   const buttonStyle = {
@@ -23,6 +22,16 @@ function Sidenavbar() {
 
   const navigate = useNavigate();
 
+  const handleLogout = async (event) => {
+    try {
+      const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
+      navigate("/login");
+      // location.reload(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       style={{
@@ -33,6 +42,7 @@ function Sidenavbar() {
         marginLeft: "0.5%",
         backgroundColor: "#D3E9FE",
         width: "20vw",
+        height: "90vh",
       }}
     >
       <br></br>
@@ -42,11 +52,11 @@ function Sidenavbar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Home
+        <span>Home</span>
       </button>
       <button
         onClick={() => {
-          navigate("/register/incomedetails");
+          navigate("/register/personaldetails");
         }}
         type="button"
         className="btn btn-primary"
@@ -57,7 +67,7 @@ function Sidenavbar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Registration
+        <span>Registration</span>
       </button>
       <button type="button" className="btn btn-primary" style={buttonStyle}>
         <img
@@ -65,39 +75,67 @@ function Sidenavbar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Download report
+        <span>Download Report</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/viewtax");
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={viewtax}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        viewtax
+        <span>View Tax</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/TaxStatus");
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={taxhistory}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        taxhistory
+        <span>taxhistory</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/settings/basic");
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={Settings}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        Settings
+        <span>Settings</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={logout}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        logout
+        <span>logout</span>
       </button>
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
