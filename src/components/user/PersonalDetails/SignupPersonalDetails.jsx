@@ -8,7 +8,9 @@ function SignupPersonalDetails() {
   useEffect(() => {
     console.log("Cookies:", document.cookie);
   }, []);
-
+  const [warning, setWarning] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [Password, setPassword] = useState("");
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -28,6 +30,23 @@ function SignupPersonalDetails() {
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(Password==""){
+      setWarning("Enter password!");
+      return
+    }
+    if(confirmPassword==""){
+      setWarning("Confirm password!");
+      return
+    }
+
+    if (Password!== confirmPassword) {
+      setWarning("Passwords do not match!");
+      setPassword("");
+      setConfirmPassword("");
+      setvalues({ ...values, password: "" });
+      return;
+    }
+
     try {
       const res = await Axios.post(
         "http://localhost:3000/api/taxpayer/register",
@@ -85,22 +104,6 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <div class="form-group">
-          <label className="lables" for="password">
-            Password
-          </label>
-          <div className="custom_input">
-            <input
-              class="details-input form-control"
-              type="password"
-              id="password"
-              placeholder=""
-              onChange={(e) => {
-                setvalues({ ...values, password: e.target.value });
-              }}
-            />
-          </div>
-        </div>
 
         <div class="form-group">
           <label className="lables" for="name">
@@ -241,6 +244,44 @@ function SignupPersonalDetails() {
               }}
             />
           </div>
+        </div>
+
+        <div class="form-group">
+          <label className="lables" for="password">
+            Password
+          </label>
+          <div className="custom_input">
+            <input
+              class="details-input form-control"
+              type="password"
+              id="password"
+              value={Password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setvalues({ ...values, password: Password });
+              }}
+            />
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+          <label className="lables" for="password">
+            Confirm Password
+          </label>
+          <div className="custom_input">
+            <input
+              class="details-input form-control"
+              type="password"
+              id="password2"
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
+            />
+          </div>
+          {warning && <p style={{ color: "red" }}>{warning}</p>}
         </div>
 
         <div style={{display:"flex"}}>
