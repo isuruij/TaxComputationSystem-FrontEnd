@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import Tick from "../../../assets/Tick.svg";
 import Cross from "../../../assets/Cross.svg";
 import "../PersonalDetails/PersonalDetails.css";
@@ -17,8 +19,6 @@ function UpdatePersonalDetails() {
 
   useEffect(() => {
     getUserDetails();
-    
-
   }, []);
   const [userData, setuserData] = useState({});
   const [values, setvalues] = useState({
@@ -32,15 +32,11 @@ function UpdatePersonalDetails() {
     officeno: "",
     homeno: "",
     birthday: "",
-    id:userId
+    id: userId,
   });
-
-  
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
-
-
 
   //get details from backend
   const getUserDetails = async () => {
@@ -61,9 +57,9 @@ function UpdatePersonalDetails() {
         officeno: response.data.Data.officeno,
         homeno: response.data.Data.homeno,
         birthday: response.data.Data.birthday,
-        id: response.data.Data.id
+        id: response.data.Data.id,
       });
-    } catch (error) { 
+    } catch (error) {
       console.error(error);
     }
   };
@@ -77,15 +73,21 @@ function UpdatePersonalDetails() {
         values
       );
       if (res.data.Status === "Success") {
-        navigate("/dashboard");
+        window.location.reload();
       } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+        alert("Enter in updating");
       }
       console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
+
+  //Popup for confirmation
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div>
@@ -101,7 +103,7 @@ function UpdatePersonalDetails() {
         }}
       >
         <div className="updatePersonalDetails" style={{ marginLeft: "1vw" }}>
-          <h2 
+          <h2
             style={{
               marginBottom: "1%",
               marginLeft: "19vw",
@@ -125,7 +127,6 @@ function UpdatePersonalDetails() {
                     class="details-input form-control"
                     type="email"
                     id="email"
-                    
                     defaultValue={userData.email}
                     onChange={(e) => {
                       setvalues({ ...values, email: e.target.value });
@@ -337,14 +338,26 @@ function UpdatePersonalDetails() {
           </div>
 
           <div className="signup" style={{ display: "flex" }}>
-            <button
-              onClick={() => {}}
-              type="submit"
-              className="btn btn-primary"
-              style={{ marginTop: "3%", marginLeft: "55vw" }}
-            >
-              Update
-            </button>
+            <>
+              <Button variant="primary" onClick={handleShow}>
+                Update
+              </Button>
+
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Are you Sure</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Do you want to update details ?</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    No
+                  </Button>
+                  <Button variant="primary" onClick={handleSubmit}>
+                    Yes
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </>
           </div>
         </div>
       </form>
