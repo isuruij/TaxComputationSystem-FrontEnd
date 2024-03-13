@@ -75,7 +75,7 @@ function UpdatePersonalDetails() {
       if (res.data.Status === "Success") {
         window.location.reload();
       } else {
-        alert("Enter in updating");
+        alert("Error in updating");
       }
       console.log(res);
     } catch (error) {

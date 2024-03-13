@@ -52,10 +52,12 @@ function SignupPersonalDetails() {
         "http://localhost:3000/api/taxpayer/register",
         values
       );
+      console.log(res.data.message);
       if (res.data.Status === "Success") {
+        
         navigate("/dashboard");
-      } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+      } else if(res.data.message=="registered user"){
+        alert("Email is already registered! Please Enter another one");
       }
       console.log(res);
     } catch (error) {
