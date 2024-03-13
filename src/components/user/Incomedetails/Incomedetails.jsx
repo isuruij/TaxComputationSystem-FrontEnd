@@ -204,6 +204,10 @@ function Incomedetails() {
         </button>
 
         <button
+          onClick={()=>{
+            navigate("/register/uploadfiles")
+          
+          }}
           class="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "70%" }}
           type="submit"

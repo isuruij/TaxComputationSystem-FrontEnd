@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../components/user/Header/Header";
-import Sidenavbar from "../components/user/Sidenavbar/Sidenavbar";
+import Header from "../../components/user/Header/Header";
+import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import PersonalDetails from "../components/user/PersonalDetails/PersonalDetails";
+import PersonalDetails from "../../components/user/PersonalDetails/PersonalDetails";
 
-function RegisterPersonalDetails() {
+function PersonalDetailsUpdate() {
   return (
     <div>
       <Header />
@@ -21,4 +21,4 @@ function RegisterPersonalDetails() {
   );
 }
 
-export default RegisterPersonalDetails;
+export default PersonalDetailsUpdate;
