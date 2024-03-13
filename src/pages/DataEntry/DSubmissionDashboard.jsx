@@ -13,7 +13,7 @@ function DSubmissionDashboard() {
         <div>
           <DSideNavBar />
         </div>
-        <div>
+        <div style={{ marginLeft: "10px", marginTop: "10px", width: "80vw" }}>
           <DSubmissionDash />
         </div>
       </div>

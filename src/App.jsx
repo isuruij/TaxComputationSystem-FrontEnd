@@ -29,7 +29,6 @@ import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
 import DFileUploadPage from "./pages/DataEntry/DFileUploadPage.jsx";
 import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -72,7 +71,7 @@ function App() {
         <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
         <Route path="/dataEntry/viewTax" element={<DViewTaxPage />}></Route>
         <Route
-          path="/dataEntry/uploadDoc"
+          path="/dataEntry/submission/uploadDoc"
           element={<DFileUploadPage />}
         ></Route>
         <Route

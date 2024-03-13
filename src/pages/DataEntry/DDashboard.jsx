@@ -1,7 +1,7 @@
 import React from "react";
 import DSideNavBar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
 import DHeader from "../../components/DataEntry/Header/DHeader";
-import DDocUpload from "../../components/DataEntry/DDocUpload/DDocUpload";
+import DDashbox from "../../components/DataEntry/DDashbox/DDashbox";
 
 function DDashboard() {
   return (
@@ -12,6 +12,9 @@ function DDashboard() {
       <div style={{ display: "flex" }}>
         <div>
           <DSideNavBar />
+        </div>
+        <div style={{ marginTop: "10px", paddingLeft: "10px", width: "80vw" }}>
+          <DDashbox />
         </div>
       </div>
     </div>

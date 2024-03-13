@@ -84,7 +84,7 @@ function DSideNavBar() {
         className="btn btn-primary custom-button"
         style={buttonStyle}
         onClick={() => {
-          navigate("/dataEntry/dashboard");
+          navigate("/dataEntry/submission/dashboard");
         }}
       >
         <img
