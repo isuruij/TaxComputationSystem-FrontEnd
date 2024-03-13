@@ -17,7 +17,7 @@ function DSideNavBar() {
     marginBottom: "12px",
     width: "90%",
     marginLeft: "4%",
-    boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+    boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.45)",
   };
 
   const navigate = useNavigate();
