@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import Tick from "../../../assets/Tick.svg";
 import Cross from "../../../assets/Cross.svg";
 import "../PersonalDetails/PersonalDetails.css";
@@ -12,10 +14,13 @@ import "../PersonalDetails/PersonalDetails.css";
 function UpdatePersonalDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
+
   useEffect(() => {
     getUserDetails();
   }, []);
-
+  const [userData, setuserData] = useState({});
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -27,23 +32,33 @@ function UpdatePersonalDetails() {
     officeno: "",
     homeno: "",
     birthday: "",
+    id: userId,
   });
-
-  const [userData, setuserData] = useState({});
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
-  const cookieValue = Cookies.get("token");
-  const userId = jwtDecode(cookieValue).id;
-
+  //get details from backend
   const getUserDetails = async () => {
     try {
       const response = await Axios.get(
         `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
       );
       setuserData(response.data.Data);
-      console.log(userData);
+      setvalues({
+        ...values,
+        email: response.data.Data.email,
+        password: response.data.Data.password,
+        name: response.data.Data.name,
+        address: response.data.Data.address,
+        tin: response.data.Data.tin,
+        nameofemployer: response.data.Data.nameofemployer,
+        mobileno: response.data.Data.mobileno,
+        officeno: response.data.Data.officeno,
+        homeno: response.data.Data.homeno,
+        birthday: response.data.Data.birthday,
+        id: response.data.Data.id,
+      });
     } catch (error) {
       console.error(error);
     }
@@ -53,20 +68,26 @@ function UpdatePersonalDetails() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await Axios.post(
-        "http://localhost:3000/api/taxpayer/register",
+      const res = await Axios.patch(
+        "http://localhost:3000/api/taxpayer/updatebasicdetails",
         values
       );
       if (res.data.Status === "Success") {
-        navigate("/dashboard");
+        window.location.reload();
       } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+        alert("Enter in updating");
       }
       console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
+
+  //Popup for confirmation
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div>
@@ -106,7 +127,7 @@ function UpdatePersonalDetails() {
                     class="details-input form-control"
                     type="email"
                     id="email"
-                    value={userData.email}
+                    defaultValue={userData.email}
                     onChange={(e) => {
                       setvalues({ ...values, email: e.target.value });
                     }}
@@ -147,7 +168,7 @@ function UpdatePersonalDetails() {
                     class="details-input form-control"
                     type="text"
                     id="name"
-                    value={userData.name}
+                    defaultValue={userData.name}
                     onChange={(e) => {
                       setvalues({ ...values, name: e.target.value });
                     }}
@@ -164,7 +185,7 @@ function UpdatePersonalDetails() {
                     class="details-input form-control"
                     type="text"
                     id="address"
-                    value={userData.address}
+                    defaultValue={userData.address}
                     onChange={(e) => {
                       setvalues({ ...values, address: e.target.value });
                     }}
@@ -181,7 +202,7 @@ function UpdatePersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="tin"
-                    value={userData.tin}
+                    defaultValue={userData.tin}
                     onChange={(e) => {
                       setvalues({ ...values, tin: e.target.value });
                     }}
@@ -198,7 +219,7 @@ function UpdatePersonalDetails() {
                     className="details-input form-control"
                     type="date"
                     id="birthday"
-                    value={userData.birthday}
+                    defaultValue={userData.birthday}
                     onChange={(e) => {
                       setvalues({ ...values, birthday: e.target.value });
                     }}
@@ -215,7 +236,7 @@ function UpdatePersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="nameofemployer"
-                    value={userData.nameofemployer}
+                    defaultValue={userData.nameofemployer}
                     onChange={(e) => {
                       setvalues({ ...values, nameofemployer: e.target.value });
                     }}
@@ -238,7 +259,7 @@ function UpdatePersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="mobileno"
-                    value={userData.mobileno}
+                    defaultValue={userData.mobileno}
                     onChange={(e) => {
                       setvalues({ ...values, mobileno: e.target.value });
                     }}
@@ -255,7 +276,7 @@ function UpdatePersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="officeno"
-                    value={userData.officeno}
+                    defaultValue={userData.officeno}
                     onChange={(e) => {
                       setvalues({ ...values, officeno: e.target.value });
                     }}
@@ -272,7 +293,7 @@ function UpdatePersonalDetails() {
                     className="details-input form-control"
                     type="text"
                     id="homeno"
-                    value={userData.homeno}
+                    defaultValue={userData.homeno}
                     onChange={(e) => {
                       setvalues({ ...values, homeno: e.target.value });
                     }}
@@ -305,7 +326,7 @@ function UpdatePersonalDetails() {
                   <input
                     class="details-input form-control"
                     type="password"
-                    id="password"
+                    id="password2"
                     placeholder=""
                     onChange={(e) => {
                       setvalues({ ...values, password: e.target.value });
@@ -317,14 +338,26 @@ function UpdatePersonalDetails() {
           </div>
 
           <div className="signup" style={{ display: "flex" }}>
-            <button
-              onClick={() => {}}
-              type="submit"
-              className="btn btn-primary"
-              style={{ marginTop: "3%", marginLeft: "55vw" }}
-            >
-              Update
-            </button>
+            <>
+              <Button variant="primary" onClick={handleShow}>
+                Update
+              </Button>
+
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Are you Sure</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Do you want to update details ?</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    No
+                  </Button>
+                  <Button variant="primary" onClick={handleSubmit}>
+                    Yes
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </>
           </div>
         </div>
       </form>
