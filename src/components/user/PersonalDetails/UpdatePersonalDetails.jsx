@@ -74,7 +74,9 @@ function UpdatePersonalDetails() {
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else {
+      } else if(res.data.Status === "NotSuccess" && res.data.message=="already registered email" ) {
+        alert("already registered email");
+      }else{
         alert("Error in updating");
       }
       console.log(res);

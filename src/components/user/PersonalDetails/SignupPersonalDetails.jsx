@@ -53,10 +53,9 @@ function SignupPersonalDetails() {
         values
       );
       console.log(res.data.message);
-      if (res.data.Status === "Success") {
-        
+      if (res.data.Status === "Success") {  
         navigate("/dashboard");
-      } else if(res.data.message=="registered user"){
+      } else if(res.data.message=="already registered email"){
         alert("Email is already registered! Please Enter another one");
       }
       console.log(res);
