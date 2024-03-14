@@ -24,6 +24,8 @@ import VerifyUserEmail from "./pages/Taxpayer/VerifyUserEmail.jsx";
 import UserHome from "./pages/Taxpayer/UserHome.jsx";
 import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
 import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
+import ForgetPasswordPage from "./pages/Taxpayer/ForgetPasswordPage.jsx";
+import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
 
 
 
@@ -53,6 +55,8 @@ function App() {
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
+    <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
+    <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
     
 
   </Routes>
