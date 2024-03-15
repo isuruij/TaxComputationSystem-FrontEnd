@@ -7,69 +7,64 @@ import "../Login/Login.css";
 
 function ResetPassword() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-  const [valid, setValid] = useState("xxxxx");
+  const [valid, setValid] = useState(false);
 
-  const [values, setvalues] = useState({
-    email: "",
-  });
+  const [password, setpassword] = useState("");
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const token = params.get("token");
+  console.log(id, token);
+
   useEffect(() => {
     const handle = async () => {
       try {
-        // Parse the query parameters
-        const params = new URLSearchParams(location.search);
-
-        // Get the values
-        const id = params.get("id");
-        const token = params.get("token");
-
-        // Log the value of emailToken
-        console.log(id, token);
-
+        
         const response = await Axios.get(
           `${base_url}/api/taxpayer/reset-password/${id}/${token}`
         );
         console.log(response.data.Status);
         if (response.data.Status == "Verified") {
-          setValid("vvv");
+          setValid(true);
           console.log(valid);
         } else if (response.data.Status == "NotVerified") {
-          setValid("nnn");
+          setValid(false);
           console.log(valid);
         }
 
       } catch (error) {
-        console.log(error);
+        console.log(error); 
       }
     };
     handle();
   }, []);
 
   const handleSubmit = async (event) => {
+    console.log("password is ", password)
     event.preventDefault();
     try {
       const res = await Axios.post(
-        `${base_url}/api/taxpayer/forgot-password`,
-        values
+        `${base_url}/api/taxpayer/addnew-password/${id}/${token}`,
+        {password}
       );
-      if (res.data.Status == "Success") {
-        alert("We have sent a link. Please check your email!");
+      if (res.data.Status == "Verified") {
+        alert("Password change Sucessful!");
       } else if (
-        res.data.Status == "NotSuccess" &&
-        res.data.message == "Email not found"
+        res.data.Status == "NotVerified"
       ) {
-        alert("Email not found");
+        alert("Error");
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  return (
-    <div className="login">
+  return (<>
+
+    {valid ? (    <div className="login">
       <form
         onSubmit={handleSubmit}
         style={{
@@ -94,7 +89,7 @@ function ResetPassword() {
         </h4>
         <div class="form-group" style={{ marginLeft: "10%" }}>
           <label className="lables" for="email" style={{ marginLeft: "10%" }}>
-            Enter your Email
+            Enter new password
           </label>
           <div>
             <input
@@ -115,7 +110,7 @@ function ResetPassword() {
               id="exampleInputEmail1"
               placeholder=""
               onChange={(e) => {
-                setvalues({ ...values, email: e.target.value });
+                setpassword(e.target.value);
               }}
             />
           </div>
@@ -129,8 +124,10 @@ function ResetPassword() {
           Reset Password
         </button>
       </form>
-    </div>
-  );
+    </div>) : <h3>Link is invalid</h3>}
+    
+
+  </>);
 }
 
 export default ResetPassword;
