@@ -53,8 +53,8 @@ function ForgetPassword() {
           Forgot Password
             
         </h4>
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="email" style={{ marginLeft: "10%" }}>
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables"  style={{ marginLeft: "10%" }}>
            Enter your Email
           </label>
           <div>
@@ -86,7 +86,7 @@ function ForgetPassword() {
 
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "30%" }}
         >
           Send Link

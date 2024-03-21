@@ -53,8 +53,8 @@ function Loginform() {
         >
           Log in
         </h2>
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="email">
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables" >
             Email
           </label>
           <div>
@@ -82,8 +82,8 @@ function Loginform() {
           </div>
         </div>
 
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="exampleInputPassword1">
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables">
             Password
           </label>
           <div>
@@ -116,7 +116,7 @@ function Loginform() {
 
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "33%" }}
         >
           Login

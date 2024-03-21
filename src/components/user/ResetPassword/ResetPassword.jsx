@@ -17,7 +17,7 @@ function ResetPassword() {
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const token = params.get("token");
-  console.log(id, token);
+  
 
   useEffect(() => {
     const handle = async () => {
@@ -26,13 +26,13 @@ function ResetPassword() {
         const response = await Axios.get(
           `${base_url}/api/taxpayer/reset-password/${id}/${token}`
         );
-        console.log(response.data.Status);
+        
         if (response.data.Status == "Verified") {
           setValid(true);
-          console.log(valid);
+          
         } else if (response.data.Status == "NotVerified") {
           setValid(false);
-          console.log(valid);
+          
         }
 
       } catch (error) {
@@ -43,7 +43,7 @@ function ResetPassword() {
   }, []);
 
   const handleSubmit = async (event) => {
-    console.log("password is ", password)
+    
     event.preventDefault();
     try {
       const res = await Axios.post(
@@ -87,8 +87,8 @@ function ResetPassword() {
         >
           Reset Password
         </h4>
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="email" style={{ marginLeft: "10%" }}>
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables"  style={{ marginLeft: "10%" }}>
             Enter new password
           </label>
           <div>
@@ -118,7 +118,7 @@ function ResetPassword() {
 
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "20%" }}
         >
           Reset Password
