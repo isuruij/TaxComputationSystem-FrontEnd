@@ -341,7 +341,7 @@ function UpdatePersonalDetails() {
 
           <div className="signup" style={{ display: "flex" }}>
             <>
-              <Button variant="primary" onClick={handleShow}>
+              <Button style={{marginLeft:"50vw"}}  onClick={handleShow}>
                 Update
               </Button>
 
