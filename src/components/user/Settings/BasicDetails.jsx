@@ -109,12 +109,18 @@ function BasicDetails() {
             </div>
 
             {userData.isVerifiedEmail ? (
-              <div style={{ marginLeft: "5px",marginTop:"2px" }}>
-                <img style={{paddingRight:"2px"}} src={Tick} alt="tick" /><label style={{fontSize:"14px",color:"green"}}>verified</label>
+              <div style={{ marginLeft: "5px", marginTop: "2px" }}>
+                <img style={{ paddingRight: "2px" }} src={Tick} alt="tick" />
+                <label style={{ fontSize: "14px", color: "green" }}>
+                  verified
+                </label>
               </div>
             ) : (
-              <div style={{ marginLeft: "5px",marginTop:"2px" }}>
-                <img style={{paddingRight:"2px"}} src={Cross} alt="tick" /><label style={{fontSize:"14px",color:"green"}}>Not verified</label>
+              <div style={{ marginLeft: "5px", marginTop: "2px" }}>
+                <img style={{ paddingRight: "2px" }} src={Cross} alt="tick" />
+                <label style={{ fontSize: "14px", color: "green" }}>
+                  Not verified
+                </label>
               </div>
             )}
           </div>

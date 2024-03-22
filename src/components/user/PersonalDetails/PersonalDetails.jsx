@@ -82,7 +82,7 @@ function PersonalDetails() {
         }}
       >
         <div className="updatePersonalDetails" style={{ marginLeft: "1vw" }}>
-          <h2 
+          <h2
             style={{
               marginBottom: "1%",
               marginLeft: "19vw",

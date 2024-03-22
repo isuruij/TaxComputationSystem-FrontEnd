@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./FileUpload.css";
+import "./DDocUpload.css";
 import axios from "axios";
 
 function FileUpload() {
@@ -100,18 +100,18 @@ function FileUpload() {
   }
 
   return (
-    <div className="Upload-Doc-div">
+    <div className="dUpload-Doc-div">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
-      <h2 className="main-topic">Upload Documents</h2>
+      <h2 className="dmain-topic">Upload Documents</h2>
       <form>
-        <h3 className="sub-topic">
+        <h3 className="dsub-topic">
           Total Assessable Income
           {!show1 && (
             <i
-              className="fas fa-caret-down fa-lg"
+              className="fas fa-caret-down fa-lg d-custom"
               onClick={() => {
                 setShow1(true);
               }}
@@ -120,7 +120,7 @@ function FileUpload() {
           {show1 && (
             <i
               id="uparrow"
-              className="fas fa-caret-down fa-rotate-180 fa-lg"
+              className="fas fa-caret-down fa-rotate-180 fa-lg d-custom"
               onClick={() => {
                 setShow1(false);
               }}
@@ -129,8 +129,8 @@ function FileUpload() {
         </h3>
 
         {show1 && (
-          <div className="Container1">
-            <div className="div1-1">
+          <div className="dContainer1">
+            <div className="ddiv1-1">
               <div className="div1-1-1">
                 <label>
                   <h6>Employment Income</h6>
@@ -145,7 +145,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div1-2">
+            <div className="ddiv1-2">
               <div className="div1-2-1">
                 <label>
                   <h6>Business Income</h6>
@@ -160,7 +160,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div1-3">
+            <div className="ddiv1-3">
               <div className="div1-3-1">
                 <label>
                   <h6>Investment Income</h6>
@@ -175,7 +175,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div1-4">
+            <div className="ddiv1-4">
               <div className="div1-4-1">
                 <label>
                   <h6>Other Income</h6>
@@ -192,11 +192,11 @@ function FileUpload() {
           </div>
         )}
 
-        <h3 className="sub-topic">
+        <h3 className="dsub-topic">
           Qualifying Payments & Reliefs
           {!show2 && (
             <i
-              className="fas fa-caret-down fa-lg"
+              className="fas fa-caret-down fa-lg d-custom"
               onClick={() => {
                 setShow2(true);
               }}
@@ -204,7 +204,7 @@ function FileUpload() {
           )}
           {show2 && (
             <i
-              className="fas fa-caret-down fa-rotate-180 fa-lg"
+              className="fas fa-caret-down fa-rotate-180 fa-lg d-custom"
               id="uparrow"
               onClick={() => {
                 setShow2(false);
@@ -214,7 +214,7 @@ function FileUpload() {
         </h3>
 
         {show2 && (
-          <div className="Container2">
+          <div className="dContainer2">
             {/* <div className="div2-1">
             <div className="div2-1-1">
               <label><h6>Relief for Rent Income(For last year)</h6></label>
@@ -224,7 +224,7 @@ function FileUpload() {
             </div>
           </div> */}
 
-            <div className="div2-2">
+            <div className="ddiv2-2">
               <div className="div2-2-1">
                 <label>
                   <h6>Relief for Expenditure</h6>
@@ -239,7 +239,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div2-3">
+            <div className="ddiv2-3">
               <div className="div2-3-1">
                 <label>
                   <h6>Qualifying Payments</h6>
@@ -256,11 +256,11 @@ function FileUpload() {
           </div>
         )}
 
-        <h3 className="sub-topic">
+        <h3 className="dsub-topic">
           Tax Credit
           {!show3 && (
             <i
-              className="fas fa-caret-down fa-lg"
+              className="fas fa-caret-down fa-lg d-custom"
               onClick={() => {
                 setShow3(true);
               }}
@@ -268,7 +268,7 @@ function FileUpload() {
           )}
           {show3 && (
             <i
-              className="fas fa-caret-down fa-rotate-180 fa-lg"
+              className="fas fa-caret-down fa-rotate-180 fa-lg d-custom"
               id="uparrow"
               onClick={() => {
                 setShow3(false);
@@ -278,8 +278,8 @@ function FileUpload() {
         </h3>
 
         {show3 && (
-          <div className="Container3">
-            <div className="div3-1">
+          <div className="dContainer3">
+            <div className="ddiv3-1">
               <div className="div3-1-1">
                 <label>
                   <h6>APIT</h6>
@@ -294,7 +294,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div3-2">
+            <div className="ddiv3-2">
               <div className="div3-2-1">
                 <label>
                   <h6>WHT on Investment Income</h6>
@@ -309,7 +309,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div3-3">
+            <div className="ddiv3-3">
               <div className="div3-3-1">
                 <label>
                   <h6>WHT on Service Fee Received</h6>
@@ -324,7 +324,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div3-4">
+            <div className="ddiv3-4">
               <div className="div3-4-1">
                 <label>
                   <h6>Self Assessment Payments</h6>
@@ -341,11 +341,11 @@ function FileUpload() {
           </div>
         )}
 
-        <h3 className="sub-topic">
+        <h3 className="dsub-topic">
           Other
           {!show4 && (
             <i
-              className="fas fa-caret-down fa-lg"
+              className="fas fa-caret-down fa-lg d-custom"
               onClick={() => {
                 setShow4(true);
               }}
@@ -353,7 +353,7 @@ function FileUpload() {
           )}
           {show4 && (
             <i
-              className="fas fa-caret-down fa-rotate-180 fa-lg"
+              className="fas fa-caret-down fa-rotate-180 fa-lg d-custom"
               id="uparrow"
               onClick={() => {
                 setShow4(false);
@@ -363,8 +363,8 @@ function FileUpload() {
         </h3>
 
         {show4 && (
-          <div className="Container4">
-            <div className="div4-1">
+          <div className="dContainer4">
+            <div className="ddiv4-1">
               <div className="div4-1-1">
                 <label>
                   <h6>Terminal Benefits</h6>
@@ -379,7 +379,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div4-2">
+            <div className="ddiv4-2">
               <div className="div4-2-1">
                 <label>
                   <h6>Capital Value & Gain</h6>
@@ -394,7 +394,7 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div4-3">
+            <div className="ddiv4-3">
               <div className="div4-3-1">
                 <label>
                   <h6>WHT which is not deducted</h6>
@@ -411,16 +411,16 @@ function FileUpload() {
           </div>
         )}
 
-        <div className="Button-div">
+        <div className="dButton-div">
           <div className="Button-div-1">
-            <button id="back" className="btn btn-primary">
+            <button id="back" className="btn btn-primary dcustom-button">
               Back
             </button>
           </div>
           <div className="Button-div-2">
             <button
               id="submit"
-              className="btn btn-primary"
+              className="btn btn-primary dcustom-button"
               onClick={handleUpload}
             >
               Save & Continue

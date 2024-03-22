@@ -18,14 +18,14 @@ function SettingsFileUpload() {
             <div>
               <SettingSubMenue />
             </div>
-            <div style={{marginTop:"5px", width:"78vw"} }>
-              <FileUpload/>
+            <div style={{ marginTop: "5px", width: "78vw" }}>
+              <FileUpload />
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default SettingsFileUpload
+export default SettingsFileUpload;
