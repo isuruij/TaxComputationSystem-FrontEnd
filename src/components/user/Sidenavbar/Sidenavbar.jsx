@@ -56,7 +56,7 @@ function Sidenavbar() {
       </button>
       <button
         onClick={() => {
-          navigate("/register/personaldetails");
+          navigate("/settings/basic");
         }}
         type="button"
         className="btn btn-primary"
@@ -106,21 +106,6 @@ function Sidenavbar() {
           alt="Icon"
         />
         <span>taxhistory</span>
-      </button>
-      <button
-        onClick={() => {
-          navigate("/settings/basic");
-        }}
-        type="button"
-        className="btn btn-primary"
-        style={buttonStyle}
-      >
-        <img
-          src={Settings}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Settings</span>
       </button>
       <button
         onClick={() => {

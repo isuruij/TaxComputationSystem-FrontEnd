@@ -21,16 +21,12 @@ import SettingsIncomeDetails from "./pages/Taxpayer/SettingsIncomeDetails.jsx";
 import TaxStatus from "./pages/Taxpayer/TaxStatus.jsx";
 import VerifyUserEmail from "./pages/Taxpayer/VerifyUserEmail.jsx";
 
-<<<<<<< HEAD
-import UserHome from "./pages/UserHome.jsx";
-import Viewtax from "./pages/Viewtax.jsx";
-import TaxPayments from "./pages/TaxPayments.jsx";
-import TaxHistory from "./pages/TaxHistory.jsx";
-=======
 import UserHome from "./pages/Taxpayer/UserHome.jsx";
 import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
 import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
->>>>>>> fb6b44a9d47c37b667a22884b5f7dab474a53230
+import ForgetPasswordPage from "./pages/Taxpayer/ForgetPasswordPage.jsx";
+import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
+
 
 
 
@@ -58,13 +54,11 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
-<<<<<<< HEAD
-    <Route path="/Taxhistory" element={<TaxHistory/>}></Route>
-=======
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
+    <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
+    <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
     
 
->>>>>>> fb6b44a9d47c37b667a22884b5f7dab474a53230
   </Routes>
   </BrowserRouter>    
 
