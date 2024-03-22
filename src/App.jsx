@@ -26,6 +26,7 @@ import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
 import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
 import ForgetPasswordPage from "./pages/Taxpayer/ForgetPasswordPage.jsx";
 import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
+import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";
 
 
 
@@ -57,6 +58,7 @@ function App() {
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
     <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+    <Route path="/taxhistory" element={<TaxHistory/>}></Route>
     
 
   </Routes>
