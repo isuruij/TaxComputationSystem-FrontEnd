@@ -1,7 +1,9 @@
 import React from "react";
 import "./Incomedetails.css";
+import { useNavigate } from "react-router-dom";
 
 function Incomedetails() {
+  const navigate = useNavigate();
   return (
     <div>
       <form
@@ -9,7 +11,7 @@ function Incomedetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "65VW",
+          width: "78VW",
           boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
         }}
       >
@@ -189,9 +191,12 @@ function Incomedetails() {
           </label>
         </div>
 
-        
+        <div style={{display:"flex"}}>
 
         <button
+          onClick={()=>{
+            navigate("register/personaldetails")
+          }}
           class="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "0%" }}
         >
@@ -199,12 +204,19 @@ function Incomedetails() {
         </button>
 
         <button
+          onClick={()=>{
+            navigate("/register/uploadfiles")
+          
+          }}
           class="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "70%" }}
           type="submit"
         >
           Save & Continue
         </button>
+        </div>
+
+
         <br></br>
         <br></br>
       </form>

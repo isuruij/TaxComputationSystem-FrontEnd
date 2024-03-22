@@ -60,7 +60,7 @@ function Incomedetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "65VW",
+          width: "78VW",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
@@ -191,10 +191,11 @@ function Incomedetails() {
                 }
               />
               {index === otherIncomes.length - 1 && (
-                <button 
-                className="btn btn-primary"
-                style={{marginLeft:"10px",height:"35px"}}
-                onClick={() => handleAddIncome("other")}>
+                <button
+                  className="btn btn-primary"
+                  style={{ marginLeft: "10px", height: "35px" }}
+                  onClick={() => handleAddIncome("other")}
+                >
                   +
                 </button>
               )}
@@ -203,6 +204,111 @@ function Incomedetails() {
         ))}
 
         <br></br>
+        <label className="lables">How do you know DPR</label>
+        <br></br>
+        <br></br>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="friend"
+            name="dprSource"
+            className=" form-check-input"
+          />
+          <label htmlFor="friend" className="form-check-label lables">
+            Introduced by a Friend
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="family"
+            name="dprSource"
+            className="form-check-input"
+          />
+          <label htmlFor="family" className="form-check-label lables">
+            Introduced by a Family Member
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="company"
+            name="dprSource"
+            className="form-check-input"
+          />
+          <label htmlFor="company" className="form-check-label lables">
+            Introduced by the Company
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="socialMedia"
+            name="dprSource"
+            className="form-check-input"
+          />
+          <label htmlFor="socialMedia" className="form-check-label lables">
+            Social Media
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="dprWebsite"
+            name="dprSource"
+            className="form-check-input"
+          />
+          <label htmlFor="dprWebsite" className="form-check-label lables">
+            DPR Website
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="other"
+            name="dprSource"
+            className="form-check-input"
+          />
+          <label htmlFor="other" className="form-check-label lables">
+            Other
+          </label>
+        </div>
+        <br></br>
+
+        <label className="form-check-label lables">
+          Are you agree with annual fee
+        </label>
+        <div className="form-check">
+          <input
+            type="radio"
+            id="agree"
+            name="annualFee"
+            className="form-check-input"
+          />
+          <label htmlFor="agree" className="form-check-label lables">
+            Yes
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="disagree"
+            name="annualFee"
+            className="form-check-input"
+          />
+          <label htmlFor="disagree" className="form-check-label lables">
+            No
+          </label>
+        </div>
+
+        <div style={{ display: "flex" }}></div>
 
         <button
           className="btn btn-primary"

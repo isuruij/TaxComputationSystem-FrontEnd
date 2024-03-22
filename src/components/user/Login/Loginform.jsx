@@ -2,8 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import "../Login/Login.css";
 
 function Loginform() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -15,53 +18,60 @@ function Loginform() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await Axios.post(
-        "http://localhost:3000/api/taxpayer/login",
-        values
-      );
+      const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
       if (res.data.Status === "Success") {
         navigate("/dashboard");
       } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+        alert("Invalid credentials! Please enter correct details.");
       }
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <div className="login">
       <form
         onSubmit={handleSubmit}
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "25%",
-          marginLeft: "35%",
-          marginTop: "10%",
+          width: "25vw",
+          marginLeft: "35vw",
+          marginTop: "10vh",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
         <h2
           style={{
-            marginBottom: "10%",
-            marginLeft: "30%",
+            marginBottom: "0vw",
+            marginLeft: "6vw",
             color: "#0085FF",
             fontWeight: "bold",
           }}
         >
           Log in
         </h2>
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="email">
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables" >
             Email
           </label>
-          <div class="custom_input">
+          <div>
             <input
-              style={{ width: "95%" }}
-              class="details-input form-control "
+              style={{
+                width: "15vw" ,
+                fontSize: "15px",
+                height: "26px",
+                outline: "none",
+                background: "#f3f9ff",
+                color: "#000000",
+                border: "1px solid #C4D1EB",
+                borderRadius: "10px",
+                boxShadow: "0px 3px 3px 1px #9D9D9D",
+                transition: ".3s ease",
+              }}
+              className="login-input"
               type="email"
               id="exampleInputEmail1"
               placeholder=""
@@ -72,14 +82,25 @@ function Loginform() {
           </div>
         </div>
 
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="exampleInputPassword1">
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables">
             Password
           </label>
-          <div class="custom_input">
+          <div>
             <input
-              style={{ width: "95%" }}
-              class="details-input form-control"
+              style={{
+                width: "15vw",
+                fontSize: "15px",
+                height: "26px",
+                outline: "none",
+                background: "#f3f9ff",
+                color: "#000000",
+                border: "1px solid #C4D1EB",
+                borderRadius: "10px",
+                boxShadow: "0px 3px 3px 1px #9D9D9D",
+                transition: ".3s ease",
+              }}
+              className="login-input"
               type="password"
               id="exampleInputPassword1"
               placeholder=""
@@ -95,7 +116,7 @@ function Loginform() {
 
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "33%" }}
         >
           Login

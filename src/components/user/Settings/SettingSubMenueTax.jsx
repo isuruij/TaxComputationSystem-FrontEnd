@@ -2,37 +2,37 @@ import React from "react";
 import "./SettingSubMenue.css"
 import { useNavigate } from "react-router-dom";
 
-function SettingSubMenue() {
+function SettingSubMenueTax() {
   const navigate = useNavigate();
   return (
     
       <div className="group">
         <button
-          className="btn btn-primary bt"
+          class="btn btn-primary bt"
           style={{ }}
           onClick={()=>{
-            navigate("/settings/basic")
+            navigate("/TaxStatus")
           }}
         >
-          <div className="setting-option">Basic Details</div>
+          Tax Status
         </button>
         <button
-          className="btn btn-primary bt"
+          class="btn btn-primary bt"
           style={{  }}
           onClick={()=>{
             navigate("/settings/income")
           }}
         >
-          <div className="setting-option">Income Details</div>
+          Tax history
         </button>
         <button
-          className="btn btn-primary bt"
+          class="btn btn-primary bt"
           style={{  }}
           onClick={()=>{
-            navigate("/settings/uploadfiles")
+            navigate("/TaxPayments")
           }}
         >
-          <div className="setting-option">Update Files</div>
+          Tax Payments Update
         </button>
       </div>
 
@@ -42,4 +42,4 @@ function SettingSubMenue() {
   );
 }
 
-export default SettingSubMenue;
+export default SettingSubMenueTax;
