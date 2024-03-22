@@ -21,6 +21,9 @@
     .ncount{
         margin-left:74.5vw !important ;
     }
+    .headername{
+      display: none;
+    }
   }
 
 
