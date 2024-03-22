@@ -17,7 +17,7 @@ import RegisterUploadDocuments from "./pages/Taxpayer/RegisterUploadDocuments.js
 import SettingsBasicDetails from "./pages/Taxpayer/SettingsBasicDetails.jsx";
 import SettingsFileUpload from "./pages/Taxpayer/SettingsFileUpload.jsx";
 import SettingsIncomeDetails from "./pages/Taxpayer/SettingsIncomeDetails.jsx";
-import TaxStatus from "./pages/Taxpayer/TaxStatus.jsx";
+import TaxStatus from "./pages/Taxpayer/TaxStatus.jsx"; 
 import VerifyUserEmail from "./pages/Taxpayer/VerifyUserEmail.jsx";
 
 import UserHome from "./pages/Taxpayer/UserHome.jsx";
