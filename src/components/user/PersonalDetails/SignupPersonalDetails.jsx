@@ -8,7 +8,9 @@ function SignupPersonalDetails() {
   useEffect(() => {
     console.log("Cookies:", document.cookie);
   }, []);
-
+  const [warning, setWarning] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [Password, setPassword] = useState("");
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -28,15 +30,33 @@ function SignupPersonalDetails() {
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(Password==""){
+      setWarning("Enter password!");
+      return
+    }
+    if(confirmPassword==""){
+      setWarning("Confirm password!");
+      return
+    }
+
+    if (Password!== confirmPassword) {
+      setWarning("Passwords do not match!");
+      setPassword("");
+      setConfirmPassword("");
+      setvalues({ ...values, password: "" });
+      return;
+    }
+
     try {
       const res = await Axios.post(
         "http://localhost:3000/api/taxpayer/register",
         values
       );
-      if (res.data.Status === "Success") {
+      console.log(res.data.message);
+      if (res.data.Status === "Success") {  
         navigate("/dashboard");
-      } else {
-        alert(`${res.data.Status}` + " Enter details correctly");
+      } else if(res.data.message=="already registered email"){
+        alert("Email is already registered! Please Enter another one");
       }
       console.log(res);
     } catch (error) {
@@ -68,13 +88,13 @@ function SignupPersonalDetails() {
           Personal Details
         </h2>
 
-        <div class="form-group">
-          <label className="lables" for="email">
+        <div className="form-group">
+          <label className="lables" >
             Email
           </label>
           <div className="custom_input">
             <input
-              class="details-input form-control"
+              className="details-input form-control"
               type="email"
               id="email"
               placeholder=""
@@ -85,30 +105,14 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <div class="form-group">
-          <label className="lables" for="password">
-            Password
-          </label>
-          <div className="custom_input">
-            <input
-              class="details-input form-control"
-              type="password"
-              id="password"
-              placeholder=""
-              onChange={(e) => {
-                setvalues({ ...values, password: e.target.value });
-              }}
-            />
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label className="lables" for="name">
+        <div className="form-group">
+          <label className="lables" >
             Name
           </label>
           <div className="custom_input">
             <input
-              class="details-input form-control"
+              className="details-input form-control"
               type="text"
               id="name"
               placeholder=""
@@ -119,13 +123,13 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <div class="form-group">
-          <label className="lables" for="address">
+        <div className="form-group">
+          <label className="lables" >
             Permanent Address
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
-              class="details-input form-control"
+              className="details-input form-control"
               type="text"
               id="address"
               placeholder=""
@@ -136,11 +140,11 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <div class="form-group">
-          <label className="lables" for="tin">
+        <div className="form-group">
+          <label className="lables" >
             Tax identification number (TIN)
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
@@ -153,11 +157,11 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <div class="form-group">
-          <label className="lables" for="employername">
+        <div className="form-group">
+          <label className="lables" >
             Name of the employer
           </label>
-          <div class="custom_input">
+          <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
@@ -170,13 +174,13 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <label className="lables" for="exampleInputPassword1">
+        <label className="lables" >
           Contact Numbers
         </label>
         <br></br>
         <br></br>
         <div className="form-group contact">
-          <label className="lables" for="mobileno">
+          <label className="lables" >
             Mobile
           </label>
           <div className="custom_input">
@@ -193,7 +197,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables" for="officeno">
+          <label className="lables" >
             Office
           </label>
           <div className="custom_input">
@@ -210,7 +214,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables" for="homeno">
+          <label className="lables" >
             Home
           </label>
           <div className="custom_input">
@@ -227,7 +231,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group">
-          <label className="lables" for="birthday">
+          <label className="lables" >
             Date of birth
           </label>
           <div className="custom_input">
@@ -241,6 +245,44 @@ function SignupPersonalDetails() {
               }}
             />
           </div>
+        </div>
+
+        <div className="form-group">
+          <label className="lables" >
+            Password
+          </label>
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="password"
+              id="password"
+              value={Password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setvalues({ ...values, password: e.target.value });
+              }}
+            />
+          </div>
+
+        </div>
+
+
+        <div className="form-group">
+          <label className="lables" >
+            Confirm Password
+          </label>
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="password"
+              id="password2"
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
+            />
+          </div>
+          {warning && <p style={{ color: "red" }}>{warning}</p>}
         </div>
 
         <div style={{display:"flex"}}>

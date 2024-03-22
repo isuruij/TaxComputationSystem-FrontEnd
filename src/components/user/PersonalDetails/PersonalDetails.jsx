@@ -97,13 +97,13 @@ function PersonalDetails() {
             style={{ display: "flex", flexDirection: "row" }}
           >
             <div>
-              <div class="form-group">
-                <label className="lables" for="email">
+              <div className="form-group">
+                <label className="lables" >
                   Email
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="email"
                     id="email"
                     value={userData.email}
@@ -138,13 +138,13 @@ function PersonalDetails() {
                 )}
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="name">
+              <div className="form-group">
+                <label className="lables" >
                   Name
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="text"
                     id="name"
                     value={userData.name}
@@ -155,13 +155,13 @@ function PersonalDetails() {
                 </div>
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="address">
+              <div className="form-group">
+                <label className="lables" >
                   Permanent Address
                 </label>
-                <div class="custom_input">
+                <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="text"
                     id="address"
                     value={userData.address}
@@ -172,11 +172,11 @@ function PersonalDetails() {
                 </div>
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="tin">
+              <div className="form-group">
+                <label className="lables" >
                   Tax identification number (TIN)
                 </label>
-                <div class="custom_input">
+                <div className="custom_input">
                   <input
                     className="details-input form-control"
                     type="text"
@@ -190,7 +190,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" for="birthday">
+                <label className="lables" >
                   Date of birth
                 </label>
                 <div className="custom_input">
@@ -206,11 +206,11 @@ function PersonalDetails() {
                 </div>
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="employername">
+              <div className="form-group">
+                <label className="lables" >
                   Name of the employer
                 </label>
-                <div class="custom_input">
+                <div className="custom_input">
                   <input
                     className="details-input form-control"
                     type="text"
@@ -230,7 +230,7 @@ function PersonalDetails() {
             >
               {/* <label className="lables">Contact Numbers</label> */}
               <div className="form-group contact">
-                <label className="lables" for="mobileno">
+                <label className="lables" >
                   Mobile
                 </label>
                 <div className="custom_input">
@@ -247,7 +247,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" for="officeno">
+                <label className="lables" >
                   Office
                 </label>
                 <div className="custom_input">
@@ -264,7 +264,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" for="homeno">
+                <label className="lables" >
                   Home
                 </label>
                 <div className="custom_input">
@@ -281,12 +281,12 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group ">
-                <label className="lables" for="password">
+                <label className="lables" >
                   Password
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="password"
                     id="password"
                     placeholder=""
@@ -298,14 +298,14 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group ">
-                <label className="lables" for="password">
+                <label className="lables" >
                   Re-enter Password
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="password"
-                    id="password"
+                    id="password2"
                     placeholder=""
                     onChange={(e) => {
                       setvalues({ ...values, password: e.target.value });

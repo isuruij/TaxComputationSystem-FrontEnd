@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import "../Login/Login.css";
 
-function Loginform() {
+function ForgetPassword() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [values, setvalues] = useState({
-    email: "",
-    password: "",
+    email: ""
   });
 
   const navigate = useNavigate();
@@ -18,11 +17,11 @@ function Loginform() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
-      if (res.data.Status === "Success") {
-        navigate("/dashboard");
-      } else {
-        alert("Invalid credentials! Please enter correct details.");
+      const res = await Axios.post(`${base_url}/api/taxpayer/forgot-password`, values);
+      if (res.data.Status == "Success") {
+        alert("We have sent a link. Please check your email!");
+      } else if(res.data.Status == "NotSuccess" && res.data.message=="Email not found"){
+        alert("Email not found");
       }
     } catch (error) {
       console.log(error);
@@ -43,24 +42,25 @@ function Loginform() {
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <h2
+        <h4
           style={{
-            marginBottom: "0vw",
-            marginLeft: "6vw",
+            marginBottom: "3vh",
+            marginLeft: "2vw",
             color: "#0085FF",
             fontWeight: "bold",
           }}
         >
-          Log in
-        </h2>
+          Forgot Password
+            
+        </h4>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" >
-            Email
+          <label className="lables"  style={{ marginLeft: "10%" }}>
+           Enter your Email
           </label>
           <div>
             <input
               style={{
-                width: "15vw" ,
+                width: "15vw",
                 fontSize: "15px",
                 height: "26px",
                 outline: "none",
@@ -82,58 +82,19 @@ function Loginform() {
           </div>
         </div>
 
-        <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables">
-            Password
-          </label>
-          <div>
-            <input
-              style={{
-                width: "15vw",
-                fontSize: "15px",
-                height: "26px",
-                outline: "none",
-                background: "#f3f9ff",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
-              }}
-              className="login-input"
-              type="password"
-              id="exampleInputPassword1"
-              placeholder=""
-              onChange={(e) => {
-                setvalues({ ...values, password: e.target.value });
-              }}
-            />
-          </div>
-          <p style={{ color: "#049370", fontSize: "13px", marginTop: "5%" }}>
-            Forget password
-          </p>
-        </div>
+
 
         <button
           type="submit"
           className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "33%" }}
+          style={{ marginTop: "3%", marginLeft: "30%" }}
         >
-          Login
+          Send Link
         </button>
-        <p
-          style={{
-            marginLeft: "10%",
-            marginTop: "5%",
-            color: "#049370",
-            fontSize: "13px",
-          }}
-        >
-          Not a member ? Sign Up
-        </p>
+
       </form>
     </div>
   );
 }
 
-export default Loginform;
+export default ForgetPassword;
