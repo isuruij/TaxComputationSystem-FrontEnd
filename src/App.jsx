@@ -3,7 +3,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 import "./index.scss";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
-
 import Signup from "./pages/Taxpayer/Signup.jsx";
 import Sidenavbar from "../src/components/user/Sidenavbar/Sidenavbar.jsx";
 import Header from "../src/components/user/Header/Header.jsx";
@@ -11,26 +10,19 @@ import Incomedetails from "../src/components/user/Incomedetails/Incomedetails.js
 import FileUpload from "../src/components/user/FileUpload/FileUpload.jsx";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import RegisterPersonalDetails from "../src/pages/Taxpayer/RegisterPersonalDetails.jsx";
-import Dashboard from "./pages/Taxpayer/Dashboard.jsx";
-import RegisterIncomeDetails from "./pages/Taxpayer/RegisterIncomeDetails.jsx";
-import RegisterUploadDocuments from "./pages/Taxpayer/RegisterUploadDocuments.jsx";
-import SettingsBasicDetails from "./pages/Taxpayer/SettingsBasicDetails.jsx";
-import SettingsFileUpload from "./pages/Taxpayer/SettingsFileUpload.jsx";
-import SettingsIncomeDetails from "./pages/Taxpayer/SettingsIncomeDetails.jsx";
-import TaxStatus from "./pages/Taxpayer/TaxStatus.jsx";
-import VerifyUserEmail from "./pages/Taxpayer/VerifyUserEmail.jsx";
+ import RegisterPersonalDetails from "../src/pages/Taxpayer/RegisterPersonalDetails.jsx";
+ import Dashboard from "./pages/Taxpayer/Dashboard.jsx";
+ import RegisterIncomeDetails from "./pages/Taxpayer/RegisterIncomeDetails.jsx";
+ import RegisterUploadDocuments from "./pages/Taxpayer/RegisterUploadDocuments.jsx";
+ import SettingsBasicDetails from "./pages/Taxpayer/SettingsBasicDetails.jsx";
+ import SettingsFileUpload from "./pages/Taxpayer/SettingsFileUpload.jsx";
+ import SettingsIncomeDetails from "./pages/Taxpayer/SettingsIncomeDetails.jsx";
+ import TaxStatus from "./pages/Taxpayer/TaxStatus.jsx";
 
-<<<<<<< HEAD
-import UserHome from "./pages/UserHome.jsx";
-import Viewtax from "./pages/Viewtax.jsx";
-import TaxPayments from "./pages/TaxPayments.jsx";
+ import UserHome from "./pages/Taxpayer/UserHome.jsx";
+ import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
+ import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
 import TaxHistory from "./pages/TaxHistory.jsx";
-=======
-import UserHome from "./pages/Taxpayer/UserHome.jsx";
-import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
-import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
->>>>>>> fb6b44a9d47c37b667a22884b5f7dab474a53230
 
 
 
@@ -58,13 +50,7 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
-<<<<<<< HEAD
     <Route path="/Taxhistory" element={<TaxHistory/>}></Route>
-=======
-    <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
-    
-
->>>>>>> fb6b44a9d47c37b667a22884b5f7dab474a53230
   </Routes>
   </BrowserRouter>    
 

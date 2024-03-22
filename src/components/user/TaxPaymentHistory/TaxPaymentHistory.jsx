@@ -80,7 +80,7 @@ function TaxPaymentHistory() {
       ></link>
 
       <div className="dropdowntable">
-        <div className="dropdownPage ">
+        <div className="dropdownPage embed-responsive  embed-responsive-16by9">
           <div className="dropdown col-lg-4 col-md-6 ">
             {/* <button
               className="btn btn-secondary dropdown-toggle"
