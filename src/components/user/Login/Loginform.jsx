@@ -54,13 +54,11 @@ function Loginform() {
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" >
-            Email
-          </label>
+          <label className="lables">Email</label>
           <div>
             <input
               style={{
-                width: "15vw" ,
+                width: "15vw",
                 fontSize: "15px",
                 height: "26px",
                 outline: "none",
@@ -83,9 +81,7 @@ function Loginform() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables">
-            Password
-          </label>
+          <label className="lables">Password</label>
           <div>
             <input
               style={{
