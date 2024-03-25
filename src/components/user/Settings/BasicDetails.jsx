@@ -283,7 +283,7 @@ function BasicDetails() {
           className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "70%" }}
         >
-          Update
+          Save & Continue
         </button>
         <br></br>
         <br></br>
