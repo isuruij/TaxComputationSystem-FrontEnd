@@ -5,11 +5,14 @@ import { useState } from "react";
 import "./Header.css";
 import Cookies from 'js-cookie';
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
 
   const cookieValue = Cookies.get('token');
   const name = jwtDecode(cookieValue).name;
+
+  const navigate = useNavigate();
   
   const [count, setcount] = useState(0);
   useEffect(() => {
@@ -28,6 +31,7 @@ function Header() {
         style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
         src={Notification}
         alt="Notification"
+        onClick={() => navigate("/notification")}
       />
       {count != 0 ? (
         <span

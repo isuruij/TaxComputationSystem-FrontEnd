@@ -1,23 +1,19 @@
 import React from "react";
 import NotificationCom from "../../components/user/NotificationCom/NotificationCom";
 import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
-import SettingSubMenue from "../../components/user/Settings/SettingSubMenue";
+import Header from "../../components/user/Header/Header";
+
 
 function Notification() {
   return (
     <div>
-      <div>
-        <Header />
-        <div style={{ display: "flex" }}>
-          <div style={{ marginTop: "5px" }}>{/* <Sidenavbar /> */}</div>
-          <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-            <div>
-              <SettingSubMenue />
-            </div>
-            <div style={{ marginTop: "5px" }}>
-              <NotificationCom />
-            </div>
-          </div>
+      <Header />
+      <div style={{ display: "flex" }}>
+        <div style={{marginTop:"5px"}}>
+          <Sidenavbar />
+        </div>
+        <div style={{width:'65vw',marginLeft:"5px",marginTop:"0px"}} >
+          <NotificationCom/>
         </div>
       </div>
     </div>
