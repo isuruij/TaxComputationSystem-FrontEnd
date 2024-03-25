@@ -1,16 +1,90 @@
 import React from "react";
+import { useState } from "react";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import "../Incomedetails/Incomedetails.css";
 
 function Incomedetails() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
+
+  useEffect(() => {
+    getIncomeDetails();
+  }, []);
+
+  const [values, setvalues] = useState({
+    businessIncome: "",
+    employmentIncome: "",
+    investmentIncome: "",
+    otherIncome: "",
+    id: userId,
+  });
+
+  const [userData, setuserData] = useState({});
+
+  const navigate = useNavigate();
+  Axios.defaults.withCredentials = true;
+
+
+
+  const getIncomeDetails = async () => {
+    try {
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserincomedetails/${userId}`
+      );
+      setuserData(response.data.Data);
+      setvalues({
+        ...values,
+        businessIncome: response.data.Data.businessIncome,
+        employmentIncome: response.data.Data.employmentIncome,
+        investmentIncome: response.data.Data.investmentIncome,
+        otherIncome: response.data.Data.otherIncome
+      });
+      console.log(userData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //submiting PersonalDetails to backend
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await Axios.patch(
+        "http://localhost:3000/api/taxpayer/updateincomedetails",
+        values
+      );
+      if (res.data.Status === "Success") {
+        window.location.reload();
+      } else if (
+        res.data.Status === "NotSuccess" &&
+        res.data.message == "already registered email"
+      ) {
+        alert("already registered email");
+      } else {
+        alert("Error in updating");
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <form
+        onSubmit={handleSubmit}
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
           width: "78VW",
-          boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"
+          boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
         <h2
@@ -23,63 +97,65 @@ function Incomedetails() {
         >
           Income Details
         </h2>
-        <label className="lables">
-          Type of income
-        </label>
+        <label className="lables">Type of income</label>
         <br></br>
         <br></br>
         <div className="form-group contact">
-          <label className="lables">
-            Employement Income
-          </label>
+          <label className="lables">Employement Income</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
               type="text"
               id="mobileno"
-              placeholder=""
+              defaultValue={userData.employmentIncome}
+              onChange={(e) => {
+                setvalues({ ...values, employmentIncome: e.target.value });
+              }}
             />
           </div>
         </div>
 
         <div className="form-group contact">
-          <label className="lables">
-            Investment Income
-          </label>
+          <label className="lables">Investment Income</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
               type="number"
               id="officeno"
-              placeholder=""
+              defaultValue={userData.investmentIncome}
+              onChange={(e) => {
+                setvalues({ ...values, investmentIncome: e.target.value });
+              }}
             />
           </div>
         </div>
 
         <div className="form-group contact">
-          <label className="lables">
-            Business income
-          </label>
+          <label className="lables">Business income</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
               type="number"
               id="homeno"
-              placeholder=""
+              defaultValue={userData.businessIncome}
+              onChange={(e) => {
+                setvalues({ ...values, businessIncome: e.target.value });
+              }}
             />
           </div>
         </div>
 
         <div className="form-group contact">
-          <label className="lables">
-            Other income
-          </label>
+          <label className="lables">Other income</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
               type="number"
               id="homeno"
-              placeholder=""
+              defaultValue={userData.otherIncome}
+              onChange={(e) => {
+                setvalues({ ...values, otherIncome: e.target.value });
+              }}
             />
           </div>
         </div>
@@ -132,9 +208,7 @@ function Incomedetails() {
             name="dprSource"
             className="form-check-input"
           />
-          <label  className="form-check-label lables">
-            Social Media
-          </label>
+          <label className="form-check-label lables">Social Media</label>
         </div>
 
         <div className="form-check">
@@ -144,9 +218,7 @@ function Incomedetails() {
             name="dprSource"
             className="form-check-input"
           />
-          <label className="form-check-label lables">
-            DPR Website
-          </label>
+          <label className="form-check-label lables">DPR Website</label>
         </div>
 
         <div className="form-check">
@@ -156,9 +228,7 @@ function Incomedetails() {
             name="dprSource"
             className="form-check-input"
           />
-          <label className="form-check-label lables">
-            Other
-          </label>
+          <label className="form-check-label lables">Other</label>
         </div>
         <br></br>
 
@@ -172,9 +242,7 @@ function Incomedetails() {
             name="annualFee"
             className="form-check-input"
           />
-          <label className="form-check-label lables">
-            Yes
-          </label>
+          <label className="form-check-label lables">Yes</label>
         </div>
 
         <div className="form-check">
@@ -184,12 +252,8 @@ function Incomedetails() {
             name="annualFee"
             className="form-check-input"
           />
-          <label className="form-check-label lables">
-            No
-          </label>
+          <label className="form-check-label lables">No</label>
         </div>
-
-        
 
         <button
           className="btn btn-primary"

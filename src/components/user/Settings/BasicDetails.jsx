@@ -43,6 +43,8 @@ function BasicDetails() {
         `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
       );
       setuserData(response.data.Data);
+      console.log(response.data.Data)
+      console.log("-----------")
       console.log(userData);
     } catch (error) {
       console.error(error);
