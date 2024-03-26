@@ -18,11 +18,11 @@ import SettingsBasicDetails from "./pages/SettingsBasicDetails.jsx";
 import SettingsFileUpload from "./pages/SettingsFileUpload.jsx";
 import SettingsIncomeDetails from "./pages/SettingsIncomeDetails.jsx";
 import TaxStatus from "./pages/TaxStatus.jsx";
+import TaxHistory from "./pages/TaxHistory.jsx"
 
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
 import TaxPayments from "./pages/TaxPayments.jsx";
-import TaxHistory from "./pages/TaxHistory.jsx";
 
 
 
@@ -50,7 +50,8 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
-    <Route path="/Taxhistory" element={<TaxHistory/>}></Route>
+    <Route path="/TaxHistory" element={<TaxHistory/>}></Route>
+    
 
   </Routes>
   </BrowserRouter>    

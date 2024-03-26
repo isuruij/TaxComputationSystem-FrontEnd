@@ -19,7 +19,7 @@ function TaxHistory() {
             <div>
               <SettingSubMenueTax />
             </div>
-            <div style={{marginTop:"5px", width:"auto"}}>
+            <div style={{marginTop:"-5px", width:"auto"}}>
               <TaxPaymentHistory/>
             </div>
           </div>
