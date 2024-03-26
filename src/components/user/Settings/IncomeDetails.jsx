@@ -23,14 +23,14 @@ function Incomedetails() {
     investmentIncome: "",
     otherIncome: "",
     id: userId,
+    dprSource: "", // Add this
+    annualFee: "", // Add this
   });
 
   const [userData, setuserData] = useState({});
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
-
-
 
   const getIncomeDetails = async () => {
     try {
@@ -43,7 +43,7 @@ function Incomedetails() {
         businessIncome: response.data.Data.businessIncome,
         employmentIncome: response.data.Data.employmentIncome,
         investmentIncome: response.data.Data.investmentIncome,
-        otherIncome: response.data.Data.otherIncome
+        otherIncome: response.data.Data.otherIncome,
       });
       console.log(userData);
     } catch (error) {
@@ -54,6 +54,7 @@ function Incomedetails() {
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(values)
     try {
       const res = await Axios.patch(
         "http://localhost:3000/api/taxpayer/updateincomedetails",
@@ -101,7 +102,7 @@ function Incomedetails() {
         <br></br>
         <br></br>
         <div className="form-group contact">
-          <label className="lables">Employement Income</label>
+          <label className="lables">Employement Income (LKR)</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -116,7 +117,7 @@ function Incomedetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables">Investment Income</label>
+          <label className="lables">Investment Income (LKR)</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -131,7 +132,7 @@ function Incomedetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables">Business income</label>
+          <label className="lables">Business income (LKR)</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -146,7 +147,7 @@ function Incomedetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables">Other income</label>
+          <label className="lables">Other income (LKR)</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -170,7 +171,11 @@ function Incomedetails() {
             type="radio"
             id="friend"
             name="dprSource"
+            value="friend"
             className=" form-check-input"
+            onChange={(e) => {
+              setvalues({ ...values, dprSource: e.target.value });
+            }}
           />
           <label className="form-check-label lables">
             Introduced by a Friend
@@ -182,6 +187,7 @@ function Incomedetails() {
             type="radio"
             id="family"
             name="dprSource"
+            value="family"
             className="form-check-input"
           />
           <label className="form-check-label lables">
@@ -194,6 +200,7 @@ function Incomedetails() {
             type="radio"
             id="company"
             name="dprSource"
+            value="company"
             className="form-check-input"
           />
           <label className="form-check-label lables">
@@ -206,6 +213,7 @@ function Incomedetails() {
             type="radio"
             id="socialMedia"
             name="dprSource"
+            value="socialmedia"
             className="form-check-input"
           />
           <label className="form-check-label lables">Social Media</label>
@@ -215,7 +223,8 @@ function Incomedetails() {
           <input
             type="radio"
             id="dprWebsite"
-            name="dprSource"
+            name="dprWebsite"
+            value="dprWebsite"
             className="form-check-input"
           />
           <label className="form-check-label lables">DPR Website</label>
@@ -240,6 +249,7 @@ function Incomedetails() {
             type="radio"
             id="agree"
             name="annualFee"
+            value="yes"
             className="form-check-input"
           />
           <label className="form-check-label lables">Yes</label>
@@ -250,6 +260,7 @@ function Incomedetails() {
             type="radio"
             id="disagree"
             name="annualFee"
+            value="no"
             className="form-check-input"
           />
           <label className="form-check-label lables">No</label>
