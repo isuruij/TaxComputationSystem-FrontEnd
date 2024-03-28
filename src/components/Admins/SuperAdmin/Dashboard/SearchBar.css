@@ -2,8 +2,11 @@
 
 .search-container {
     position: relative;
-    width: 100%; /* Adjust the width as needed */
+    width: 90%; /* Adjust the width as needed */
     box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+    margin-left: 40px;
+    border-radius: 10px;
+    
 
   }
   

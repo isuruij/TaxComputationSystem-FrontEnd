@@ -1,6 +1,7 @@
 
 import React from 'react';
 import './SearchBar.css';
+import UserList from './UserList';
 
 
 
@@ -16,16 +17,9 @@ export default function Dashboard() {
         boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",
         height:"100vh"}}>
 
-        <div className="search-container">
-              <input
-                type="text"
-                placeholder=" Search..."
-                className="search-input"
-              />
+            <div>
+              <UserList/>
             </div>
-        
-      
-        
-        </div></div>
+             </div></div>
   )
 }
