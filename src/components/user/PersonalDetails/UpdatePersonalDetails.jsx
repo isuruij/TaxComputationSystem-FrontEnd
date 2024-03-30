@@ -27,7 +27,7 @@ function UpdatePersonalDetails() {
     name: "",
     address: "",
     tin: "",
-    nameofemployer: "",
+    nameofemployer: "", 
     mobileno: "",
     officeno: "",
     homeno: "",
@@ -74,8 +74,10 @@ function UpdatePersonalDetails() {
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else {
-        alert("Enter in updating");
+      } else if(res.data.Status === "NotSuccess" && res.data.message=="already registered email" ) {
+        alert("already registered email");
+      }else{
+        alert("Error in updating");
       }
       console.log(res);
     } catch (error) {
@@ -118,13 +120,13 @@ function UpdatePersonalDetails() {
             style={{ display: "flex", flexDirection: "row" }}
           >
             <div>
-              <div class="form-group">
-                <label className="lables" for="email">
+              <div className="form-group">
+                <label className="lables" >
                   Email
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="email"
                     id="email"
                     defaultValue={userData.email}
@@ -159,13 +161,13 @@ function UpdatePersonalDetails() {
                 )}
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="name">
+              <div className="form-group">
+                <label className="lables" >
                   Name
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="text"
                     id="name"
                     defaultValue={userData.name}
@@ -176,13 +178,13 @@ function UpdatePersonalDetails() {
                 </div>
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="address">
+              <div className="form-group">
+                <label className="lables" >
                   Permanent Address
                 </label>
-                <div class="custom_input">
+                <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="text"
                     id="address"
                     defaultValue={userData.address}
@@ -193,11 +195,11 @@ function UpdatePersonalDetails() {
                 </div>
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="tin">
+              <div className="form-group">
+                <label className="lables" >
                   Tax identification number (TIN)
                 </label>
-                <div class="custom_input">
+                <div className="custom_input">
                   <input
                     className="details-input form-control"
                     type="text"
@@ -211,7 +213,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" for="birthday">
+                <label className="lables" >
                   Date of birth
                 </label>
                 <div className="custom_input">
@@ -227,11 +229,11 @@ function UpdatePersonalDetails() {
                 </div>
               </div>
 
-              <div class="form-group">
-                <label className="lables" for="employername">
+              <div className="form-group">
+                <label className="lables" >
                   Name of the employer
                 </label>
-                <div class="custom_input">
+                <div className="custom_input">
                   <input
                     className="details-input form-control"
                     type="text"
@@ -251,7 +253,7 @@ function UpdatePersonalDetails() {
             >
               {/* <label className="lables">Contact Numbers</label> */}
               <div className="form-group contact">
-                <label className="lables" for="mobileno">
+                <label className="lables" >
                   Mobile
                 </label>
                 <div className="custom_input">
@@ -268,7 +270,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" for="officeno">
+                <label className="lables" >
                   Office
                 </label>
                 <div className="custom_input">
@@ -285,7 +287,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" for="homeno">
+                <label className="lables" >
                   Home
                 </label>
                 <div className="custom_input">
@@ -302,12 +304,12 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group ">
-                <label className="lables" for="password">
+                <label className="lables" >
                   Password
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="password"
                     id="password"
                     placeholder=""
@@ -319,12 +321,12 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group ">
-                <label className="lables" for="password">
+                <label className="lables" >
                   Re-enter Password
                 </label>
                 <div className="custom_input">
                   <input
-                    class="details-input form-control"
+                    className="details-input form-control"
                     type="password"
                     id="password2"
                     placeholder=""
@@ -339,7 +341,7 @@ function UpdatePersonalDetails() {
 
           <div className="signup" style={{ display: "flex" }}>
             <>
-              <Button variant="primary" onClick={handleShow}>
+              <Button style={{marginLeft:"50vw"}}  onClick={handleShow}>
                 Update
               </Button>
 

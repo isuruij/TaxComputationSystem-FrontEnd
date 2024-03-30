@@ -1,61 +1,85 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import "../Incomedetails/Incomedetails.css";
 
 function Incomedetails() {
-  const [employmentIncomes, setEmploymentIncomes] = useState([""]);
-  const [investmentIncomes, setInvestmentIncomes] = useState([""]);
-  const [businessIncomes, setBusinessIncomes] = useState([""]);
-  const [otherIncomes, setOtherIncomes] = useState([""]);
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
-  const handleAddIncome = (incomeType) => {
-    switch (incomeType) {
-      case "employment":
-        setEmploymentIncomes([...employmentIncomes, ""]);
-        break;
-      case "investment":
-        setInvestmentIncomes([...investmentIncomes, ""]);
-        break;
-      case "business":
-        setBusinessIncomes([...businessIncomes, ""]);
-        break;
-      case "other":
-        setOtherIncomes([...otherIncomes, ""]);
-        break;
-      default:
-        break;
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
+
+  useEffect(() => {
+    getIncomeDetails();
+  }, []);
+
+  const [values, setvalues] = useState({
+    businessIncome: "",
+    employmentIncome: "",
+    investmentIncome: "",
+    otherIncome: "",
+    id: userId,
+    dprSource: "", // Add this
+    annualFee: "", // Add this
+  });
+
+  const [userData, setuserData] = useState({});
+
+  const navigate = useNavigate();
+  Axios.defaults.withCredentials = true;
+
+  const getIncomeDetails = async () => {
+    try {
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserincomedetails/${userId}`
+      );
+      setuserData(response.data.Data);
+      setvalues({
+        ...values,
+        businessIncome: response.data.Data.businessIncome,
+        employmentIncome: response.data.Data.employmentIncome,
+        investmentIncome: response.data.Data.investmentIncome,
+        otherIncome: response.data.Data.otherIncome,
+      });
+      console.log(userData);
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  const handleIncomeChange = (incomeType, index, value) => {
-    switch (incomeType) {
-      case "employment":
-        const newEmploymentIncomes = [...employmentIncomes];
-        newEmploymentIncomes[index] = value;
-        setEmploymentIncomes(newEmploymentIncomes);
-        break;
-      case "investment":
-        const newInvestmentIncomes = [...investmentIncomes];
-        newInvestmentIncomes[index] = value;
-        setInvestmentIncomes(newInvestmentIncomes);
-        break;
-      case "business":
-        const newBusinessIncomes = [...businessIncomes];
-        newBusinessIncomes[index] = value;
-        setBusinessIncomes(newBusinessIncomes);
-        break;
-      case "other":
-        const newOtherIncomes = [...otherIncomes];
-        newOtherIncomes[index] = value;
-        setOtherIncomes(newOtherIncomes);
-        break;
-      default:
-        break;
+  //submiting PersonalDetails to backend
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log(values)
+    try {
+      const res = await Axios.patch(
+        "http://localhost:3000/api/taxpayer/updateincomedetails",
+        values
+      );
+      if (res.data.Status === "Success") {
+        window.location.reload();
+      } else if (
+        res.data.Status === "NotSuccess" &&
+        res.data.message == "already registered email"
+      ) {
+        alert("already registered email");
+      } else {
+        alert("Error in updating");
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <div>
       <form
+        onSubmit={handleSubmit}
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
@@ -74,135 +98,173 @@ function Incomedetails() {
         >
           Income Details
         </h2>
-        <label className="lables" htmlFor="exampleInputPassword1">
-          Type of income
+        <label className="lables">Type of income</label>
+        <br></br>
+        <br></br>
+        <div className="form-group contact">
+          <label className="lables">Employement Income (LKR)</label>
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="text"
+              id="mobileno"
+              defaultValue={userData.employmentIncome}
+              onChange={(e) => {
+                setvalues({ ...values, employmentIncome: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="form-group contact">
+          <label className="lables">Investment Income (LKR)</label>
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="number"
+              id="officeno"
+              defaultValue={userData.investmentIncome}
+              onChange={(e) => {
+                setvalues({ ...values, investmentIncome: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="form-group contact">
+          <label className="lables">Business income (LKR)</label>
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="number"
+              id="homeno"
+              defaultValue={userData.businessIncome}
+              onChange={(e) => {
+                setvalues({ ...values, businessIncome: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="form-group contact">
+          <label className="lables">Other income (LKR)</label>
+          <div className="custom_input">
+            <input
+              className="details-input form-control"
+              type="number"
+              id="homeno"
+              defaultValue={userData.otherIncome}
+              onChange={(e) => {
+                setvalues({ ...values, otherIncome: e.target.value });
+              }}
+            />
+          </div>
+        </div>
+        <br></br>
+
+        <label className="lables">How do you know DPR</label>
+        <br></br>
+        <br></br>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="friend"
+            name="dprSource"
+            value="friend"
+            className=" form-check-input"
+            onChange={(e) => {
+              setvalues({ ...values, dprSource: e.target.value });
+            }}
+          />
+          <label className="form-check-label lables">
+            Introduced by a Friend
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="family"
+            name="dprSource"
+            value="family"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">
+            Introduced by a Family Member
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="company"
+            name="dprSource"
+            value="company"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">
+            Introduced by the Company
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="socialMedia"
+            name="dprSource"
+            value="socialmedia"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">Social Media</label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="dprWebsite"
+            name="dprWebsite"
+            value="dprWebsite"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">DPR Website</label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="other"
+            name="dprSource"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">Other</label>
+        </div>
+        <br></br>
+
+        <label className="form-check-label lables">
+          Are you agree with annual fee
         </label>
-        <br></br>
-        <br></br>
+        <div className="form-check">
+          <input
+            type="radio"
+            id="agree"
+            name="annualFee"
+            value="yes"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">Yes</label>
+        </div>
 
-        {/* Employment Income */}
-        {employmentIncomes.map((income, index) => (
-          <div className="form-group contact" key={`employment${index}`}>
-            <label className="lables" htmlFor={`mobileno${index}`}>
-              Employment Income {index + 1}
-            </label>
-            <div className="custom_input" style={{ display: "flex" }}>
-              <input
-                className="details-input form-control"
-                type="text"
-                id={`mobileno${index}`}
-                placeholder=""
-                value={income}
-                onChange={(e) =>
-                  handleIncomeChange("employment", index, e.target.value)
-                }
-              />
-              {index === employmentIncomes.length - 1 && (
-                <button
-                  className="btn btn-primary"
-                  style={{ marginLeft: "10px", height: "35px" }}
-                  onClick={() => handleAddIncome("employment")}
-                >
-                  +
-                </button>
-              )}
-            </div>
-          </div>
-        ))}
-
-        <br></br>
-
-        {/* Investment Income */}
-        {investmentIncomes.map((income, index) => (
-          <div className="form-group contact" key={`investment${index}`}>
-            <label className="lables" htmlFor={`investmentno${index}`}>
-              Investment Income {index + 1}
-            </label>
-            <div className="custom_input" style={{ display: "flex" }}>
-              <input
-                className="details-input form-control"
-                type="text"
-                id={`investmentno${index}`}
-                placeholder=""
-                value={income}
-                onChange={(e) =>
-                  handleIncomeChange("investment", index, e.target.value)
-                }
-              />
-              {index === investmentIncomes.length - 1 && (
-                <button
-                  className="btn btn-primary"
-                  style={{ marginLeft: "10px", height: "35px" }}
-                  onClick={() => handleAddIncome("investment")}
-                >
-                  +
-                </button>
-              )}
-            </div>
-          </div>
-        ))}
-
-        <br></br>
-        {/* Business Income */}
-        {businessIncomes.map((income, index) => (
-          <div className="form-group contact" key={`business${index}`}>
-            <label className="lables" htmlFor={`businessno${index}`}>
-              Business Income {index + 1}
-            </label>
-            <div className="custom_input" style={{ display: "flex" }}>
-              <input
-                className="details-input form-control"
-                type="text"
-                id={`businessno${index}`}
-                placeholder=""
-                value={income}
-                onChange={(e) =>
-                  handleIncomeChange("business", index, e.target.value)
-                }
-              />
-              {index === businessIncomes.length - 1 && (
-                <button
-                  className="btn btn-primary"
-                  style={{ marginLeft: "10px", height: "35px" }}
-                  onClick={() => handleAddIncome("business")}
-                >
-                  +
-                </button>
-              )}
-            </div>
-          </div>
-        ))}
-        <br></br>
-        {/* Other Income */}
-        {otherIncomes.map((income, index) => (
-          <div className="form-group contact" key={`other${index}`}>
-            <label className="lables" htmlFor={`otherno${index}`}>
-              Other Income {index + 1}
-            </label>
-            <div className="custom_input" style={{ display: "flex" }}>
-              <input
-                className="details-input form-control"
-                type="text"
-                id={`otherno${index}`}
-                placeholder=""
-                value={income}
-                onChange={(e) =>
-                  handleIncomeChange("other", index, e.target.value)
-                }
-              />
-              {index === otherIncomes.length - 1 && (
-                <button 
-                className="btn btn-primary"
-                style={{marginLeft:"10px",height:"35px"}}
-                onClick={() => handleAddIncome("other")}>
-                  +
-                </button>
-              )}
-            </div>
-          </div>
-        ))}
-
-        <br></br>
+        <div className="form-check">
+          <input
+            type="radio"
+            id="disagree"
+            name="annualFee"
+            value="no"
+            className="form-check-input"
+          />
+          <label className="form-check-label lables">No</label>
+        </div>
 
         <button
           className="btn btn-primary"

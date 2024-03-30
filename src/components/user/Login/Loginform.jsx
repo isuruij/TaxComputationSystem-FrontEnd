@@ -53,8 +53,8 @@ function Loginform() {
         >
           Log in
         </h2>
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="email">
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables" >
             Email
           </label>
           <div>
@@ -82,8 +82,8 @@ function Loginform() {
           </div>
         </div>
 
-        <div class="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" for="exampleInputPassword1">
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables">
             Password
           </label>
           <div>
@@ -109,20 +109,21 @@ function Loginform() {
               }}
             />
           </div>
-          <p style={{ color: "#049370", fontSize: "13px", marginTop: "5%" }}>
+          <p onClick={()=>{navigate('../forgotpassword')}} style={{ cursor:"pointer", color: "#049370", fontSize: "13px", marginTop: "5%" }}>
             Forget password
           </p>
         </div>
 
         <button
           type="submit"
-          class="btn btn-primary"
+          className="btn btn-primary"
           style={{ marginTop: "3%", marginLeft: "33%" }}
         >
           Login
         </button>
-        <p
+        <p onClick={()=>{navigate('../signup')}}
           style={{
+            cursor:"pointer",
             marginLeft: "10%",
             marginTop: "5%",
             color: "#049370",

@@ -8,7 +8,7 @@ function SettingSubMenue() {
     
       <div className="group">
         <button
-          class="btn btn-primary bt"
+          className="btn btn-primary bt"
           style={{ }}
           onClick={()=>{
             navigate("/settings/basic")
@@ -17,7 +17,7 @@ function SettingSubMenue() {
           <div className="setting-option">Basic Details</div>
         </button>
         <button
-          class="btn btn-primary bt"
+          className="btn btn-primary bt"
           style={{  }}
           onClick={()=>{
             navigate("/settings/income")
@@ -26,7 +26,7 @@ function SettingSubMenue() {
           <div className="setting-option">Income Details</div>
         </button>
         <button
-          class="btn btn-primary bt"
+          className="btn btn-primary bt"
           style={{  }}
           onClick={()=>{
             navigate("/settings/uploadfiles")
