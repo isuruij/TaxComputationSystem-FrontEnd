@@ -94,6 +94,7 @@ function SignupPersonalDetails() {
           </label>
           <div className="custom_input">
             <input
+              required
               className="details-input form-control"
               type="email"
               id="email"
@@ -112,6 +113,7 @@ function SignupPersonalDetails() {
           </label>
           <div className="custom_input">
             <input
+              required
               className="details-input form-control"
               type="text"
               id="name"

@@ -193,15 +193,7 @@ function Incomedetails() {
 
         <div style={{display:"flex"}}>
 
-        <button
-          onClick={()=>{
-            navigate("register/personaldetails")
-          }}
-          class="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "0%" }}
-        >
-          Back
-        </button>
+
 
         <button
           onClick={()=>{
@@ -212,7 +204,7 @@ function Incomedetails() {
           style={{ marginTop: "3%", marginLeft: "70%" }}
           type="submit"
         >
-          Save & Continue
+          Save
         </button>
         </div>
 

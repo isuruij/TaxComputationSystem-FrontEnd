@@ -1,7 +1,6 @@
 
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./App.css";
-import "./index.scss";
+import "./index.css";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
 
 import Signup from "./pages/Taxpayer/Signup.jsx";

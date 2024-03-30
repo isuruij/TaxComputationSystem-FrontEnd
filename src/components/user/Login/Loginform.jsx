@@ -109,7 +109,7 @@ function Loginform() {
               }}
             />
           </div>
-          <p style={{ color: "#049370", fontSize: "13px", marginTop: "5%" }}>
+          <p onClick={()=>{navigate('../forgotpassword')}} style={{ cursor:"pointer", color: "#049370", fontSize: "13px", marginTop: "5%" }}>
             Forget password
           </p>
         </div>
@@ -121,8 +121,9 @@ function Loginform() {
         >
           Login
         </button>
-        <p
+        <p onClick={()=>{navigate('../signup')}}
           style={{
+            cursor:"pointer",
             marginLeft: "10%",
             marginTop: "5%",
             color: "#049370",

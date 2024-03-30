@@ -27,7 +27,7 @@ function UpdatePersonalDetails() {
     name: "",
     address: "",
     tin: "",
-    nameofemployer: "",
+    nameofemployer: "", 
     mobileno: "",
     officeno: "",
     homeno: "",
