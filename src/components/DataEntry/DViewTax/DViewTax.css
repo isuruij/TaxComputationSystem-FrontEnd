@@ -4,7 +4,7 @@
   border-radius: 20px;
   background-color: #f3fff5;
   /* min-width: min-content; */
-  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  box-shadow: 1px 3px 2px 1px rgba(0, 0, 0, 0.44);
 }
 
 .dTax-view-header {

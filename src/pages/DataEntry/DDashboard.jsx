@@ -10,7 +10,7 @@ function DDashboard() {
         <DHeader />
       </div>
       <div style={{ display: "flex" }}>
-        <div>
+        <div style={{ width: "20vw" }}>
           <DSideNavBar />
         </div>
         <div style={{ marginTop: "10px", paddingLeft: "10px", width: "80vw" }}>

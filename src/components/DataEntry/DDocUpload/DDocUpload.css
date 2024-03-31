@@ -4,8 +4,8 @@
   padding: 30px;
   border-radius: 20px;
   background-color: #f3fff5;
-  width: "78vw";
-  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  width: "100%";
+  box-shadow: 1px 3px 2px 1px rgba(0, 0, 0, 0.44);
 }
 
 .dmain-topic {
@@ -64,6 +64,10 @@ input::-webkit-file-upload-button {
 
 .fa-caret-down {
   margin-left: 20px;
+}
+
+.userInfo h5 {
+  margin: 0px 20px;
 }
 
 .d-custom {

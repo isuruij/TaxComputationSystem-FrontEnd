@@ -105,8 +105,37 @@ function FileUpload() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
-      <h2 className="dmain-topic">Upload Documents</h2>
+
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div
+          style={{
+            backgroundColor: "#049370",
+            width: "150px",
+            height: "150px",
+            borderRadius: "75px",
+            marginLeft: "20px",
+          }}
+        ></div>
+        <div
+          className="userInfo"
+          style={{
+            backgroundColor: "#049370",
+            width: "60%",
+            height: "150px",
+            borderRadius: "10px",
+            marginRight: "30px",
+            color: "white",
+            fontSize: "smaller",
+          }}
+        >
+          <h5 style={{ marginTop: "15px" }}>MR. ANDORSON_JAMES</h5>
+          <h5>TIN NO: 24480Z</h5>
+          <h5>INCOME TAX COMPUTATION REPORT</h5>
+          <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
+        </div>
+      </div>
       <form>
+        {/*This is Total Assessable Income*/}
         <h3 className="dsub-topic">
           Total Assessable Income
           {!show1 && (
@@ -192,6 +221,7 @@ function FileUpload() {
           </div>
         )}
 
+        {/*This is Qualifying Payments & Reliefs*/}
         <h3 className="dsub-topic">
           Qualifying Payments & Reliefs
           {!show2 && (
@@ -256,6 +286,7 @@ function FileUpload() {
           </div>
         )}
 
+        {/*This is Tax Credit*/}
         <h3 className="dsub-topic">
           Tax Credit
           {!show3 && (
@@ -341,6 +372,7 @@ function FileUpload() {
           </div>
         )}
 
+        {/*This is Other informations*/}
         <h3 className="dsub-topic">
           Other
           {!show4 && (

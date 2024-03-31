@@ -42,11 +42,12 @@ function DSideNavBar() {
         marginTop: "5px",
         marginLeft: "0.5%",
         backgroundColor: "#F3FFF5",
-        width: "20vw",
-        height: "90vh",
+        width: "100%",
+        height: "92vh",
       }}
     >
       <br></br>
+      {/*This is dashboard*/}
       <button
         onClick={() => {
           navigate("/dataEntry/dashboard");
@@ -63,6 +64,7 @@ function DSideNavBar() {
         <span>Dashboard</span>
       </button>
 
+      {/*This is Account Settings*/}
       <button
         onClick={() => {
           navigate("/dataEntry/dashboard");
@@ -79,6 +81,7 @@ function DSideNavBar() {
         <span>Account Settings</span>
       </button>
 
+      {/*This is Submissions*/}
       <button
         type="button"
         className="btn btn-primary custom-button"
@@ -95,6 +98,7 @@ function DSideNavBar() {
         <span>Submission</span>
       </button>
 
+      {/*This is MAil Box*/}
       <button
         onClick={() => {
           navigate("/dataEntry/dashboard");
@@ -110,6 +114,8 @@ function DSideNavBar() {
         />
         <span>Mail Box</span>
       </button>
+
+      {/*This is LogOut*/}
       <button
         onClick={() => {
           handleLogout();

@@ -10,7 +10,7 @@ function DSubmissionDashboard() {
         <DHeader />
       </div>
       <div style={{ display: "flex" }}>
-        <div>
+        <div style={{ width: "20vw" }}>
           <DSideNavBar />
         </div>
         <div style={{ marginLeft: "10px", marginTop: "10px", width: "80vw" }}>

@@ -10,7 +10,7 @@ function DViewTaxPage() {
         <DHeader />
       </div>
       <div style={{ display: "flex" }}>
-        <div>
+        <div style={{ width: "20vw" }}>
           <DSideNavBar />
         </div>
         <div style={{ marginLeft: "5px", marginTop: "5px", width: "80vw" }}>

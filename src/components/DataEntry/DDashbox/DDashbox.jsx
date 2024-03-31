@@ -4,31 +4,35 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function DDashbox() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const [listOfUsers, setListOfUsers] = useState([]);
 
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/taxpayer/getusernames")
-      .then((response) => {
-        console.log(response.data);
-        setListOfUsers(response.data);
-      });
+    axios.get(`${base_url}/api/dataentry/getusernames`).then((response) => {
+      console.log(response.data.Data);
+      setListOfUsers(response.data.Data);
+    });
   }, []);
 
   return (
+    //This is mapping part show all the users to data entry operator andalso show is Verified by admin or not
     <div
       style={{
         marginTop: "5px",
-        width: "78vw",
+        width: "100%",
         backgroundColor: "#F3FFF5",
         paddingTop: "20px",
         paddingBottom: "20px",
-        boxShadow: "1px 5px 3px 1px rgba(0, 0, 0, 0.44)",
+        boxShadow: "1px 3px 2px 1px rgba(0, 0, 0, 0.44)",
         borderRadius: "10px",
       }}
     >
+      <link
+        href="https://fonts.cdnfonts.com/css/poppins"
+        rel="stylesheet"
+      ></link>
       {listOfUsers.map((value, key) => {
         return (
           <div
@@ -47,13 +51,15 @@ function DDashbox() {
               borderRadius: "10px",
             }}
           >
+            {/* Show users name*/}
             <div
               className="name"
               style={{
                 padding: "5px",
                 color: "black",
-                fontWeight: "400",
+                fontWeight: "500",
                 paddingLeft: "30px",
+                fontFamily: "Poppins",
               }}
               onClick={() => {
                 navigate("/dataEntry/dashboard");
@@ -61,6 +67,8 @@ function DDashbox() {
             >
               {value.name}
             </div>
+
+            {/* Show verified or not verified div */}
             <div
               className="Verified"
               style={{
@@ -70,10 +78,26 @@ function DDashbox() {
               }}
             >
               {value.isVerifiedEmail && (
-                <div style={{ color: "#049370" }}>Verified</div>
+                <div
+                  style={{
+                    color: "#049370",
+                    fontFamily: "Poppins",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Verified
+                </div>
               )}
               {!value.isVerifiedEmail && (
-                <div style={{ color: "#F86262" }}>Not Verified</div>
+                <div
+                  style={{
+                    color: "#F86262",
+                    fontFamily: "Poppins",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Not Verified
+                </div>
               )}
             </div>
           </div>

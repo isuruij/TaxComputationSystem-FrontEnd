@@ -15,9 +15,11 @@ function Header(props) {
         // backgroundColor: "#049370"darkgreeen,
         backgroundColor: "#F3FFF5",
         display: "flex",
-        boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+        boxShadow: "1px 3px 2px 1px rgba(0,0,0,0.44)",
+        height: "5vh",
       }}
     >
+      {/*This is notification logo */}
       <img
         style={{ marginLeft: "81%", paddingTop: "1%", paddingRight: "1%" }}
         src={Notification}
@@ -33,6 +35,7 @@ function Header(props) {
       ) : (
         <h6></h6>
       )}
+      {/*This is Profile logo */}
       <img src={Profile} alt="Profile" />
       <span style={{ display: "flex", marginTop: "1%", marginLeft: "1%" }}>
         <h6>{props.name}</h6>

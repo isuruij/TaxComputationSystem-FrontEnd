@@ -8,13 +8,14 @@ function DViewTax() {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
+      {/*This is User info box */}
       <div className="dTax-view-header">
         <h6>Mr.XXXXXX_XXX</h6>
         <h6>TIN NO: XXXXXXX</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>YEAR OF ASSESSMENT 2022/2023</h6>
       </div>
-
+      {/*This is Total tax liability */}
       <div className="dTotal-liability">
         <h4 className="dTopic-1">Total Tax Liability For Y/A 2022/23</h4>
         <div className="dTot-amount">
@@ -42,6 +43,8 @@ function DViewTax() {
         </div>
         <p className="dsmall-p-one">(01/01/2023-31/03/2023)</p>
       </div>
+
+      {/*This is tax liability for 9 months*/}
 
       <div className="dcontainer">
         <div className="dCal-nine-months">
@@ -112,6 +115,8 @@ function DViewTax() {
             </div>
           </div>
         </div>
+
+        {/*This is tax liability for 3 months*/}
 
         <div className="dCal-three-months">
           <h4 className="dTopic-3">Calculation For 03 Months</h4>
