@@ -5,8 +5,12 @@ import Row from "react-bootstrap/Row";
 import "./DDataEntryPart.css";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function DDataEntry() {
+  //navigator
+  const navigate = useNavigate();
+
   // State to store input values (note and amount)
   const [amountInputs, setAmountInputs] = useState(Array(14).fill(""));
   const [noteInputs, setNoteInputs] = useState(Array(14).fill(""));
@@ -265,7 +269,13 @@ function DDataEntry() {
           })}
           <div style={{ display: "flex", justifyContent: "space-around" }}>
             <div>
-              <Button variant="success" className="custom_back_button">
+              <Button
+                variant="success"
+                className="custom_back_button"
+                onClick={() => {
+                  navigate("/dataEntry/submission/uploadDoc");
+                }}
+              >
                 Back
               </Button>
             </div>

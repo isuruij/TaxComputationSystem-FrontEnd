@@ -2,8 +2,12 @@ import React from "react";
 import { useState } from "react";
 import "./DDocUpload.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function FileUpload() {
+  //navigator
+  const navigate = useNavigate();
+
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
   const [file3, setFile3] = useState();
@@ -95,6 +99,7 @@ function FileUpload() {
       .post("http://localhost:8001/create", formData)
       .then((response) => {
         console.log(response);
+        navigate("/dataEntry/submission/enterData");
       })
       .catch((er) => console.log(er));
   }
@@ -445,7 +450,13 @@ function FileUpload() {
 
         <div className="dButton-div">
           <div className="Button-div-1">
-            <button id="back" className="btn btn-primary dcustom-button">
+            <button
+              id="back"
+              className="btn btn-primary dcustom-button"
+              onClick={() => {
+                navigate("/dataEntry/submission/dashboard");
+              }}
+            >
               Back
             </button>
           </div>
