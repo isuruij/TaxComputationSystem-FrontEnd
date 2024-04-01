@@ -20,7 +20,7 @@ function Loginform() {
     try {
       const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
       if (res.data.Status === "Success") {
-        navigate("/dashboard");
+        navigate("/UserHomePage");
       } else {
         alert("Invalid credentials! Please enter correct details.");
       }

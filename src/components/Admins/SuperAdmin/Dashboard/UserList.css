@@ -1,0 +1,46 @@
+.custom-button {
+    background-color: #049370 !important;
+    width: 100%;
+    padding-left: 10px;
+    font-size: smaller;
+    display: block;
+    margin-bottom: 12px;
+    width: 90%;
+    box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+    border: 1px #008060;
+  }
+  .custom-button-1 {
+    background-color: #F86262 !important;
+    width: 100%;
+    padding-left: 10px;
+    font-size: smaller;
+    display: block;
+    margin-bottom: 12px;
+    width: 90%;
+    margin-left: 1%;
+    box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+    border: 1px #008060;
+  }
+ 
+
+  .custom-button-2 {
+    background-color: #B3F9D7 !important;
+    color: #555; /* Initial text color (black) */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+  }
+  
+  .custom-button-2:hover {
+    color: #000; /* Text color on hover (grey) */
+  }
+  .custom-button:hover {
+    color: #B3F9D7; /* Text color on hover (grey) */
+    
+  }
+  .custom-button-1:hover {
+    color: #ecbdbd; /* Text color on hover (grey) */
+    
+  }

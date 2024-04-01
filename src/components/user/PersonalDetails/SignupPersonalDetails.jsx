@@ -54,7 +54,7 @@ function SignupPersonalDetails() {
       );
       console.log(res.data.message);
       if (res.data.Status === "Success") {  
-        navigate("/dashboard");
+        navigate("/UserHomePage");
       } else if(res.data.message=="already registered email"){
         alert("Email is already registered! Please Enter another one");
       }
