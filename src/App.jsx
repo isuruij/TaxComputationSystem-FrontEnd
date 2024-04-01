@@ -17,6 +17,7 @@ import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
 import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
 import ForgetPasswordPage from "./pages/Taxpayer/ForgetPasswordPage.jsx";
 import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
+import SuperAdminDashboard from "./pages/SuperAdmin/SuperAdminDashboard.jsx";
 
 
 
@@ -53,7 +54,7 @@ function App() {
 
 
     {/* Super Admin Routes */}
-    
+    <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard/>}></Route>
 
   </Routes>
   </BrowserRouter>    
