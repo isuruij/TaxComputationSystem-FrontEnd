@@ -23,8 +23,8 @@ function Incomedetails() {
     investmentIncome: "",
     otherIncome: "",
     id: userId,
-    dprSource: "", // Add this
-    annualFee: "", // Add this
+    dprSource: "", 
+    annualFee: "", 
   });
 
   const [userData, setuserData] = useState({});
@@ -51,22 +51,17 @@ function Incomedetails() {
     }
   };
 
-  //submiting PersonalDetails to backend
+  //submiting income details to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(values)
+    console.log(values);
     try {
       const res = await Axios.patch(
-        "http://localhost:3000/api/taxpayer/updateincomedetails",
+        `${base_url}/api/taxpayer/updateincomedetails`,
         values
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else if (
-        res.data.Status === "NotSuccess" &&
-        res.data.message == "already registered email"
-      ) {
-        alert("already registered email");
       } else {
         alert("Error in updating");
       }
@@ -106,8 +101,7 @@ function Incomedetails() {
           <div className="custom_input">
             <input
               className="details-input form-control"
-              type="text"
-              id="mobileno"
+              type="number"
               defaultValue={userData.employmentIncome}
               onChange={(e) => {
                 setvalues({ ...values, employmentIncome: e.target.value });
@@ -122,7 +116,6 @@ function Incomedetails() {
             <input
               className="details-input form-control"
               type="number"
-              id="officeno"
               defaultValue={userData.investmentIncome}
               onChange={(e) => {
                 setvalues({ ...values, investmentIncome: e.target.value });
@@ -137,7 +130,6 @@ function Incomedetails() {
             <input
               className="details-input form-control"
               type="number"
-              id="homeno"
               defaultValue={userData.businessIncome}
               onChange={(e) => {
                 setvalues({ ...values, businessIncome: e.target.value });
@@ -152,7 +144,6 @@ function Incomedetails() {
             <input
               className="details-input form-control"
               type="number"
-              id="homeno"
               defaultValue={userData.otherIncome}
               onChange={(e) => {
                 setvalues({ ...values, otherIncome: e.target.value });

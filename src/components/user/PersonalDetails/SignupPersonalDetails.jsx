@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import "../PersonalDetails/PersonalDetails.css";
 function SignupPersonalDetails() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
     console.log("Cookies:", document.cookie);
   }, []);
@@ -49,7 +50,7 @@ function SignupPersonalDetails() {
 
     try {
       const res = await Axios.post(
-        "http://localhost:3000/api/taxpayer/register",
+        `${base_url}/api/taxpayer/register`,
         values
       );
       console.log(res.data.message);
