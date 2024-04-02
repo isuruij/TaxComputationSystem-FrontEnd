@@ -67,7 +67,7 @@ function UpdatePersonalDetails() {
     event.preventDefault();
     try {
       const res = await Axios.patch(
-        "http://localhost:3000/api/taxpayer/updatebasicdetails",
+        `${base_url}/api/taxpayer/updatebasicdetails`,
         values
       );
       if (res.data.Status === "Success") {

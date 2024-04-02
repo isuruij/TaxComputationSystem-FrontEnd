@@ -23,8 +23,6 @@ function Incomedetails() {
     investmentIncome: "",
     otherIncome: "",
     id: userId,
-    dprSource: "", // Add this
-    annualFee: "", // Add this
   });
 
   const [userData, setuserData] = useState({});
@@ -51,22 +49,17 @@ function Incomedetails() {
     }
   };
 
-  //submiting PersonalDetails to backend
+  //submiting income details to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(values)
+    console.log(values);
     try {
       const res = await Axios.patch(
-        "http://localhost:3000/api/taxpayer/updateincomedetails",
+        `${base_url}/api/taxpayer/updateincomedetails`,
         values
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else if (
-        res.data.Status === "NotSuccess" &&
-        res.data.message == "already registered email"
-      ) {
-        alert("already registered email");
       } else {
         alert("Error in updating");
       }
@@ -106,8 +99,7 @@ function Incomedetails() {
           <div className="custom_input">
             <input
               className="details-input form-control"
-              type="text"
-              id="mobileno"
+              type="number"
               defaultValue={userData.employmentIncome}
               onChange={(e) => {
                 setvalues({ ...values, employmentIncome: e.target.value });
@@ -122,7 +114,6 @@ function Incomedetails() {
             <input
               className="details-input form-control"
               type="number"
-              id="officeno"
               defaultValue={userData.investmentIncome}
               onChange={(e) => {
                 setvalues({ ...values, investmentIncome: e.target.value });
@@ -137,7 +128,6 @@ function Incomedetails() {
             <input
               className="details-input form-control"
               type="number"
-              id="homeno"
               defaultValue={userData.businessIncome}
               onChange={(e) => {
                 setvalues({ ...values, businessIncome: e.target.value });
@@ -152,7 +142,6 @@ function Incomedetails() {
             <input
               className="details-input form-control"
               type="number"
-              id="homeno"
               defaultValue={userData.otherIncome}
               onChange={(e) => {
                 setvalues({ ...values, otherIncome: e.target.value });
@@ -162,109 +151,6 @@ function Incomedetails() {
         </div>
         <br></br>
 
-        <label className="lables">How do you know DPR</label>
-        <br></br>
-        <br></br>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="friend"
-            name="dprSource"
-            value="friend"
-            className=" form-check-input"
-            onChange={(e) => {
-              setvalues({ ...values, dprSource: e.target.value });
-            }}
-          />
-          <label className="form-check-label lables">
-            Introduced by a Friend
-          </label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="family"
-            name="dprSource"
-            value="family"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">
-            Introduced by a Family Member
-          </label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="company"
-            name="dprSource"
-            value="company"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">
-            Introduced by the Company
-          </label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="socialMedia"
-            name="dprSource"
-            value="socialmedia"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">Social Media</label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="dprWebsite"
-            name="dprWebsite"
-            value="dprWebsite"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">DPR Website</label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="other"
-            name="dprSource"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">Other</label>
-        </div>
-        <br></br>
-
-        <label className="form-check-label lables">
-          Are you agree with annual fee
-        </label>
-        <div className="form-check">
-          <input
-            type="radio"
-            id="agree"
-            name="annualFee"
-            value="yes"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">Yes</label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="disagree"
-            name="annualFee"
-            value="no"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">No</label>
-        </div>
 
         <button
           className="btn btn-primary"
