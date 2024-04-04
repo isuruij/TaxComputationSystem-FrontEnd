@@ -1,32 +1,52 @@
 import Switch from '@mui/material/Switch';
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import './SearchBar.css';
 import './UserList.css';
 
 const UserList = () => {
   const [users, setUsers] = useState([
-    { id: 1, name: 'John Doe', approved: true },
-    { id: 2, name: 'Jane Smith', approved: false },
-    { id: 3, name: 'Alice Johnson', approved: true },
-    { id: 4, name: 'Bob Williams', approved: false },
-    { id: 5, name: 'Eva Davis', approved: true },
-    { id: 6, name: 'Charlie Brown', approved: false },
-    { id: 7, name: 'Grace Turner', approved: true },
-    { id: 8, name: 'David Miller', approved: false },
-    { id: 9, name: 'Sophia White', approved: true },
-    { id: 10, name: 'Daniel Lee', approved: false },
-    { id: 11, name: 'Emily Johnson', approved: true },
-    { id: 12, name: 'Michael Davis', approved: false },
-    { id: 13, name: 'Olivia Brown', approved: true },
-    { id: 14, name: 'William Turner', approved: false },
-    { id: 15, name: 'Ava Miller', approved: true },
-    { id: 16, name: 'Matthew White', approved: false },
-    { id: 17, name: 'Sophie Lee', approved: true },
-    { id: 18, name: 'Benjamin Smith', approved: false },
-    { id: 19, name: 'Lily Johnson', approved: true },
-    { id: 20, name: 'James Williams', approved: false },
+    // { id: 1, name: 'John Doe', approved: true },
+    // { id: 2, name: 'Jane Smith', approved: false },
+    // { id: 3, name: 'Alice Johnson', approved: true },
+    // { id: 4, name: 'Bob Williams', approved: false },
+    // { id: 5, name: 'Eva Davis', approved: true },
+    // { id: 6, name: 'Charlie Brown', approved: false },
+    // { id: 7, name: 'Grace Turner', approved: true },
+    // { id: 8, name: 'David Miller', approved: false },
+    // { id: 9, name: 'Sophia White', approved: true },
+    // { id: 10, name: 'Daniel Lee', approved: false },
+    // { id: 11, name: 'Emily Johnson', approved: true },
+    // { id: 12, name: 'Michael Davis', approved: false },
+    // { id: 13, name: 'Olivia Brown', approved: true },
+    // { id: 14, name: 'William Turner', approved: false },
+    // { id: 15, name: 'Ava Miller', approved: true },
+    // { id: 16, name: 'Matthew White', approved: false },
+    // { id: 17, name: 'Sophie Lee', approved: true },
+    // { id: 18, name: 'Benjamin Smith', approved: false },
+    // { id: 19, name: 'Lily Johnson', approved: true },
+    // { id: 20, name: 'James Williams', approved: false },
   ]);
+
+  axios.defaults.withCredentials = true;
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+  useEffect(()=>{
+    const fetchAllTaxpayers = async ()=>{
+      try{
+        const res = await axios.get(
+          `${base_url}/api/SuperAdmin/getusers`
+        );
+        
+        console.log(res.data);
+
+        setUsers(res.data);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    fetchAllTaxpayers()
+  },[]);
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -43,12 +63,18 @@ const UserList = () => {
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
   };
 
-  const handleDelete = (id) => {
-    const shouldDelete = window.confirm('Are you sure you want to delete this user?');
+  const handleDelete = async (id) => {
+
+    try{
+      const shouldDelete = window.confirm('Are you sure you want to delete this user?');
     if (shouldDelete) {
-      const newUsers = users.filter((user) => user.id !== id);
-      setUsers(newUsers);
+      await axios.delete(`${base_url}/api/SuperAdmin/deletetaxpayers/${id}`);
+      window.location.reload();
     }
+    }catch(err){
+      console.log(err);
+    }
+    
   };
 
   const handleUpdate = (id) => {
@@ -119,7 +145,7 @@ const UserList = () => {
                   <label style={{ color: '#008060' }}>
                     {user.approved ? 'Approved' : 'Approve'}:
                     <Switch
-                      checked={user.approved}
+                      checked={user.isVerifiedUser}
                       onChange={() => handleApprovalToggle(user.id)}
                       color="success"
                       style={{
