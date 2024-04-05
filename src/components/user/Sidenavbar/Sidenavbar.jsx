@@ -46,7 +46,14 @@ function Sidenavbar() {
       }}
     >
       <br></br>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/userhomepage");
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
