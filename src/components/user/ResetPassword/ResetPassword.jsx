@@ -52,6 +52,7 @@ function ResetPassword() {
       );
       if (res.data.Status == "Verified") {
         alert("Password change Sucessful!");
+        navigate("/login");
       } else if (
         res.data.Status == "NotVerified"
       ) {
