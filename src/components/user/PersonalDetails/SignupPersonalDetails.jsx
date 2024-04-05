@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import "../PersonalDetails/PersonalDetails.css";
 function SignupPersonalDetails() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
     console.log("Cookies:", document.cookie);
   }, []);
@@ -22,6 +23,8 @@ function SignupPersonalDetails() {
     officeno: "",
     homeno: "",
     birthday: "",
+    agreeToannualFee: "",
+    dprSource: "",
   });
 
   const navigate = useNavigate();
@@ -30,16 +33,16 @@ function SignupPersonalDetails() {
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if(Password==""){
+    if (Password == "") {
       setWarning("Enter password!");
-      return
+      return;
     }
-    if(confirmPassword==""){
+    if (confirmPassword == "") {
       setWarning("Confirm password!");
-      return
+      return;
     }
 
-    if (Password!== confirmPassword) {
+    if (Password !== confirmPassword) {
       setWarning("Passwords do not match!");
       setPassword("");
       setConfirmPassword("");
@@ -48,14 +51,11 @@ function SignupPersonalDetails() {
     }
 
     try {
-      const res = await Axios.post(
-        "http://localhost:3000/api/taxpayer/register",
-        values
-      );
+      const res = await Axios.post(`${base_url}/api/taxpayer/register`, values);
       console.log(res.data.message);
-      if (res.data.Status === "Success") {  
-        navigate("/dashboard");
-      } else if(res.data.message=="already registered email"){
+      if (res.data.Status === "Success") {
+        navigate("/UserHomePage");
+      } else if (res.data.message == "already registered email") {
         alert("Email is already registered! Please Enter another one");
       }
       console.log(res);
@@ -89,11 +89,10 @@ function SignupPersonalDetails() {
         </h2>
 
         <div className="form-group">
-          <label className="lables" >
-            Email
-          </label>
+          <label className="lables">Email</label>
           <div className="custom_input">
             <input
+              required
               className="details-input form-control"
               type="email"
               id="email"
@@ -105,13 +104,11 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-
         <div className="form-group">
-          <label className="lables" >
-            Name
-          </label>
+          <label className="lables">Name</label>
           <div className="custom_input">
             <input
+              required
               className="details-input form-control"
               type="text"
               id="name"
@@ -124,9 +121,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group">
-          <label className="lables" >
-            Permanent Address
-          </label>
+          <label className="lables">Permanent Address</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -141,9 +136,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group">
-          <label className="lables" >
-            Tax identification number (TIN)
-          </label>
+          <label className="lables">Tax identification number (TIN)</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -158,9 +151,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group">
-          <label className="lables" >
-            Name of the employer
-          </label>
+          <label className="lables">Name of the employer</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -174,15 +165,11 @@ function SignupPersonalDetails() {
           </div>
         </div>
 
-        <label className="lables" >
-          Contact Numbers
-        </label>
+        <label className="lables">Contact Numbers</label>
         <br></br>
         <br></br>
         <div className="form-group contact">
-          <label className="lables" >
-            Mobile
-          </label>
+          <label className="lables">Mobile</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -197,9 +184,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables" >
-            Office
-          </label>
+          <label className="lables">Office</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -214,9 +199,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables" >
-            Home
-          </label>
+          <label className="lables">Home</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -231,9 +214,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group">
-          <label className="lables" >
-            Date of birth
-          </label>
+          <label className="lables">Date of birth</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -248,9 +229,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group">
-          <label className="lables" >
-            Password
-          </label>
+          <label className="lables">Password</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -263,14 +242,10 @@ function SignupPersonalDetails() {
               }}
             />
           </div>
-
         </div>
 
-
         <div className="form-group">
-          <label className="lables" >
-            Confirm Password
-          </label>
+          <label className="lables">Confirm Password</label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -285,12 +260,133 @@ function SignupPersonalDetails() {
           {warning && <p style={{ color: "red" }}>{warning}</p>}
         </div>
 
-        <div style={{display:"flex"}}>
+        <label className="lables">How do you know DPR</label>
+        <br></br>
+        <br></br>
 
+        <div className="form-check">
+          <input
+            type="radio"
+            id="friend"
+            name="dprSource"
+            value="friend"
+            className=" form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, dprSource: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">
+            Introduced by a Friend
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="family"
+            name="dprSource"
+            value="family"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, dprSource: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">
+            Introduced by a Family Member
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="company"
+            name="dprSource"
+            value="company"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, dprSource: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">
+            Introduced by the Company
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="socialMedia"
+            name="dprSource"
+            value="socialmedia"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, dprSource: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">Social Media</label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="dprWebsite"
+            name="dprSource"
+            value="dprWebsite"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, dprSource: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">DPR Website</label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="other"
+            name="dprSource"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, dprSource: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">Other</label>
+        </div>
+
+        <label className="form-check-label lables">
+          Are you agree with annual fee
+        </label>
+        <div className="form-check">
+          <input
+            type="radio"
+            id="agree"
+            name="annualFee"
+            value="yes"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, agreeToannualFee: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">Yes</label>
+        </div>
+
+        <div className="form-check">
+          <input
+            type="radio"
+            id="disagree"
+            name="annualFee"
+            value="no"
+            className="form-check-input"
+            onChange={(e) =>
+              setvalues({ ...values, agreeToannualFee: e.target.value })
+            }
+          />
+          <label className="form-check-label lables">No</label>
+        </div>
+
+        <div style={{ display: "flex" }}>
           <button
-            onClick={()=>{
-              
-            }}
+            onClick={() => {}}
             type="submit"
             className="btn btn-primary"
             style={{ marginTop: "3%", marginLeft: "70%" }}

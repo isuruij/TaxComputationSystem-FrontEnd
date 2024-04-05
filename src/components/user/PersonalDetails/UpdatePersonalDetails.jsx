@@ -23,7 +23,6 @@ function UpdatePersonalDetails() {
   const [userData, setuserData] = useState({});
   const [values, setvalues] = useState({
     email: "",
-    password: "",
     name: "",
     address: "",
     tin: "",
@@ -48,7 +47,6 @@ function UpdatePersonalDetails() {
       setvalues({
         ...values,
         email: response.data.Data.email,
-        password: response.data.Data.password,
         name: response.data.Data.name,
         address: response.data.Data.address,
         tin: response.data.Data.tin,
@@ -69,14 +67,17 @@ function UpdatePersonalDetails() {
     event.preventDefault();
     try {
       const res = await Axios.patch(
-        "http://localhost:3000/api/taxpayer/updatebasicdetails",
+        `${base_url}/api/taxpayer/updatebasicdetails`,
         values
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else if(res.data.Status === "NotSuccess" && res.data.message=="already registered email" ) {
+      } else if (
+        res.data.Status === "NotSuccess" &&
+        res.data.message == "already registered email"
+      ) {
         alert("already registered email");
-      }else{
+      } else {
         alert("Error in updating");
       }
       console.log(res);
@@ -121,9 +122,7 @@ function UpdatePersonalDetails() {
           >
             <div>
               <div className="form-group">
-                <label className="lables" >
-                  Email
-                </label>
+                <label className="lables">Email</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -162,9 +161,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Name
-                </label>
+                <label className="lables">Name</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -179,9 +176,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Permanent Address
-                </label>
+                <label className="lables">Permanent Address</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -196,7 +191,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
+                <label className="lables">
                   Tax identification number (TIN)
                 </label>
                 <div className="custom_input">
@@ -213,9 +208,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Date of birth
-                </label>
+                <label className="lables">Date of birth</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -230,9 +223,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Name of the employer
-                </label>
+                <label className="lables">Name of the employer</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -253,9 +244,7 @@ function UpdatePersonalDetails() {
             >
               {/* <label className="lables">Contact Numbers</label> */}
               <div className="form-group contact">
-                <label className="lables" >
-                  Mobile
-                </label>
+                <label className="lables">Mobile</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -270,9 +259,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" >
-                  Office
-                </label>
+                <label className="lables">Office</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -287,9 +274,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" >
-                  Home
-                </label>
+                <label className="lables">Home</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -302,46 +287,12 @@ function UpdatePersonalDetails() {
                   />
                 </div>
               </div>
-
-              <div className="form-group ">
-                <label className="lables" >
-                  Password
-                </label>
-                <div className="custom_input">
-                  <input
-                    className="details-input form-control"
-                    type="password"
-                    id="password"
-                    placeholder=""
-                    onChange={(e) => {
-                      setvalues({ ...values, password: e.target.value });
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-group ">
-                <label className="lables" >
-                  Re-enter Password
-                </label>
-                <div className="custom_input">
-                  <input
-                    className="details-input form-control"
-                    type="password"
-                    id="password2"
-                    placeholder=""
-                    onChange={(e) => {
-                      setvalues({ ...values, password: e.target.value });
-                    }}
-                  />
-                </div>
-              </div>
             </div>
           </div>
 
           <div className="signup" style={{ display: "flex" }}>
             <>
-              <Button style={{marginLeft:"50vw"}}  onClick={handleShow}>
+              <Button style={{ marginLeft: "50vw" }} onClick={handleShow}>
                 Update
               </Button>
 
