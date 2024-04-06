@@ -2,7 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import "../Login/Login.css";
+
 
 function Loginform() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -12,16 +15,20 @@ function Loginform() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoading(true);
       const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
       if (res.data.Status === "Success") {
         navigate("/UserHomePage");
       } else {
+        setLoading(false);
         alert("Invalid credentials! Please enter correct details.");
       }
     } catch (error) {
@@ -59,6 +66,7 @@ function Loginform() {
           </label>
           <div>
             <input
+              required
               style={{
                 width: "15vw" ,
                 fontSize: "15px",
@@ -88,6 +96,7 @@ function Loginform() {
           </label>
           <div>
             <input
+            required
               style={{
                 width: "15vw",
                 fontSize: "15px",
@@ -115,12 +124,26 @@ function Loginform() {
         </div>
 
         <button
-          type="submit"
-          className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "33%" }}
-        >
-          Login
-        </button>
+        type="submit"
+        className="btn btn-primary"
+        style={{ marginTop: "3%", marginLeft: "33%" }}
+        disabled={loading}
+      >
+        {loading ? (
+          <>
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            
+          </>
+        ) : (
+          "Login"
+        )}
+      </button>
         <p onClick={()=>{navigate('../signup')}}
           style={{
             cursor:"pointer",

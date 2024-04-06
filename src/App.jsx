@@ -3,8 +3,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
 import Signup from "./pages/Taxpayer/Signup.jsx";
-
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Taxpayer/Dashboard.jsx";
 import SettingsBasicDetails from "./pages/Taxpayer/SettingsBasicDetails.jsx";
