@@ -8,17 +8,31 @@ import Sidenavbar from '../../components/user/Sidenavbar/Sidenavbar';
 export default function TaxStatus() {
   return (
     <div>
-    <Header />
-    <div style={{ display: "flex" }}>
-      <div style={{marginTop:"5px"}}>
-        <Sidenavbar />
-      </div>
-      <div style={{width:'65vw',marginLeft:"5px",marginTop:"5px",display:"block"}} >
-        <div><SettingSubMenueTax/></div>
-        <div><TaxStatusBody/></div>
+      <div>
+        <div style={{ position: "fixed" }}>
+          <Header />
+        </div>
+        <div style={{ display: "flex" }}>
+          <div style={{ marginTop: "8.5vh", position: "fixed" }}>
+            <Sidenavbar />
+          </div>
+          <div style={{ marginLeft: "5px", marginTop: "5px" }}>
+            <div
+              style={{
+                marginLeft: "20vw",
+                marginTop: "7.7vh",
+                position: "fixed",
+              }}
+            >
+              <SettingSubMenueTax />
+            </div>
+            <div style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+              <TaxStatusBody />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
     
   )
 }
