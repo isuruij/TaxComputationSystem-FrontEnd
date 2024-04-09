@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import "../Incomedetails/Incomedetails.css";
 
 function Incomedetails() {
@@ -68,6 +70,13 @@ function Incomedetails() {
       console.log(error);
     }
   };
+
+  //popup for confirmation
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div>
@@ -151,14 +160,24 @@ function Incomedetails() {
         </div>
         <br></br>
 
-
-        <button
-          className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "70%" }}
-          type="submit"
-        >
+        <Button style={{ marginLeft: "50vw" }} onClick={handleShow}>
           Update
-        </button>
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Are you Sure</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Do you want to update details ?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              No
+            </Button>
+            <Button variant="primary" onClick={handleSubmit}>
+              Yes
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <br></br>
         <br></br>
       </form>
