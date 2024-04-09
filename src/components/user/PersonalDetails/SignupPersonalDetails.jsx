@@ -34,7 +34,6 @@ function SignupPersonalDetails() {
 
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
-    
     event.preventDefault();
     if (Password == "") {
       setWarning("Enter password!");
@@ -54,14 +53,17 @@ function SignupPersonalDetails() {
     }
 
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await Axios.post(`${base_url}/api/taxpayer/register`, values);
       console.log(res.data.message);
       if (res.data.Status === "Success") {
         navigate("/UserHomePage");
       } else if (res.data.message == "already registered email") {
         alert("Email is already registered! Please Enter another one");
-        setLoading(false)
+        setLoading(false);
+      }else{
+        alert("System Error!");
+        setLoading(false);
       }
       console.log(res);
     } catch (error) {
@@ -390,27 +392,27 @@ function SignupPersonalDetails() {
         </div>
 
         <div style={{ display: "flex" }}>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "70%" }}
-          disabled={loading}
-        >
-          {loading ? (
-            <>
-              <Spinner
-                style={{ marginLeft: "11px", marginRight: "11px" }}
-                as="span"
-                animation="border"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
-            </>
-          ) : (
-            "Continue"
-          )}
-        </button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            style={{ marginTop: "3%", marginLeft: "70%" }}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Spinner
+                  style={{ marginLeft: "11px", marginRight: "11px" }}
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              </>
+            ) : (
+              "Continue"
+            )}
+          </button>
         </div>
 
         <br></br>
