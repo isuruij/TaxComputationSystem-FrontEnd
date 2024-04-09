@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
 import "../PersonalDetails/PersonalDetails.css";
 function SignupPersonalDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -12,6 +13,7 @@ function SignupPersonalDetails() {
   const [warning, setWarning] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [Password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -32,6 +34,7 @@ function SignupPersonalDetails() {
 
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     if (Password == "") {
       setWarning("Enter password!");
@@ -51,12 +54,14 @@ function SignupPersonalDetails() {
     }
 
     try {
+      setLoading(true)
       const res = await Axios.post(`${base_url}/api/taxpayer/register`, values);
       console.log(res.data.message);
       if (res.data.Status === "Success") {
         navigate("/UserHomePage");
       } else if (res.data.message == "already registered email") {
         alert("Email is already registered! Please Enter another one");
+        setLoading(false)
       }
       console.log(res);
     } catch (error) {
@@ -385,14 +390,27 @@ function SignupPersonalDetails() {
         </div>
 
         <div style={{ display: "flex" }}>
-          <button
-            onClick={() => {}}
-            type="submit"
-            className="btn btn-primary"
-            style={{ marginTop: "3%", marginLeft: "70%" }}
-          >
-            Save & Continue
-          </button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ marginTop: "3%", marginLeft: "70%" }}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Spinner
+                style={{ marginLeft: "11px", marginRight: "11px" }}
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            </>
+          ) : (
+            "Continue"
+          )}
+        </button>
         </div>
 
         <br></br>

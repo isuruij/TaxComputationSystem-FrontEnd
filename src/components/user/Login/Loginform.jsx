@@ -2,10 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
-
 
 function Loginform() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -61,14 +59,12 @@ function Loginform() {
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" >
-            Email
-          </label>
+          <label className="lables">Email</label>
           <div>
             <input
               required
               style={{
-                width: "15vw" ,
+                width: "15vw",
                 fontSize: "15px",
                 height: "26px",
                 outline: "none",
@@ -91,12 +87,10 @@ function Loginform() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables">
-            Password
-          </label>
+          <label className="lables">Password</label>
           <div>
             <input
-            required
+              required
               style={{
                 width: "15vw",
                 fontSize: "15px",
@@ -118,35 +112,48 @@ function Loginform() {
               }}
             />
           </div>
-          <p onClick={()=>{navigate('../forgotpassword')}} style={{ cursor:"pointer", color: "#049370", fontSize: "13px", marginTop: "5%" }}>
+          <p
+            onClick={() => {
+              navigate("../forgotpassword");
+            }}
+            style={{
+              cursor: "pointer",
+              color: "#049370",
+              fontSize: "13px",
+              marginTop: "5%",
+            }}
+          >
             Forget password
           </p>
         </div>
 
         <button
-        type="submit"
-        className="btn btn-primary"
-        style={{ marginTop: "3%", marginLeft: "36%" }}
-        disabled={loading}
-      >
-        {loading ? (
-          <>
-            <Spinner
-              as="span"
-              animation="border"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
-            
-          </>
-        ) : (
-          "Login"
-        )}
-      </button>
-        <p onClick={()=>{navigate('../signup')}}
+          type="submit"
+          className="btn btn-primary"
+          style={{ marginTop: "3%", marginLeft: "36%" }}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Spinner
+                style={{ marginLeft: "11px", marginRight: "11px" }}
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            </>
+          ) : (
+            "Login"
+          )}
+        </button>
+        <p
+          onClick={() => {
+            navigate("../signup");
+          }}
           style={{
-            cursor:"pointer",
+            cursor: "pointer",
             marginLeft: "10%",
             marginTop: "5%",
             color: "#049370",
