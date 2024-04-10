@@ -33,11 +33,15 @@ function DDashbox() {
         href="https://fonts.cdnfonts.com/css/poppins"
         rel="stylesheet"
       ></link>
+
       {listOfUsers.map((value, key) => {
         return (
           <div
             key={key}
             className="User"
+            onClick={() => {
+              navigate("/dataEntry/submission/uploadDoc");
+            }}
             // onClick={() => {
             //   navigate(`/post/${value.id}`);
             // }}
@@ -49,6 +53,7 @@ function DDashbox() {
               margin: "20px 10px",
               backgroundColor: "#B3F9D7",
               borderRadius: "10px",
+              cursor: "pointer",
             }}
           >
             {/* Show users name*/}
@@ -60,9 +65,6 @@ function DDashbox() {
                 fontWeight: "500",
                 paddingLeft: "30px",
                 fontFamily: "Poppins",
-              }}
-              onClick={() => {
-                navigate("/dataEntry/dashboard");
               }}
             >
               {value.name}

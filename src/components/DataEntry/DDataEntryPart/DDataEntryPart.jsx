@@ -6,6 +6,7 @@ import "./DDataEntryPart.css";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -54,20 +55,20 @@ function DDataEntry() {
     }
 
     //send data to endpoint
-    for (let i = 0; i < 14; i++) {
-      axios
-        .post(`${base_url}/api/dataentry/enterData`, {
-          amount: amountInputs[i],
-          note: noteInputs[i],
-        })
-        .then((response) => {
-          console.log(response.data);
-          navigate("/dataEntry/submission/dashboard");
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    // for (let i = 0; i < 14; i++) {
+    axios
+      .post(`${base_url}/api/dataentry/enterData`, {
+        amount: amountInputs,
+        note: noteInputs,
+      })
+      .then((response) => {
+        console.log(response.data);
+        navigate("/dataEntry/submission/dashboard");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    // }
   };
 
   //Handle discarding input values

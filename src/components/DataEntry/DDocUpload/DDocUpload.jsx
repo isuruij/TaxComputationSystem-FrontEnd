@@ -21,6 +21,7 @@ function FileUpload() {
   const [file11, setFile11] = useState();
   const [file12, setFile12] = useState();
   const [file13, setFile13] = useState();
+  const [file14, setFile14] = useState();
 
   // const [file2, setFile2] = useState();
   // const [file3, setFile3] = useState();
@@ -64,7 +65,8 @@ function FileUpload() {
       file10,
       file11,
       file12,
-      file13
+      file13,
+      file14
     );
     const formData = new FormData();
     formData.append(
@@ -93,7 +95,9 @@ function FileUpload() {
       "doc12",
       file12,
       "doc13",
-      file13
+      file13,
+      "doc14",
+      file14
     );
     axios
       .post("http://localhost:8001/create", formData)
@@ -250,14 +254,20 @@ function FileUpload() {
 
         {show2 && (
           <div className="dContainer2">
-            {/* <div className="div2-1">
-            <div className="div2-1-1">
-              <label><h6>Relief for Rent Income(For last year)</h6></label>
+            <div className="div2-1">
+              <div className="div2-1-1">
+                <label>
+                  <h6>Relief for Rent Income(For last year)</h6>
+                </label>
+              </div>
+              <div className="div2-1-2">
+                <input
+                  type="file"
+                  name="file"
+                  onChange={(e) => setFile5(e.target.files[0])}
+                />
+              </div>
             </div>
-            <div className="div2-1-2">
-              <input type="file" name="file" onChange={handleFile} />
-            </div>
-          </div> */}
 
             <div className="ddiv2-2">
               <div className="div2-2-1">
@@ -269,7 +279,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile5(e.target.files[0])}
+                  onChange={(e) => setFile6(e.target.files[0])}
                 />
               </div>
             </div>
@@ -284,7 +294,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile6(e.target.files[0])}
+                  onChange={(e) => setFile7(e.target.files[0])}
                 />
               </div>
             </div>
@@ -325,7 +335,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile7(e.target.files[0])}
+                  onChange={(e) => setFile8(e.target.files[0])}
                 />
               </div>
             </div>
@@ -340,7 +350,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile8(e.target.files[0])}
+                  onChange={(e) => setFile9(e.target.files[0])}
                 />
               </div>
             </div>
@@ -355,7 +365,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile9(e.target.files[0])}
+                  onChange={(e) => setFile10(e.target.files[0])}
                 />
               </div>
             </div>
@@ -370,7 +380,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile10(e.target.files[0])}
+                  onChange={(e) => setFile11(e.target.files[0])}
                 />
               </div>
             </div>
@@ -411,7 +421,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile11(e.target.files[0])}
+                  onChange={(e) => setFile12(e.target.files[0])}
                 />
               </div>
             </div>
@@ -426,7 +436,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile12(e.target.files[0])}
+                  onChange={(e) => setFile13(e.target.files[0])}
                 />
               </div>
             </div>
@@ -441,7 +451,7 @@ function FileUpload() {
                 <input
                   type="file"
                   name="file"
-                  onChange={(e) => setFile13(e.target.files[0])}
+                  onChange={(e) => setFile14(e.target.files[0])}
                 />
               </div>
             </div>
