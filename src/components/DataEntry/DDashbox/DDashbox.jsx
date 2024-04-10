@@ -40,11 +40,8 @@ function DDashbox() {
             key={key}
             className="User"
             onClick={() => {
-              navigate("/dataEntry/submission/uploadDoc");
+              navigate(`/dataEntry/submission/uploadDoc/${value.id}`);
             }}
-            // onClick={() => {
-            //   navigate(`/post/${value.id}`);
-            // }}
             style={{
               display: "flex",
               padding: "5px",

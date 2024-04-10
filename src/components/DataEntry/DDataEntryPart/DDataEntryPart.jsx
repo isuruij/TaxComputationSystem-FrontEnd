@@ -7,9 +7,12 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+  //variable
+  let { id } = useParams();
 
   //navigator
   const navigate = useNavigate();
@@ -60,6 +63,7 @@ function DDataEntry() {
       .post(`${base_url}/api/dataentry/enterData`, {
         amount: amountInputs,
         note: noteInputs,
+        UserId: id,
       })
       .then((response) => {
         console.log(response.data);

@@ -3,8 +3,11 @@ import { useState } from "react";
 import "./DDocUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function FileUpload() {
+  //variable
+  let { id } = useParams();
   //navigator
   const navigate = useNavigate();
 
@@ -52,60 +55,62 @@ function FileUpload() {
   // };
 
   function handleUpload() {
-    console.log(
-      file1,
-      file2,
-      file3,
-      file4,
-      file5,
-      file6,
-      file7,
-      file8,
-      file9,
-      file10,
-      file11,
-      file12,
-      file13,
-      file14
-    );
-    const formData = new FormData();
-    formData.append(
-      "doc1",
-      file1,
-      "doc2",
-      file2,
-      "doc3",
-      file3,
-      "doc4",
-      file4,
-      "doc5",
-      file5,
-      "doc6",
-      file6,
-      "doc7",
-      file7,
-      "doc8",
-      file8,
-      "doc9",
-      file9,
-      "doc10",
-      file10,
-      "doc11",
-      file11,
-      "doc12",
-      file12,
-      "doc13",
-      file13,
-      "doc14",
-      file14
-    );
-    axios
-      .post("http://localhost:8001/create", formData)
-      .then((response) => {
-        console.log(response);
-        navigate("/dataEntry/submission/enterData");
-      })
-      .catch((er) => console.log(er));
+    navigate(`/dataEntry/submission/enterData/${value.id}`);
+
+    // console.log(
+    //   file1,
+    //   file2,
+    //   file3,
+    //   file4,
+    //   file5,
+    //   file6,
+    //   file7,
+    //   file8,
+    //   file9,
+    //   file10,
+    //   file11,
+    //   file12,
+    //   file13,
+    //   file14
+    // );
+    // const formData = new FormData();
+    // formData.append(
+    //   "doc1",
+    //   file1,
+    //   "doc2",
+    //   file2,
+    //   "doc3",
+    //   file3,
+    //   "doc4",
+    //   file4,
+    //   "doc5",
+    //   file5,
+    //   "doc6",
+    //   file6,
+    //   "doc7",
+    //   file7,
+    //   "doc8",
+    //   file8,
+    //   "doc9",
+    //   file9,
+    //   "doc10",
+    //   file10,
+    //   "doc11",
+    //   file11,
+    //   "doc12",
+    //   file12,
+    //   "doc13",
+    //   file13,
+    //   "doc14",
+    //   file14
+    // );
+    // axios
+    //   .post("http://localhost:8001/create", { Data: formData, UserId: id })
+    //   .then((response) => {
+    //     console.log(response);
+    //     navigate(`/dataEntry/submission/enterData/${value.id}`);
+    //   })
+    //   .catch((er) => console.log(er));
   }
 
   return (
@@ -474,7 +479,10 @@ function FileUpload() {
             <button
               id="submit"
               className="btn btn-primary dcustom-button"
-              onClick={handleUpload}
+              // onClick={handleUpload}
+              onClick={() => {
+                navigate(`/dataEntry/submission/enterData/${id}`);
+              }}
             >
               Save & Continue
             </button>

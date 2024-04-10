@@ -76,14 +76,14 @@ function App() {
 
         {/*Data Entry routes*/}
         <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
-        <Route path="/dataEntry/viewTax" element={<DViewTaxPage />}></Route>
+        <Route path="/dataEntry/viewTax/:id" element={<DViewTaxPage />}></Route>
         <Route
-          path="/dataEntry/submission/enterData"
+          path="/dataEntry/submission/enterData/:id"
           element={<DDataEntryPart />}
         ></Route>
 
         <Route
-          path="/dataEntry/submission/uploadDoc"
+          path="/dataEntry/submission/uploadDoc/:id"
           element={<DFileUploadPage />}
         ></Route>
         <Route
