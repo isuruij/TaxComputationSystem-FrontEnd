@@ -77,7 +77,7 @@ function DDashbox() {
                 paddingRight: "30px",
               }}
             >
-              {value.isVerifiedEmail && (
+              {value.isVerifiedUser && (
                 <div
                   style={{
                     color: "#049370",
@@ -88,7 +88,7 @@ function DDashbox() {
                   Verified
                 </div>
               )}
-              {!value.isVerifiedEmail && (
+              {!value.isVerifiedUser && (
                 <div
                   style={{
                     color: "#F86262",

@@ -2,8 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "./FileUpload.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function FileUpload() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
+  //navigator
+  const navigate = useNavigate();
+
   const [file1, setFile1] = useState();
   const [file2, setFile2] = useState();
   const [file3, setFile3] = useState();
@@ -18,9 +24,6 @@ function FileUpload() {
   const [file12, setFile12] = useState();
   const [file13, setFile13] = useState();
 
-  // const [file2, setFile2] = useState();
-  // const [file3, setFile3] = useState();
-  // const [file4, setFile4] = useState();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
@@ -92,9 +95,10 @@ function FileUpload() {
       file13
     );
     axios
-      .post("http://localhost:8001/create", formData)
+      .post(`${base_url}/api/taxpayer/fileupload`, formData)
       .then((response) => {
         console.log(response);
+        navigate("/settings/basic");
       })
       .catch((er) => console.log(er));
   }
@@ -139,7 +143,7 @@ function FileUpload() {
               <div className="div1-1-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file1"
                   onChange={(e) => setFile1(e.target.files[0])}
                 />
               </div>
@@ -154,7 +158,7 @@ function FileUpload() {
               <div className="div1-2-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file2"
                   onChange={(e) => setFile2(e.target.files[0])}
                 />
               </div>
@@ -169,7 +173,7 @@ function FileUpload() {
               <div className="div1-3-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file3"
                   onChange={(e) => setFile3(e.target.files[0])}
                 />
               </div>
@@ -184,7 +188,7 @@ function FileUpload() {
               <div className="div1-4-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file4"
                   onChange={(e) => setFile4(e.target.files[0])}
                 />
               </div>
@@ -233,7 +237,7 @@ function FileUpload() {
               <div className="div2-2-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file5"
                   onChange={(e) => setFile5(e.target.files[0])}
                 />
               </div>
@@ -248,7 +252,7 @@ function FileUpload() {
               <div className="div2-3-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file6"
                   onChange={(e) => setFile6(e.target.files[0])}
                 />
               </div>
@@ -288,7 +292,7 @@ function FileUpload() {
               <div className="div3-1-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file7"
                   onChange={(e) => setFile7(e.target.files[0])}
                 />
               </div>
@@ -303,7 +307,7 @@ function FileUpload() {
               <div className="div3-2-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file8"
                   onChange={(e) => setFile8(e.target.files[0])}
                 />
               </div>
@@ -318,7 +322,7 @@ function FileUpload() {
               <div className="div3-3-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file9"
                   onChange={(e) => setFile9(e.target.files[0])}
                 />
               </div>
@@ -333,7 +337,7 @@ function FileUpload() {
               <div className="div3-4-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file10"
                   onChange={(e) => setFile10(e.target.files[0])}
                 />
               </div>
@@ -373,7 +377,7 @@ function FileUpload() {
               <div className="div4-1-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file11"
                   onChange={(e) => setFile11(e.target.files[0])}
                 />
               </div>
@@ -388,7 +392,7 @@ function FileUpload() {
               <div className="div4-2-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file12"
                   onChange={(e) => setFile12(e.target.files[0])}
                 />
               </div>
@@ -403,7 +407,7 @@ function FileUpload() {
               <div className="div4-3-2">
                 <input
                   type="file"
-                  name="file"
+                  name="file13"
                   onChange={(e) => setFile13(e.target.files[0])}
                 />
               </div>

@@ -37,6 +37,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/*User routes*/}
+        <Route path="/practice" element={<FileUpload />}></Route>
         <Route
           path="/settings/uploadfiles"
           element={<SettingsFileUpload />}

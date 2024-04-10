@@ -8,6 +8,8 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function DDataEntry() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
   //navigator
   const navigate = useNavigate();
 
@@ -60,6 +62,7 @@ function DDataEntry() {
         })
         .then((response) => {
           console.log(response.data);
+          navigate("/dataEntry/submission/dashboard");
         })
         .catch((error) => {
           console.error(error);
