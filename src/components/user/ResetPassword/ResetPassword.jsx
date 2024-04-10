@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { useLocation } from "react-router-dom"; // Import useLocation
+import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
 function ResetPassword() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const [valid, setValid] = useState("Started");
+  const [loading, setLoading] = useState(false);
 
   const [password, setpassword] = useState("");
 
@@ -40,15 +42,18 @@ function ResetPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoading(true);
       const res = await Axios.post(
         `${base_url}/api/taxpayer/addnew-password/${id}/${token}`,
         { password }
       );
       if (res.data.Status == "Verified") {
         alert("Password change Sucessful!");
+        setLoading(false);
         navigate("/login");
       } else {
         alert("Error");
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -88,6 +93,7 @@ function ResetPassword() {
               </label>
               <div>
                 <input
+                  required
                   style={{
                     width: "15vw",
                     fontSize: "15px",
@@ -114,9 +120,23 @@ function ResetPassword() {
             <button
               type="submit"
               className="btn btn-primary"
-              style={{ marginTop: "3%", marginLeft: "20%" }}
+              style={{ marginTop: "3%", marginLeft: "30%" }}
+              disabled={loading}
             >
-              Reset Password
+              {loading ? (
+                <>
+                  <Spinner
+                    style={{ marginLeft: "11px", marginRight: "11px" }}
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                </>
+              ) : (
+                "Continue"
+              )}
             </button>
           </form>
         </div>
