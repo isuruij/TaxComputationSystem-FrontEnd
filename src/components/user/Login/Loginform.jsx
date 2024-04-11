@@ -59,23 +59,23 @@ function Loginform() {
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables">Email</label>
+          <label className="lables" style={{fontWeight:"700",color:"#0085FF"}}>Email</label>
           <div>
             <input
               required
               style={{
-                width: "15vw",
-                fontSize: "15px",
-                height: "26px",
-                outline: "none",
-                background: "#f3f9ff",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
+                // width: "15vw",
+                // fontSize: "15px",
+                   height: "30px",
+                // outline: "none",
+                // background: "#f3f9ff",
+                // color: "#000000",
+                // border: "1px solid #C4D1EB",
+                // borderRadius: "10px",
+                // boxShadow: "0px 3px 3px 1px #9D9D9D",
+                // transition: ".3s ease",
               }}
-              className="login-input"
+              className="login-input details-input form-control"
               type="email"
               id="exampleInputEmail1"
               placeholder=""
@@ -87,23 +87,23 @@ function Loginform() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables">Password</label>
+          <label className="lables" style={{fontWeight:"700",color:"#0085FF"}}>Password</label>
           <div>
             <input
               required
-              style={{
-                width: "15vw",
-                fontSize: "15px",
-                height: "26px",
-                outline: "none",
-                background: "#f3f9ff",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
-              }}
-              className="login-input"
+                 style={{
+              //   width: "15vw",
+              //   fontSize: "15px",
+                  height: "30px",
+              //   outline: "none",
+              //   background: "#f3f9ff",
+              //   color: "#000000",
+              //   border: "1px solid #C4D1EB",
+              //   borderRadius: "10px",
+              //   boxShadow: "0px 3px 3px 1px #9D9D9D",
+              //   transition: ".3s ease",
+                  }}
+              className="login-input details-input form-control"
               type="password"
               id="exampleInputPassword1"
               placeholder=""
