@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -18,16 +20,17 @@ function LandingPage() {
         <br></br>
         <div style={{ display: "flex" }}>
           <button
-            type=""
+            onClick={()=>{navigate("/login")}}
             className="btn btn-primary"
             style={{ borderRadius: "30px", marginTop: "", marginLeft: "6vw" }}
           >
             Taxpayer
           </button>
+          <div className="vl" style={{marginLeft:"2vw",height:"30px",borderLeft:"2px solid black"}}></div>
           <button
             type="submit"
             className="btn btn-primary"
-            style={{ padding:"0px 20px",borderRadius: "30px", marginTop: "", marginLeft: "3vw" }}
+            style={{ padding:"0px 20px",borderRadius: "30px", marginTop: "", marginLeft: "2vw" }}
           >
             Admin
           </button>
