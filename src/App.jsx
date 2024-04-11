@@ -15,6 +15,7 @@ import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
 import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
 import ForgetPasswordPage from "./pages/Taxpayer/ForgetPasswordPage.jsx";
 import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
+import LandingPage from "./pages/Taxpayer/LandingPage.jsx";
 
 
 
@@ -32,7 +33,7 @@ function App() {
   <Routes>
     
     {/* Taxpayer Routes */}
-
+    <Route path="/" element={<LandingPage/>}></Route>
     <Route path="/settings/uploadfiles" element={<SettingsFileUpload/>}></Route>
     <Route path="/settings/income" element={<SettingsIncomeDetails/>}></Route>
     <Route path="/settings/basic" element={<SettingsBasicDetails/>}></Route>

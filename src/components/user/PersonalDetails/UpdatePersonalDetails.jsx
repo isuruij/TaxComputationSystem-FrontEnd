@@ -292,7 +292,7 @@ function UpdatePersonalDetails() {
 
           <div className="signup" style={{ display: "flex" }}>
             <>
-              <Button style={{ marginLeft: "50vw" }} onClick={handleShow}>
+              <Button style={{ borderRadius:"10px",marginLeft: "50vw" }} onClick={handleShow}>
                 Update
               </Button>
 

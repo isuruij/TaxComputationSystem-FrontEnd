@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import "../Incomedetails/Incomedetails.css";
+
 
 function Incomedetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -160,7 +160,7 @@ function Incomedetails() {
         </div>
         <br></br>
 
-        <Button style={{ marginLeft: "50vw" }} onClick={handleShow}>
+        <Button style={{borderRadius:"10px", marginLeft: "50vw" }} onClick={handleShow}>
           Update
         </Button>
 

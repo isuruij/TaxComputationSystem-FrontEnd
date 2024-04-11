@@ -1,4 +1,4 @@
-.details-input{
+/* .details-input{
     font-size: 12px;
 	padding: 5px 10px;
 	width: 25vw !important;
@@ -10,6 +10,7 @@
 	border-radius: 15px !important;
 	box-shadow: 0px 3px 3px 1px #9D9D9D;
 	transition: .3s ease;
+	margin-bottom: 5px;
 }
 
 @media screen and (max-width: 700px) {
@@ -35,10 +36,10 @@
 
 button{
     
-    background-color:#0085FF !important;
+    background-color:#0085FF ;
     border-radius: 10px !important;
     
-}
+} */
 
 
 @media screen and (min-width: 700px) {

@@ -8,6 +8,7 @@
 .bt {
   margin-left: 3vw !important;
   width: 15vw;
+  border-radius: 10px !important;
 }
 
 .group {

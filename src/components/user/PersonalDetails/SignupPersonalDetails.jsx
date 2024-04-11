@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import "../PersonalDetails/PersonalDetails.css";
+
 function SignupPersonalDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
@@ -395,7 +396,7 @@ function SignupPersonalDetails() {
           <button
             type="submit"
             className="btn btn-primary"
-            style={{ marginTop: "3%", marginLeft: "70%" }}
+            style={{borderRadius:"10px", marginTop: "3%", marginLeft: "70%" }}
             disabled={loading}
           >
             {loading ? (
