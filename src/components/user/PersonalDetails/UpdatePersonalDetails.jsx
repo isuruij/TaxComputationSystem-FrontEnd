@@ -34,6 +34,8 @@ function UpdatePersonalDetails() {
     id: userId,
   });
 
+  const [Password, setPassword] = useState("");
+
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
@@ -104,11 +106,11 @@ function UpdatePersonalDetails() {
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <div className="updatePersonalDetails" style={{ marginLeft: "5vw" }}>
+        <div className="updatePersonalDetails" style={{ marginLeft: "6vw" }}>
           <h2
             style={{
               marginBottom: "1%",
-              marginLeft: "15vw",
+              marginLeft: "14vw",
               color: "#0085FF",
               fontWeight: "bold",
             }}
@@ -315,6 +317,68 @@ function UpdatePersonalDetails() {
                 </Modal.Footer>
               </Modal>
             </>
+          </div>
+        </div>
+        <div className="passwordChange" style={{marginLeft:"6vw"}}>
+          <h5
+            style={{
+              marginBottom: "1%",
+              color: "#0085FF",
+              fontWeight: "bold",
+            }}
+          >
+            Change Password
+          </h5>
+
+          <div className="form-group">
+            <label className="lables">Current Password</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "20vw" }}
+                className="details-input form-control"
+                type="password"
+                id="oldpassword"
+                value={Password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setvalues({ ...values, password: e.target.value });
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label className="lables">New Password</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "20vw" }}
+                className="details-input form-control"
+                type="password"
+                id="newpassword"
+                value={Password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setvalues({ ...values, password: e.target.value });
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label className="lables">Repeat Password</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "20vw" }}
+                className="details-input form-control"
+                type="password"
+                id="newpassword2"
+                value={Password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setvalues({ ...values, password: e.target.value });
+                }}
+              />
+            </div>
           </div>
         </div>
       </form>

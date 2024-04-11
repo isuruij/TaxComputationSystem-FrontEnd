@@ -130,7 +130,7 @@ function Loginform() {
         <button
           type="submit"
           className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "36%" }}
+          style={{ borderRadius:"10px",marginTop: "3%", marginLeft: "36%" }}
           disabled={loading}
         >
           {loading ? (

@@ -89,7 +89,7 @@ function Incomedetails() {
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <div style={{marginLeft:"5vw"}}>
+        <div style={{ marginLeft: "5vw" }}>
           <h2
             style={{
               marginBottom: "1%",
@@ -107,7 +107,7 @@ function Incomedetails() {
             <label className="lables">Employement Income (LKR)</label>
             <div className="custom_input">
               <input
-                style={{width:"30vw"}}
+                style={{ width: "30vw" }}
                 className="details-input form-control"
                 type="number"
                 defaultValue={userData.employmentIncome}
@@ -122,7 +122,7 @@ function Incomedetails() {
             <label className="lables">Investment Income (LKR)</label>
             <div className="custom_input">
               <input
-              style={{width:"30vw"}}
+                style={{ width: "30vw" }}
                 className="details-input form-control"
                 type="number"
                 defaultValue={userData.investmentIncome}
@@ -137,7 +137,7 @@ function Incomedetails() {
             <label className="lables">Business income (LKR)</label>
             <div className="custom_input">
               <input
-              style={{width:"30vw"}}
+                style={{ width: "30vw" }}
                 className="details-input form-control"
                 type="number"
                 defaultValue={userData.businessIncome}
@@ -152,7 +152,7 @@ function Incomedetails() {
             <label className="lables">Other income (LKR)</label>
             <div className="custom_input">
               <input
-              style={{width:"30vw"}}
+                style={{ width: "30vw" }}
                 className="details-input form-control"
                 type="number"
                 defaultValue={userData.otherIncome}
