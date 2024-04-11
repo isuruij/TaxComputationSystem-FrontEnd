@@ -172,9 +172,8 @@ function SignupPersonalDetails() {
             />
           </div>
         </div>
-
-        <label className="lables">Contact Numbers</label>
         <br></br>
+        <label className="lables">Contact Numbers</label>
         <br></br>
         <div className="form-group contact">
           <label className="lables">Mobile</label>
@@ -192,7 +191,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables">Office</label>
+          <label className="lables">Office </label>
           <div className="custom_input">
             <input
               className="details-input form-control"

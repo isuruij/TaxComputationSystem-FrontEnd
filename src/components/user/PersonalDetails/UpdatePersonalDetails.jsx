@@ -101,15 +101,14 @@ function UpdatePersonalDetails() {
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
           width: "78vw",
-
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <div className="updatePersonalDetails" style={{ marginLeft: "1vw" }}>
+        <div className="updatePersonalDetails" style={{ marginLeft: "5vw" }}>
           <h2
             style={{
               marginBottom: "1%",
-              marginLeft: "19vw",
+              marginLeft: "15vw",
               color: "#0085FF",
               fontWeight: "bold",
             }}
@@ -242,7 +241,9 @@ function UpdatePersonalDetails() {
               className="contactSection"
               style={{ marginLeft: "10vw", marginTop: "5vh" }}
             >
-              {/* <label className="lables">Contact Numbers</label> */}
+              <label className="lables">Contact Numbers</label>
+              <br></br>
+              <br></br>
               <div className="form-group contact">
                 <label className="lables">Mobile</label>
                 <div className="custom_input">
@@ -292,7 +293,10 @@ function UpdatePersonalDetails() {
 
           <div className="signup" style={{ display: "flex" }}>
             <>
-              <Button style={{ borderRadius:"10px",marginLeft: "50vw" }} onClick={handleShow}>
+              <Button
+                style={{ borderRadius: "10px", marginLeft: "50vw" }}
+                onClick={handleShow}
+              >
                 Update
               </Button>
 
