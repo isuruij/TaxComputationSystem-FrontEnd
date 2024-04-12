@@ -33,8 +33,10 @@ function UpdatePersonalDetails() {
     birthday: "",
     id: userId,
   });
-
+  const [OldPassword, setOldPassword] = useState("");
   const [Password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [warning, setWarning] = useState("");
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
@@ -72,6 +74,49 @@ function UpdatePersonalDetails() {
         `${base_url}/api/taxpayer/updatebasicdetails`,
         values
       );
+      if (res.data.Status === "Success") {
+        window.location.reload();
+      } else if (
+        res.data.Status === "NotSuccess" &&
+        res.data.message == "already registered email"
+      ) {
+        alert("already registered email");
+      } else {
+        alert("Error in updating");
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Handling password change
+  const handlePasswordChange = async (event) => {
+    event.preventDefault();
+    if (OldPassword == "") {
+      setWarning("Enter Current Password!");
+      return;
+    }
+    if (Password == "") {
+      setWarning("Enter password!");
+      return;
+    }
+    if (confirmPassword == "") {
+      setWarning("Confirm password!");
+      return;
+    }
+
+    if (Password !== confirmPassword) {
+      setWarning("Passwords do not match!");
+      setPassword("");
+      setConfirmPassword("");
+      return;
+    }
+    try {
+      // const res = await Axios.patch(
+      //   `${base_url}/api/taxpayer/updatebasicdetails`,
+      //   values
+      // );
       if (res.data.Status === "Success") {
         window.location.reload();
       } else if (
@@ -296,7 +341,12 @@ function UpdatePersonalDetails() {
           <div className="signup" style={{ display: "flex" }}>
             <>
               <Button
-                style={{ borderRadius: "10px", marginLeft: "50vw" }}
+                style={{
+                  borderRadius: "10px",
+                  marginLeft: "22vw",
+                  marginTop: "4vh",
+                  marginBottom: "8vh",
+                }}
                 onClick={handleShow}
               >
                 Update
@@ -319,7 +369,8 @@ function UpdatePersonalDetails() {
             </>
           </div>
         </div>
-        <div className="passwordChange" style={{marginLeft:"6vw"}}>
+
+        <div className="passwordChange" style={{ marginLeft: "6vw" }}>
           <h5
             style={{
               marginBottom: "1%",
@@ -338,48 +389,60 @@ function UpdatePersonalDetails() {
                 className="details-input form-control"
                 type="password"
                 id="oldpassword"
-                value={Password}
                 onChange={(e) => {
-                  setPassword(e.target.value);
-                  setvalues({ ...values, password: e.target.value });
+                  setOldPassword(e.target.value);
                 }}
               />
             </div>
           </div>
 
-          <div className="form-group">
-            <label className="lables">New Password</label>
-            <div className="custom_input">
-              <input
-                style={{ width: "20vw" }}
-                className="details-input form-control"
-                type="password"
-                id="newpassword"
-                value={Password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setvalues({ ...values, password: e.target.value });
-                }}
-              />
+          <div
+            className="passwordChange"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            <div className="form-group">
+              <label className="lables">New Password</label>
+              <div className="custom_input">
+                <input
+                  style={{ width: "20vw" }}
+                  className="details-input form-control"
+                  type="password"
+                  id="password"
+                  value={Password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+              {warning && <p style={{ color: "red" }}>{warning}</p>}
             </div>
-          </div>
 
-          <div className="form-group">
-            <label className="lables">Repeat Password</label>
-            <div className="custom_input">
-              <input
-                style={{ width: "20vw" }}
-                className="details-input form-control"
-                type="password"
-                id="newpassword2"
-                value={Password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  setvalues({ ...values, password: e.target.value });
-                }}
-              />
+            <div className="confirmPassword" style={{ marginLeft: "10vw" }}>
+              <label className="lables">Confirm Password</label>
+              <div className="custom_input">
+                <input
+                  style={{ width: "20vw" }}
+                  className="details-input form-control"
+                  type="password"
+                  id="password2"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
+              </div>
             </div>
           </div>
+          <Button
+            onClick={handlePasswordChange}
+            style={{
+              marginTop: "5vh",
+              borderRadius: "10px",
+              marginLeft: "21vw",
+            }}
+          >
+            Change
+          </Button>
         </div>
       </form>
       <br></br>
