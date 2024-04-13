@@ -394,7 +394,7 @@ function SignupPersonalDetails() {
         <div style={{ display: "flex" }}>
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary signupButton"
             style={{borderRadius:"10px", marginTop: "3%", marginLeft: "70%" }}
             disabled={loading}
           >

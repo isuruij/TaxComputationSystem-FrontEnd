@@ -68,9 +68,10 @@ button{
     margin-left: 0vw !important;
   }
 
-  .signup button {
-    font-size: 12px;
-    margin-left: 20vw !important;
+  .updateDetails Button {
+    margin-left: 0vw !important;
+    margin-left: 0vw !important;
+    width: 50vw;
   }
 
   .updatePersonalDetails h2 {
@@ -80,5 +81,16 @@ button{
 
   .personalDupdate {
     margin-left: "50vw !important";
+  }
+
+  .resetpasswordButton{
+    margin-left: 0vw !important;
+    width: 50vw;
+  }
+
+  .signupButton{
+    margin-top: 5vh !important;
+    margin-left: 0px !important;
+    width: 50vw;
   }
 }

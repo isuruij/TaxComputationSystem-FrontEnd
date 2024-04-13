@@ -338,7 +338,7 @@ function UpdatePersonalDetails() {
             </div>
           </div>
 
-          <div className="signup" style={{ display: "flex" }}>
+          <div className="updateDetails" style={{ display: "flex" }}>
             <>
               <Button
                 style={{
@@ -414,7 +414,7 @@ function UpdatePersonalDetails() {
                   }}
                 />
               </div>
-              {warning && <p style={{ color: "red" }}>{warning}</p>}
+              
             </div>
 
             <div className="confirmPassword" style={{ marginLeft: "10vw" }}>
@@ -433,8 +433,10 @@ function UpdatePersonalDetails() {
               </div>
             </div>
           </div>
+          {warning && <p style={{ color: "red" }}>{warning}</p>}
           <Button
             onClick={handlePasswordChange}
+            className="resetpasswordButton"
             style={{
               marginTop: "5vh",
               borderRadius: "10px",
