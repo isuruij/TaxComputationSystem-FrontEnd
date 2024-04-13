@@ -113,10 +113,10 @@ function UpdatePersonalDetails() {
       return;
     }
     try {
-      // const res = await Axios.patch(
-      //   `${base_url}/api/taxpayer/updatebasicdetails`,
-      //   values
-      // );
+      const res = await Axios.patch(
+        `${base_url}/api/taxpayer/updatePassword`,
+        {OldPassword:OldPassword,Password:Password}
+      );
       if (res.data.Status === "Success") {
         window.location.reload();
       } else if (
