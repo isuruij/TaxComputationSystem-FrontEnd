@@ -117,15 +117,12 @@ function UpdatePersonalDetails() {
         `${base_url}/api/taxpayer/updatePassword`,
         {OldPassword:OldPassword,Password:Password}
       );
-      if (res.data.Status === "Success") {
-        window.location.reload();
-      } else if (
-        res.data.Status === "NotSuccess" &&
-        res.data.message == "already registered email"
-      ) {
-        alert("already registered email");
-      } else {
-        alert("Error in updating");
+      if (res.data.status) {
+        alert("Password Change Successful");
+      } else if(res.data.message==="Taxpayer not found"){
+        alert("Incorrect Password");
+      }else{
+        alert("Error in Updating");
       }
       console.log(res);
     } catch (error) {
