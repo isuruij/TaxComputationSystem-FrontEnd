@@ -18,6 +18,7 @@ function Sidenavbar() {
     width: "90%",
     marginLeft: "4%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+    borderRadius:"10px"
   };
 
   const navigate = useNavigate();
@@ -46,7 +47,14 @@ function Sidenavbar() {
       }}
     >
       <br></br>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/userhomepage");
+        }}
+        type="button"
+        className="btn btn-primary"
+        style={buttonStyle}
+      >
         <img
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
@@ -105,7 +113,7 @@ function Sidenavbar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>taxhistory</span>
+        <span>Taxhistory</span>
       </button>
       <button
         onClick={() => {
@@ -120,7 +128,7 @@ function Sidenavbar() {
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>logout</span>
+        <span>Logout</span>
       </button>
       {/* ... (Repeat the pattern for other buttons) */}
       <br></br>

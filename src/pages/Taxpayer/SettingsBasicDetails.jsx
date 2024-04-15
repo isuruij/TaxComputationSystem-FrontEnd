@@ -8,17 +8,25 @@ function SettingsBasicDetails() {
   return (
     <div>
       <div>
-        <Header />
+        <div style={{ position: "fixed" }}>
+          <Header />
+        </div>
         <div style={{ display: "flex" }}>
-          <div style={{ marginTop: "5px" }}>
+          <div style={{ marginTop: "8.5vh", position: "fixed" }}>
             <Sidenavbar />
           </div>
           <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-            <div>
+            <div
+              style={{
+                marginLeft: "20vw",
+                marginTop: "7.7vh",
+                position: "fixed",
+              }}
+            >
               <SettingSubMenue />
             </div>
-            <div style={{marginTop:"5px"}}>
-              <UpdatePersonalDetails/>
+            <div style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+              <UpdatePersonalDetails />
             </div>
           </div>
         </div>

@@ -4,8 +4,13 @@
 	font-family: 'Poppins', sans-serif;
 }
 
+button{
+    background-color:#0085FF !important;
+}
 
-
+button:hover {
+    background-color: #4e15b1 !important;/* Change the background color on hover */
+  }
 
 
 

@@ -2,11 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
 function ForgetPassword() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-
+  const [loading, setLoading] = useState(false);
   const [values, setvalues] = useState({
     email: ""
   });
@@ -17,11 +18,14 @@ function ForgetPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoading(true)
       const res = await Axios.post(`${base_url}/api/taxpayer/forgot-password`, values);
       if (res.data.Status == "Success") {
         alert("We have sent a link. Please check your email!");
+        setLoading(false)
       } else if(res.data.Status == "NotSuccess" && res.data.message=="Email not found"){
         alert("Email not found");
+        setLoading(false)
       }
     } catch (error) {
       console.log(error);
@@ -59,19 +63,21 @@ function ForgetPassword() {
           </label>
           <div>
             <input
+              required
               style={{
                 width: "15vw",
-                fontSize: "15px",
-                height: "26px",
-                outline: "none",
-                background: "#f3f9ff",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
+                height:"30px"
+                // fontSize: "15px",
+                // height: "26px",
+                // outline: "none",
+                // background: "#f3f9ff",
+                // color: "#000000",
+                // border: "1px solid #C4D1EB",
+                // borderRadius: "10px",
+                // boxShadow: "0px 3px 3px 1px #9D9D9D",
+                // transition: ".3s ease",
               }}
-              className="login-input"
+              className="login-input form-control"
               type="email"
               id="exampleInputEmail1"
               placeholder=""
@@ -85,12 +91,26 @@ function ForgetPassword() {
 
 
         <button
-          type="submit"
-          className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "30%" }}
-        >
-          Send Link
-        </button>
+            type="submit"
+            className="btn btn-primary"
+            style={{borderRadius:"10px" ,marginTop: "3%", marginLeft: "30%" }}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Spinner
+                  style={{ marginLeft: "11px", marginRight: "11px" }}
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              </>
+            ) : (
+              "Send Link"
+            )}
+          </button>
 
       </form>
     </div>

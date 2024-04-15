@@ -3,8 +3,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
 import Signup from "./pages/Taxpayer/Signup.jsx";
-
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Taxpayer/Dashboard.jsx";
 import SettingsBasicDetails from "./pages/Taxpayer/SettingsBasicDetails.jsx";
@@ -17,7 +15,9 @@ import Viewtax from "./pages/Taxpayer/Viewtax.jsx";
 import TaxPayments from "./pages/Taxpayer/TaxPayments.jsx";
 import ForgetPasswordPage from "./pages/Taxpayer/ForgetPasswordPage.jsx";
 import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
+import LandingPage from "./pages/Taxpayer/LandingPage.jsx";
 import SuperAdminDashboard from "./pages/SuperAdmin/SuperAdminDashboard.jsx";
+
 
 
 
@@ -35,7 +35,7 @@ function App() {
   <Routes>
     
     {/* Taxpayer Routes */}
-
+    <Route path="/" element={<LandingPage/>}></Route>
     <Route path="/settings/uploadfiles" element={<SettingsFileUpload/>}></Route>
     <Route path="/settings/income" element={<SettingsIncomeDetails/>}></Route>
     <Route path="/settings/basic" element={<SettingsBasicDetails/>}></Route>

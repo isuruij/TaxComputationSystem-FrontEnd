@@ -1,4 +1,4 @@
-.details-input{
+/* .details-input{
     font-size: 12px;
 	padding: 5px 10px;
 	width: 25vw !important;
@@ -10,6 +10,7 @@
 	border-radius: 15px !important;
 	box-shadow: 0px 3px 3px 1px #9D9D9D;
 	transition: .3s ease;
+	margin-bottom: 5px;
 }
 
 @media screen and (max-width: 700px) {
@@ -35,55 +36,61 @@
 
 button{
     
-    background-color:#0085FF !important;
+    background-color:#0085FF ;
     border-radius: 10px !important;
     
-}
-
+} */
 
 @media screen and (min-width: 700px) {
+}
 
-
-
-	
+@media screen and (max-width: 700px) {
+  .details-input {
+    width: 50vw !important;
   }
 
-
-  @media screen and (max-width: 700px) {
-
-    .details-input{
-		width: 50vw !important;
-	}
-
-	.twoparts{
-		display: flex;
-		flex-direction: column !important;
-	}
-
-	.contactSection{
-		margin-top: 0vh !important;
-		margin-left: 0vw !important;
-	}
-
-	.signup button{
-		font-size: 12px;
-		margin-left: 20vw !important;
-	}
-
-	.updatePersonalDetails h2{
-		font-size: 20px !important;
-		margin-left: -5vw !important;
-		
-	}
-
-	.personalDupdate{
-		margin-left: "50vw !important";
-	}
-
+  .twoparts {
+    display: flex;
+    flex-direction: column !important;
   }
 
+  .passwordChange{
+    display: flex;
+    flex-direction: column !important;
+  }
 
+  .confirmPassword{
+    margin-left: 0vw !important;
+  }
 
+  .contactSection {
+    margin-top: 0vh !important;
+    margin-left: 0vw !important;
+  }
 
+  .updateDetails Button {
+    margin-left: 0vw !important;
+    margin-left: 0vw !important;
+    width: 50vw;
+  }
 
-	
+  .updatePersonalDetails h2 {
+    font-size: 20px !important;
+    margin-left: -5vw !important;
+  }
+
+  .personalDupdate {
+    margin-left: "50vw !important";
+  }
+
+  .resetpasswordButton{
+    margin-left: 0vw !important;
+    width: 50vw;
+  }
+
+  .signupButton{
+    margin-top: 5vh !important;
+    margin-left: 0px !important;
+    width: 50vw;
+  }
+}
