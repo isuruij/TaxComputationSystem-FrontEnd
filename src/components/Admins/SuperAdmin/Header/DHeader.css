@@ -1,0 +1,35 @@
+@media screen and (max-width: 1000px) {
+    .ncount {
+      margin-left: 82vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .ncount {
+      margin-left: 82.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .ncount {
+      margin-left: 82.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .ncount {
+      margin-left: 82.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .ncount {
+      margin-left: 87.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 300px) {
+    .ncount {
+      margin-left: 88.5vw !important ;
+    }
+  }
