@@ -486,7 +486,7 @@ function ViewDetails() {
           <br></br>
 
           <Button
-            style={{ borderRadius: "10px", marginLeft: "0vw" }}
+            style={{ borderRadius: "10px", marginLeft: "22vw" }}
             className="adminIncomeSubmit btn btn-primary"
             onClick={handleIncomeShow}
           >
