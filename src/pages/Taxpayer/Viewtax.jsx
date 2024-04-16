@@ -5,9 +5,35 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import Taxview from "../../components/user/TaxView/TaxView";
 
+
+
 function Viewtax() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
+  const [auth, setauth] = useState("Started");
+  Axios.defaults.withCredentials = true;
+
+  const handle = async () => {
+    try {
+      const res = await Axios.get(`${base_url}/api/taxpayer/auth`);
+      if (res.data.Status === "Success") {
+        setauth("Verified");
+        console.log(auth);
+      } else {
+        setauth("Failed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handle();
+  }, []);
   return (
     <div>
+            {auth === "Started" && <p></p>}
+      {auth === "Verified" && (
       <div>
         <div style={{ position: "fixed" }}>
           <Header />
@@ -30,6 +56,8 @@ function Viewtax() {
           </div>
         </div>
       </div>
+            )}
+            {auth === "Failed" && <h1>Access Denied</h1>}
     </div>
   );
 }

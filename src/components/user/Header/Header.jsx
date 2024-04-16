@@ -14,7 +14,6 @@ function Header() {
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
-    console.log(name)
   });
   return ( 
     <div
