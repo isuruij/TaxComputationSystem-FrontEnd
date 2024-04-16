@@ -144,11 +144,17 @@ function ViewDetails() {
   //Popup for personal details update confirmation
   const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   //Popup for personal details update confirmation
   const [incomeshow, setincomeShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleIncomeClose = () => setincomeShow(false);
+  const handleIncomeShow = () => setincomeShow(true);
+
+
 
   return (
     <div>
@@ -482,18 +488,18 @@ function ViewDetails() {
           <Button
             style={{ borderRadius: "10px", marginLeft: "0vw" }}
             className="adminIncomeSubmit btn btn-primary"
-            onClick={handleShow}
+            onClick={handleIncomeShow}
           >
             Update
           </Button>
 
-          <Modal show={incomeshow} onHide={handleClose}>
+          <Modal show={incomeshow} onHide={handleIncomeClose}>
             <Modal.Header closeButton>
               <Modal.Title>Are you Sure</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Do you want to update details ?</Modal.Body>
+            <Modal.Body>Do you want to update income details ?</Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+              <Button variant="secondary" onClick={handleIncomeClose}>
                 No
               </Button>
               <Button variant="primary" onClick={handleIncomeSubmit}>
