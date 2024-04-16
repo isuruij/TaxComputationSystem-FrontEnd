@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Notification from "../../../../assets/AdminNotification.svg";
+import React, { useEffect } from "react";
+import Notification from "../../../../assets/adminNotification.svg";
 import Profile from "../../../../assets/AdminProfile.svg";
+import { useState } from "react";
 import "./DHeader.css";
+import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 
-function AdminHeader(props) {
+function Header() {
+
+
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
@@ -11,33 +16,30 @@ function AdminHeader(props) {
   return (
     <div
       style={{
-        // backgroundColor: "#049370"darkgreeen,
         backgroundColor: "#F3FFF5",
         display: "flex",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+        width: "100vw",
       }}
     >
       <img
-        style={{ marginLeft: "81%", paddingTop: "1%", paddingRight: "1%" }}
+        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
         src={Notification}
         alt="Notification"
       />
       {count != 0 ? (
         <span
-          style={{ marginLeft: "83%", marginTop: "1.1%" }}
+          style={{ marginLeft: "73vw", marginTop: "3vh" }}
           className="ncount position-absolute translate-middle badge rounded-pill bg-danger"
         >
           {count}
         </span>
       ) : (
-        <h6></h6>
+        <h6 className="headername">{name}</h6>
       )}
       <img src={Profile} alt="Profile" />
-      <span style={{ display: "flex", marginTop: "1%", marginLeft: "1%" }}>
-        <h6>{props.name}</h6>
-      </span>
     </div>
   );
 }
 
-export default AdminHeader;
+export default Header;
