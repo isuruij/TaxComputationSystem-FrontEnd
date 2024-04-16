@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
-import "../Login/Login.css";
 
-function Login() {
+
+function CreateFirstAdmin() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [values, setvalues] = useState({
@@ -49,16 +49,17 @@ function Login() {
          
         }}
       >
-        <h2
+        <h4
           style={{
             marginBottom: "0vw",
-            marginLeft: "6vw",
+            marginLeft: "3vw",
             color: "#008060",
             fontWeight: "bold",
           }}
         >
-          Log in
-        </h2>
+          Create Admin
+        </h4>
+        <br></br>
         <div className="form-group" style={{ marginLeft: "10%" }}>
           <label className="lables" style={{fontWeight:"700",color:"#008060"}}>User Name</label>
           <div>
@@ -119,7 +120,7 @@ function Login() {
         <button
           type="submit"
           className="btn btn-primary adminLogin"
-          style={{borderRadius:"10px",marginTop: "3%", marginLeft: "36%" }}
+          style={{borderRadius:"10px",marginTop: "3%", marginLeft: "34%" }}
           disabled={loading}
         >
           {loading ? (
@@ -134,26 +135,13 @@ function Login() {
               />
             </>
           ) : (
-            "Login"
+            "Create"
           )}
         </button>
-        <p
-          onClick={() => {
-            navigate("../signup");
-          }}
-          style={{
-            cursor: "pointer",
-            marginLeft: "10%",
-            marginTop: "5%",
-            color: "#049370",
-            fontSize: "13px",
-          }}
-        >
-          No Account ? Create First Admin
-        </p>
+
       </form>
     </div>
   );
 }
 
-export default Login;
+export default CreateFirstAdmin;

@@ -17,8 +17,8 @@ import ResetPasswordPage from "./pages/Taxpayer/ResetPasswordPage.jsx";
 import LandingPage from "./pages/Taxpayer/LandingPage.jsx";
 import SuperAdminDashboard from "./pages/SuperAdmin/SuperAdminDashboard.jsx";
 import AdminLoginPage from "./pages/SuperAdmin/LoginPage.jsx";
-
-
+import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
+import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 
 
 
@@ -56,6 +56,8 @@ function App() {
     {/* Super Admin Routes */}
     <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard/>}></Route>
     <Route path="/Admin/login" element={<AdminLoginPage/>}></Route>
+    <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin/>}></Route>
+    <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
 
   </Routes>
   </BrowserRouter>    
