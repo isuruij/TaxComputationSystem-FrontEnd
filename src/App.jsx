@@ -19,6 +19,7 @@ import SuperAdminDashboard from "./pages/SuperAdmin/SuperAdminDashboard.jsx";
 import AdminLoginPage from "./pages/SuperAdmin/LoginPage.jsx";
 import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
+import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 
 
 
@@ -58,6 +59,7 @@ function App() {
     <Route path="/Admin/login" element={<AdminLoginPage/>}></Route>
     <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin/>}></Route>
     <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
+    <Route path="/create/admin" element={<CreateNewAdminPage/>}></Route>
 
   </Routes>
   </BrowserRouter>    

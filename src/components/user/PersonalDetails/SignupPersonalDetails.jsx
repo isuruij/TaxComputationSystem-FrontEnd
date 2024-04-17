@@ -63,7 +63,7 @@ function SignupPersonalDetails() {
       } else if (res.data.message == "already registered email") {
         alert("Email is already registered! Please Enter another one");
         setLoading(false);
-      }else{
+      } else {
         alert("System Error!");
         setLoading(false);
       }
@@ -396,7 +396,7 @@ function SignupPersonalDetails() {
           <Button
             type="submit"
             className="signupButton user"
-            style={{borderRadius:"10px", marginTop: "3%", marginLeft: "70%" }}
+            style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "70%" }}
             disabled={loading}
           >
             {loading ? (
