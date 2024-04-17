@@ -8,6 +8,9 @@ import { jwtDecode } from "jwt-decode";
 
 function Header() {
 
+  // const cookieValue = Cookies.get("token");
+  // const name = jwtDecode(cookieValue).name;
+
 
   const [count, setcount] = useState(0);
   useEffect(() => {
@@ -35,9 +38,12 @@ function Header() {
           {count}
         </span>
       ) : (
-        <h6 className="headername">{name}</h6>
+        <h6></h6>
       )}
       <img src={Profile} alt="Profile" />
+      <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
+        {/* <h6 className="headername">{name}</h6> */}
+      </span>
     </div>
   );
 }

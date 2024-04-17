@@ -9,7 +9,7 @@ function Login() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [values, setvalues] = useState({
-    email: "",
+    userName: "",
     password: "",
   });
 
@@ -22,12 +22,12 @@ function Login() {
     event.preventDefault();
     try {
       setLoading(true);
-      const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
+      const res = await Axios.post(`${base_url}/api/SuperAdmin/login`, values);
       if (res.data.Status === "Success") {
         navigate("/UserHomePage");
       } else {
         setLoading(false);
-        alert("Invalid credentials! Please enter correct details.");
+        alert("Login Failed!");
       }
     } catch (error) {
       console.log(error);
@@ -68,20 +68,20 @@ function Login() {
                 width: "15vw",
                 fontSize: "15px",
                 height: "27px",
-                outline: "none",
-                background: "#B3F9D7",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
+                // outline: "none",
+                // background: "#B3F9D7",
+                // color: "#000000",
+                // border: "1px solid #C4D1EB",
+                // borderRadius: "10px",
+                // boxShadow: "0px 3px 3px 1px #9D9D9D",
+                // transition: ".3s ease",
               }}
               className="login-input details-input form-control"
-              type="email"
+              type="text"
               id="exampleInputEmail1"
               placeholder=""
               onChange={(e) => {
-                setvalues({ ...values, email: e.target.value });
+                setvalues({ ...values, userName: e.target.value });
               }}
             />
           </div>
@@ -97,12 +97,12 @@ function Login() {
                     fontSize: "15px",
                     height: "27px",
                     outline: "none",
-                    background: "#B3F9D7",
-                    color: "#000000",
-                    border: "1px solid #C4D1EB",
-                    borderRadius: "10px",
-                    boxShadow: "0px 2px 3px 1px #9D9D9D",
-                    transition: ".3s ease",
+                    // background: "#B3F9D7",
+                    // color: "#000000",
+                    // border: "1px solid #C4D1EB",
+                    // borderRadius: "10px",
+                    // boxShadow: "0px 2px 3px 1px #9D9D9D",
+                    // transition: ".3s ease",
                   }}
               className="login-input details-input form-control"
               type="password"

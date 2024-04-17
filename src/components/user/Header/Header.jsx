@@ -36,7 +36,7 @@ function Header() {
           {count}
         </span>
       ) : (
-        <h6 className="headername">{name}</h6>
+        <h6></h6>
       )}
       <img src={Profile} alt="Profile" />
       <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>

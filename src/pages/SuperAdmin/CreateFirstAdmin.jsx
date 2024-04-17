@@ -9,8 +9,9 @@ function CreateFirstAdmin() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [values, setvalues] = useState({
-    email: "",
+    userName: "",
     password: "",
+    name:""
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,12 +23,15 @@ function CreateFirstAdmin() {
     event.preventDefault();
     try {
       setLoading(true);
-      const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
+      const res = await Axios.post(`${base_url}/api/SuperAdmin/register`, values);
       if (res.data.Status === "Success") {
-        navigate("/UserHomePage");
-      } else {
+        navigate("/SuperAdminDashboard");
+      } else if (res.data.message == "already registered user") {
+        alert("User Name is already registered! Please Enter another one");
         setLoading(false);
-        alert("Invalid credentials! Please enter correct details.");
+      }else{
+        alert("System Error!");
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -70,19 +74,19 @@ function CreateFirstAdmin() {
                 fontSize: "15px",
                 height: "27px",
                 outline: "none",
-                background: "#B3F9D7",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
+                // background: "#B3F9D7",
+                // color: "#000000",
+                // border: "1px solid #C4D1EB",
+                // borderRadius: "10px",
+                // boxShadow: "0px 3px 3px 1px #9D9D9D",
+                // transition: ".3s ease",
               }}
               className="login-input details-input form-control"
-              type="email"
+              type="text"
               id="exampleInputEmail1"
               placeholder=""
               onChange={(e) => {
-                setvalues({ ...values, email: e.target.value });
+                setvalues({ ...values, userName: e.target.value });
               }}
             />
           </div>
@@ -98,12 +102,12 @@ function CreateFirstAdmin() {
                     fontSize: "15px",
                     height: "27px",
                     outline: "none",
-                    background: "#B3F9D7",
-                    color: "#000000",
-                    border: "1px solid #C4D1EB",
-                    borderRadius: "10px",
-                    boxShadow: "0px 2px 3px 1px #9D9D9D",
-                    transition: ".3s ease",
+                    // background: "#B3F9D7",
+                    // color: "#000000",
+                    // border: "1px solid #C4D1EB",
+                    // borderRadius: "10px",
+                    // boxShadow: "0px 2px 3px 1px #9D9D9D",
+                    // transition: ".3s ease",
                   }}
               className="login-input details-input form-control"
               type="password"
@@ -114,7 +118,35 @@ function CreateFirstAdmin() {
               }}
             />
           </div>
-          <br></br>
+          
+        </div>
+
+        <div className="form-group" style={{ marginLeft: "10%" }}>
+          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>Your Name</label>
+          <div>
+            <input
+              required
+              style={{
+                width: "15vw",
+                fontSize: "15px",
+                height: "27px",
+                outline: "none",
+                // background: "#B3F9D7",
+                // color: "#000000",
+                // border: "1px solid #C4D1EB",
+                // borderRadius: "10px",
+                // boxShadow: "0px 3px 3px 1px #9D9D9D",
+                // transition: ".3s ease",
+              }}
+              className="login-input details-input form-control"
+              type="text"
+              id="exampleInputEmail1"
+              placeholder=""
+              onChange={(e) => {
+                setvalues({ ...values, name: e.target.value });
+              }}
+            />
+          </div>
         </div>
 
         <button
