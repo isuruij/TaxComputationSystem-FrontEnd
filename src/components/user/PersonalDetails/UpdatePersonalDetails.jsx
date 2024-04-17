@@ -345,6 +345,7 @@ function UpdatePersonalDetails() {
                   marginBottom: "8vh",
                 }}
                 onClick={handleShow}
+                className="user"
               >
                 Update
               </Button>
@@ -433,7 +434,7 @@ function UpdatePersonalDetails() {
           {warning && <p style={{ color: "red" }}>{warning}</p>}
           <Button
             onClick={handlePasswordChange}
-            className="resetpasswordButton"
+            className="resetpasswordButton user"
             style={{
               marginTop: "5vh",
               borderRadius: "10px",

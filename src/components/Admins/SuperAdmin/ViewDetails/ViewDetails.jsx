@@ -398,6 +398,7 @@ function ViewDetails() {
           backgroundColor: "#F3FFF5",
           width: "78VW",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+          marginTop:"-20px"
         }}
       >
         <div style={{ marginLeft: "5vw" }}>

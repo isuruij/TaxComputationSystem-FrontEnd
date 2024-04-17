@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
 import "../PersonalDetails/PersonalDetails.css";
 
 function SignupPersonalDetails() {
@@ -392,9 +393,9 @@ function SignupPersonalDetails() {
         </div>
 
         <div style={{ display: "flex" }}>
-          <button
+          <Button
             type="submit"
-            className="btn btn-primary signupButton"
+            className="signupButton user"
             style={{borderRadius:"10px", marginTop: "3%", marginLeft: "70%" }}
             disabled={loading}
           >
@@ -412,7 +413,7 @@ function SignupPersonalDetails() {
             ) : (
               "Continue"
             )}
-          </button>
+          </Button>
         </div>
 
         <br></br>

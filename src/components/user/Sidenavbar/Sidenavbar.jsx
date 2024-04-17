@@ -18,7 +18,7 @@ function Sidenavbar() {
     width: "90%",
     marginLeft: "4%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-    borderRadius:"10px"
+    borderRadius: "10px",
   };
 
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function Sidenavbar() {
           navigate("/userhomepage");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
@@ -67,7 +67,7 @@ function Sidenavbar() {
           navigate("/settings/basic");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
@@ -77,7 +77,11 @@ function Sidenavbar() {
         />
         <span>Registration</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        type="button"
+        className="btn btn-primary user"
+        style={buttonStyle}
+      >
         <img
           src={DownloadTaxreport}
           style={{ alignItems: "left", textAlign: "left" }}
@@ -90,7 +94,7 @@ function Sidenavbar() {
           navigate("/viewtax");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
@@ -105,7 +109,7 @@ function Sidenavbar() {
           navigate("/TaxStatus");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
@@ -120,7 +124,7 @@ function Sidenavbar() {
           handleLogout();
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
@@ -130,7 +134,6 @@ function Sidenavbar() {
         />
         <span>Logout</span>
       </button>
-      {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
     </div>
   );

@@ -54,12 +54,12 @@ button{
     flex-direction: column !important;
   }
 
-  .passwordChange{
+  .passwordChange {
     display: flex;
     flex-direction: column !important;
   }
 
-  .confirmPassword{
+  .confirmPassword {
     margin-left: 0vw !important;
   }
 
@@ -83,14 +83,16 @@ button{
     margin-left: "50vw !important";
   }
 
-  .resetpasswordButton{
+  .resetpasswordButton {
     margin-left: 0vw !important;
     width: 50vw;
   }
 
-  .signupButton{
+  .signupButton {
     margin-top: 5vh !important;
     margin-left: 0px !important;
     width: 50vw;
   }
 }
+
+
