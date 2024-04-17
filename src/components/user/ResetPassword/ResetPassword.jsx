@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom"; 
 import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
@@ -16,6 +16,7 @@ function ResetPassword() {
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
+  //Getting the values of query parameters
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const token = params.get("token");

@@ -139,7 +139,7 @@ function Login() {
         </button>
         <p
           onClick={() => {
-            navigate("../signup");
+            navigate("../Create/FirstAdmin");
           }}
           style={{
             cursor: "pointer",

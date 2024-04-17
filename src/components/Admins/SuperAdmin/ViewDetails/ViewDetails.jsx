@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import { useLocation } from "react-router-dom"; 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Tick from "../../../../assets/Tick.svg";
@@ -14,11 +15,12 @@ import "./ViewDetails.css";
 function ViewDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
-  const cookieValue = Cookies.get("token");
-  const userId = jwtDecode(cookieValue).id;
-
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
+
+  //Getting the values of query parameters
+  const params = new URLSearchParams(location.search);
+  const userId = params.get("id");
 
   useEffect(() => {
     getUserDetails();
