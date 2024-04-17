@@ -357,7 +357,7 @@ function ViewDetails() {
             </div>
           </div>
 
-          <div className="adminupdateDetails" style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <>
               <Button
                 style={{
@@ -367,6 +367,7 @@ function ViewDetails() {
                   marginBottom: "8vh",
                 }}
                 onClick={handleShow}
+                className="adminupdateDetails"
               >
                 Update
               </Button>
