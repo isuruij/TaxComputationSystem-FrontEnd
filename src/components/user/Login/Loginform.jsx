@@ -27,7 +27,7 @@ function Loginform() {
         navigate("/UserHomePage");
       } else {
         setLoading(false);
-        alert("Invalid credentials! Please enter correct details.");
+        alert("Login Failed!");
       }
     } catch (error) {
       console.log(error);

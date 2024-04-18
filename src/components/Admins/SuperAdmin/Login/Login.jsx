@@ -23,9 +23,12 @@ function Login() {
     try {
       setLoading(true);
       const res = await Axios.post(`${base_url}/api/SuperAdmin/login`, values);
-      if (res.data.Status === "Success") {
-        navigate("/UserHomePage");
-      } else {
+      if (res.data.Status === "Success" && res.data.Type ==="superAdmin") {
+        navigate("/SuperAdminDashboard");
+      } else if(res.data.Status === "Success" && res.data.Type ==="secondAdmin"){
+        //navigate("/SuperAdminDashboard");
+        alert("second admin");
+      }else{
         setLoading(false);
         alert("Login Failed!");
       }
