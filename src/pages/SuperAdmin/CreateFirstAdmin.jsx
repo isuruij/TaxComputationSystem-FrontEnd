@@ -23,11 +23,11 @@ function CreateFirstAdmin() {
     event.preventDefault();
     try {
       setLoading(true);
-      const res = await Axios.post(`${base_url}/api/SuperAdmin/register`, values);
+      const res = await Axios.post(`${base_url}/api/SuperAdmin/createfirstadmin`, values);
       if (res.data.Status === "Success") {
         navigate("/SuperAdminDashboard");
-      } else if (res.data.message == "already registered user") {
-        alert("User Name is already registered! Please Enter another one");
+      } else if (res.data.message == "user exist") {
+        alert("Already added the First admin");
         setLoading(false);
       }else{
         alert("System Error!");
