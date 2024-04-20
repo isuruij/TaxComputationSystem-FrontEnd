@@ -67,15 +67,6 @@ function ForgetPassword() {
               style={{
                 width: "15vw",
                 height:"30px"
-                // fontSize: "15px",
-                // height: "26px",
-                // outline: "none",
-                // background: "#f3f9ff",
-                // color: "#000000",
-                // border: "1px solid #C4D1EB",
-                // borderRadius: "10px",
-                // boxShadow: "0px 3px 3px 1px #9D9D9D",
-                // transition: ".3s ease",
               }}
               className="login-input form-control"
               type="email"

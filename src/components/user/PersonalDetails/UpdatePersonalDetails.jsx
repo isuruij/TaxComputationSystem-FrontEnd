@@ -113,15 +113,15 @@ function UpdatePersonalDetails() {
       return;
     }
     try {
-      const res = await Axios.patch(
-        `${base_url}/api/taxpayer/updatePassword`,
-        {OldPassword:OldPassword,Password:Password}
-      );
+      const res = await Axios.patch(`${base_url}/api/taxpayer/updatePassword`, {
+        OldPassword: OldPassword,
+        Password: Password,
+      });
       if (res.data.status) {
         alert("Password Change Successful");
-      } else if(res.data.message==="Taxpayer not found"){
+      } else if (res.data.message === "Taxpayer not found") {
         alert("Incorrect Password");
-      }else{
+      } else {
         alert("Error in Updating");
       }
       console.log(res);
@@ -412,7 +412,6 @@ function UpdatePersonalDetails() {
                   }}
                 />
               </div>
-              
             </div>
 
             <div className="confirmPassword" style={{ marginLeft: "10vw" }}>
