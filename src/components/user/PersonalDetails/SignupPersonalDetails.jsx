@@ -3,7 +3,10 @@ import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
 import "../PersonalDetails/PersonalDetails.css";
+
 function SignupPersonalDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
@@ -12,6 +15,7 @@ function SignupPersonalDetails() {
   const [warning, setWarning] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [Password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -51,12 +55,17 @@ function SignupPersonalDetails() {
     }
 
     try {
+      setLoading(true);
       const res = await Axios.post(`${base_url}/api/taxpayer/register`, values);
       console.log(res.data.message);
       if (res.data.Status === "Success") {
         navigate("/UserHomePage");
       } else if (res.data.message == "already registered email") {
         alert("Email is already registered! Please Enter another one");
+        setLoading(false);
+      } else {
+        alert("System Error!");
+        setLoading(false);
       }
       console.log(res);
     } catch (error) {
@@ -164,9 +173,8 @@ function SignupPersonalDetails() {
             />
           </div>
         </div>
-
-        <label className="lables">Contact Numbers</label>
         <br></br>
+        <label className="lables">Contact Numbers</label>
         <br></br>
         <div className="form-group contact">
           <label className="lables">Mobile</label>
@@ -184,7 +192,7 @@ function SignupPersonalDetails() {
         </div>
 
         <div className="form-group contact">
-          <label className="lables">Office</label>
+          <label className="lables">Office </label>
           <div className="custom_input">
             <input
               className="details-input form-control"
@@ -385,14 +393,27 @@ function SignupPersonalDetails() {
         </div>
 
         <div style={{ display: "flex" }}>
-          <button
-            onClick={() => {}}
+          <Button
             type="submit"
-            className="btn btn-primary"
-            style={{ marginTop: "3%", marginLeft: "70%" }}
+            className="signupButton user"
+            style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "70%" }}
+            disabled={loading}
           >
-            Save & Continue
-          </button>
+            {loading ? (
+              <>
+                <Spinner
+                  style={{ marginLeft: "11px", marginRight: "11px" }}
+                  as="span"
+                  animation="border"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+              </>
+            ) : (
+              "Continue"
+            )}
+          </Button>
         </div>
 
         <br></br>

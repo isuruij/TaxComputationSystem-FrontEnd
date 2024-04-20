@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../../components/user/Header/Header";
-import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
-import { useState, useEffect } from "react";
+import CreateNewAdmin from "../../components/Admins/SuperAdmin/CreateNewAdmin/CreateNewAdmin";
+import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
+import Navigationbar from "../../components/Admins/SuperAdmin/NavigationBar/Navigationbar";
 import Axios from "axios";
-import Taxview from "../../components/user/TaxView/TaxView";
+import { useState, useEffect } from "react";
 
-function Viewtax() {
+function CreateNewAdminPage() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
@@ -33,23 +33,21 @@ function Viewtax() {
       {auth === "Started" && <p></p>}
       {auth === "Verified" && (
         <div>
-          <div style={{ position: "fixed" }}>
-            <Header />
-          </div>
+          <AdminHeader />
           <div style={{ display: "flex" }}>
-            <div style={{ marginTop: "8.5vh", position: "fixed" }}>
-              <Sidenavbar />
+            <div style={{ marginTop: "5px" }}>
+              <Navigationbar />
             </div>
-            <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-              <div
-                style={{
-                  marginLeft: "20vw",
-                  marginTop: "7.7vh",
-                  position: "fixed",
-                }}
-              ></div>
-              <div style={{ marginTop: "7.8vh", marginLeft: "20vw" }}>
-                <Taxview />
+            <div
+              style={{
+                width: "65vw",
+                marginLeft: "5px",
+                marginTop: "5px",
+                display: "block",
+              }}
+            >
+              <div>
+                <CreateNewAdmin />
               </div>
             </div>
           </div>
@@ -60,4 +58,4 @@ function Viewtax() {
   );
 }
 
-export default Viewtax;
+export default CreateNewAdminPage;

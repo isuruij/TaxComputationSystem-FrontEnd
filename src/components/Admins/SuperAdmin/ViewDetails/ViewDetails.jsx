@@ -5,21 +5,29 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import { useLocation } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Tick from "../../../assets/Tick.svg";
-import Cross from "../../../assets/Cross.svg";
-import "../PersonalDetails/PersonalDetails.css";
+import Tick from "../../../../assets/Tick.svg";
+import Cross from "../../../../assets/Cross.svg";
+import "./ViewDetails.css";
 
-function UpdatePersonalDetails() {
+function ViewDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
-  const cookieValue = Cookies.get("token");
-  const userId = jwtDecode(cookieValue).id;
+  const navigate = useNavigate();
+  Axios.defaults.withCredentials = true;
+
+  //Getting the values of query parameters
+  const params = new URLSearchParams(location.search);
+  const userId = params.get("id");
 
   useEffect(() => {
     getUserDetails();
+    getIncomeDetails();
   }, []);
+
+  // state variables for hold and update personal details
   const [userData, setuserData] = useState({});
   const [values, setvalues] = useState({
     email: "",
@@ -33,15 +41,8 @@ function UpdatePersonalDetails() {
     birthday: "",
     id: userId,
   });
-  const [OldPassword, setOldPassword] = useState("");
-  const [Password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [warning, setWarning] = useState("");
 
-  const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
-
-  //get details from backend
+  //get user basic details from backend
   const getUserDetails = async () => {
     try {
       const response = await Axios.get(
@@ -66,10 +67,11 @@ function UpdatePersonalDetails() {
     }
   };
 
-  //submiting PersonalDetails to backend
+  //submiting basic details to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      console.log(values);
       const res = await Axios.patch(
         `${base_url}/api/taxpayer/updatebasicdetails`,
         values
@@ -90,39 +92,50 @@ function UpdatePersonalDetails() {
     }
   };
 
-  //Handling password change
-  const handlePasswordChange = async (event) => {
-    event.preventDefault();
-    if (OldPassword == "") {
-      setWarning("Enter Current Password!");
-      return;
-    }
-    if (Password == "") {
-      setWarning("Enter password!");
-      return;
-    }
-    if (confirmPassword == "") {
-      setWarning("Confirm password!");
-      return;
-    }
+  // state variables for hold and update income details
+  const [incomevalues, setincomevalues] = useState({
+    businessIncome: "",
+    employmentIncome: "",
+    investmentIncome: "",
+    otherIncome: "",
+    id: userId,
+  });
 
-    if (Password !== confirmPassword) {
-      setWarning("Passwords do not match!");
-      setPassword("");
-      setConfirmPassword("");
-      return;
-    }
+  const [incomeuserData, setincomeuserData] = useState({});
+
+  const getIncomeDetails = async () => {
     try {
-      const res = await Axios.patch(`${base_url}/api/taxpayer/updatePassword`, {
-        OldPassword: OldPassword,
-        Password: Password,
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserincomedetails/${userId}`
+      );
+      setincomeuserData(response.data.Data);
+      setincomevalues({
+        ...values,
+        businessIncome: response.data.Data.businessIncome,
+        employmentIncome: response.data.Data.employmentIncome,
+        investmentIncome: response.data.Data.investmentIncome,
+        otherIncome: response.data.Data.otherIncome,
       });
-      if (res.data.status) {
-        alert("Password Change Successful");
-      } else if (res.data.message === "Taxpayer not found") {
-        alert("Incorrect Password");
+      console.log(userData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //submiting income details to backend
+  const handleIncomeSubmit = async (event) => {
+    event.preventDefault();
+    console.log(incomevalues);
+
+    try {
+      const res = await Axios.patch(
+        `${base_url}/api/taxpayer/updateincomedetails`,
+        incomevalues
+      );
+      if (res.data.Status === "Success") {
+        window.location.reload();
       } else {
-        alert("Error in Updating");
+        alert("Error in updating");
       }
       console.log(res);
     } catch (error) {
@@ -130,11 +143,17 @@ function UpdatePersonalDetails() {
     }
   };
 
-  //Popup for confirmation
+  //Popup for personal details update confirmation
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  //Popup for personal details update confirmation
+  const [incomeshow, setincomeShow] = useState(false);
+
+  const handleIncomeClose = () => setincomeShow(false);
+  const handleIncomeShow = () => setincomeShow(true);
 
   return (
     <div>
@@ -143,7 +162,7 @@ function UpdatePersonalDetails() {
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
-          backgroundColor: "#D3E9FE",
+          backgroundColor: "#F3FFF5",
           width: "78vw",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
@@ -153,7 +172,7 @@ function UpdatePersonalDetails() {
             style={{
               marginBottom: "1%",
               marginLeft: "14vw",
-              color: "#0085FF",
+              color: "#008060",
               fontWeight: "bold",
             }}
           >
@@ -335,7 +354,7 @@ function UpdatePersonalDetails() {
             </div>
           </div>
 
-          <div className="updateDetails" style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <>
               <Button
                 style={{
@@ -345,7 +364,7 @@ function UpdatePersonalDetails() {
                   marginBottom: "8vh",
                 }}
                 onClick={handleShow}
-                className="user"
+                className="adminupdateDetails"
               >
                 Update
               </Button>
@@ -367,81 +386,130 @@ function UpdatePersonalDetails() {
             </>
           </div>
         </div>
+      </form>
 
-        <div className="passwordChange" style={{ marginLeft: "6vw" }}>
-          <h5
+      <form
+        onSubmit={handleIncomeSubmit}
+        style={{
+          borderRadius: "15px",
+          padding: "20px 40px",
+          backgroundColor: "#F3FFF5",
+          width: "78VW",
+          boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+          marginTop: "-20px",
+        }}
+      >
+        <div style={{ marginLeft: "5vw" }}>
+          <h2
             style={{
               marginBottom: "1%",
-              color: "#0085FF",
+              marginLeft: "25%",
+              color: "#008060",
               fontWeight: "bold",
             }}
           >
-            Change Password
-          </h5>
-
-          <div className="form-group">
-            <label className="lables">Current Password</label>
+            Income Details
+          </h2>
+          <label className="lables">Type of income</label>
+          <br></br>
+          <br></br>
+          <div className="form-group contact">
+            <label className="lables">Employement Income (LKR)</label>
             <div className="custom_input">
               <input
-                style={{ width: "20vw" }}
+                style={{ width: "30vw" }}
                 className="details-input form-control"
-                type="password"
-                id="oldpassword"
+                type="number"
+                defaultValue={incomeuserData.employmentIncome}
                 onChange={(e) => {
-                  setOldPassword(e.target.value);
+                  setincomevalues({
+                    ...incomevalues,
+                    employmentIncome: e.target.value,
+                  });
                 }}
               />
             </div>
           </div>
 
-          <div
-            className="passwordChange"
-            style={{ display: "flex", flexDirection: "row" }}
-          >
-            <div className="form-group">
-              <label className="lables">New Password</label>
-              <div className="custom_input">
-                <input
-                  style={{ width: "20vw" }}
-                  className="details-input form-control"
-                  type="password"
-                  id="password"
-                  value={Password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="confirmPassword" style={{ marginLeft: "10vw" }}>
-              <label className="lables">Confirm Password</label>
-              <div className="custom_input">
-                <input
-                  style={{ width: "20vw" }}
-                  className="details-input form-control"
-                  type="password"
-                  id="password2"
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    setConfirmPassword(e.target.value);
-                  }}
-                />
-              </div>
+          <div className="form-group contact">
+            <label className="lables">Investment Income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={incomeuserData.investmentIncome}
+                onChange={(e) => {
+                  setincomevalues({
+                    ...incomevalues,
+                    investmentIncome: e.target.value,
+                  });
+                }}
+              />
             </div>
           </div>
-          {warning && <p style={{ color: "red" }}>{warning}</p>}
+
+          <div className="form-group contact">
+            <label className="lables">Business income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={incomeuserData.businessIncome}
+                onChange={(e) => {
+                  setincomevalues({
+                    ...incomevalues,
+                    businessIncome: e.target.value,
+                  });
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="form-group contact">
+            <label className="lables">Other income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={incomeuserData.otherIncome}
+                onChange={(e) => {
+                  setincomevalues({
+                    ...incomevalues,
+                    otherIncome: e.target.value,
+                  });
+                }}
+              />
+            </div>
+          </div>
+          <br></br>
+
           <Button
-            onClick={handlePasswordChange}
-            className="resetpasswordButton user"
-            style={{
-              marginTop: "5vh",
-              borderRadius: "10px",
-              marginLeft: "21vw",
-            }}
+            style={{ borderRadius: "10px", marginLeft: "22vw" }}
+            className="adminIncomeSubmit btn btn-primary"
+            onClick={handleIncomeShow}
           >
-            Change
+            Update
           </Button>
+
+          <Modal show={incomeshow} onHide={handleIncomeClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Are you Sure</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Do you want to update income details ?</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleIncomeClose}>
+                No
+              </Button>
+              <Button variant="primary" onClick={handleIncomeSubmit}>
+                Yes
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <br></br>
+          <br></br>
         </div>
       </form>
       <br></br>
@@ -450,4 +518,4 @@ function UpdatePersonalDetails() {
   );
 }
 
-export default UpdatePersonalDetails;
+export default ViewDetails;

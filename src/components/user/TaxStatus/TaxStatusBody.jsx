@@ -49,7 +49,7 @@ export default function TaxStatus() {
         borderRadius: "15px",
         padding: "20px 40px",
         backgroundColor: "#D3E9FE",
-        width: "100%",
+        width: "78vw",
         marginTop:"5px",
         marginBottom:'20px',
         boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",
@@ -101,8 +101,8 @@ export default function TaxStatus() {
         </div>
         <div style={{marginTop:"100px"}}>
         <div style={{paddingTop:"10px"}}><ProgressBar now={now} label={`${now}%`} style={{boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)"}}/></div>
-         <div style={{color:'#0085FF',textAlign:"center", textShadow:"2px 2px 4px rgba(0, 0, 0,0.3)",fontSize:'20px',marginTop:"20px"}}>This progress Bar shows the progress of the taxpayer</div> 
-         <div style={{color:'Gray',textAlign:"justify", textShadow:"2px 2px 4px rgba(0, 0, 0,0.3)",fontSize:'20px',marginTop:"40px"}}>The progress bar serves as a visual representation of the taxpayer's financial contributions over a specified period. As it dynamically adjusts, it mirrors the proportion of taxes paid by the user during the chosen timeframe, displaying the percentage completion. This intuitive tool provides a quick and accessible way for users to gauge their tax payment progress, fostering transparency and comprehension in financial matters.</div>
+         <div style={{color:'#0085FF',textAlign:"center",fontSize:'20px',marginTop:"20px"}}>This progress Bar shows the progress of the taxpayer</div> 
+         <div style={{color:'Gray',textAlign:"justify",fontSize:'20px',marginTop:"40px"}}>The progress bar serves as a visual representation of the taxpayer's financial contributions over a specified period. As it dynamically adjusts, it mirrors the proportion of taxes paid by the user during the chosen timeframe, displaying the percentage completion. This intuitive tool provides a quick and accessible way for users to gauge their tax payment progress, fostering transparency and comprehension in financial matters.</div>
         </div>
       </div></div>
   )

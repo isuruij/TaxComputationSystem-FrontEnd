@@ -1,13 +1,13 @@
 @media screen and (max-width: 700px) {
-    .setting-option {
-      font-size: 12px;
-    }
+  .setting-option {
+    font-size: 12px !important;
   }
-
+}
 
 .bt {
   margin-left: 3vw !important;
   width: 15vw;
+  border-radius: 10px !important;
 }
 
 .group {

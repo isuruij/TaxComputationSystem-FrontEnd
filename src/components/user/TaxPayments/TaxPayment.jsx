@@ -52,7 +52,7 @@ export default function TaxPayment() {
         borderRadius: "15px",
         padding: "20px 40px",
         backgroundColor: "#D3E9FE",
-        width: "100%",
+        width: "78vw",
         marginTop:"5px",
         marginBottom:'20px',
         boxShadow:"1px 5px 3px -3px rgba(0,0,0,0.44)",

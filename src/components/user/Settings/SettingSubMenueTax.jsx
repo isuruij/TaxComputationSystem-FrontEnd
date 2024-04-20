@@ -1,44 +1,39 @@
 import React from "react";
-import "./SettingSubMenue.css"
+import "./SettingSubMenue.css";
 import { useNavigate } from "react-router-dom";
 
 function SettingSubMenueTax() {
   const navigate = useNavigate();
   return (
-    
-      <div className="group">
-        <button
-          class="btn btn-primary bt"
-          style={{ }}
-          onClick={()=>{
-            navigate("/TaxStatus")
-          }}
-        >
-          Tax Status
-        </button>
-        <button
-          class="btn btn-primary bt"
-          style={{  }}
-          onClick={()=>{
-            navigate("/settings/income")
-          }}
-        >
-          Tax history
-        </button>
-        <button
-          class="btn btn-primary bt"
-          style={{  }}
-          onClick={()=>{
-            navigate("/TaxPayments")
-          }}
-        >
-          Tax Payments Update
-        </button>
-      </div>
-
-        
-
-    
+    <div className="group">
+      <button
+        className="btn btn-primary bt"
+        style={{}}
+        onClick={() => {
+          navigate("/TaxStatus");
+        }}
+      >
+        <div className="setting-option">Tax Status</div>
+      </button>
+      <button
+        className="btn btn-primary bt"
+        style={{}}
+        onClick={() => {
+          navigate("/taxhistory");
+        }}
+      >
+        <div className="setting-option">Tax History</div>
+      </button>
+      <button
+        className="btn btn-primary bt"
+        style={{}}
+        onClick={() => {
+          navigate("/TaxPayments");
+        }}
+      >
+        <div className="setting-option">Payment Update</div>
+      </button>
+    </div>
   );
 }
 

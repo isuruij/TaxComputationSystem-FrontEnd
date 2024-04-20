@@ -1,14 +1,13 @@
 import React from "react";
-import Header from "../../components/user/Header/Header";
-import SettingSubMenueTax from "../../components/user/Settings/SettingSubMenueTax";
 
-import TaxPayment from "../../components/user/TaxPayments/TaxPayment";
+import ViewDetails from "../../components/Admins/SuperAdmin/ViewDetails/ViewDetails";
 
-import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
+import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
+import Navigationbar from "../../components/Admins/SuperAdmin/NavigationBar/Navigationbar";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function TaxPayments() {
+export default function SuperAdminDashboard() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
@@ -36,25 +35,21 @@ export default function TaxPayments() {
       {auth === "Started" && <p></p>}
       {auth === "Verified" && (
         <div>
-          <div style={{ position: "fixed" }}>
-            <Header />
-          </div>
+          <AdminHeader />
           <div style={{ display: "flex" }}>
-            <div style={{ marginTop: "8.5vh", position: "fixed" }}>
-              <Sidenavbar />
+            <div style={{ marginTop: "5px" }}>
+              <Navigationbar />
             </div>
-            <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-              <div
-                style={{
-                  marginLeft: "20vw",
-                  marginTop: "7.7vh",
-                  position: "fixed",
-                }}
-              >
-                <SettingSubMenueTax />
-              </div>
-              <div style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
-                <TaxPayment />
+            <div
+              style={{
+                width: "65vw",
+                marginLeft: "5px",
+                marginTop: "5px",
+                display: "block",
+              }}
+            >
+              <div>
+                <ViewDetails />
               </div>
             </div>
           </div>
