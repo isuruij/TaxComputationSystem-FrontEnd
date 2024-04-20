@@ -9,7 +9,7 @@ function ForgetPassword() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const [loading, setLoading] = useState(false);
   const [values, setvalues] = useState({
-    email: ""
+    email: "",
   });
 
   const navigate = useNavigate();
@@ -18,14 +18,20 @@ function ForgetPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      setLoading(true)
-      const res = await Axios.post(`${base_url}/api/taxpayer/forgot-password`, values);
+      setLoading(true);
+      const res = await Axios.post(
+        `${base_url}/api/taxpayer/forgot-password`,
+        values
+      );
       if (res.data.Status == "Success") {
         alert("We have sent a link. Please check your email!");
-        setLoading(false)
-      } else if(res.data.Status == "NotSuccess" && res.data.message=="Email not found"){
+        setLoading(false);
+      } else if (
+        res.data.Status == "NotSuccess" &&
+        res.data.message == "Email not found"
+      ) {
         alert("Email not found");
-        setLoading(false)
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -55,18 +61,17 @@ function ForgetPassword() {
           }}
         >
           Forgot Password
-            
         </h4>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables"  style={{ marginLeft: "10%" }}>
-           Enter your Email
+          <label className="lables" style={{ marginLeft: "10%" }}>
+            Enter your Email
           </label>
           <div>
             <input
               required
               style={{
                 width: "15vw",
-                height:"30px"
+                height: "30px",
               }}
               className="login-input form-control"
               type="email"
@@ -79,30 +84,27 @@ function ForgetPassword() {
           </div>
         </div>
 
-
-
         <button
-            type="submit"
-            className="btn btn-primary"
-            style={{borderRadius:"10px" ,marginTop: "3%", marginLeft: "30%" }}
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <Spinner
-                  style={{ marginLeft: "11px", marginRight: "11px" }}
-                  as="span"
-                  animation="border"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                />
-              </>
-            ) : (
-              "Send Link"
-            )}
-          </button>
-
+          type="submit"
+          className="btn btn-primary"
+          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "30%" }}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Spinner
+                style={{ marginLeft: "11px", marginRight: "11px" }}
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            </>
+          ) : (
+            "Send Link"
+          )}
+        </button>
       </form>
     </div>
   );

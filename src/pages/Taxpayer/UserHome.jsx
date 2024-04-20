@@ -35,32 +35,32 @@ export default function UserHome() {
   }, []);
   return (
     <div>
-            {auth === "Started" && <p></p>}
+      {auth === "Started" && <p></p>}
       {auth === "Verified" && (
-      <div>
-        <div style={{ position: "fixed" }}>
-          <Header />
-        </div>
-        <div style={{ display: "flex" }}>
-          <div style={{ marginTop: "8.5vh", position: "fixed" }}>
-            <Sidenavbar />
+        <div>
+          <div style={{ position: "fixed" }}>
+            <Header />
           </div>
-          <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-            <div
-              style={{
-                marginLeft: "20vw",
-                marginTop: "7.7vh",
-                position: "fixed",
-              }}
-            ></div>
-            <div style={{ marginTop: "7.7vh", marginLeft: "20vw" }}>
-              <Homepage />
+          <div style={{ display: "flex" }}>
+            <div style={{ marginTop: "8.5vh", position: "fixed" }}>
+              <Sidenavbar />
+            </div>
+            <div style={{ marginLeft: "5px", marginTop: "5px" }}>
+              <div
+                style={{
+                  marginLeft: "20vw",
+                  marginTop: "7.7vh",
+                  position: "fixed",
+                }}
+              ></div>
+              <div style={{ marginTop: "7.7vh", marginLeft: "20vw" }}>
+                <Homepage />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-            )}
-            {auth === "Failed" && <h1>Access Denied</h1>}
+      )}
+      {auth === "Failed" && <h1>Access Denied</h1>}
     </div>
   );
 }

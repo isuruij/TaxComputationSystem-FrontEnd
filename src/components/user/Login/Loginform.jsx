@@ -59,14 +59,17 @@ function Loginform() {
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#0085FF"}}>Email</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#0085FF" }}
+          >
+            Email
+          </label>
           <div>
             <input
               required
               style={{
-
-                   height: "30px",
-
+                height: "30px",
               }}
               className="login-input details-input form-control"
               type="email"
@@ -80,13 +83,18 @@ function Loginform() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#0085FF"}}>Password</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#0085FF" }}
+          >
+            Password
+          </label>
           <div>
             <input
               required
-                 style={{
-                  height: "30px",
-                  }}
+              style={{
+                height: "30px",
+              }}
               className="login-input details-input form-control"
               type="password"
               id="exampleInputPassword1"
@@ -114,7 +122,7 @@ function Loginform() {
         <button
           type="submit"
           className="btn btn-primary"
-          style={{ borderRadius:"10px",marginTop: "3%", marginLeft: "36%" }}
+          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "36%" }}
           disabled={loading}
         >
           {loading ? (

@@ -23,12 +23,15 @@ function Login() {
     try {
       setLoading(true);
       const res = await Axios.post(`${base_url}/api/SuperAdmin/login`, values);
-      if (res.data.Status === "Success" && res.data.Type ==="superAdmin") {
+      if (res.data.Status === "Success" && res.data.Type === "superAdmin") {
         navigate("/SuperAdminDashboard");
-      } else if(res.data.Status === "Success" && res.data.Type ==="secondAdmin"){
+      } else if (
+        res.data.Status === "Success" &&
+        res.data.Type === "secondAdmin"
+      ) {
         //navigate("/SuperAdminDashboard");
         alert("second admin");
-      }else{
+      } else {
         setLoading(false);
         alert("Login Failed!");
       }
@@ -49,7 +52,6 @@ function Login() {
           marginLeft: "35vw",
           marginTop: "10vh",
           boxShadow: "0px 2px 10px -2px rgba(0,0,0,0.75)",
-         
         }}
       >
         <h2
@@ -63,7 +65,12 @@ function Login() {
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>User Name</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#008060" }}
+          >
+            User Name
+          </label>
           <div>
             <input
               required
@@ -84,16 +91,21 @@ function Login() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>Password</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#008060" }}
+          >
+            Password
+          </label>
           <div>
             <input
               required
-                 style={{
-                    width: "15vw",
-                    fontSize: "15px",
-                    height: "27px",
-                    outline: "none",
-                  }}
+              style={{
+                width: "15vw",
+                fontSize: "15px",
+                height: "27px",
+                outline: "none",
+              }}
               className="login-input details-input form-control"
               type="password"
               id="exampleInputPassword1"
@@ -109,7 +121,7 @@ function Login() {
         <button
           type="submit"
           className="btn btn-primary adminLogin"
-          style={{borderRadius:"10px",marginTop: "3%", marginLeft: "36%" }}
+          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "36%" }}
           disabled={loading}
         >
           {loading ? (

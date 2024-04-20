@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { useLocation } from "react-router-dom"; 
+import { useLocation } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
@@ -114,7 +114,11 @@ function ResetPassword() {
             <button
               type="submit"
               className="btn btn-primary"
-              style={{borderRadius:"10px", marginTop: "3%", marginLeft: "30%" }}
+              style={{
+                borderRadius: "10px",
+                marginTop: "3%",
+                marginLeft: "30%",
+              }}
               disabled={loading}
             >
               {loading ? (

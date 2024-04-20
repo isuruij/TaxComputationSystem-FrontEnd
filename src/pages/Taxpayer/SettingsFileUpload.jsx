@@ -31,34 +31,40 @@ function SettingsFileUpload() {
   }, []);
   return (
     <div>
-            {auth === "Started" && <p></p>}
+      {auth === "Started" && <p></p>}
       {auth === "Verified" && (
-      <div>
-        <div style={{ position: "fixed" }}>
-          <Header />
-        </div>
-        <div style={{ display: "flex" }}>
-          <div style={{ marginTop: "8.5vh", position: "fixed" }}>
-            <Sidenavbar />
+        <div>
+          <div style={{ position: "fixed" }}>
+            <Header />
           </div>
-          <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-            <div
-              style={{
-                marginLeft: "20vw",
-                marginTop: "7.7vh",
-                position: "fixed",
-              }}
-            >
-              <SettingSubMenue />
+          <div style={{ display: "flex" }}>
+            <div style={{ marginTop: "8.5vh", position: "fixed" }}>
+              <Sidenavbar />
             </div>
-            <div style={{width:"78vw", marginTop: "19.2vh", marginLeft: "20vw" }}>
-              <FileUpload />
+            <div style={{ marginLeft: "5px", marginTop: "5px" }}>
+              <div
+                style={{
+                  marginLeft: "20vw",
+                  marginTop: "7.7vh",
+                  position: "fixed",
+                }}
+              >
+                <SettingSubMenue />
+              </div>
+              <div
+                style={{
+                  width: "78vw",
+                  marginTop: "19.2vh",
+                  marginLeft: "20vw",
+                }}
+              >
+                <FileUpload />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-            )}
-            {auth === "Failed" && <h1>Access Denied</h1>}
+      )}
+      {auth === "Failed" && <h1>Access Denied</h1>}
     </div>
   );
 }

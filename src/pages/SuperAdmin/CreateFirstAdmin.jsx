@@ -4,14 +4,13 @@ import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 
-
 function CreateFirstAdmin() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [values, setvalues] = useState({
     userName: "",
     password: "",
-    name:""
+    name: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -23,13 +22,16 @@ function CreateFirstAdmin() {
     event.preventDefault();
     try {
       setLoading(true);
-      const res = await Axios.post(`${base_url}/api/SuperAdmin/createfirstadmin`, values);
+      const res = await Axios.post(
+        `${base_url}/api/SuperAdmin/createfirstadmin`,
+        values
+      );
       if (res.data.Status === "Success") {
         navigate("/SuperAdminDashboard");
       } else if (res.data.message == "user exist") {
         alert("Already added the First admin");
         setLoading(false);
-      }else{
+      } else {
         alert("System Error!");
         setLoading(false);
       }
@@ -50,7 +52,6 @@ function CreateFirstAdmin() {
           marginLeft: "35vw",
           marginTop: "10vh",
           boxShadow: "0px 2px 10px -2px rgba(0,0,0,0.75)",
-         
         }}
       >
         <h4
@@ -65,7 +66,12 @@ function CreateFirstAdmin() {
         </h4>
         <br></br>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>User Name</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#008060" }}
+          >
+            User Name
+          </label>
           <div>
             <input
               required
@@ -93,22 +99,27 @@ function CreateFirstAdmin() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>Password</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#008060" }}
+          >
+            Password
+          </label>
           <div>
             <input
               required
-                 style={{
-                    width: "15vw",
-                    fontSize: "15px",
-                    height: "27px",
-                    outline: "none",
-                    // background: "#B3F9D7",
-                    // color: "#000000",
-                    // border: "1px solid #C4D1EB",
-                    // borderRadius: "10px",
-                    // boxShadow: "0px 2px 3px 1px #9D9D9D",
-                    // transition: ".3s ease",
-                  }}
+              style={{
+                width: "15vw",
+                fontSize: "15px",
+                height: "27px",
+                outline: "none",
+                // background: "#B3F9D7",
+                // color: "#000000",
+                // border: "1px solid #C4D1EB",
+                // borderRadius: "10px",
+                // boxShadow: "0px 2px 3px 1px #9D9D9D",
+                // transition: ".3s ease",
+              }}
               className="login-input details-input form-control"
               type="password"
               id="exampleInputPassword1"
@@ -118,11 +129,15 @@ function CreateFirstAdmin() {
               }}
             />
           </div>
-          
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>Your Name</label>
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#008060" }}
+          >
+            Your Name
+          </label>
           <div>
             <input
               required
@@ -152,7 +167,7 @@ function CreateFirstAdmin() {
         <button
           type="submit"
           className="btn btn-primary adminLogin"
-          style={{borderRadius:"10px",marginTop: "3%", marginLeft: "34%" }}
+          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "34%" }}
           disabled={loading}
         >
           {loading ? (
@@ -170,7 +185,6 @@ function CreateFirstAdmin() {
             "Create"
           )}
         </button>
-
       </form>
     </div>
   );
