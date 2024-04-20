@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import { useLocation } from "react-router-dom"; 
+import { useLocation } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Tick from "../../../../assets/Tick.svg";
@@ -149,14 +149,11 @@ function ViewDetails() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   //Popup for personal details update confirmation
   const [incomeshow, setincomeShow] = useState(false);
 
   const handleIncomeClose = () => setincomeShow(false);
   const handleIncomeShow = () => setincomeShow(true);
-
-
 
   return (
     <div>
@@ -399,7 +396,7 @@ function ViewDetails() {
           backgroundColor: "#F3FFF5",
           width: "78VW",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-          marginTop:"-20px"
+          marginTop: "-20px",
         }}
       >
         <div style={{ marginLeft: "5vw" }}>

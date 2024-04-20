@@ -8,7 +8,7 @@ function SettingSubMenue() {
     <div className="group">
       <button
         className="btn btn-primary bt user"
-        style={{ }}
+        style={{}}
         onClick={() => {
           navigate("/settings/basic");
         }}

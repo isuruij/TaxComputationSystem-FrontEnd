@@ -7,10 +7,8 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
 function Header() {
-
   const cookieValue = Cookies.get("token");
   const name = jwtDecode(cookieValue).name;
-
 
   const [count, setcount] = useState(0);
   useEffect(() => {
