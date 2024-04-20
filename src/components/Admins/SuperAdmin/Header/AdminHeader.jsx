@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import Notification from "../../../assets/Notification.svg";
-import Profile from "../../../assets/Profile.svg";
+import Notification from "../../../../assets/adminNotification.svg";
+import Profile from "../../../../assets/AdminProfile.svg";
 import { useState } from "react";
-import "./Header.css";
+import "./DHeader.css";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
 function Header() {
+
   const cookieValue = Cookies.get("token");
   const name = jwtDecode(cookieValue).name;
+
 
   const [count, setcount] = useState(0);
   useEffect(() => {
@@ -17,10 +19,10 @@ function Header() {
   return (
     <div
       style={{
-        backgroundColor: "#D3E9FE",
+        backgroundColor: "#F3FFF5",
         display: "flex",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-        width: "100vw",
+        width: "98.5vw",
       }}
     >
       <img

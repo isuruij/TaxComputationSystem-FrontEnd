@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
 import "../PersonalDetails/PersonalDetails.css";
 
 function SignupPersonalDetails() {
@@ -62,7 +63,7 @@ function SignupPersonalDetails() {
       } else if (res.data.message == "already registered email") {
         alert("Email is already registered! Please Enter another one");
         setLoading(false);
-      }else{
+      } else {
         alert("System Error!");
         setLoading(false);
       }
@@ -392,10 +393,10 @@ function SignupPersonalDetails() {
         </div>
 
         <div style={{ display: "flex" }}>
-          <button
+          <Button
             type="submit"
-            className="btn btn-primary signupButton"
-            style={{borderRadius:"10px", marginTop: "3%", marginLeft: "70%" }}
+            className="signupButton user"
+            style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "70%" }}
             disabled={loading}
           >
             {loading ? (
@@ -412,7 +413,7 @@ function SignupPersonalDetails() {
             ) : (
               "Continue"
             )}
-          </button>
+          </Button>
         </div>
 
         <br></br>

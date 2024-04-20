@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom"; 
 import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
@@ -16,6 +16,7 @@ function ResetPassword() {
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
+  //Getting the values of query parameters
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
   const token = params.get("token");
@@ -98,13 +99,6 @@ function ResetPassword() {
                     width: "15vw",
                     fontSize: "15px",
                     height: "26px",
-                    // outline: "none",
-                    // background: "#f3f9ff",
-                    // color: "#000000",
-                    // border: "1px solid #C4D1EB",
-                    // borderRadius: "10px",
-                    // boxShadow: "0px 3px 3px 1px #9D9D9D",
-                    // transition: ".3s ease",
                   }}
                   className="login-input form-control"
                   type="password"

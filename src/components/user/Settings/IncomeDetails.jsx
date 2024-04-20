@@ -167,7 +167,7 @@ function Incomedetails() {
 
           <Button
             style={{ borderRadius: "10px", marginLeft: "0vw" }}
-            className="incomeSubmit btn btn-primary"
+            className="incomeSubmit user"
             onClick={handleShow}
           >
             Update

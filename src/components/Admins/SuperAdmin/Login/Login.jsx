@@ -5,11 +5,11 @@ import Axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
-function Loginform() {
+function Login() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [values, setvalues] = useState({
-    email: "",
+    userName: "",
     password: "",
   });
 
@@ -22,10 +22,13 @@ function Loginform() {
     event.preventDefault();
     try {
       setLoading(true);
-      const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
-      if (res.data.Status === "Success") {
-        navigate("/UserHomePage");
-      } else {
+      const res = await Axios.post(`${base_url}/api/SuperAdmin/login`, values);
+      if (res.data.Status === "Success" && res.data.Type ==="superAdmin") {
+        navigate("/SuperAdminDashboard");
+      } else if(res.data.Status === "Success" && res.data.Type ==="secondAdmin"){
+        //navigate("/SuperAdminDashboard");
+        alert("second admin");
+      }else{
         setLoading(false);
         alert("Login Failed!");
       }
@@ -41,51 +44,55 @@ function Loginform() {
         style={{
           borderRadius: "15px",
           padding: "20px 40px",
-          backgroundColor: "#D3E9FE",
+          backgroundColor: "#F3FFF5",
           width: "25vw",
           marginLeft: "35vw",
           marginTop: "10vh",
-          boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+          boxShadow: "0px 2px 10px -2px rgba(0,0,0,0.75)",
+         
         }}
       >
         <h2
           style={{
             marginBottom: "0vw",
             marginLeft: "6vw",
-            color: "#0085FF",
+            color: "#008060",
             fontWeight: "bold",
           }}
         >
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#0085FF"}}>Email</label>
+          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>User Name</label>
           <div>
             <input
               required
               style={{
-
-                   height: "30px",
-
+                width: "15vw",
+                fontSize: "15px",
+                height: "27px",
               }}
               className="login-input details-input form-control"
-              type="email"
+              type="text"
               id="exampleInputEmail1"
               placeholder=""
               onChange={(e) => {
-                setvalues({ ...values, email: e.target.value });
+                setvalues({ ...values, userName: e.target.value });
               }}
             />
           </div>
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" style={{fontWeight:"700",color:"#0085FF"}}>Password</label>
+          <label className="lables" style={{fontWeight:"700",color:"#008060"}}>Password</label>
           <div>
             <input
               required
                  style={{
-                  height: "30px",
+                    width: "15vw",
+                    fontSize: "15px",
+                    height: "27px",
+                    outline: "none",
                   }}
               className="login-input details-input form-control"
               type="password"
@@ -96,25 +103,13 @@ function Loginform() {
               }}
             />
           </div>
-          <p
-            onClick={() => {
-              navigate("../forgotpassword");
-            }}
-            style={{
-              cursor: "pointer",
-              color: "#049370",
-              fontSize: "13px",
-              marginTop: "5%",
-            }}
-          >
-            Forget password
-          </p>
+          <br></br>
         </div>
 
         <button
           type="submit"
-          className="btn btn-primary"
-          style={{ borderRadius:"10px",marginTop: "3%", marginLeft: "36%" }}
+          className="btn btn-primary adminLogin"
+          style={{borderRadius:"10px",marginTop: "3%", marginLeft: "36%" }}
           disabled={loading}
         >
           {loading ? (
@@ -134,7 +129,7 @@ function Loginform() {
         </button>
         <p
           onClick={() => {
-            navigate("../signup");
+            navigate("../Create/FirstAdmin");
           }}
           style={{
             cursor: "pointer",
@@ -144,11 +139,11 @@ function Loginform() {
             fontSize: "13px",
           }}
         >
-          Not a member ? Sign Up
+          No Account ? Create First Admin
         </p>
       </form>
     </div>
   );
 }
 
-export default Loginform;
+export default Login;

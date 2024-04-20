@@ -1,49 +1,3 @@
-/* .details-input{
-    font-size: 12px;
-	padding: 5px 10px;
-	width: 25vw !important;
-	height: 26px; 
-	outline: none;
-	background: #f3f9ff;
-	color: #000000;
-	border: 1px solid #C4D1EB;
-	border-radius: 15px !important;
-	box-shadow: 0px 3px 3px 1px #9D9D9D;
-	transition: .3s ease;
-	margin-bottom: 5px;
-}
-
-@media screen and (max-width: 700px) {
-    .details-input {
-		width: 70vw;
-    }
-	
-  }
-.input:focus {
-	background: #F2F2F2;
-	border: 1px solid #5A7EC7;
-	border-radius: 10px;
-}
-
-
-.lables{
-    
-    color: #0085FF;
-    font-weight: 700;
-}
-
-
-
-button{
-    
-    background-color:#0085FF ;
-    border-radius: 10px !important;
-    
-} */
-
-@media screen and (min-width: 700px) {
-}
-
 @media screen and (max-width: 700px) {
   .details-input {
     width: 50vw !important;
@@ -54,12 +8,12 @@ button{
     flex-direction: column !important;
   }
 
-  .passwordChange{
+  .passwordChange {
     display: flex;
     flex-direction: column !important;
   }
 
-  .confirmPassword{
+  .confirmPassword {
     margin-left: 0vw !important;
   }
 
@@ -83,12 +37,12 @@ button{
     margin-left: "50vw !important";
   }
 
-  .resetpasswordButton{
+  .resetpasswordButton {
     margin-left: 0vw !important;
     width: 50vw;
   }
 
-  .signupButton{
+  .signupButton {
     margin-top: 5vh !important;
     margin-left: 0px !important;
     width: 50vw;
