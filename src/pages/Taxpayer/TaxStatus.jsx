@@ -59,7 +59,7 @@ export default function TaxStatus() {
           </div>
         </div>
       )}
-      {auth === "Failed" && <h1>Access Denied</h1>}
+      {auth === "Failed" && <h1>Access Denied! Please Login Again</h1>}
     </div>
   );
 }
