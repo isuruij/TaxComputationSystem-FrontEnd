@@ -11,3 +11,18 @@
 .user:hover {
   background-color: #4e15b1 !important;
 }
+
+@media screen and (max-width: 700px) {
+  .UserPageContent{
+    margin-top: 18.7vh !important;
+    width: 75vw !important;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .UserPageContent{
+    margin-top: 19.2vh !important;
+    width: 78vw !important;
+  }
+}
+

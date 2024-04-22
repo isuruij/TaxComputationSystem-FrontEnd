@@ -51,7 +51,7 @@ function SettingsBasicDetails() {
               >
                 <SettingSubMenue />
               </div>
-              <div style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+              <div className="UserPageContent" style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
                 <UpdatePersonalDetails />
               </div>
             </div>

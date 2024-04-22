@@ -37,7 +37,7 @@ function Sidenavbar() {
     <div
       style={{
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-        borderRadius: "10px",
+        borderRadius: "15px",
         padding: "10px",
         marginBottom: "10px",
         marginLeft: "0.5%",
