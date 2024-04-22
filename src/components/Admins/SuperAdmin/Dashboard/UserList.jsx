@@ -85,18 +85,30 @@ const UserList = () => {
     console.log(`View profile for user with id ${id}`);
   };
 
-  const handleApprovalToggle = (id) => {
-    const newUsers = users.map((user) => {
-      if (user.id === id) {
-        const updatedUser = { ...user, approved: !user.approved };
-        updatedUser.approvalLabel = updatedUser.approved ? 'Approved' : 'Not Approved';
-        return updatedUser;
-      }
-      return user;
-    });
-    setUsers(newUsers);
+  const handleApprovalToggle = async (id) => {
+    try {
+      const updatedUsers = users.map((user) => {
+        if (user.id === id) {
+          // Toggle the approved status
+          const newApprovedStatus = !user.approved;
+          // Set isVerifiedUser accordingly
+          const isVerifiedUser = newApprovedStatus ? 1 : 0;
+          return { ...user, approved: newApprovedStatus, isVerifiedUser: isVerifiedUser };
+        }
+        return user;
+      });
+      setUsers(updatedUsers);
+      
+      // Make API call to update user's approval status and isVerifiedUser field
+      await axios.put(`${base_url}/api/SuperAdmin/updateUserApprovalStatus/${id}`, {
+        approved: updatedUsers.find(user => user.id === id).approved,
+        isVerifiedUser: updatedUsers.find(user => user.id === id).isVerifiedUser
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
-
+  
   const containerStyle = {
     textAlign: 'left',
     display: 'block',
