@@ -56,6 +56,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -71,6 +72,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+          className="navImage"
           src={registration}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -83,6 +85,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={DownloadTaxreport}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -98,6 +101,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={viewtax}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -113,6 +117,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={taxhistory}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -128,6 +133,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={logout}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
