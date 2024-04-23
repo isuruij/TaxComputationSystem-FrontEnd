@@ -1,0 +1,111 @@
+button{
+    
+    background-color:#049370 !important;
+    border-radius: 10px !important;
+    width: 500px;
+    
+}
+
+@media screen and (max-width: 1000px) {
+    .ncount {
+      margin-left: 82vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .ncount {
+      margin-left: 82.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .ncount {
+      margin-left: 82.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .ncount {
+      margin-left: 82.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .ncount {
+      margin-left: 87.5vw !important ;
+    }
+  }
+  
+  @media screen and (max-width: 300px) {
+    .ncount {
+      margin-left: 88.5vw !important ;
+    }
+  }
+.box1{
+    display: flex;
+    align-items: center;
+    margin-right: 1%;
+    margin-top: 0%;
+    width: 10%;
+}
+.box1 img{
+    width: 100%;
+    height:auto;
+    margin-top: 1%;
+}
+
+.box2{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    font-size: 75%;
+
+  }
+
+.box4{
+    display: flex;
+    width: 100%;
+    height: 0.5%;
+
+     
+}
+.box5{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 75%;
+    width:350px;
+    text-align: left;
+    
+}
+.box6{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 75%;
+}
+
+.search-container {
+  position: relative;
+  width: 90%; /* Adjust the width as needed */
+  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  margin-left: 150px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  
+
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  padding-right: 40px; /* Space for the search icon */
+  outline: none;
+}
+
+.search-input::before {
+  content: '\1F50D'; /* Unicode for the search icon (🔍) */
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #9D9393
+  }

@@ -19,6 +19,7 @@ import TaxStatus from "./pages/TaxStatus.jsx";
 import SuperAdminDashboard from "./pages/SuperAdminDashboard.jsx";
 import UserHome from "./pages/UserHome.jsx";
 import Viewtax from "./pages/Viewtax.jsx";
+import MailboxPage from "./pages/MailboxPage.jsx";
 
 
 
@@ -45,6 +46,7 @@ function App() {
     <Route path="/UserHomePage" element={<UserHome/>}></Route>
     <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
     <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard/>}></Route>
+    <Route path="/MailboxPage" element={<MailboxPage/>}></Route>
     
     <Route path="/" element={<Test/>}></Route>
     

@@ -7,6 +7,10 @@ import Settings from "../../../../assets/Settings.svg";
 import home from "../../../../assets/home.svg";
 import logout from "../../../../assets/logout.svg";
 import mail from "../../../../assets/mail.svg";
+import plus from "../../../../assets/plus.svg";
+import ApproveReport from "../../../../assets/Approve-Report.svg";
+import newadmin from "../../../../assets/newadmin.svg"
+import updatepolicies from "../../../../assets/Updatepolicies.svg"
 import "./DSideNavBar.css";
 
 function Navigationbar() {
@@ -18,6 +22,16 @@ function Navigationbar() {
     width: "90%",
     marginLeft: "4%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+  };
+  const buttonStyle1 = {
+    backgroundColor: "#049370",
+    textAlign: "left",
+    display: "block",
+    marginBottom: "120px",
+    width: "90%",
+    marginLeft: "4%",
+    boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+    
   };
 
   const navigate = useNavigate();
@@ -47,10 +61,11 @@ function Navigationbar() {
       }}
     >
       <br></br>
+      <h2 style={{color:"#008060",paddingLeft:"20px",textShadow:"2px 2px 4px rgba(0, 0, 0, 0.5)"}}>Super Admin</h2>
       <button type="button" className="btn btn-primary custom-button">
         <img
           src={home}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left", }}
           alt="Icon"
         />
         <span>Dashboard</span>
@@ -74,7 +89,7 @@ function Navigationbar() {
 
       <button
         type="button"
-        className="btn btn-primary custom-button"
+        className="btn btn-primary custom-button-now"
         style={buttonStyle}
       >
         <img
@@ -90,16 +105,80 @@ function Navigationbar() {
           handleLogout();
         }}
         type="button"
-        className="btn btn-primary custom-button"
+        className="btn btn-primary custom-button-now"
         style={buttonStyle}
       >
         <img
           src={mail}
-          style={{ alignItems: "left", textAlign: "left" }}
+          style={{ alignItems: "left", textAlign: "left",width:"10%",marginRight:"10px" }}
           alt="Icon"
         />
         <span>Mail Box</span>
       </button>
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={plus}
+          style={{ alignItems: "left", textAlign: "left",width:"10%",marginRight:"10px" }}
+          alt="Icon"
+        />
+        <span>Create new user</span>
+      </button>
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={newadmin}
+          style={{ alignItems: "left", textAlign: "left",width:"10%",marginRight:"10px" }}
+          alt="Icon"
+        />
+        <span>Create new Admin</span>
+      </button>
+
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={ApproveReport}
+          style={{ alignItems: "left", textAlign: "left",width:"10%",marginRight:"10px" }}
+          alt="Icon"
+        />
+        <span>Approve Tax Report</span>
+      </button>
+
+      <button
+        onClick={() => {
+          handleLogout();
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle1}
+      >
+        <img
+          src={updatepolicies}
+          style={{ alignItems: "left", textAlign: "left",width:"10%",marginRight:"10px" }}
+          alt="Icon"
+        />
+        <span>Update Tax policies</span>
+      </button>
+
+
       <button
         onClick={() => {
           handleLogout();
