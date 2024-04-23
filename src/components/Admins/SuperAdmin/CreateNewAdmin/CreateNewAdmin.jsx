@@ -81,12 +81,6 @@ function CreateNewAdmin() {
                 fontSize: "15px",
                 height: "27px",
                 outline: "none",
-                // background: "#B3F9D7",
-                // color: "#000000",
-                // border: "1px solid #C4D1EB",
-                // borderRadius: "10px",
-                // boxShadow: "0px 3px 3px 1px #9D9D9D",
-                // transition: ".3s ease",
               }}
               className="login-input details-input form-control"
               type="text"
@@ -113,12 +107,6 @@ function CreateNewAdmin() {
                 fontSize: "15px",
                 height: "27px",
                 outline: "none",
-                // background: "#B3F9D7",
-                // color: "#000000",
-                // border: "1px solid #C4D1EB",
-                // borderRadius: "10px",
-                // boxShadow: "0px 2px 3px 1px #9D9D9D",
-                // transition: ".3s ease",
               }}
               className="login-input details-input form-control"
               type="password"
@@ -145,12 +133,6 @@ function CreateNewAdmin() {
                 fontSize: "15px",
                 height: "27px",
                 outline: "none",
-                // background: "#B3F9D7",
-                // color: "#000000",
-                // border: "1px solid #C4D1EB",
-                // borderRadius: "10px",
-                // boxShadow: "0px 3px 3px 1px #9D9D9D",
-                // transition: ".3s ease",
               }}
               className="login-input details-input form-control"
               type="text"

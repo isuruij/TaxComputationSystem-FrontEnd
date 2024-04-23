@@ -52,14 +52,14 @@ function SettingsIncomeDetails() {
               >
                 <SettingSubMenue />
               </div>
-              <div style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+              <div className="UserPageContent" style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
                 <Incomedetails />
               </div>
             </div>
           </div>
         </div>
       )}
-      {auth === "Failed" && <h1>Access Denied</h1>}
+      {auth === "Failed" && <h1>Access Denied! Please Login Again</h1>}
     </div>
   );
 }
