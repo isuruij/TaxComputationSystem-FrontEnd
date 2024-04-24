@@ -28,10 +28,11 @@ function Header() {
       }}
     >
       <img
-        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
+        style={{cursor:"pointer", marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
         src={Notification}
         alt="Notification"
         onClick={() => navigate("/notification")}
+        
       />
       {count != 0 ? (
         <span

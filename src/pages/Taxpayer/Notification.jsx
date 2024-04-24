@@ -12,7 +12,7 @@ function Notification() {
         <div style={{marginTop:"5px"}}>
           <Sidenavbar />
         </div>
-        <div style={{width:'65vw',marginLeft:"5px",marginTop:"0px"}} >
+        <div style={{width:'77vw',marginLeft:"5px",marginTop:"0px"}} >
           <NotificationCom/>
         </div>
       </div>
