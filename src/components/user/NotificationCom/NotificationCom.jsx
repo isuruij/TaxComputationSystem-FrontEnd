@@ -1,8 +1,38 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Cookies from "js-cookie";
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { jwtDecode } from "jwt-decode";
+
+function MyButton({ id, isViewed }) {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+  const [buttonText, setButtonText] = useState("view");
+
+  const handleClick = async () => {
+
+
+    
+    try {
+      const response = await Axios.patch(
+        `${base_url}/api/taxpayer/updateNotificationStatus`,
+        { id: id }
+      );
+      window.location.reload()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <button
+      style={{ marginLeft: "10vw" }}
+      className="btn btn-primary"
+      onClick={handleClick}
+    >
+      {isViewed?"viewed":"view"}
+    </button>
+  );
+}
 
 function NotificationCom() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -17,8 +47,8 @@ function NotificationCom() {
         `${base_url}/api/taxpayer/getNotifications/${userId}`
       );
       setnotificationList(response.data.data);
-      console.log(response.data.data);
-      console.log(notificationList);
+      //console.log(response.data.count);
+      //console.log(notificationList);
     } catch (error) {
       console.error(error);
     }
@@ -43,8 +73,8 @@ function NotificationCom() {
             boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
           }}
         >
-          {!notification.isViewed &&<i class="bi bi-dot"></i>}
           {notification.message}
+          <MyButton id={notification.id} isViewed={notification.isViewed} />
         </div>
       ))}
     </div>
