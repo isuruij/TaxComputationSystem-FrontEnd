@@ -20,6 +20,7 @@ import AdminLoginPage from "./pages/SuperAdmin/LoginPage.jsx";
 import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
+import Notification from "./pages/Taxpayer/Notification.jsx";
 
 
 
@@ -49,6 +50,7 @@ function App() {
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
     <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+    <Route path="/notification" element={<Notification />}></Route>
     
 
     {/* Data Entry routes */}
