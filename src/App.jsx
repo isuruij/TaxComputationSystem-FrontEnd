@@ -22,6 +22,7 @@ import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 import Notification from "./pages/Taxpayer/Notification.jsx";
 import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
+import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";
 
 
 
@@ -51,7 +52,8 @@ function App() {
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
     <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
-    <Route path="/notification" element={<Notification />}></Route>
+    <Route path="/notification" element={<Notification/>}></Route>
+    <Route path="/taxhistory" element={<TaxHistory/>}></Route>
     
 
     {/* Data Entry routes */}
