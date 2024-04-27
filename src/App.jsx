@@ -21,6 +21,7 @@ import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 import Notification from "./pages/Taxpayer/Notification.jsx";
+import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
 
 
 
@@ -62,7 +63,7 @@ function App() {
     <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin/>}></Route>
     <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
     <Route path="/create/admin" element={<CreateNewAdminPage/>}></Route>
-
+    <Route path="/taxpolicy" element={<TaxPolicy/>}></Route>
   </Routes>
   </BrowserRouter>    
 
