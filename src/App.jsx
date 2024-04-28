@@ -1,6 +1,7 @@
 
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
+import Axios from "axios";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
 import Signup from "./pages/Taxpayer/Signup.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -29,6 +30,7 @@ import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 
 
 function App() {
+  Axios.defaults.withCredentials = true;
   
   return (
     

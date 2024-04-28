@@ -29,7 +29,6 @@ const UserList = () => {
     // { id: 20, name: 'James Williams', approved: false },
   ]);
 
-  axios.defaults.withCredentials = true;
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(()=>{
     const fetchAllTaxpayers = async ()=>{

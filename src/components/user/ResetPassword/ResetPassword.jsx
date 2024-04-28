@@ -14,7 +14,7 @@ function ResetPassword() {
   const [password, setpassword] = useState("");
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
+ 
 
   //Getting the values of query parameters
   const params = new URLSearchParams(location.search);
