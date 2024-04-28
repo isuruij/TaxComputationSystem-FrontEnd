@@ -56,6 +56,8 @@ function NotificationCom() {
     getUserDetails();
   }, []);
 
+  
+
   return (
     <div>
       {notificationList.map((notification, index) => (
