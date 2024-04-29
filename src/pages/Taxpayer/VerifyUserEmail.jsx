@@ -1,45 +1,53 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'; // Import axios
-import { useLocation } from 'react-router-dom'; // Import useLocation
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Import axios
+import { useLocation } from "react-router-dom"; // Import useLocation
+import { useNavigate } from "react-router-dom";
 
 function VerifyUserEmail() {
-    const location = useLocation();
-    const [isVerified, setisVerified] = useState(false);
+  const location = useLocation();
+  const [isVerified, setIsVerified] = useState("Started");
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        const handle = async () => {
-            try {
-                // Parse the query parameters
-                const params = new URLSearchParams(location.search);
+  useEffect(() => {
+    const handleVerification = async () => {
+      try {
+        // Parse the query parameters
+        const params = new URLSearchParams(location.search);
 
-                // Get the value of emailToken
-                const emailToken = params.get('emailToken');
+        // Get the value of emailToken
+        const emailToken = params.get("emailToken");
 
-                // Log the value of emailToken
-                console.log(emailToken);
+        // Send a PATCH request to the server with the emailToken
+        const response = await axios.patch(
+          "http://localhost:3000/api/taxpayer/verifyemail",
+          {
+            emailToken: emailToken,
+          }
+        );
 
-                // Send a PATCH request to the server with the emailToken
-                const response = await axios.patch('http://localhost:3000/api/taxpayer/verifyemail', {
-                    emailToken: emailToken
-                });
-                if(response.data.status === "Success"){
-                    setisVerified(true);
-                }
+        if (response.data.status === "Success") {
+          setIsVerified("Success");
+        } else {
+          setIsVerified("Failed");
+        }
+      } catch (error) {
+        console.log(error);
+        setIsVerified("Failed"); // Set verification status to failed in case of error
+      }
+    };
 
-                console.log(response);
-            } catch (error) {
-              console.log(error);
-            }
-        };
-        handle();
-    },[]) // Depend on location.search so that it runs again if the URL changes
+    handleVerification();
+  }, []);
 
-    return (
-        <div>
-            
-            {isVerified ? <h1>Your email has been verified</h1> : <h1>Verifying your email...</h1>}
-        </div>
-    )
+  return (
+    <div>
+      {isVerified === "Started" && <h1>Verification in progress...</h1>}
+      {isVerified === "Success" && <h1>Verification successful!</h1>}
+      {isVerified === "Failed" && (
+        <h1>Verification failed. Please try again.</h1>
+      )}
+    </div>
+  );
 }
 
 export default VerifyUserEmail;

@@ -13,7 +13,6 @@ function Header() {
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
-    console.log(name)
   });
   return (
     <div
@@ -21,6 +20,7 @@ function Header() {
         backgroundColor: "#D3E9FE",
         display: "flex",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+        width: "100vw",
       }}
     >
       <img
@@ -36,7 +36,7 @@ function Header() {
           {count}
         </span>
       ) : (
-        <h6 className="headername">{name}</h6>
+        <h6></h6>
       )}
       <img src={Profile} alt="Profile" />
       <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>

@@ -98,9 +98,7 @@ function PersonalDetails() {
           >
             <div>
               <div className="form-group">
-                <label className="lables" >
-                  Email
-                </label>
+                <label className="lables">Email</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -139,9 +137,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Name
-                </label>
+                <label className="lables">Name</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -156,9 +152,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Permanent Address
-                </label>
+                <label className="lables">Permanent Address</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -173,7 +167,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
+                <label className="lables">
                   Tax identification number (TIN)
                 </label>
                 <div className="custom_input">
@@ -190,9 +184,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Date of birth
-                </label>
+                <label className="lables">Date of birth</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -207,9 +199,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Name of the employer
-                </label>
+                <label className="lables">Name of the employer</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -230,9 +220,7 @@ function PersonalDetails() {
             >
               {/* <label className="lables">Contact Numbers</label> */}
               <div className="form-group contact">
-                <label className="lables" >
-                  Mobile
-                </label>
+                <label className="lables">Mobile</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -247,9 +235,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" >
-                  Office
-                </label>
+                <label className="lables">Office</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -264,9 +250,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" >
-                  Home
-                </label>
+                <label className="lables">Home</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -281,9 +265,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group ">
-                <label className="lables" >
-                  Password
-                </label>
+                <label className="lables">Password</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -298,9 +280,7 @@ function PersonalDetails() {
               </div>
 
               <div className="form-group ">
-                <label className="lables" >
-                  Re-enter Password
-                </label>
+                <label className="lables">Re-enter Password</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"

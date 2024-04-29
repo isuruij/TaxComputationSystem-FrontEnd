@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
 import "../Login/Login.css";
 
 function Loginform() {
@@ -12,17 +13,21 @@ function Loginform() {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      setLoading(true);
       const res = await Axios.post(`${base_url}/api/taxpayer/login`, values);
       if (res.data.Status === "Success") {
-        navigate("/dashboard");
+        navigate("/UserHomePage");
       } else {
-        alert("Invalid credentials! Please enter correct details.");
+        setLoading(false);
+        alert("Login Failed!");
       }
     } catch (error) {
       console.log(error);
@@ -54,24 +59,19 @@ function Loginform() {
           Log in
         </h2>
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables" >
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#0085FF" }}
+          >
             Email
           </label>
           <div>
             <input
+              required
               style={{
-                width: "15vw" ,
-                fontSize: "15px",
-                height: "26px",
-                outline: "none",
-                background: "#f3f9ff",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
+                height: "30px",
               }}
-              className="login-input"
+              className="login-input details-input form-control"
               type="email"
               id="exampleInputEmail1"
               placeholder=""
@@ -83,24 +83,19 @@ function Loginform() {
         </div>
 
         <div className="form-group" style={{ marginLeft: "10%" }}>
-          <label className="lables">
+          <label
+            className="lables"
+            style={{ fontWeight: "700", color: "#0085FF" }}
+          >
             Password
           </label>
           <div>
             <input
+              required
               style={{
-                width: "15vw",
-                fontSize: "15px",
-                height: "26px",
-                outline: "none",
-                background: "#f3f9ff",
-                color: "#000000",
-                border: "1px solid #C4D1EB",
-                borderRadius: "10px",
-                boxShadow: "0px 3px 3px 1px #9D9D9D",
-                transition: ".3s ease",
+                height: "30px",
               }}
-              className="login-input"
+              className="login-input details-input form-control"
               type="password"
               id="exampleInputPassword1"
               placeholder=""
@@ -109,7 +104,17 @@ function Loginform() {
               }}
             />
           </div>
-          <p onClick={()=>{navigate('../forgotpassword')}} style={{ cursor:"pointer", color: "#049370", fontSize: "13px", marginTop: "5%" }}>
+          <p
+            onClick={() => {
+              navigate("../forgotpassword");
+            }}
+            style={{
+              cursor: "pointer",
+              color: "#049370",
+              fontSize: "13px",
+              marginTop: "5%",
+            }}
+          >
             Forget password
           </p>
         </div>
@@ -117,13 +122,30 @@ function Loginform() {
         <button
           type="submit"
           className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "33%" }}
+          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "36%" }}
+          disabled={loading}
         >
-          Login
+          {loading ? (
+            <>
+              <Spinner
+                style={{ marginLeft: "11px", marginRight: "11px" }}
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            </>
+          ) : (
+            "Login"
+          )}
         </button>
-        <p onClick={()=>{navigate('../signup')}}
+        <p
+          onClick={() => {
+            navigate("../signup");
+          }}
           style={{
-            cursor:"pointer",
+            cursor: "pointer",
             marginLeft: "10%",
             marginTop: "5%",
             color: "#049370",

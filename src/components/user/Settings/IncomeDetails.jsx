@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import "../Incomedetails/Incomedetails.css";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import "./Incomedetails.css";
 
 function Incomedetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -23,8 +25,6 @@ function Incomedetails() {
     investmentIncome: "",
     otherIncome: "",
     id: userId,
-    dprSource: "", // Add this
-    annualFee: "", // Add this
   });
 
   const [userData, setuserData] = useState({});
@@ -51,22 +51,17 @@ function Incomedetails() {
     }
   };
 
-  //submiting PersonalDetails to backend
+  //submiting income details to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(values)
+    console.log(values);
     try {
       const res = await Axios.patch(
-        "http://localhost:3000/api/taxpayer/updateincomedetails",
+        `${base_url}/api/taxpayer/updateincomedetails`,
         values
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else if (
-        res.data.Status === "NotSuccess" &&
-        res.data.message == "already registered email"
-      ) {
-        alert("already registered email");
       } else {
         alert("Error in updating");
       }
@@ -76,6 +71,13 @@ function Incomedetails() {
     }
   };
 
+  //popup for confirmation
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <form
@@ -84,197 +86,109 @@ function Incomedetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "78VW",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <h2
-          style={{
-            marginBottom: "1%",
-            marginLeft: "35%",
-            color: "#0085FF",
-            fontWeight: "bold",
-          }}
-        >
-          Income Details
-        </h2>
-        <label className="lables">Type of income</label>
-        <br></br>
-        <br></br>
-        <div className="form-group contact">
-          <label className="lables">Employement Income (LKR)</label>
-          <div className="custom_input">
-            <input
-              className="details-input form-control"
-              type="text"
-              id="mobileno"
-              defaultValue={userData.employmentIncome}
-              onChange={(e) => {
-                setvalues({ ...values, employmentIncome: e.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="form-group contact">
-          <label className="lables">Investment Income (LKR)</label>
-          <div className="custom_input">
-            <input
-              className="details-input form-control"
-              type="number"
-              id="officeno"
-              defaultValue={userData.investmentIncome}
-              onChange={(e) => {
-                setvalues({ ...values, investmentIncome: e.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="form-group contact">
-          <label className="lables">Business income (LKR)</label>
-          <div className="custom_input">
-            <input
-              className="details-input form-control"
-              type="number"
-              id="homeno"
-              defaultValue={userData.businessIncome}
-              onChange={(e) => {
-                setvalues({ ...values, businessIncome: e.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="form-group contact">
-          <label className="lables">Other income (LKR)</label>
-          <div className="custom_input">
-            <input
-              className="details-input form-control"
-              type="number"
-              id="homeno"
-              defaultValue={userData.otherIncome}
-              onChange={(e) => {
-                setvalues({ ...values, otherIncome: e.target.value });
-              }}
-            />
-          </div>
-        </div>
-        <br></br>
-
-        <label className="lables">How do you know DPR</label>
-        <br></br>
-        <br></br>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="friend"
-            name="dprSource"
-            value="friend"
-            className=" form-check-input"
-            onChange={(e) => {
-              setvalues({ ...values, dprSource: e.target.value });
+        <div style={{ marginLeft: "5vw" }}>
+          <h2
+            style={{
+              marginBottom: "1%",
+              marginLeft: "35%",
+              color: "#0085FF",
+              fontWeight: "bold",
             }}
-          />
-          <label className="form-check-label lables">
-            Introduced by a Friend
-          </label>
-        </div>
+          >
+            Income Details
+          </h2>
+          <label className="lables">Type of income</label>
+          <br></br>
+          <br></br>
+          <div className="form-group contact">
+            <label className="lables">Employement Income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={userData.employmentIncome}
+                onChange={(e) => {
+                  setvalues({ ...values, employmentIncome: e.target.value });
+                }}
+              />
+            </div>
+          </div>
 
-        <div className="form-check">
-          <input
-            type="radio"
-            id="family"
-            name="dprSource"
-            value="family"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">
-            Introduced by a Family Member
-          </label>
-        </div>
+          <div className="form-group contact">
+            <label className="lables">Investment Income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={userData.investmentIncome}
+                onChange={(e) => {
+                  setvalues({ ...values, investmentIncome: e.target.value });
+                }}
+              />
+            </div>
+          </div>
 
-        <div className="form-check">
-          <input
-            type="radio"
-            id="company"
-            name="dprSource"
-            value="company"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">
-            Introduced by the Company
-          </label>
-        </div>
+          <div className="form-group contact">
+            <label className="lables">Business income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={userData.businessIncome}
+                onChange={(e) => {
+                  setvalues({ ...values, businessIncome: e.target.value });
+                }}
+              />
+            </div>
+          </div>
 
-        <div className="form-check">
-          <input
-            type="radio"
-            id="socialMedia"
-            name="dprSource"
-            value="socialmedia"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">Social Media</label>
-        </div>
+          <div className="form-group contact">
+            <label className="lables">Other income (LKR)</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "30vw" }}
+                className="details-input form-control"
+                type="number"
+                defaultValue={userData.otherIncome}
+                onChange={(e) => {
+                  setvalues({ ...values, otherIncome: e.target.value });
+                }}
+              />
+            </div>
+          </div>
+          <br></br>
 
-        <div className="form-check">
-          <input
-            type="radio"
-            id="dprWebsite"
-            name="dprWebsite"
-            value="dprWebsite"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">DPR Website</label>
-        </div>
+          <Button
+            style={{ borderRadius: "10px", marginLeft: "0vw" }}
+            className="incomeSubmit user"
+            onClick={handleShow}
+          >
+            Update
+          </Button>
 
-        <div className="form-check">
-          <input
-            type="radio"
-            id="other"
-            name="dprSource"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">Other</label>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Are you Sure</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Do you want to update details ?</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                No
+              </Button>
+              <Button variant="primary" onClick={handleSubmit}>
+                Yes
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <br></br>
+          <br></br>
         </div>
-        <br></br>
-
-        <label className="form-check-label lables">
-          Are you agree with annual fee
-        </label>
-        <div className="form-check">
-          <input
-            type="radio"
-            id="agree"
-            name="annualFee"
-            value="yes"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">Yes</label>
-        </div>
-
-        <div className="form-check">
-          <input
-            type="radio"
-            id="disagree"
-            name="annualFee"
-            value="no"
-            className="form-check-input"
-          />
-          <label className="form-check-label lables">No</label>
-        </div>
-
-        <button
-          className="btn btn-primary"
-          style={{ marginTop: "3%", marginLeft: "70%" }}
-          type="submit"
-        >
-          Update
-        </button>
-        <br></br>
-        <br></br>
       </form>
     </div>
   );

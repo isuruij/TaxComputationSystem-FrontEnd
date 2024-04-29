@@ -18,6 +18,7 @@ function Sidenavbar() {
     width: "90%",
     marginLeft: "4%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+    borderRadius: "10px",
   };
 
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ function Sidenavbar() {
     <div
       style={{
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-        borderRadius: "10px",
+        borderRadius: "15px",
         padding: "10px",
         marginBottom: "10px",
         marginLeft: "0.5%",
@@ -46,8 +47,16 @@ function Sidenavbar() {
       }}
     >
       <br></br>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        onClick={() => {
+          navigate("/userhomepage");
+        }}
+        type="button"
+        className="btn btn-primary user"
+        style={buttonStyle}
+      >
         <img
+        className="navImage"
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -59,18 +68,24 @@ function Sidenavbar() {
           navigate("/settings/basic");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
+          className="navImage"
           src={registration}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
         <span>Registration</span>
       </button>
-      <button type="button" className="btn btn-primary" style={buttonStyle}>
+      <button
+        type="button"
+        className="btn btn-primary user"
+        style={buttonStyle}
+      >
         <img
+        className="navImage"
           src={DownloadTaxreport}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -82,10 +97,11 @@ function Sidenavbar() {
           navigate("/viewtax");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={viewtax}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -97,32 +113,33 @@ function Sidenavbar() {
           navigate("/TaxStatus");
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={taxhistory}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>taxhistory</span>
+        <span>Taxhistory</span>
       </button>
       <button
         onClick={() => {
           handleLogout();
         }}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary user"
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={logout}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
         />
-        <span>logout</span>
+        <span>Logout</span>
       </button>
-      {/* ... (Repeat the pattern for other buttons) */}
       <br></br>
     </div>
   );

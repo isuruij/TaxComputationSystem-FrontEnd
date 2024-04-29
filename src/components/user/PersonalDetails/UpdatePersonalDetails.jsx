@@ -23,17 +23,20 @@ function UpdatePersonalDetails() {
   const [userData, setuserData] = useState({});
   const [values, setvalues] = useState({
     email: "",
-    password: "",
     name: "",
     address: "",
     tin: "",
-    nameofemployer: "", 
+    nameofemployer: "",
     mobileno: "",
     officeno: "",
     homeno: "",
     birthday: "",
     id: userId,
   });
+  const [OldPassword, setOldPassword] = useState("");
+  const [Password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [warning, setWarning] = useState("");
 
   const navigate = useNavigate();
   Axios.defaults.withCredentials = true;
@@ -48,7 +51,6 @@ function UpdatePersonalDetails() {
       setvalues({
         ...values,
         email: response.data.Data.email,
-        password: response.data.Data.password,
         name: response.data.Data.name,
         address: response.data.Data.address,
         tin: response.data.Data.tin,
@@ -69,15 +71,58 @@ function UpdatePersonalDetails() {
     event.preventDefault();
     try {
       const res = await Axios.patch(
-        "http://localhost:3000/api/taxpayer/updatebasicdetails",
+        `${base_url}/api/taxpayer/updatebasicdetails`,
         values
       );
       if (res.data.Status === "Success") {
         window.location.reload();
-      } else if(res.data.Status === "NotSuccess" && res.data.message=="already registered email" ) {
+      } else if (
+        res.data.Status === "NotSuccess" &&
+        res.data.message == "already registered email"
+      ) {
         alert("already registered email");
-      }else{
+      } else {
         alert("Error in updating");
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Handling password change
+  const handlePasswordChange = async (event) => {
+    event.preventDefault();
+    if (OldPassword == "") {
+      setWarning("Enter Current Password!");
+      return;
+    }
+    if (Password == "") {
+      setWarning("Enter password!");
+      return;
+    }
+    if (confirmPassword == "") {
+      setWarning("Confirm password!");
+      return;
+    }
+
+    if (Password !== confirmPassword) {
+      setWarning("Passwords do not match!");
+      setPassword("");
+      setConfirmPassword("");
+      return;
+    }
+    try {
+      const res = await Axios.patch(`${base_url}/api/taxpayer/updatePassword`, {
+        OldPassword: OldPassword,
+        Password: Password,
+      });
+      if (res.data.status) {
+        alert("Password Change Successful");
+      } else if (res.data.message === "Taxpayer not found") {
+        alert("Incorrect Password");
+      } else {
+        alert("Error in Updating");
       }
       console.log(res);
     } catch (error) {
@@ -99,16 +144,15 @@ function UpdatePersonalDetails() {
           borderRadius: "15px",
           padding: "20px 40px",
           backgroundColor: "#D3E9FE",
-          width: "78vw",
-
+         // width: "78vw",
           boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         }}
       >
-        <div className="updatePersonalDetails" style={{ marginLeft: "1vw" }}>
+        <div className="updatePersonalDetails" style={{ marginLeft: "6vw" }}>
           <h2
             style={{
               marginBottom: "1%",
-              marginLeft: "19vw",
+              marginLeft: "14vw",
               color: "#0085FF",
               fontWeight: "bold",
             }}
@@ -121,9 +165,7 @@ function UpdatePersonalDetails() {
           >
             <div>
               <div className="form-group">
-                <label className="lables" >
-                  Email
-                </label>
+                <label className="lables">Email</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -162,9 +204,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Name
-                </label>
+                <label className="lables">Name</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -179,9 +219,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Permanent Address
-                </label>
+                <label className="lables">Permanent Address</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -196,7 +234,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
+                <label className="lables">
                   Tax identification number (TIN)
                 </label>
                 <div className="custom_input">
@@ -213,9 +251,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Date of birth
-                </label>
+                <label className="lables">Date of birth</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -230,9 +266,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group">
-                <label className="lables" >
-                  Name of the employer
-                </label>
+                <label className="lables">Name of the employer</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -251,11 +285,11 @@ function UpdatePersonalDetails() {
               className="contactSection"
               style={{ marginLeft: "10vw", marginTop: "5vh" }}
             >
-              {/* <label className="lables">Contact Numbers</label> */}
+              <label className="lables">Contact Numbers</label>
+              <br></br>
+              <br></br>
               <div className="form-group contact">
-                <label className="lables" >
-                  Mobile
-                </label>
+                <label className="lables">Mobile</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -270,9 +304,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" >
-                  Office
-                </label>
+                <label className="lables">Office</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -287,9 +319,7 @@ function UpdatePersonalDetails() {
               </div>
 
               <div className="form-group contact">
-                <label className="lables" >
-                  Home
-                </label>
+                <label className="lables">Home</label>
                 <div className="custom_input">
                   <input
                     className="details-input form-control"
@@ -302,46 +332,21 @@ function UpdatePersonalDetails() {
                   />
                 </div>
               </div>
-
-              <div className="form-group ">
-                <label className="lables" >
-                  Password
-                </label>
-                <div className="custom_input">
-                  <input
-                    className="details-input form-control"
-                    type="password"
-                    id="password"
-                    placeholder=""
-                    onChange={(e) => {
-                      setvalues({ ...values, password: e.target.value });
-                    }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-group ">
-                <label className="lables" >
-                  Re-enter Password
-                </label>
-                <div className="custom_input">
-                  <input
-                    className="details-input form-control"
-                    type="password"
-                    id="password2"
-                    placeholder=""
-                    onChange={(e) => {
-                      setvalues({ ...values, password: e.target.value });
-                    }}
-                  />
-                </div>
-              </div>
             </div>
           </div>
 
-          <div className="signup" style={{ display: "flex" }}>
+          <div className="updateDetails" style={{ display: "flex" }}>
             <>
-              <Button style={{marginLeft:"50vw"}}  onClick={handleShow}>
+              <Button
+                style={{
+                  borderRadius: "10px",
+                  marginLeft: "22vw",
+                  marginTop: "4vh",
+                  marginBottom: "8vh",
+                }}
+                onClick={handleShow}
+                className="user"
+              >
                 Update
               </Button>
 
@@ -361,6 +366,82 @@ function UpdatePersonalDetails() {
               </Modal>
             </>
           </div>
+        </div>
+
+        <div className="passwordChange" style={{ marginLeft: "6vw" }}>
+          <h5
+            style={{
+              marginBottom: "1%",
+              color: "#0085FF",
+              fontWeight: "bold",
+            }}
+          >
+            Change Password
+          </h5>
+
+          <div className="form-group">
+            <label className="lables">Current Password</label>
+            <div className="custom_input">
+              <input
+                style={{ width: "20vw" }}
+                className="details-input form-control"
+                type="password"
+                id="oldpassword"
+                onChange={(e) => {
+                  setOldPassword(e.target.value);
+                }}
+              />
+            </div>
+          </div>
+
+          <div
+            className="passwordChange"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
+            <div className="form-group">
+              <label className="lables">New Password</label>
+              <div className="custom_input">
+                <input
+                  style={{ width: "20vw" }}
+                  className="details-input form-control"
+                  type="password"
+                  id="password"
+                  value={Password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="confirmPassword" style={{ marginLeft: "10vw" }}>
+              <label className="lables">Confirm Password</label>
+              <div className="custom_input">
+                <input
+                  style={{ width: "20vw" }}
+                  className="details-input form-control"
+                  type="password"
+                  id="password2"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          {warning && <p style={{ color: "red" }}>{warning}</p>}
+          <Button
+            onClick={handlePasswordChange}
+            className="resetpasswordButton user"
+            style={{
+              marginTop: "5vh",
+              borderRadius: "10px",
+              marginLeft: "21vw",
+            }}
+          >
+            Change
+          </Button>
         </div>
       </form>
       <br></br>

@@ -1,84 +1,20 @@
-.details-input {
-  font-size: 12px;
-  padding: 5px 10px;
-  width: 25vw !important;
-  height: 26px;
-  outline: none;
-  background: #f3f9ff;
-  color: #000000;
-  border: 1px solid #c4d1eb;
-  border-radius: 15px !important;
-  box-shadow: 0px 3px 3px 1px #9d9d9d;
-  transition: 0.3s ease;
-}
-
 @media screen and (max-width: 700px) {
   .details-input {
-    width: 70vw;
-  }
-}
-.input:focus {
-  background: #f2f2f2;
-  border: 1px solid #5a7ec7;
-  border-radius: 10px;
-}
-
-.lables {
-  color: #0085ff;
-  font-weight: 700;
-}
-
-button {
-  background-color: #0085ff !important;
-  border-radius: 10px !important;
-}
-
-@media screen and (min-width: 700px) {
-}
-
-@media screen and (max-width: 700px) {
-  .details-input {
-    width: 50vw !important;
+    width: 55vw !important;
   }
 
-<<<<<<< HEAD
   .twoparts {
     display: flex;
     flex-direction: column !important;
-=======
+  }
 
-  @media screen and (max-width: 700px) {
+  .passwordChange {
+    display: flex;
+    flex-direction: column !important;
+  }
 
-    .details-input{
-		width: 50vw !important;
-	}
-
-	.twoparts{
-		display: flex;
-		flex-direction: column !important;
-	}
-
-	.contactSection{
-		margin-top: 0vh !important;
-		margin-left: 0vw !important;
-	}
-
-	.signup button{
-		font-size: 12px;
-		margin-left: 20vw !important;
-	}
-
-	.updatePersonalDetails h2{
-		font-size: 20px !important;
-		margin-left: -5vw !important;
-		
-	}
-
-	.personalDupdate{
-		margin-left: "50vw !important";
-	}
-
->>>>>>> 9c2a64e19873d77b77d7523061e7d59c6f1d9437
+  .confirmPassword {
+    margin-left: 0vw !important;
   }
 
   .contactSection {
@@ -86,13 +22,29 @@ button {
     margin-left: 0vw !important;
   }
 
-  .signup button {
-    font-size: 12px;
-    margin-left: 10vw !important;
+  .updateDetails Button {
+    margin-left: 0vw !important;
+    margin-left: 0vw !important;
+    width: 50vw;
   }
 
   .updatePersonalDetails h2 {
     font-size: 20px !important;
     margin-left: -5vw !important;
+  }
+
+  .personalDupdate {
+    margin-left: "50vw !important";
+  }
+
+  .resetpasswordButton {
+    margin-left: 0vw !important;
+    width: 50vw;
+  }
+
+  .signupButton {
+    margin-top: 5vh !important;
+    margin-left: 0px !important;
+    width: 60vw;
   }
 }
