@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Alert from "react-bootstrap/Alert";
 
 function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -47,7 +48,7 @@ function DDataEntry() {
   const handleSubmit = () => {
     // Validate each row
     for (let i = 0; i < 14; i++) {
-      if (noteInputs[i] !== "" && amountInputs[i] === "") {
+      if (noteInputs[i] != "" && amountInputs[i] === "") {
         alert(
           "Please fill in the AMOUNT field for row " +
             (i + 1) +
@@ -66,13 +67,13 @@ function DDataEntry() {
         UserId: id,
       })
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.Status);
+        alert(response.data.Status);
         navigate("/dataEntry/submission/dashboard");
       })
       .catch((error) => {
         console.error(error);
       });
-    // }
   };
 
   //Handle discarding input values
