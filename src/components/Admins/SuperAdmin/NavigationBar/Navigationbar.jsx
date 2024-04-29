@@ -27,7 +27,7 @@ function Navigationbar() {
     backgroundColor: "#049370",
     textAlign: "left",
     display: "block",
-    marginBottom: "10vh",
+    marginBottom: "8vh",
     width: "90%",
     marginLeft: "4%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
