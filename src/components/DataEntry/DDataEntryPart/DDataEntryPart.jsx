@@ -69,7 +69,7 @@ function DDataEntry() {
       .then((response) => {
         console.log(response.data.Status);
         alert(response.data.Status);
-        navigate("/dataEntry/submission/dashboard");
+        navigate("/dataEntry/dashboard");
       })
       .catch((error) => {
         console.error(error);
