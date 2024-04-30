@@ -95,7 +95,9 @@ function DSubmissionDash() {
               </Button>
               <Button
                 onClick={() => {
-                  navigate(`/dataEntry/viewTax/${value.id}`);
+                  navigate(`/dataEntry/viewTax/${value.id}`, {
+                    state: { key },
+                  });
                 }}
                 variant="primary D-Update"
                 style={{

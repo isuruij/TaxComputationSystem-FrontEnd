@@ -1,11 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./DDocUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 function FileUpload() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+  const [userDetails, setUserDetails] = useState([]);
+
+  //get user name and tin
+  useEffect(() => {
+    axios
+      .get(`${base_url}/api/dataentry/getUserDetails/${id}`)
+      .then((response) => {
+        console.log(response.data.Data);
+        setUserDetails(response.data.Data);
+      });
+  }, []);
+
   //variable
   let { id } = useParams();
   //navigator
@@ -142,8 +155,8 @@ function FileUpload() {
             fontSize: "smaller",
           }}
         >
-          <h5 style={{ marginTop: "15px" }}>MR. ANDORSON_JAMES</h5>
-          <h5>TIN NO: 24480Z</h5>
+          <h5 style={{ marginTop: "15px" }}>MR. {userDetails.name}</h5>
+          <h5>TIN NO: {userDetails.tin}</h5>
           <h5>INCOME TAX COMPUTATION REPORT</h5>
           <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
         </div>

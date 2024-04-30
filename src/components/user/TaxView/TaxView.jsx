@@ -1,7 +1,36 @@
 import React from "react";
 import "./TaxView.css";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import Axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 function TaxView() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
+  const cookieValue = Cookies.get("token");
+  const userId = jwtDecode(cookieValue).id;
+
+  const [userDetails, setUserDetails] = useState([]);
+  // const [listOfTaxDetails, setListOfTaxDetails] = useState([]);
+
+  // useEffect(() => {
+  //   axios.get(`${base_url}/api/taxpayer/getTaxCalDetails`).then((response) => {
+  //     console.log(response.data.Data);
+  //     setListOfTaxDetails(response.data.Data);
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    Axios.get(`${base_url}/api/taxpayer/getUserDetails/${userId}`).then(
+      (response) => {
+        console.log(response.data.Data);
+        setUserDetails(response.data.Data);
+      }
+    );
+  }, []);
+
   return (
     <div className="Tax-view-page">
       <link
@@ -9,8 +38,8 @@ function TaxView() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
       <div className="Tax-view-header">
-        <h6>Mr.XXXXXX_XXX</h6>
-        <h6>TIN NO: XXXXXXX</h6>
+        <h6>Mr.{userDetails.name}</h6>
+        <h6>TIN NO: {userDetails.tin}</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>YEAR OF ASSESSMENT 2022/2023</h6>
       </div>

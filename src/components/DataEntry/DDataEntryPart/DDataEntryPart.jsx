@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "./DDataEntryPart.css";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -14,6 +14,17 @@ function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   //variable
   let { id } = useParams();
+  const [userDetails, setUserDetails] = useState([]);
+
+  //get user details
+  useEffect(() => {
+    axios
+      .get(`${base_url}/api/dataentry/getUserDetails/${id}`)
+      .then((response) => {
+        console.log(response.data.Data);
+        setUserDetails(response.data.Data);
+      });
+  }, []);
 
   //navigator
   const navigate = useNavigate();
@@ -157,8 +168,8 @@ function DDataEntry() {
             fontSize: "smaller",
           }}
         >
-          <h5 style={{ marginTop: "15px" }}>MR. ANDORSON_JAMES</h5>
-          <h5>TIN NO: 24480Z</h5>
+          <h5 style={{ marginTop: "15px" }}>MR. {userDetails.name}</h5>
+          <h5>TIN NO: {userDetails.tin}</h5>
           <h5>INCOME TAX COMPUTATION REPORT</h5>
           <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
         </div>
@@ -282,7 +293,7 @@ function DDataEntry() {
                 variant="success"
                 className="custom_back_button"
                 onClick={() => {
-                  navigate("/dataEntry/submission/uploadDoc");
+                  navigate(`/dataEntry/submission/uploadDoc/${id}`);
                 }}
               >
                 Back
