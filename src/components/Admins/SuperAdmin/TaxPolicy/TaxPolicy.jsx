@@ -111,6 +111,8 @@ function TaxPolicy() {
   const handleEditClick = (index) => {
     setEditingPolicyIndex(index);
     setEditedTitle(taxPolicies[index].title);
+    // Convert the details array of the tax policy at the specified index into a single string,
+    // separating each detail with a newline character for easier editing.
     setEditedDetails(taxPolicies[index].details.join("\n"));
     setIsEditing(true);
   };
@@ -119,6 +121,8 @@ function TaxPolicy() {
   const handleUpdatePolicy = () => {
     const updatedTaxPolicies = [...taxPolicies];
     updatedTaxPolicies[editingPolicyIndex].title = editedTitle;
+    // Convert the edited details string into an array by splitting it at each newline character,
+    // and update the details property of the tax policy at the specified editingPolicyIndex.
     updatedTaxPolicies[editingPolicyIndex].details = editedDetails.split("\n");
     setTaxPolicies(updatedTaxPolicies);
     setIsEditing(false);
@@ -149,6 +153,9 @@ function TaxPolicy() {
   // Function to handle deleting the selected tax policy
   const handleDeletePolicy = () => {
     // Create a new array with the policy removed
+
+    // Create a new array of tax policies by filtering out the policy at the specified policyToDelete index.
+    // Only keep tax policies whose index (`i`) is not equal to the index of the policy to be deleted.
     const updatedTaxPolicies = taxPolicies.filter(
       (_, i) => i !== policyToDelete
     );
@@ -177,8 +184,8 @@ function TaxPolicy() {
             <tr>
               <th>Title</th>
               <th>Details</th>
-              <th>Create New Policy</th>{" "}
-              {/*  column for creating a new policy */}
+              <th>Create New Policy</th>{" "}{/*  column for creating a new policy */}
+              
               <th>Update Policy</th> {/*  column for updating a policy */}
               <th>Delete Policy</th> {/*  column for deleting a policy */}
             </tr>
