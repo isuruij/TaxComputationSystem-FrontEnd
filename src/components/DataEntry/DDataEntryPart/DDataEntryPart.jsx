@@ -28,7 +28,6 @@ function DDataEntry() {
 
   //navigator
   const navigate = useNavigate();
-
   // State to store input values (note and amount)
   const [amountInputs, setAmountInputs] = useState(Array(14).fill(""));
   const [noteInputs, setNoteInputs] = useState(Array(14).fill(""));

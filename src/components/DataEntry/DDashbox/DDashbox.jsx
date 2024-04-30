@@ -40,7 +40,7 @@ function DDashbox() {
             key={key}
             className="User"
             onClick={() => {
-              navigate(`/dataEntry/submission/uploadDoc/${value.id}`);
+              navigate(`/dataEntry/submission/dashboard`);
             }}
             style={{
               display: "flex",
