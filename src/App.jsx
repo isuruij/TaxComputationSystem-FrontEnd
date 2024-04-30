@@ -19,6 +19,7 @@ import AdminLoginPage from "./pages/SuperAdmin/LoginPage.jsx";
 import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
+import RegisterUploadDocuments from "./pages/Taxpayer/RegisterUploadDocuments.jsx";
 
 //dataEntry
 import DDashboard from "./pages/DataEntry/DDashboard.jsx";
@@ -45,18 +46,18 @@ function App() {
           path="/settings/basic"
           element={<SettingsBasicDetails />}
         ></Route>
-        <Route
+        {/* <Route
           path="/register/uploadfiles"
           element={<RegisterUploadDocuments />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/register/incomedetails"
           element={<RegisterIncomeDetails />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/register/personaldetails"
           element={<RegisterPersonalDetails />}
-        ></Route>
+        ></Route> */}
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/viewtax" element={<Viewtax />}></Route>
