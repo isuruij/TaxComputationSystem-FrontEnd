@@ -1,6 +1,6 @@
 @media screen and (max-width: 700px) {
   .details-input {
-    width: 50vw !important;
+    width: 55vw !important;
   }
 
   .twoparts {
@@ -45,6 +45,6 @@
   .signupButton {
     margin-top: 5vh !important;
     margin-left: 0px !important;
-    width: 50vw;
+    width:60vw;
   }
 }

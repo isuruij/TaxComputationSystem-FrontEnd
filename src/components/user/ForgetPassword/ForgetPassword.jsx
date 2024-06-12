@@ -13,7 +13,7 @@ function ForgetPassword() {
   });
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
+ 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -87,7 +87,7 @@ function ForgetPassword() {
         <button
           type="submit"
           className="btn btn-primary"
-          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "30%" }}
+          style={{ borderRadius: "10px", marginTop: "3%", marginLeft: "25%" }}
           disabled={loading}
         >
           {loading ? (

@@ -37,7 +37,7 @@ function Sidenavbar() {
     <div
       style={{
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-        borderRadius: "10px",
+        borderRadius: "15px",
         padding: "10px",
         marginBottom: "10px",
         marginLeft: "0.5%",
@@ -56,6 +56,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -71,6 +72,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+          className="navImage"
           src={registration}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -83,6 +85,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={DownloadTaxreport}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -98,6 +101,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={viewtax}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -113,6 +117,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={taxhistory}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -128,6 +133,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
+        className="navImage"
           src={logout}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"

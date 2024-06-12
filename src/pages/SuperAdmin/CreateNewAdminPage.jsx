@@ -9,7 +9,7 @@ function CreateNewAdminPage() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
-  Axios.defaults.withCredentials = true;
+ 
 
   const handle = async () => {
     try {
@@ -53,7 +53,7 @@ function CreateNewAdminPage() {
           </div>
         </div>
       )}
-      {auth === "Failed" && <h1>Access Denied</h1>}
+      {auth === "Failed" && <h1>Access Denied! Please Login Again </h1>}
     </div>
   );
 }

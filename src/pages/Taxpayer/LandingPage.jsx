@@ -39,6 +39,9 @@ function LandingPage() {
           <button
             type="submit"
             className="btn btn-primary"
+            onClick={() => {
+              navigate("/Admin/login");
+            }}
             style={{
               padding: "0px 20px",
               borderRadius: "30px",
