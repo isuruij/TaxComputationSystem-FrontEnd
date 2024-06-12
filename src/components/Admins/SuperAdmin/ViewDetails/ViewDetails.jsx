@@ -16,7 +16,7 @@ function ViewDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
+ 
 
   //Getting the values of query parameters
   const params = new URLSearchParams(location.search);
