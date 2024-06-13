@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./Taxpolicy.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -7,66 +7,34 @@ import { FaPlus } from "react-icons/fa"; // create icon
 import { FaEdit } from "react-icons/fa"; // update icon
 import { FaTrash } from "react-icons/fa"; // delete icon
 
+import Axios from "axios";
+//import Cookies from "js-cookie";
+
 function TaxPolicy() {
   // State to manage tax policies and the modal
-  const [taxPolicies, setTaxPolicies] = useState([
-    {
-      title: "Income Tax",
-      details: [
-        "Progressive tax rates based on income levels.",
-        "Deductions for specific expenses (e.g., education expenses, mortgage interest).",
-      ],
-    },
-    {
-      title: "Corporate Tax",
-      details: [
-        "Flat or progressive tax rates on business profits.",
-        "Tax incentives for certain industries or activities.",
-      ],
-    },
-    {
-      title: "Property Tax",
-      details: [
-        "Progressive tax rates based on property value.",
-        "Deductions for specific expenses (e.g., repairs and maintenance).",
-      ],
-    },
-    {
-      title: "Value Added Tax (VAT) or Goods and Services Tax (GST)",
-      details: [
-        "Consumption-based tax on goods and services.",
-        "Different tax rates for different types of goods and services.",
-      ],
-    },
-    {
-      title: "Capital Gains Tax",
-      details: [
-        "Tax on profits from the sale of assets like stocks, real estate, or other investments.",
-        "Different rates for short-term and long-term gains.",
-      ],
-    },
-    {
-      title: "Inheritance Tax or Estate Tax",
-      details: [
-        "Tax on the transfer of assets upon an individual's death.",
-        "Exemptions and deductions may apply.",
-      ],
-    },
-    {
-      title: "Excise Tax",
-      details: [
-        "Taxes on specific goods such as alcohol, tobacco, or gasoline.",
-        "Intended to discourage the consumption of certain products.",
-      ],
-    },
-    {
-      title: "Payroll Taxes",
-      details: [
-        "Taxes withheld from employees' wages to fund social security and other benefits.",
-        "Employers also contribute.",
-      ],
-    },
-  ]);
+  const [taxPolicies, setTaxPolicies] = useState([]);
+
+  // Fetch data from the API URL when the component mounts
+  useEffect(() => {
+    fetch("http://localhost:3000/api/superAdmin/policy")
+        .then((response) => {
+            // Check if the response is OK (status code in the range 200-299)
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json(); // Parse the JSON data
+        })
+        .then((data) => {
+           if (Array.isArray(data.data)) {
+        setTaxPolicies(data.data);
+      } else {
+        console.error("Expected an array but got", data);
+      }
+        })
+        .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+}, []);
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newPolicyTitle, setNewPolicyTitle] = useState("");
@@ -78,10 +46,10 @@ function TaxPolicy() {
   };
 
   // Function to handle creating a new tax policy
-  const handleCreatePolicy = () => {
+  const handleCreatePolicy = async () => {
     const newPolicy = {
       title: newPolicyTitle,
-      details: [newPolicyDescription],
+      details: newPolicyDescription,
     };
 
     // Add the new policy to the tax policies array
@@ -91,6 +59,37 @@ function TaxPolicy() {
     setNewPolicyTitle("");
     setNewPolicyDescription("");
     setShowCreateModal(false);
+
+    const handleOpenDeleteModal = (index) => {
+      setPolicyToDelete(taxPolicies[index].id);
+      setShowDeleteModal(true);
+    };
+    const updatedTaxPolicies = taxPolicies.filter((policy) => policy.id !== policyToDelete);
+
+    const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
+    try {
+      // Make the POST request to the backend to save the new policy
+      const response = await Axios.post(`${base_url}/api/superAdmin/createPolicy`, newPolicy);
+  
+      // Handle the response if needed (e.g., showing a success message, updating the state)
+      console.log('Policy created successfully:', response.data);
+
+      //  if (response.data.Status === "Success") {
+      //   navigate("/UserHomePage");
+      // } //else if (res.data.message == "already registered email") {
+      //   alert("Email is already registered! Please Enter another one");
+      //   setLoading(false);
+      // } else {
+      //   alert("System Error!");
+      //   setLoading(false);
+      // }
+      
+    } catch (error) {
+      console.error('Error creating policy:', error);
+      // Optionally, handle the error (e.g., show an error message to the user)
+    }
+
   };
 
   // Function to close the create modal without creating a new policy
@@ -147,7 +146,7 @@ function TaxPolicy() {
   };
 
   // Function to handle deleting the selected tax policy
-  const handleDeletePolicy = () => {
+  const handleDeletePolicy = async () => {
     // Create a new array with the policy removed
     const updatedTaxPolicies = taxPolicies.filter(
       (_, i) => i !== policyToDelete
@@ -157,6 +156,29 @@ function TaxPolicy() {
     // Close the modal and reset the policy to delete
     setShowDeleteModal(false);
     setPolicyToDelete(null);
+    const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+    try {
+      // Make the POST request to the backend to save the new policy
+      const resDelete = await Axios.delete(`${base_url}/api/superAdmin/deletePolicy/${policyToDelete}`);
+      const updatedTaxPolicies = taxPolicies.filter((policy) => policy.id !== policyToDelete);
+  
+      // Handle the response if needed (e.g., showing a success message, updating the state)
+      //console.log('Policy created successfully:', response.data);
+
+      // if (response.data.Status === "Success") {
+      //  navigate("/UserHomePage");
+      //} //else if (res.data.message == "already registered email") {
+      //   alert("Email is already registered! Please Enter another one");
+      //   setLoading(false);
+      // } else {
+      //   alert("System Error!");
+      //   setLoading(false);
+      // }
+      
+    } catch (error) {
+      console.error('Error deleting policy:', error);
+      // Optionally, handle the error (e.g., show an error message to the user)
+    }    
   };
 
   // Function to close the delete confirmation modal without deleting
@@ -184,7 +206,9 @@ function TaxPolicy() {
             </tr>
           </thead>
           <tbody>
-            {taxPolicies.map((policy, index) => (
+            {Array.isArray(taxPolicies) && taxPolicies.length > 0 ? (
+            
+            taxPolicies.map((policy, index) => (
               <tr
                 key={index}
                 style={{ backgroundColor: index % 2 === 0 ? color1 : color2 }}
@@ -192,9 +216,9 @@ function TaxPolicy() {
                 <td>{policy.title}</td>
                 <td>
                   <ul>
-                    {policy.details.map((detail, detailIndex) => (
-                      <li key={detailIndex}>{detail}</li>
-                    ))}
+                    
+                      <li> {policy.details}</li>
+                    
                   </ul>
                 </td>
                 <td>
@@ -222,7 +246,12 @@ function TaxPolicy() {
                   />
                 </td>
               </tr>
-            ))}
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5">No policies found.</td>
+            </tr>
+          )}
           </tbody>
         </table>
       </div>
