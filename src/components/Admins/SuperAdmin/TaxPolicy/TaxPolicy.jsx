@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Taxpolicy.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -17,24 +17,25 @@ function TaxPolicy() {
   // Fetch data from the API URL when the component mounts
   useEffect(() => {
     fetch("http://localhost:3000/api/superAdmin/policy")
-        .then((response) => {
-            // Check if the response is OK (status code in the range 200-299)
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json(); // Parse the JSON data
-        })
-        .then((data) => {
-           if (Array.isArray(data.data)) {
-        setTaxPolicies(data.data);
-      } else {
-        console.error("Expected an array but got", data);
-      }
-        })
-        .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-}, []);
+      .then((response) => {
+        // Check if the response is OK (status code in the range 200-299)
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json(); // Parse the JSON data
+      })
+      .then((data) => {
+        if (Array.isArray(data.data)) {
+          setTaxPolicies(data.data);
+          console.log(taxPolicies);
+        } else {
+          console.error("Expected an array but got", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newPolicyTitle, setNewPolicyTitle] = useState("");
@@ -64,16 +65,21 @@ function TaxPolicy() {
       setPolicyToDelete(taxPolicies[index].id);
       setShowDeleteModal(true);
     };
-    const updatedTaxPolicies = taxPolicies.filter((policy) => policy.id !== policyToDelete);
+    const updatedTaxPolicies = taxPolicies.filter(
+      (policy) => policy.id !== policyToDelete
+    );
 
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
     try {
       // Make the POST request to the backend to save the new policy
-      const response = await Axios.post(`${base_url}/api/superAdmin/createPolicy`, newPolicy);
-  
+      const response = await Axios.post(
+        `${base_url}/api/superAdmin/createPolicy`,
+        newPolicy
+      );
+
       // Handle the response if needed (e.g., showing a success message, updating the state)
-      console.log('Policy created successfully:', response.data);
+      console.log("Policy created successfully:", response.data);
 
       //  if (response.data.Status === "Success") {
       //   navigate("/UserHomePage");
@@ -84,12 +90,10 @@ function TaxPolicy() {
       //   alert("System Error!");
       //   setLoading(false);
       // }
-      
     } catch (error) {
-      console.error('Error creating policy:', error);
+      console.error("Error creating policy:", error);
       // Optionally, handle the error (e.g., show an error message to the user)
     }
-
   };
 
   // Function to close the create modal without creating a new policy
@@ -124,6 +128,7 @@ function TaxPolicy() {
     setEditingPolicyIndex(null);
     setEditedTitle("");
     setEditedDetails("");
+    console.log("jjjjjjjjjjjj")
   };
 
   // Handle closing the modal
@@ -159,9 +164,14 @@ function TaxPolicy() {
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     try {
       // Make the POST request to the backend to save the new policy
-      const resDelete = await Axios.delete(`${base_url}/api/superAdmin/deletePolicy/${policyToDelete}`);
-      const updatedTaxPolicies = taxPolicies.filter((policy) => policy.id !== policyToDelete);
-  
+      const resDelete = await Axios.delete(
+        `${base_url}/api/superAdmin/deletePolicy/${policyToDelete}`,{ data: { id: policyToDelete } }
+      );
+      window.location.reload();
+      const updatedTaxPolicies = taxPolicies.filter(
+        (policy) => policy.id !== policyToDelete
+      );
+
       // Handle the response if needed (e.g., showing a success message, updating the state)
       //console.log('Policy created successfully:', response.data);
 
@@ -174,11 +184,10 @@ function TaxPolicy() {
       //   alert("System Error!");
       //   setLoading(false);
       // }
-      
     } catch (error) {
-      console.error('Error deleting policy:', error);
+      console.error("Error deleting policy:", error);
       // Optionally, handle the error (e.g., show an error message to the user)
-    }    
+    }
   };
 
   // Function to close the delete confirmation modal without deleting
@@ -207,51 +216,48 @@ function TaxPolicy() {
           </thead>
           <tbody>
             {Array.isArray(taxPolicies) && taxPolicies.length > 0 ? (
-            
-            taxPolicies.map((policy, index) => (
-              <tr
-                key={index}
-                style={{ backgroundColor: index % 2 === 0 ? color1 : color2 }}
-              >
-                <td>{policy.title}</td>
-                <td>
-                  <ul>
-                    
+              taxPolicies.map((policy, index) => (
+                <tr
+                  key={index}
+                  style={{ backgroundColor: index % 2 === 0 ? color1 : color2 }}
+                >
+                  <td>{policy.title}</td>
+                  <td>
+                    <ul>
                       <li> {policy.details}</li>
-                    
-                  </ul>
-                </td>
-                <td>
-                  {/* Button with plus icon to open the create modal */}
-                  <button
-                    type="button"
-                    className="btn btn-link"
-                    onClick={handleOpenCreateModal}
-                  >
-                    <FaPlus style={{ color: "#049370" }} />
-                  </button>
-                </td>
-                {/* Edit column with edit icon */}
-                <td>
-                  <FaEdit
-                    onClick={() => handleEditClick(index)}
-                    style={{ cursor: "pointer" }}
-                  />
-                </td>
-                {/* Column for delete action */}
-                <td>
-                  <FaTrash
-                    onClick={() => handleOpenDeleteModal(index)}
-                    style={{ cursor: "pointer", color: "red" }}
-                  />
-                </td>
+                    </ul>
+                  </td>
+                  <td>
+                    {/* Button with plus icon to open the create modal */}
+                    <button
+                      type="button"
+                      className="btn btn-link"
+                      onClick={handleOpenCreateModal}
+                    >
+                      <FaPlus style={{ color: "#049370" }} />
+                    </button>
+                  </td>
+                  {/* Edit column with edit icon */}
+                  <td>
+                    <FaEdit
+                      onClick={() => handleEditClick(index)}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </td>
+                  {/* Column for delete action */}
+                  <td>
+                    <FaTrash
+                      onClick={() => handleOpenDeleteModal(policy.id)}
+                      style={{ cursor: "pointer", color: "red" }}
+                    />
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="5">No policies found.</td>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="5">No policies found.</td>
-            </tr>
-          )}
+            )}
           </tbody>
         </table>
       </div>
