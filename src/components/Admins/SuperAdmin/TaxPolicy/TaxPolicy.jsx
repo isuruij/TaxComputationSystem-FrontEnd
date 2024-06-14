@@ -119,7 +119,7 @@ function TaxPolicy() {
   };
 
   // Handle updating the policy
-  const handleUpdatePolicy = () => {
+  const handleUpdatePolicy = async() => {
     const updatedTaxPolicies = [...taxPolicies];
     updatedTaxPolicies[editingPolicyIndex].title = editedTitle;
     updatedTaxPolicies[editingPolicyIndex].details = editedDetails.split("\n");
