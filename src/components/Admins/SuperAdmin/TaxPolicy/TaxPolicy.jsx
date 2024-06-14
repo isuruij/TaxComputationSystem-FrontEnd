@@ -110,7 +110,7 @@ function TaxPolicy() {
   const handleEditClick = (index) => {
     setEditingPolicyIndex(index);
     setEditedTitle(taxPolicies[index].title);
-    setEditedDetails(taxPolicies[index].details.join("\n"));
+    setEditedDetails(taxPolicies[index].details);
     setIsEditing(true);
   };
 
