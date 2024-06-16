@@ -2,7 +2,6 @@ import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import ProgressBar from "react-bootstrap/ProgressBar";
-
 import "./Homepagestyle.css";
 import profilepic from "./profilepic.jpg";
 
