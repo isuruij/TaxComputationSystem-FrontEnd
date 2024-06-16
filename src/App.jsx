@@ -1,4 +1,3 @@
-
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
@@ -32,8 +31,13 @@ import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 
 
 
+import DDashboard from "./pages/DataEntry/DDashboard.jsx";
+import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
+import DFileUploadPage from "./pages/DataEntry/DFileUploadPage.jsx";
+import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
+import DDataEntryPart from "./pages/DataEntry/DDataEnterPage.jsx";
+
 function App() {
-  
   return (
     
   <BrowserRouter>
@@ -57,7 +61,23 @@ function App() {
 
     
 
-    {/* Data Entry routes */}
+    
+    {/*Data Entry routes*/}
+    <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
+        <Route path="/dataEntry/viewTax/:id" element={<DViewTaxPage />}></Route>
+        <Route
+          path="/dataEntry/submission/enterData/:id"
+          element={<DDataEntryPart />}
+        ></Route>
+
+        <Route
+          path="/dataEntry/submission/uploadDoc/:id"
+          element={<DFileUploadPage />}
+        ></Route>
+        <Route
+          path="/dataEntry/submission/dashboard"
+          element={<DSubmissionDashboard />}
+        ></Route>
 
 
     {/* Super Admin Routes */}

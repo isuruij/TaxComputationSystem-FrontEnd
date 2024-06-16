@@ -1,52 +1,52 @@
-.Upload-Doc-div {
+.dUpload-Doc-div {
   margin-left: 0%;
   margin: 0%;
   padding: 30px;
   border-radius: 20px;
-  background-color: #d3e9fe;
-  width: "78vw";
-  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  background-color: #f3fff5;
+  width: "100%";
+  box-shadow: 1px 3px 2px 1px rgba(0, 0, 0, 0.44);
 }
 
-.main-topic {
+.dmain-topic {
   text-align: center;
   text-decoration: solid;
   font-weight: 700;
-  color: #0085ff;
+  color: #049370;
 }
 
-.sub-topic {
+.dsub-topic {
   margin-top: 20px;
   text-align: left;
   padding-left: 3%;
-  color: #0085ff;
+  color: #049370;
   text-decoration: solid;
   font-size: larger;
   font-weight: 700;
 }
 
-.Container1,
-.Container2,
-.Container3,
-.Container4 {
+.dContainer1,
+.dContainer2,
+.dContainer3,
+.dContainer4 {
   margin-left: 8%;
   margin-right: 5%;
 }
 
-.div1-1,
-.div1-2,
-.div1-3,
-.div1-4,
-.div2-1,
-.div2-2,
-.div2-3,
-.div3-1,
-.div3-2,
-.div3-3,
-.div3-4,
-.div4-1,
-.div4-2,
-.div4-3 {
+.ddiv1-1,
+.ddiv1-2,
+.ddiv1-3,
+.ddiv1-4,
+.ddiv2-1,
+.ddiv2-2,
+.ddiv2-3,
+.ddiv3-1,
+.ddiv3-2,
+.ddiv3-3,
+.ddiv3-4,
+.ddiv4-1,
+.ddiv4-2,
+.ddiv4-3 {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
@@ -63,12 +63,29 @@ input::-webkit-file-upload-button {
 }
 
 .fa-caret-down {
-  color: #0085ff;
   margin-left: 20px;
 }
 
-.Button-div {
+.userInfo h5 {
+  margin: 0px 20px;
+}
+
+.d-custom {
+  color: #049370;
+}
+
+.dButton-div {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+}
+
+.dcustom-button {
+  background-color: #049370 !important;
+  text-align: center;
+  display: block;
+  margin-bottom: 12px;
+  width: 100%;
+  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  border: 1px #008060;
 }

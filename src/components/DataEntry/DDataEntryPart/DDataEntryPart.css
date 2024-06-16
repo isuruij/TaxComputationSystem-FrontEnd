@@ -1,0 +1,42 @@
+.userInfo h5 {
+  margin: 0px 20px;
+}
+
+.DataEntry-Form {
+  width: 100%;
+}
+
+.DataEntry-Form h5 {
+  margin-top: 30px;
+  color: #049370;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.DataEntry-Form label {
+  color: #049370;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.custom_sub_button {
+  margin-top: 20px;
+  background-color: #049370 !important;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom_back_button {
+  margin-top: 20px;
+  background-color: #f86262 !important;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
