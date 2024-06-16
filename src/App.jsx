@@ -20,6 +20,10 @@ import AdminLoginPage from "./pages/SuperAdmin/LoginPage.jsx";
 import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
+import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
+import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
+import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
+import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 
 
 
@@ -49,6 +53,8 @@ function App() {
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
     <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+    <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+
     
 
     {/* Data Entry routes */}
@@ -60,6 +66,10 @@ function App() {
     <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin/>}></Route>
     <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
     <Route path="/create/admin" element={<CreateNewAdminPage/>}></Route>
+    <Route path="/SuperAdminSubmissions" element={<SuperAdminSubmissions/>}></Route>
+    <Route path="/SuperAdminSubmissions/VerifyDocuments/:userId" element={<VerifyDocuments/>}></Route>
+    <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
+    <Route path="/view/PersonalDetails" element={<ViewPersonalDetails/>}></Route>
 
   </Routes>
   </BrowserRouter>    

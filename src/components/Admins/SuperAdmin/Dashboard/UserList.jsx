@@ -1,11 +1,13 @@
-//import Switch from '@mui/material/Switch';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
-import './SearchBar.css';
-import './UserList.css';
+import Switch from "@mui/material/Switch";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import ListGroup from "react-bootstrap/ListGroup";
+import { useNavigate } from "react-router-dom";
+import "./SearchBar.css";
+import "./UserList.css";
 
 const UserList = () => {
+  const navigate = useNavigate()
   const [users, setUsers] = useState([
     // { id: 1, name: 'John Doe', approved: true },
     // { id: 2, name: 'Jane Smith', approved: false },
@@ -31,24 +33,22 @@ const UserList = () => {
 
   axios.defaults.withCredentials = true;
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-  useEffect(()=>{
-    const fetchAllTaxpayers = async ()=>{
-      try{
-        const res = await axios.get(
-          `${base_url}/api/SuperAdmin/getusers`
-        );
-        
+  useEffect(() => {
+    const fetchAllTaxpayers = async () => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getusers`);
+
         console.log(res.data);
 
         setUsers(res.data);
-      }catch(err){
+      } catch (err) {
         console.log(err);
       }
-    }
-    fetchAllTaxpayers()
-  },[]);
+    };
+    fetchAllTaxpayers();
+  }, []);
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -64,47 +64,47 @@ const UserList = () => {
   };
 
   const handleDelete = async (id) => {
-
-    try{
-      const shouldDelete = window.confirm('Are you sure you want to delete this user?');
-    if (shouldDelete) {
-      await axios.delete(`${base_url}/api/SuperAdmin/deletetaxpayers/${id}`);
-      window.location.reload();
-    }
-    }catch(err){
+    try {
+      const shouldDelete = window.confirm(
+        "Are you sure you want to delete this user?"
+      );
+      if (shouldDelete) {
+        await axios.delete(`${base_url}/api/SuperAdmin/deletetaxpayers/${id}`);
+        window.location.reload();
+      }
+    } catch (err) {
       console.log(err);
     }
-    
   };
 
   const handleUpdate = (id) => {
     console.log(`Update user with id ${id}`);
+    navigate('/update/PersonalDetails');
   };
 
   const handleProfile = (id) => {
     console.log(`View profile for user with id ${id}`);
+    navigate('/view/PersonalDetails');
   };
 
-  const handleApprovalToggle = (id) => {
-    const newUsers = users.map((user) => {
-      if (user.id === id) {
-        const updatedUser = { ...user, approved: !user.approved };
-        updatedUser.approvalLabel = updatedUser.approved ? 'Approved' : 'Not Approved';
-        return updatedUser;
-      }
-      return user;
-    });
-    setUsers(newUsers);
+  const handleApprovalToggle = async (id, value) => {
+    try {
+      // Make an API call to update the user's approval status
+      await axios.put(`${base_url}/api/SuperAdmin/updateUserApprovalStatus`, { id:id,isVerifiedUser: value });
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const containerStyle = {
-    textAlign: 'left',
-    display: 'block',
-    marginBottom: '12px',
-    width: '95%',
-    marginLeft: '4%',
-    maxHeight: '630px',
-    overflowY: 'auto',
+    textAlign: "left",
+    display: "block",
+    marginBottom: "12px",
+    width: "95%",
+    marginLeft: "4%",
+    maxHeight: "630px",
+    overflowY: "auto",
   };
 
   return (
@@ -114,7 +114,11 @@ const UserList = () => {
           type="text"
           placeholder=" Search..."
           className="search-input"
-          style={{ border: "none", backgroundColor: "white", borderRadius: "10px" }}
+          style={{
+            border: "none",
+            backgroundColor: "white",
+            borderRadius: "10px",
+          }}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
@@ -123,35 +127,60 @@ const UserList = () => {
           {filteredUsers.map((user) => (
             <ListGroup.Item
               key={user.id}
-              style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}
+              style={{
+                backgroundColor: "#B3F9D7",
+                borderRadius: "10px",
+                margin: "5px",
+              }}
             >
-              <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
                 <div style={{ width: "55%" }}>
-                  <button className="custom-button-2" onClick={() => handleProfile(user.id)}>
+                  <button
+                    className="custom-button-2"
+                    onClick={() => handleProfile(user.id)}
+                  >
                     <div>{user.name}</div>
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
-                  <button type="button" className="btn btn-primary custom-button" style={buttonStyle} onClick={() => handleUpdate(user.id)}>
+                  <button
+                    type="button"
+                    className="btn btn-primary custom-button"
+                    style={buttonStyle}
+                    onClick={() => handleUpdate(user.id)}
+                  >
                     Update
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
-                  <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={() => handleDelete(user.id)}>
+                  <button
+                    type="button"
+                    className="btn btn-primary custom-button-1"
+                    style={buttonStyle}
+                    onClick={() => handleDelete(user.id)}
+                  >
                     Delete
                   </button>
                 </div>
                 <div style={{ width: "20%" }}>
-                  <label style={{ color: '#008060' }}>
-                    {user.approved ? 'Approved' : 'Approve'}:
+                  <label style={{ color: "#008060" }}>
+                    {user.isVerifiedUser ? "Approved" : "Approve"}:
                     <Switch
-                      checked={user.isVerifiedUser}
-                      onChange={() => handleApprovalToggle(user.id)}
+                    checked={user.isVerifiedUser}
+                      onChange={(e) => {
+                        console.log(e.target.checked);
+                        handleApprovalToggle(user.id, e.target.checked);
+                      }}
                       color="success"
                       style={{
-                        color: '#008060',
+                        color: "#008060",
                       }}
-                      inputProps={{ 'aria-label': 'approve switch' }}
                     />
                   </label>
                 </div>
@@ -165,3 +194,7 @@ const UserList = () => {
 };
 
 export default UserList;
+
+
+
+

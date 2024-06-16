@@ -2,15 +2,15 @@ import Axios from "axios";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ApproveReport from "../../../../assets/Approve-Report.svg";
 import DownloadTaxreport from "../../../../assets/DownloadTaxreport.svg";
 import Settings from "../../../../assets/Settings.svg";
+import updatepolicies from "../../../../assets/Updatepolicies.svg";
 import home from "../../../../assets/home.svg";
 import logout from "../../../../assets/logout.svg";
 import mail from "../../../../assets/mail.svg";
+import newadmin from "../../../../assets/newadmin.svg";
 import plus from "../../../../assets/plus.svg";
-import ApproveReport from "../../../../assets/Approve-Report.svg";
-import newadmin from "../../../../assets/newadmin.svg"
-import updatepolicies from "../../../../assets/Updatepolicies.svg"
 import "./DSideNavBar.css";
 
 function Navigationbar() {
@@ -62,7 +62,7 @@ function Navigationbar() {
     >
       <br></br>
       <h2 style={{color:"#008060",paddingLeft:"20px",textShadow:"2px 2px 4px rgba(0, 0, 0, 0.5)"}}>Super Admin</h2>
-      <button type="button" className="btn btn-primary custom-button-now">
+      <button  onClick={() => {navigate("/SuperAdminDashboard");}}type="button" className="btn btn-primary custom-button-now">
         <img
           src={home}
           style={{ alignItems: "left", textAlign: "left", }}
@@ -72,9 +72,7 @@ function Navigationbar() {
       </button>
 
       <button
-        onClick={() => {
-          navigate("/settings/basic");
-        }}
+        
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
@@ -88,6 +86,7 @@ function Navigationbar() {
       </button>
 
       <button
+        onClick={() => {navigate("/SuperAdminSubmissions");}}
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
