@@ -185,12 +185,11 @@ function TaxPolicy() {
           <thead>
             <tr>
               <th>Title</th>
-              <th>Details</th>
-              <th>Percentage</th>
-              <th>Create New Policy</th>{" "}
+              <th>Amount</th>
+              <th>Rate</th>
+
               {/*  column for creating a new policy */}
               <th>Update Policy</th> {/*  column for updating a policy */}
-              <th>Delete Policy</th> {/*  column for deleting a policy */}
             </tr>
           </thead>
           <tbody>
@@ -202,21 +201,9 @@ function TaxPolicy() {
                 >
                   <td>{policy.title}</td>
                   <td>
-                    <ul>
-                      <li> {policy.details}</li>
-                    </ul>
+                       {policy.details}
                   </td>
                   <td>{policy.percentage}</td>
-                  <td>
-                    {/* Button with plus icon to open the create modal */}
-                    <button
-                      type="button"
-                      className="btn btn-link"
-                      onClick={handleOpenCreateModal}
-                    >
-                      <FaPlus style={{ color: "#049370" }} />
-                    </button>
-                  </td>
                   {/* Edit column with edit icon */}
                   <td>
                     <FaEdit
@@ -225,12 +212,6 @@ function TaxPolicy() {
                     />
                   </td>
                   {/* Column for delete action */}
-                  <td>
-                    <FaTrash
-                      onClick={() => handleOpenDeleteModal(policy.id)}
-                      style={{ cursor: "pointer", color: "red" }}
-                    />
-                  </td>
                 </tr>
               ))
             ) : (
