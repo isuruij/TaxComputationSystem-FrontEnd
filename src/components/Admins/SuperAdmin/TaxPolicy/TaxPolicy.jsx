@@ -9,10 +9,11 @@ import Axios from "axios";
 function TaxPolicy() {
   // State to manage tax policies
   const [taxPolicies, setTaxPolicies] = useState([]);
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   // Fetch data from the API URL when the component mounts
   useEffect(() => {
-    fetch("http://localhost:3000/api/superAdmin/policy")
+    fetch(`${base_url}/api/superAdmin/policy`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
