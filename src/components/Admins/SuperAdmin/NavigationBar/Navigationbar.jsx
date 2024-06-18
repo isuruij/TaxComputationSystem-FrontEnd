@@ -11,9 +11,8 @@ import logout from "../../../../assets/logout.svg";
 import mail from "../../../../assets/mail.svg";
 import newadmin from "../../../../assets/newadmin.svg";
 import plus from "../../../../assets/plus.svg";
-import ApproveReport from "../../../../assets/Approve-Report.svg";
-import newadmin from "../../../../assets/newadmin.svg";
-import updatepolicies from "../../../../assets/Updatepolicies.svg";
+
+
 import "./DSideNavBar.css";
 
 function Navigationbar() {
