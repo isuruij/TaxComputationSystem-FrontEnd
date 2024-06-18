@@ -12,10 +12,15 @@ function SignupPersonalDetails() {
   useEffect(() => {
     console.log("Cookies:", document.cookie);
   }, []);
+  // state variable for warning
   const [warning, setWarning] = useState("");
+  // state variables for passwords
   const [confirmPassword, setConfirmPassword] = useState("");
   const [Password, setPassword] = useState("");
+  // state variable for loading
   const [loading, setLoading] = useState(false);
+
+  // state variable for values
   const [values, setvalues] = useState({
     email: "",
     password: "",
@@ -32,7 +37,6 @@ function SignupPersonalDetails() {
   });
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
 
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
@@ -102,7 +106,7 @@ function SignupPersonalDetails() {
           <div className="custom_input">
             <input
               required
-              className="details-input form-control"
+              className=" form-control"
               type="email"
               id="email"
               placeholder=""
@@ -195,7 +199,7 @@ function SignupPersonalDetails() {
           <label className="lables">Office </label>
           <div className="custom_input">
             <input
-              className="details-input form-control"
+              className=" form-control"
               type="text"
               id="officeno"
               placeholder=""

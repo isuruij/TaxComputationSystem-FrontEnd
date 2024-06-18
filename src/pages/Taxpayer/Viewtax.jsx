@@ -9,7 +9,7 @@ function Viewtax() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
-  Axios.defaults.withCredentials = true;
+ 
 
   const handle = async () => {
     try {

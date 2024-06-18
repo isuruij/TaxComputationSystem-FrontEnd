@@ -13,7 +13,7 @@ function ForgetPassword() {
   });
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
+ 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
