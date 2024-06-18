@@ -51,6 +51,7 @@ function TaxPolicy() {
     const newPolicy = {
       title: newPolicyTitle,
       details: newPolicyDescription,
+      
     };
 
     // Add the new policy to the tax policies array
@@ -208,6 +209,7 @@ function TaxPolicy() {
             <tr>
               <th>Title</th>
               <th>Details</th>
+              <th>Percentage</th>
               <th>Create New Policy</th>{" "}
               {/*  column for creating a new policy */}
               <th>Update Policy</th> {/*  column for updating a policy */}
@@ -227,6 +229,7 @@ function TaxPolicy() {
                       <li> {policy.details}</li>
                     </ul>
                   </td>
+                  <td>{policy.percentage}</td>
                   <td>
                     {/* Button with plus icon to open the create modal */}
                     <button
