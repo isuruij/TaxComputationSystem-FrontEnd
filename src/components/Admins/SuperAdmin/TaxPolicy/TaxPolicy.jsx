@@ -79,21 +79,11 @@ function TaxPolicy() {
         newPolicy
       );
 
-      // Handle the response if needed (e.g., showing a success message, updating the state)
       console.log("Policy created successfully:", response.data);
 
-      //  if (response.data.Status === "Success") {
-      //   navigate("/UserHomePage");
-      // } //else if (res.data.message == "already registered email") {
-      //   alert("Email is already registered! Please Enter another one");
-      //   setLoading(false);
-      // } else {
-      //   alert("System Error!");
-      //   setLoading(false);
-      // }
+
     } catch (error) {
       console.error("Error creating policy:", error);
-      // Optionally, handle the error (e.g., show an error message to the user)
     }
   };
 
@@ -173,21 +163,8 @@ function TaxPolicy() {
         (policy) => policy.id !== policyToDelete
       );
 
-      // Handle the response if needed (e.g., showing a success message, updating the state)
-      //console.log('Policy created successfully:', response.data);
-
-      // if (response.data.Status === "Success") {
-      //  navigate("/UserHomePage");
-      //} //else if (res.data.message == "already registered email") {
-      //   alert("Email is already registered! Please Enter another one");
-      //   setLoading(false);
-      // } else {
-      //   alert("System Error!");
-      //   setLoading(false);
-      // }
     } catch (error) {
       console.error("Error deleting policy:", error);
-      // Optionally, handle the error (e.g., show an error message to the user)
     }
   };
 
