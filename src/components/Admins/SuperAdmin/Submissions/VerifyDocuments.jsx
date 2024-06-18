@@ -67,6 +67,60 @@ const VerifyDocuments = () => {
       }
     };
 
+    const fetchCapitalValueGainDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getCapitalValueGain/${id}`);
+        setCapitalValueGain(res.data);
+      } catch (error) {
+        console.error('Error fetching capital value gain details:', error);
+      }
+    };
+
+    const fetchReliefForExpenditureDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getReliefForExpenditure/${id}`);
+        setReliefForExpenditure(res.data);
+      } catch (error) {
+        console.error('Error fetching relief for expenditure details:', error);
+      }
+    };
+
+    const fetchReliefForRentIncomeDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getReliefForRentIncome/${id}`);
+        setReliefForRentIncome(res.data);
+      } catch (error) {
+        console.error('Error fetching relief for rent income details:', error);
+      }
+    };
+
+    const fetchSelfAssessmentPaymentDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getSelfAssessmentPayment/${id}`);
+        setSelfAssessmentPayment(res.data);
+      } catch (error) {
+        console.error('Error fetching self-assessment payment details:', error);
+      }
+    };
+
+    const fetchTerminalBenefitsDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getTerminalBenefits/${id}`);
+        setTerminalBenefits(res.data);
+      } catch (error) {
+        console.error('Error fetching terminal benefits details:', error);
+      }
+    };
+
+    const fetchQualifyingPaymentsDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getQualifyingPayments/${id}`);
+        setQualifyingPayments(res.data);
+      } catch (error) {
+        console.error('Error fetching qualifying payments details:', error);
+      }
+    };
+
     const fetchApitDetails = async (id) => {
       try {
         const res = await axios.get(`${base_url}/api/SuperAdmin/getapit/${id}`);
@@ -77,52 +131,46 @@ const VerifyDocuments = () => {
     };
 
     const fetchWhtOnServiceFeeReceivedDetails = async (id) => {
-        try {
-          const res = await axios.get(`${base_url}/api/SuperAdmin/getWhtOnServiceFeeReceived/${id}`);
-          setWhtOnServiceFeeReceived(res.data);
-        } catch (error) {
-          console.error('Error fetching WHT on Service Fee Received details:', error);
-        }
-      };
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getWhtOnServiceFeeReceived/${id}`);
+        setWhtOnServiceFeeReceived(res.data);
+      } catch (error) {
+        console.error('Error fetching WHT on Service Fee Received details:', error);
+      }
+    };
 
     const fetchWhtWhichIsNotDeductedDetails = async (id) => {
-        try {
-          const res = await axios.get(`${base_url}/api/SuperAdmin/getWhtWhichIsNotDeducted/${id}`);
-          setWhtWhichIsNotDeducted(res.data);
-        } catch (error) {
-          console.error('Error fetching WHT which is not deducted details:', error);
-        }
-      };
-    
-      const fetchWhtOnInvestmentIncomeDetails = async (id) => {
-        try {
-          const res = await axios.get(`${base_url}/api/SuperAdmin/getWhtOnInvestmentIncome/${id}`);
-          setWhtOnInvestmentIncome(res.data);
-        } catch (error) {
-          console.error('Error fetching WHT on investment income details:', error);
-        }
-      };
-      const fetchSelfAssessmentPaymentDetails = async (id) => {
-        try {
-          const res = await axios.get(`${base_url}/api/SuperAdmin/getSelfAssessmentPayment/${id}`);
-          setSelfAssessmentPayment(res.data);
-        } catch (error) {
-          console.error('Error fetching self-assessment payment details:', error);
-        }
-      };
-      
-      
-      
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getWhtWhichIsNotDeducted/${id}`);
+        setWhtWhichIsNotDeducted(res.data);
+      } catch (error) {
+        console.error('Error fetching WHT which is not deducted details:', error);
+      }
+    };
+
+    const fetchWhtOnInvestmentIncomeDetails = async (id) => {
+      try {
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getWhtOnInvestmentIncome/${id}`);
+        setWhtOnInvestmentIncome(res.data);
+      } catch (error) {
+        console.error('Error fetching WHT on investment income details:', error);
+      }
+    };
 
     fetchBusinessIncomeDetails(userId);
     fetchEmploymentIncomeDetails(userId);
     fetchInvestmentIncomeDetails(userId);
     fetchOtherIncomeDetails(userId);
-    fetchApitDetails(userId)
-    fetchWhtOnServiceFeeReceivedDetails(userId)
-    fetchWhtOnInvestmentIncomeDetails(userId)
-    fetchWhtWhichIsNotDeductedDetails(userId)
-    fetchSelfAssessmentPaymentDetails(userId)
+    fetchCapitalValueGainDetails(userId);
+    fetchReliefForExpenditureDetails(userId);
+    fetchReliefForRentIncomeDetails(userId);
+    fetchSelfAssessmentPaymentDetails(userId);
+    fetchTerminalBenefitsDetails(userId);
+    fetchQualifyingPaymentsDetails(userId);
+    fetchApitDetails(userId);
+    fetchWhtOnServiceFeeReceivedDetails(userId);
+    fetchWhtOnInvestmentIncomeDetails(userId);
+    fetchWhtWhichIsNotDeductedDetails(userId);
   }, [userId]);
 
   const buttonStyle = {
@@ -215,6 +263,7 @@ const VerifyDocuments = () => {
     }
   };
   
+  
   const verifyWhtOnServiceFeeReceived = async (id, value) => {
     try {
       // Make an API call to update the user's approval status
@@ -232,17 +281,17 @@ const VerifyDocuments = () => {
   const verifyWhtWhichIsNotDeducted = async (id, value) => {
     try {
       // Make an API call to update the user's approval status
-      await axios.put(`${base_url}/api/SuperAdmin/verifyWhtWhichIsNotDeducted`, { taxCreditId: id, isverified: value });
+      await axios.put(`${base_url}/api/SuperAdmin/verifyWhtWhichIsNotDeducted`, { assessmentId: id, isverified: value });
       setWhtWhichIsNotDeducted((prevDetails) =>
         prevDetails.map((income) =>
-          income.taxCreditId === id ? { ...income, isverified: value } : income
+          income.assessmentId === id ? { ...income, isverified: value } : income
         )
       );
     } catch (err) {
       console.log(err);
     }
   };
-
+  
   const verifyWhtOnInvestmentIncome = async (id, value) => {
     try {
       // Make an API call to update the user's approval status
@@ -260,10 +309,79 @@ const VerifyDocuments = () => {
   const verifySelfAssessmentPayment = async (id, value) => {
     try {
       // Make an API call to update the user's approval status
-      await axios.put(`${base_url}/api/SuperAdmin/verifySelfAssessmentPayment`, { paymentId: id, isverified: value });
+      await axios.put(`${base_url}/api/SuperAdmin/verifySelfAssessmentPayment`, { taxCreditId: id, isverified: value });
       setSelfAssessmentPayment((prevDetails) =>
         prevDetails.map((income) =>
-          income.paymentId === id ? { ...income, isverified: value } : income
+          income.taxCreditId === id ? { ...income, isverified: value } : income
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+
+  const verifyCapitalValueGain = async (id, value) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/verifyCapitalValueGain`, { assessmentId: id, isverified: value });
+      setCapitalValueGain((prevDetails) =>
+        prevDetails.map((income) =>
+          income.assessmentId === id ? { ...income, isverified: value } : income
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  
+  const verifyReliefForExpenditure = async (id, value) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/verifyReliefForExpenditure`, { reliefid: id, isverified: value });
+      setReliefForExpenditure((prevDetails) =>
+        prevDetails.map((income) =>
+          income.reliefid === id ? { ...income, isverified: value } : income
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  
+  const verifyReliefForRentIncome = async (id, value) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/verifyReliefForRentIncome`, { reliefid: id, isverified: value });
+      setReliefForRentIncome((prevDetails) =>
+        prevDetails.map((income) =>
+          income.reliefid === id ? { ...income, isverified: value } : income
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  const verifyQualifyingPayments = async (id, value) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/verifyQualifyingPayments`, { reliefid: id, isverified: value });
+      setQualifyingPayments((prevDetails) =>
+        prevDetails.map((income) =>
+          income.reliefid === id ? { ...income, isverified: value } : income
+        )
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  
+  const verifyTerminalBenefits = async (id, value) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/verifyTerminalBenefits`, { assessmentId: id, isverified: value });
+      setTerminalBenefits((prevDetails) =>
+        prevDetails.map((income) =>
+          income.assessmentId === id ? { ...income, isverified: value } : income
         )
       );
     } catch (err) {
@@ -561,21 +679,19 @@ const VerifyDocuments = () => {
 
         <div className='title-2'>
           <h3 className='title-name'>Qualifying Payments & Reliefs</h3>
-        </div>
 
-        <div className='title-3'>
-          <h3 className='title-name'>Tax Credit</h3>
-          <div className='apit'>
-            {apit ? (
+
+        <div className='reliefForExpenditure'>
+            {reliefForExpenditure ? (
               <div className='title-1-submitted'>
                 <ListGroup variant="flush" style={containerStyle}>
-                  {apit.map((income) => (
-                    <ListGroup.Item key={income.APITID} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.aPIT_docname === '' ? (
+                  {reliefForExpenditure.map((income) => (
+                    <ListGroup.Item key={income.reliefid} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                      {income.rE_docname === '' ? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
-                              <div>APIT
+                              <div>Relief For Expenditure
                                 <Badge className='badge-1' bg="danger">Not submitted</Badge>
                               </div>
                             </button>
@@ -590,14 +706,14 @@ const VerifyDocuments = () => {
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
-                              <div>APIT
+                              <div>Relief For Expenditure
                                 <Badge className='badge-1' bg="success">Submitted </Badge>
                                 {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
                               </div>
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.aPIT_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.rE_docname)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -608,7 +724,7 @@ const VerifyDocuments = () => {
                                 checked={income.isverified}
                                 onChange={(e) => {
                                   console.log(e.target.checked);
-                                  verifyApit(income.APITID, e.target.checked);
+                                  verifyReliefForExpenditure(income.reliefid, e.target.checked);
                                 }}
                                 color="success"
                                 style={{
@@ -629,9 +745,225 @@ const VerifyDocuments = () => {
                 </ListGroup>
               </div>
             ) : (
-              <p>Loading APIT details...</p>
+              <p>Loading relief for expenditure details...</p>
             )}
           </div>
+          <div className='reliefForRentIncome'>
+              {reliefForRentIncome ? (
+                <div className='title-1-submitted'>
+                  <ListGroup variant="flush" style={containerStyle}>
+                    {reliefForRentIncome.map((income) => (
+                      <ListGroup.Item key={income.reliefid} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                        {income.rRI_docname === '' ? (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div>Relief For Rent Income
+                                  <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                                </div>
+                              </button>
+                            </div>
+                            <div className='request-button' style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
+                                <span>Request</span>
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div>Relief For Rent Income
+                                  <Badge className='badge-1' bg="success">Submitted </Badge>
+                                  {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                                </div>
+                              </button>
+                            </div>
+                            <div style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.rRI_docname)} >
+                                <span>Download</span>
+                              </button>
+                            </div>
+                            <div style={{ width: "20%", marginLeft: "10px" }}>
+                              <label style={{ color: "#008060" }}>
+                                {income.isverified ? "verified" : "verify"}:
+                                <Switch
+                                  checked={income.isverified}
+                                  onChange={(e) => {
+                                    console.log(e.target.checked);
+                                    verifyReliefForRentIncome(income.reliefid, e.target.checked);
+                                  }}
+                                  color="success"
+                                  style={{
+                                    color: "#008060",
+                                  }}
+                                />
+                              </label>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                                Request Again
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                </div>
+              ) : (
+                <p>Loading relief for rent income details...</p>
+              )}
+            </div>
+
+
+          <div className='qualifyingPayments'>
+            {qualifyingPayments ? (
+              <div className='title-1-submitted'>
+                <ListGroup variant="flush" style={containerStyle}>
+                  {qualifyingPayments.map((income) => (
+                    <ListGroup.Item key={income.reliefid} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                      {income.qP_docname === '' ? (
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                          <div style={{ width: "55%" }}>
+                            <button className="custom-button-2">
+                              <div>Qualifying Payments
+                                <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                              </div>
+                            </button>
+                          </div>
+                          <div className='request-button' style={{ width: "10%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
+                              <span>Request</span>
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                          <div style={{ width: "55%" }}>
+                            <button className="custom-button-2">
+                              <div>Qualifying Payments
+                                <Badge className='badge-1' bg="success">Submitted </Badge>
+                                {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                              </div>
+                            </button>
+                          </div>
+                          <div style={{ width: "10%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.qP_docname)} >
+                              <span>Download</span>
+                            </button>
+                          </div>
+                          <div style={{ width: "20%", marginLeft: "10px" }}>
+                            <label style={{ color: "#008060" }}>
+                              {income.isverified ? "verified" : "verify"}:
+                              <Switch
+                                checked={income.isverified}
+                                onChange={(e) => {
+                                  console.log(e.target.checked);
+                                  verifyQualifyingPayments(income.reliefid, e.target.checked);
+                                }}
+                                color="success"
+                                style={{
+                                  color: "#008060",
+                                }}
+                              />
+                            </label>
+                          </div>
+                          <div style={{ width: "20%" }}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              Request Again
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+            ) : (
+              <p>Loading qualifying payments details...</p>
+            )}
+          </div>
+
+         
+
+
+
+
+
+
+        </div>
+
+        <div className='title-3'>
+          <h3 className='title-name'>Tax Credit</h3>
+                      <div className='apit'>
+              {apit ? (
+                <div className='title-1-submitted'>
+                  <ListGroup variant="flush" style={containerStyle}>
+                    {apit.map((income) => (
+                      <ListGroup.Item key={income.APITId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                        {income.aPIT_docname === '' ? (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div>APIT
+                                  <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                                </div>
+                              </button>
+                            </div>
+                            <div className='request-button' style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
+                                <span>Request</span>
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div>APIT
+                                  <Badge className='badge-1' bg="success">Submitted </Badge>
+                                  {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                                </div>
+                              </button>
+                            </div>
+                            <div style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.aPIT_docname)} >
+                                <span>Download</span>
+                              </button>
+                            </div>
+                            <div style={{ width: "20%", marginLeft: "10px" }}>
+                              <label style={{ color: "#008060" }}>
+                                {income.isverified ? "verified" : "verify"}:
+                                <Switch
+                                  checked={income.isverified}
+                                  onChange={(e) => {
+                                    console.log(e.target.checked);
+                                    verifyApit(income.APITId, e.target.checked);
+                                  }}
+                                  color="success"
+                                  style={{
+                                    color: "#008060",
+                                  }}
+                                />
+                              </label>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                                Request Again
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                </div>
+              ) : (
+                <p>Loading APIT details...</p>
+              )}
+            </div>
+
 
             <div className='whtOnServiceFeeReceived'>
             {whtOnServiceFeeReceived ? (
@@ -701,73 +1033,9 @@ const VerifyDocuments = () => {
             )}
             </div>
 
-            <div className='whtWhichIsNotDeducted'>
-            {whtWhichIsNotDeducted ? (
-                <div className='title-1-submitted'>
-                <ListGroup variant="flush" style={containerStyle}>
-                    {whtWhichIsNotDeducted.map((income) => (
-                    <ListGroup.Item key={income.taxCreditId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.wHT_WND_docname === '' ? (
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <div style={{ width: "55%" }}>
-                            <button className="custom-button-2">
-                                <div><span style={{fontSize:"12px"}}>WHT Which Is Not Deducted</span>
-                                <Badge className='badge-1' bg="danger">Not submitted</Badge>
-                                </div>
-                            </button>
-                            </div>
-                            <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
-                            </button>
-                            </div>
-                        </div>
-                        ) : (
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <div style={{ width: "55%" }}>
-                            <button className="custom-button-2">
-                                <div><span style={{fontSize:"12px"}}>WHT Which Is Not Deducted</span>
-                                <Badge className='badge-1' bg="success">Submitted </Badge>
-                                {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
-                                </div>
-                            </button>
-                            </div>
-                            <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.wHT_WND_docname)} >
-                                <span>Download</span>
-                            </button>
-                            </div>
-                            <div style={{ width: "20%", marginLeft: "10px" }}>
-                            <label style={{ color: "#008060" }}>
-                                {income.isverified ? "verified" : "verify"}:
-                                <Switch
-                                checked={income.isverified}
-                                onChange={(e) => {
-                                    console.log(e.target.checked);
-                                    verifyWhtWhichIsNotDeducted(income.taxCreditId, e.target.checked);
-                                }}
-                                color="success"
-                                style={{
-                                    color: "#008060",
-                                }}
-                                />
-                            </label>
-                            </div>
-                            <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
-                                Request Again
-                            </button>
-                            </div>
-                        </div>
-                        )}
-                    </ListGroup.Item>
-                    ))}
-                </ListGroup>
-                </div>
-            ) : (
-                <p>Loading WHT Which Is Not Deducted details...</p>
-            )}
-            </div>
+
+
+
             <div className='whtOnInvestmentIncome'>
             {whtOnInvestmentIncome ? (
                 <div className='title-1-submitted'>
@@ -837,75 +1105,284 @@ const VerifyDocuments = () => {
             </div>
 
             <div className='selfAssessmentPayment'>
-            {selfAssessmentPayment ? (
-                <div className='title-1-submitted'>
+                {selfAssessmentPayment ? (
+                  <div className='title-1-submitted'>
+                    <ListGroup variant="flush" style={containerStyle}>
+                      {selfAssessmentPayment.map((income) => (
+                        <ListGroup.Item key={income.taxCreditId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                          {income.sAP_docname === '' ? (
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                              <div style={{ width: "55%" }}>
+                                <button className="custom-button-2">
+                                  <div><span style={{ fontSize: "12px" }}>Self Assessment Payment</span>
+                                    <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                                  </div>
+                                </button>
+                              </div>
+                              <div className='request-button' style={{ width: "10%" }}>
+                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
+                                  <span>Request</span>
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                              <div style={{ width: "55%" }}>
+                                <button className="custom-button-2">
+                                  <div><span style={{ fontSize: "12px" }}>Self Assessment Payment</span>
+                                    <Badge className='badge-1' bg="success">Submitted </Badge>
+                                    {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                                  </div>
+                                </button>
+                              </div>
+                              <div style={{ width: "10%" }}>
+                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.sAP_docname)} >
+                                  <span>Download</span>
+                                </button>
+                              </div>
+                              <div style={{ width: "20%", marginLeft: "10px" }}>
+                                <label style={{ color: "#008060" }}>
+                                  {income.isverified ? "verified" : "verify"}:
+                                  <Switch
+                                    checked={income.isverified}
+                                    onChange={(e) => {
+                                      console.log(e.target.checked);
+                                      verifySelfAssessmentPayment(income.taxCreditId, e.target.checked);
+                                    }}
+                                    color="success"
+                                    style={{
+                                      color: "#008060",
+                                    }}
+                                  />
+                                </label>
+                              </div>
+                              <div style={{ width: "20%" }}>
+                                <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                                  Request Again
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </ListGroup.Item>
+                      ))}
+                    </ListGroup>
+                  </div>
+                ) : (
+                  <p>Loading Self Assessment Payment details...</p>
+                )}
+              </div>
+
+
+
+
+
+        </div>
+        <div className='title-2'>
+          <h3 className='title-name'>Other</h3>
+          <div className='terminalBenefits'>
+            {terminalBenefits ? (
+              <div className='title-1-submitted'>
                 <ListGroup variant="flush" style={containerStyle}>
-                    {selfAssessmentPayment.map((income) => (
-                    <ListGroup.Item key={income.paymentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.sAP_docname === '' ? (
+                  {terminalBenefits.map((income) => (
+                    <ListGroup.Item key={income.assessmentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                      {income.tB_docname === '' ? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <div style={{ width: "55%" }}>
+                          <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
-                                <div><span style={{fontSize:"12px"}}>Self Assessment Payment</span>
+                              <div>Terminal Benefits
                                 <Badge className='badge-1' bg="danger">Not submitted</Badge>
-                                </div>
+                              </div>
                             </button>
-                            </div>
-                            <div className='request-button' style={{ width: "10%" }}>
+                          </div>
+                          <div className='request-button' style={{ width: "10%" }}>
                             <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
+                              <span>Request</span>
                             </button>
-                            </div>
+                          </div>
                         </div>
-                        ) : (
+                      ) : (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <div style={{ width: "55%" }}>
+                          <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
-                                <div><span style={{fontSize:"12px"}}>Self Assessment Payment</span>
+                              <div>Terminal Benefits
                                 <Badge className='badge-1' bg="success">Submitted </Badge>
                                 {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
-                                </div>
+                              </div>
                             </button>
-                            </div>
-                            <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.sAP_docname)} >
-                                <span>Download</span>
+                          </div>
+                          <div style={{ width: "10%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.tB_docname)} >
+                              <span>Download</span>
                             </button>
-                            </div>
-                            <div style={{ width: "20%", marginLeft: "10px" }}>
+                          </div>
+                          <div style={{ width: "20%", marginLeft: "10px" }}>
                             <label style={{ color: "#008060" }}>
-                                {income.isverified ? "verified" : "verify"}:
-                                <Switch
+                              {income.isverified ? "verified" : "verify"}:
+                              <Switch
                                 checked={income.isverified}
                                 onChange={(e) => {
-                                    console.log(e.target.checked);
-                                    verifySelfAssessmentPayment(income.paymentId, e.target.checked);
+                                  console.log(e.target.checked);
+                                  verifyTerminalBenefits(income.assessmentId, e.target.checked);
                                 }}
                                 color="success"
                                 style={{
-                                    color: "#008060",
+                                  color: "#008060",
                                 }}
-                                />
+                              />
                             </label>
+                          </div>
+                          <div style={{ width: "20%" }}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              Request Again
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+            ) : (
+              <p>Loading terminal benefits details...</p>
+            )}
+          </div>
+
+          <div className='capitalValueGain'>
+            {capitalValueGain ? (
+              <div className='title-1-submitted'>
+                <ListGroup variant="flush" style={containerStyle}>
+                  {capitalValueGain.map((income) => (
+                    <ListGroup.Item key={income.assessmentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                      {income.cVnG_docname === '' ? (
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                          <div style={{ width: "55%" }}>
+                            <button className="custom-button-2">
+                              <div>Capital Value Gain
+                                <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                              </div>
+                            </button>
+                          </div>
+                          <div className='request-button' style={{ width: "10%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
+                              <span>Request</span>
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                          <div style={{ width: "55%" }}>
+                            <button className="custom-button-2">
+                              <div>Capital Value Gain
+                                <Badge className='badge-1' bg="success">Submitted </Badge>
+                                {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                              </div>
+                            </button>
+                          </div>
+                          <div style={{ width: "10%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.cvg_docname)} >
+                              <span>Download</span>
+                            </button>
+                          </div>
+                          <div style={{ width: "20%", marginLeft: "10px" }}>
+                            <label style={{ color: "#008060" }}>
+                              {income.isverified ? "verified" : "verify"}:
+                              <Switch
+                                checked={income.isverified}
+                                onChange={(e) => {
+                                  console.log(e.target.checked);
+                                  verifyCapitalValueGain(income.assessmentId, e.target.checked);
+                                }}
+                                color="success"
+                                style={{
+                                  color: "#008060",
+                                }}
+                              />
+                            </label>
+                          </div>
+                          <div style={{ width: "20%" }}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              Request Again
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+            ) : (
+              <p>Loading capital value gain details...</p>
+            )}
+          </div>          
+
+
+          <div className='whtWhichIsNotDeducted'>
+              {whtWhichIsNotDeducted ? (
+                <div className='title-1-submitted'>
+                  <ListGroup variant="flush" style={containerStyle}>
+                    {whtWhichIsNotDeducted.map((income) => (
+                      <ListGroup.Item key={income.assessmentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                        {income.wHT_WND_docname === '' ? (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div><span style={{ fontSize: "12px" }}>WHT Which Is Not Deducted</span>
+                                  <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                                </div>
+                              </button>
+                            </div>
+                            <div className='request-button' style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
+                                <span>Request</span>
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div><span style={{ fontSize: "12px" }}>WHT Which Is Not Deducted</span>
+                                  <Badge className='badge-1' bg="success">Submitted </Badge>
+                                  {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                                </div>
+                              </button>
+                            </div>
+                            <div style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.wHT_WND_docname)} >
+                                <span>Download</span>
+                              </button>
+                            </div>
+                            <div style={{ width: "20%", marginLeft: "10px" }}>
+                              <label style={{ color: "#008060" }}>
+                                {income.isverified ? "verified" : "verify"}:
+                                <Switch
+                                  checked={income.isverified}
+                                  onChange={(e) => {
+                                    console.log(e.target.checked);
+                                    verifyWhtWhichIsNotDeducted(income.assessmentId, e.target.checked);
+                                  }}
+                                  color="success"
+                                  style={{
+                                    color: "#008060",
+                                  }}
+                                />
+                              </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
                                 Request Again
-                            </button>
+                              </button>
                             </div>
-                        </div>
+                          </div>
                         )}
-                    </ListGroup.Item>
+                      </ListGroup.Item>
                     ))}
-                </ListGroup>
+                  </ListGroup>
                 </div>
-            ) : (
-                <p>Loading Self Assessment Payment details...</p>
-            )}
+              ) : (
+                <p>Loading WHT Which Is Not Deducted details...</p>
+              )}
             </div>
-
-
-
 
         </div>
       </div>
