@@ -22,6 +22,7 @@ function TaxPolicy() {
       .then((data) => {
         if (Array.isArray(data.data)) {
           setTaxPolicies(data.data);
+          console.log(taxPolicies) 
         } else {
           console.error("Expected an array but got", data);
         }
@@ -55,11 +56,13 @@ function TaxPolicy() {
   // Handle updating the policy
   const handleUpdatePolicy = async () => {
     const updatedPolicy = {
-      ...taxPolicies[editingPolicyIndex],
+      policyId: taxPolicies[editingPolicyIndex].policyId,
       title: editedTitle,
       amount: editedAmount,
       rate: editedRate,
     };
+
+    console.log(updatedPolicy)
 
     const updatedTaxPolicies = [...taxPolicies];
     updatedTaxPolicies[editingPolicyIndex] = updatedPolicy;
