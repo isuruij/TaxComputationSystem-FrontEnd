@@ -1,197 +1,195 @@
 import React, { useState, useEffect } from "react";
 import "./TaxHistory.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import MockData from "./MOCK_DATA.json";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 function TaxPaymentHistory() {
-  const [date, setDate] = useState(null);
-  const [data, setData] = useState(MockData);
+    const [data, setData] = useState([]); // State to hold the retrieved data from the API
+    const [date, setDate] = useState(null); // State for the selected date
+    const [selectedValue2, setSelectedValue2] = useState("All transactions"); // State for the selected description value
 
-  function dateValue(e) {
-    if (!e.target.value) {
-      setDate(null); // Set date state to null if no value is selected
-      return;
+    // Fetch data from the API URL when the component mounts
+    useEffect(() => {
+        fetch("http://localhost:3000/api/taxpayer/taxHistoryType/1")
+            .then((response) => {
+                // Check if the response is OK (status code in the range 200-299)
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json(); // Parse the JSON data
+            })
+            .then((data) => {
+                // Update the data state with the retrieved data
+                setData(data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
+    // Function to handle date input change
+    function handleDateChange(e) {
+        const selectedDate = e.target.value ? new Date(e.target.value) : null;
+        setDate(selectedDate);
     }
 
-    // Parse the selected date into a Date object
-    const selectedDate = new Date(e.target.value);
+    // Function to handle dropdown selection change
+    const handleDropdownSelect2 = (value) => {
+        setSelectedValue2(value);
+    };
 
-    // Format the date as "MM/DD/YYYY"
-    const formattedDate = selectedDate.toLocaleDateString("en-US", {
-      month: "numeric",
-      day: "numeric",
-      year: "numeric",
-    });
+    // Memoized filtered data based on date and description
+    const filteredData = React.useMemo(() => {
+        return data.filter((d) => {
+            // Convert selected date to YYYY-MM-DD format
+            const selectedDate = date ? date.toISOString().split("T")[0] : null;
 
-    // Update the date state with the formatted date
-    setDate({ ...date, date: formattedDate });
-  }
+            // Check if the date matches or if no date is selected
+            const dateMatch = !date || d.date === selectedDate;
 
-  const [selectedValue1, setSelectedValue1] = useState(null);
-  const handleDropdownSelect1 = (value) => {
-    setSelectedValue1(value);
-  };
+            // Check if the description matches or if 'All transactions' is selected
+            const descriptionMatch =
+                selectedValue2 === "All transactions" ||
+                d.description.includes(selectedValue2);
 
-  const [selectedValue2, setSelectedValue2] = useState("all transactions");
-  const handleDropdownSelect2 = (value) => {
-    setSelectedValue2(value);
-  };
+            // Return true only if both date and description match
+            return dateMatch && descriptionMatch;
+        });
+    }, [data, date, selectedValue2]);
 
-  //  const filteredData = React.useMemo(() => {
-  //    return data.filter((d) => {
-  //      const dateMatch = !date || d.Date == date;
-  //     console.log(d.Date);
-  //     const descriptionMatch =
-  //       selectedValue2 === "all transactions" ||
-  //        d.Description.includes(selectedValue2);
-  //      console.log(selectedValue2);
-  //      return dateMatch && descriptionMatch;
-  //    });
-  // }, [data, date, selectedValue2]);
+    // Function to generate a PDF report
+    const generatePDF = () => {
+        const doc = new jsPDF(); // Create a new PDF document
 
-  const filteredData = React.useMemo(() => {
-    return data.filter((d) => {
-      const dateMatch = !date || d.Date === date.date;
-      console.log(date);
-      const descriptionMatch =
-        selectedValue2 === "all transactions" ||
-        d.Description.includes(selectedValue2);
-      console.log(selectedValue2);
-      return dateMatch && descriptionMatch;
-    });
-  }, [data, date, selectedValue2]);
+        // Add a title to the PDF
+        doc.setFontSize(18);
+        doc.text("Paid Tax Summary Report", 14, 22);
 
-  useEffect(() => {}, [date]);
+        // Define the table headers
+        const headers = [["Date", "Time", "Description", "Reference", "Amount"]];
 
-  //const dropdownOptions1 = ["A", "B", "C"];
-  const dropdownOptions2 = [
-    "all transactions",
-    "employment income",
-    "investment income",
-    "business income",
-    "other income",
-  ];
+        // Prepare the data for the table
+        const rows = filteredData.map((d) => [
+            d.date,
+            d.time,
+            d.description,
+            d.reference,
+            d.amount,
+        ]);
 
-  return (
-    <div>
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-      ></link>
+        // Add the table to the PDF document
+        doc.autoTable({
+            startY: 30, // Starting Y position for the table
+            head: headers,
+            body: rows,
+        });
 
-      <div className="dropdowntable">
-        <div className="dropdownPage ">
-          <div className="dropdown col-lg-4 col-md-6 ">
-            {/* <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style={{ padding: "2px", fontSize: "18px", height: "45px" }}
-            > 
-              {selectedValue1 || "Paid Taxes"}
-            </button>
-            <ul className="dropdown-menu">
-              {dropdownOptions1.map((option) => (
-                <li key={option}>
-                  <a
-                    className="dropdown-item"
-                    href="#"
-                    onClick={() => handleDropdownSelect1(option)}
-                  >
-                    {option}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            */}
-          </div>
+        // Save the PDF file
+        doc.save("PaidTaxSummaryReport.pdf");
+    };
 
-          <div className="dropdown">
-            <button
-              className="btn btn-secondary dropdown-toggle"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              style={{ padding: "2px", fontSize: "18px", height: "45px" }}
-            >
-              {selectedValue2 || "all transactions"}
-            </button>
-            <ul className="dropdown-menu">
-              {dropdownOptions2.map((option) => (
-                <li key={option}>
-                  <a
-                    className="dropdown-item"
-                    href="#"
-                    onClick={() => handleDropdownSelect2(option)}
-                  >
-                    {option}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+    return (
+        <div>
+            {/* Bootstrap link for styling */}
+            <link
+                href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+                rel="stylesheet"
+            ></link>
 
-          <div className="date_feild">
-            <div className="date_input">
-              <input
-                className="d form-control"
-                type="date"
-                id="Ddate"
-                onChange={dateValue}
-                style={{ height: 45 + "px" }}
-              />
+            <div className="dropdowntable">
+                <div className="dropdownPage d-flex flex-wrap justify-content-between">
+                    {/* Dropdown menu for selecting description */}
+                    <div className="dropdown col-lg-4 col-md-6 col-sm-12 mb-3">
+                        <button
+                            className="btn btn-secondary dropdown-toggle w-100"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            style={{ padding: "2px", fontSize: "18px", height: "40px", width: "250px" }}
+                        >
+                            {selectedValue2 || "All transactions"}
+                        </button>
+                        <ul className="dropdown-menu">
+                            {[
+                                "All transactions",
+                                "Employment income",
+                                "Investment income",
+                                "Business income",
+                                "Other income",
+                            ].map((option) => (
+                                <li key={option}>
+                                    <a
+                                        className="dropdown-item"
+                                        href="#"
+                                        onClick={() => handleDropdownSelect2(option)}
+                                    >
+                                        {option}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Date input field */}
+                    <div className="date_field col-lg-4 col-md-6 col-sm-12 mb-3">
+                        <div className="date_input">
+                            <input
+                                className="form-control"
+                                type="date"
+                                id="dateInput"
+                                onChange={handleDateChange}
+                                style={{ height: "40px", marginLeft: "-100px" }}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="divtable">
+                    {/* Table for displaying data */}
+                    <table className="table table-responsive text-center table1">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Reference</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* Iterate over the filtered data and display each row */}
+                            {filteredData.map((d) => (
+                                <tr key={d.taxHistoryId}>
+                                    <td>{d.date}</td>
+                                    <td>{d.time}</td>
+                                    <td>{d.description}</td>
+                                    <td>{d.reference}</td>
+                                    <td>{d.amount}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+
+                    {/* Button for generating summary report */}
+                    <div className="taxSummarybutton" style={{color:"pink"}}>
+                        <button
+                            type="button"
+                            className="btn btn-primary"
+                            style={{ fontSize: "20px" }}
+                            onClick={generatePDF} // Call the generatePDF function when the button is clicked
+                        >
+                            <b>
+                                Generate Paid Tax
+                                <br />
+                                Summary Report
+                            </b>
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          {/* <div>
-          <button class="btn btn-primary d-inline-block" type="button"  aria-expanded="false" style={{padding: 2 + 'px',fontSize:20+'px',width:250+'px'}}>
-              Serial Number
-            <button class="btn btn-primary d-inline-block" type="button"   aria-expanded="false"style={{fontSize:20+'px'}}>
-                11569
-            </button>
-          </button>
-       </div> */}
         </div>
-
-        <div className="divtable">
-          <table className="table table-responsive text-center">
-            <thead>
-              <tr className="">
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Description</th>
-                <th scope="col">Reference</th>
-                <th scope="col">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((d) => (
-                <tr key={d.Reference}>
-                  <td>{d.Date}</td>
-                  <td>{d.Time}</td>
-                  <td>{d.Description}</td>
-                  <td>{d.Reference}</td>
-                  <td>{d.Amount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div className="taxSummarybutton">
-            <button
-              type="button"
-              className="btn btn-primary "
-              style={{ fontSize: 20 + "px" }}
-            >
-              <b>
-                Generate Paid Tax <br /> Summary Report
-              </b>{" "}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default TaxPaymentHistory;

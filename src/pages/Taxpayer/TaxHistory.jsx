@@ -1,31 +1,23 @@
 import React from "react";
-import SettingSubMenue from "../../components/user/Settings/SettingSubMenue";
-import Header from "../../components/user/Header/Header";
+import TaxPaymentHistory from "../../components/user/TaxHistory/TaxPaymentHistory";
 import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
-import TaxPaymentHistory from "../../components/user/TaxPaymentHistory/TaxPaymentHistory";
-import SettingSubMenueTax from "../../components/user/Settings/SettingSubMenueTax";
+import Header from "../../components/user/Header/Header";
+
 
 function TaxHistory() {
   return (
     <div>
-      <div>
-        <Header />
-        <div style={{ display: "flex" }}>
-          <div style={{ marginTop: "5px" }}>
-            <Sidenavbar />
-          </div>
-          <div style={{ marginLeft: "5px", marginTop: "5px" }}>
-            <div>
-              <SettingSubMenueTax/>
-            </div>
-            <div style={{marginTop:"5px", width:"auto"}}>
-              <TaxPaymentHistory/>
-            </div>
-          </div>
+      <Header />
+      <div style={{ display: "flex" }}>
+        <div style={{marginTop:"5px"}}>
+          <Sidenavbar />
+        </div>
+        <div style={{width:'77vw',marginLeft:"5px",marginTop:"0px"}} >
+          <TaxPaymentHistory/>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default TaxHistory
+export default TaxHistory;
