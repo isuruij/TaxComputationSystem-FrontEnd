@@ -39,91 +39,45 @@ function FileUpload() {
   const [file13, setFile13] = useState();
   const [file14, setFile14] = useState();
 
-  // const [file2, setFile2] = useState();
-  // const [file3, setFile3] = useState();
-  // const [file4, setFile4] = useState();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
 
-  // const handleFile = (e) => {
-  //   setFile1(e.target.files[0]);
-  //   // switch (type) {
-  //   //   case "doc1":
-  //   //     setFile1(event.target.files[0]);
-  //   //     break;
-  //   //     case "doc2":
-  //   //     setFile2(event.target.files[0]);
-  //   //     break;
-  //   //     case "doc3":
-  //   //     setFile3(event.target.files[0]);
-  //   //     break;
-  //   //     case "doc4":
-  //   //     setFile4(event.target.files[0]);
-  //   //     break;
-  //   // };
-
-  //   //console.log(event.target.files[0])
-  // };
-
   function handleUpload() {
-    navigate(`/dataEntry/submission/enterData/${value.id}`);
+    // navigate(`/dataEntry/submission/enterData/${value.id}`);
+    const files = [
+      { file: file1, id: 1 },
+      { file: file2, id: 2 },
+      { file: file3, id: 3 },
+      { file: file4, id: 4 },
+      { file: file5, id: 5 },
+      { file: file6, id: 6 },
+      { file: file7, id: 7 },
+      { file: file8, id: 8 },
+      { file: file9, id: 9 },
+      { file: file10, id: 10 },
+      { file: file11, id: 11 },
+      { file: file12, id: 12 },
+      { file: file13, id: 13 },
+      { file: file14, id: 14 },
+    ];
+    const formData = new FormData();
+    files.forEach((item) => {
+      if (item.file) {
+        // Only append if the file is defined
+        formData.append("files", item.file);
+        formData.append("fileIds", item.id);
+      }
+    });
 
-    // console.log(
-    //   file1,
-    //   file2,
-    //   file3,
-    //   file4,
-    //   file5,
-    //   file6,
-    //   file7,
-    //   file8,
-    //   file9,
-    //   file10,
-    //   file11,
-    //   file12,
-    //   file13,
-    //   file14
-    // );
-    // const formData = new FormData();
-    // formData.append(
-    //   "doc1",
-    //   file1,
-    //   "doc2",
-    //   file2,
-    //   "doc3",
-    //   file3,
-    //   "doc4",
-    //   file4,
-    //   "doc5",
-    //   file5,
-    //   "doc6",
-    //   file6,
-    //   "doc7",
-    //   file7,
-    //   "doc8",
-    //   file8,
-    //   "doc9",
-    //   file9,
-    //   "doc10",
-    //   file10,
-    //   "doc11",
-    //   file11,
-    //   "doc12",
-    //   file12,
-    //   "doc13",
-    //   file13,
-    //   "doc14",
-    //   file14
-    // );
-    // axios
-    //   .post("http://localhost:8001/create", { Data: formData, UserId: id })
-    //   .then((response) => {
-    //     console.log(response);
-    //     navigate(`/dataEntry/submission/enterData/${value.id}`);
-    //   })
-    //   .catch((er) => console.log(er));
+    axios
+      .post(`${base_url}/api/dataentry/fileUpload/${id}`, formData)
+      .then((response) => {
+        console.log(response);
+        navigate(`/dataEntry/submission/enterData/${id}`);
+      })
+      .catch((er) => console.log(er));
   }
 
   return (
@@ -492,10 +446,10 @@ function FileUpload() {
             <button
               id="submit"
               className="btn btn-primary dcustom-button"
-              // onClick={handleUpload}
-              onClick={() => {
-                navigate(`/dataEntry/submission/enterData/${id}`);
-              }}
+              onClick={handleUpload}
+              // onClick={() => {
+              //   navigate(`/dataEntry/submission/enterData/${id}`);
+              // }}
             >
               Save & Continue
             </button>

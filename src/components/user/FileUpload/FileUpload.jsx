@@ -35,98 +35,37 @@ function FileUpload() {
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
 
-  // const handleFile = (e) => {
-  //   setFile1(e.target.files[0]);
-  //   // switch (type) {
-  //   //   case "doc1":
-  //   //     setFile1(event.target.files[0]);
-  //   //     break;
-  //   //     case "doc2":
-  //   //     setFile2(event.target.files[0]);
-  //   //     break;
-  //   //     case "doc3":
-  //   //     setFile3(event.target.files[0]);
-  //   //     break;
-  //   //     case "doc4":
-  //   //     setFile4(event.target.files[0]);
-  //   //     break;
-  //   // };
-
-  //   //console.log(event.target.files[0])
-  // };
-
   function handleUpload() {
-    console.log("this is begin of handle upload");
-    console.log(
-      file1,
-      file2,
-      file3,
-      file4,
-      file5,
-      file6,
-      file7,
-      file8,
-      file9,
-      file10,
-      file11,
-      file12,
-      file13,
-      file14
-    );
-    // const docs = [
-    //   { file: file1, id: 1 },
-    //   { file: file2, id: 2 },
-    //   { file: file3, id: 3 },
-    //   { file: file4, id: 4 },
-    //   { file: file5, id: 5 },
-    //   { file: file6, id: 6 },
-    //   { file: file7, id: 7 },
-    //   { file: file8, id: 8 },
-    //   { file: file9, id: 9 },
-    //   { file: file10, id: 10 },
-    //   { file: file11, id: 11 },
-    //   { file: file12, id: 12 },
-    //   { file: file13, id: 13 },
-    //   { file: file14, id: 14 },
-    // ];
-    // const formData = new FormData();
-    // formData.append("docs", JSON.stringify(docs));
-
-    // formData.append("docs", { file: file1, id: 1 });
-    // formData.append("docs", { file: file2, id: 2 });
-    // formData.append("docs", { file: file3, id: 3 });
-    // formData.append("docs", { file: file4, id: 4 });
-    // formData.append("docs", { file: file5, id: 5 });
-    // formData.append("docs", { file: file6, id: 6 });
-    // formData.append("docs", { file: file7, id: 7 });
-    // formData.append("docs", { file: file8, id: 8 });
-    // formData.append("docs", { file: file9, id: 9 });
-    // formData.append("docs", { file: file10, id: 10 });
-    // formData.append("docs", { file: file11, id: 11 });
-    // formData.append("docs", { file: file12, id: 12 });
-    // formData.append("docs", { file: file13, id: 13 });
-    // formData.append("docs", { file: file14, id: 14 });
+    const files = [
+      { file: file1, id: 1 },
+      { file: file2, id: 2 },
+      { file: file3, id: 3 },
+      { file: file4, id: 4 },
+      { file: file5, id: 5 },
+      { file: file6, id: 6 },
+      { file: file7, id: 7 },
+      { file: file8, id: 8 },
+      { file: file9, id: 9 },
+      { file: file10, id: 10 },
+      { file: file11, id: 11 },
+      { file: file12, id: 12 },
+      { file: file13, id: 13 },
+      { file: file14, id: 14 },
+    ];
     const formData = new FormData();
-    formData.append("docs", file1);
-    formData.append("docs", file2);
-    formData.append("docs", file3);
-    formData.append("docs", file4);
-    formData.append("docs", file5);
-    formData.append("docs", file6);
-    formData.append("docs", file7);
-    formData.append("docs", file8);
-    formData.append("docs", file9);
-    formData.append("docs", file10);
-    formData.append("docs", file11);
-    formData.append("docs", file12);
-    formData.append("docs", file13);
-    formData.append("docs", file14);
+    files.forEach((item) => {
+      if (item.file) {
+        // Only append if the file is defined
+        formData.append("files", item.file);
+        formData.append("fileIds", item.id);
+      }
+    });
 
     axios
       .post(`${base_url}/api/taxpayer/fileUpload/${userId}`, formData)
       .then((response) => {
         console.log(response);
-        // navigate("/settings/basic");
+        navigate("/settings/basic");
       })
       .catch((er) => console.log(er));
   }
@@ -450,11 +389,11 @@ function FileUpload() {
         )}
 
         <div className="Button-div">
-          <div className="Button-div-1">
-            <button id="back" className="btn btn-primary">
+          {/* <div className="Button-div-1">
+             <button id="back" className="btn btn-primary">
               Back
-            </button>
-          </div>
+            </button> 
+          </div> */}
           <div className="Button-div-2">
             <button
               id="submit"
