@@ -1,12 +1,13 @@
 import React from "react";
-import SettingSubMenue from "../../components/user/Settings/SettingSubMenue";
 import Header from "../../components/user/Header/Header";
+import SettingSubMenueTax from "../../components/user/Settings/SettingSubMenueTax";
+import TaxPaymentHistory from "../../components/user/TaxHistory/TaxPaymentHistory";
+
 import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
-import FileUpload from "../../components/user/FileUpload/FileUpload";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 
-function SettingsFileUpload() {
+export default function TaxStatus() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
@@ -49,16 +50,10 @@ function SettingsFileUpload() {
                   position: "fixed",
                 }}
               >
-                <SettingSubMenue />
+                <SettingSubMenueTax />
               </div>
-              <div
-                style={{
-                  width: "78vw",
-                  marginTop: "19.2vh",
-                  marginLeft: "20vw",
-                }}
-              >
-                <FileUpload />
+              <div style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+                <TaxPaymentHistory />
               </div>
             </div>
           </div>
@@ -68,5 +63,3 @@ function SettingsFileUpload() {
     </div>
   );
 }
-
-export default SettingsFileUpload;

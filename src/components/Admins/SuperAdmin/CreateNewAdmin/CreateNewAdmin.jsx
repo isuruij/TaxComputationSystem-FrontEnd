@@ -17,7 +17,6 @@ function CreateNewAdmin() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
 
   const handleSubmit = async (event) => {
     event.preventDefault();

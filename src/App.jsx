@@ -1,5 +1,6 @@
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
+import Axios from "axios";
 import Login from "./pages/Taxpayer/LoginPage.jsx";
 import Signup from "./pages/Taxpayer/Signup.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -19,7 +20,8 @@ import AdminLoginPage from "./pages/SuperAdmin/LoginPage.jsx";
 import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
-import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
+import Notification from "./pages/Taxpayer/Notification.jsx";
+import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
 import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
 import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
@@ -38,6 +40,8 @@ import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
 import DDataEntryPart from "./pages/DataEntry/DDataEnterPage.jsx";
 
 function App() {
+  Axios.defaults.withCredentials = true;
+  
   return (
     
   <BrowserRouter>
@@ -57,6 +61,8 @@ function App() {
     <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
     <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+    <Route path="/notification" element={<Notification />}></Route>
+    <Route path="/taxhistory" element={<TaxHistory/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
 
     

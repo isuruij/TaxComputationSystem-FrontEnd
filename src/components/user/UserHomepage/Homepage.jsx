@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
@@ -102,6 +103,7 @@ export default function Homepage() {
           <h4>TIN: {userData.tin}</h4>
           <div style={{ paddingTop: "10px" }}>
             <div style={{ paddingTop: "10px" }}>
+              <ProgressBar now={now} label={`${now}%`} style={{ boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} />
               <ProgressBar now={now} label={`${now}%`} style={{ boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} />
             </div>
             <p style={{ paddingTop: "30px" }}></p>

@@ -30,13 +30,14 @@ function Incomedetails() {
   const [userData, setuserData] = useState({});
 
   const navigate = useNavigate();
-  Axios.defaults.withCredentials = true;
 
+  //getting income details to backend
   const getIncomeDetails = async () => {
     try {
       const response = await Axios.get(
         `${base_url}/api/taxpayer/getuserincomedetails/${userId}`
       );
+      // setting data for current values of user
       setuserData(response.data.Data);
       setvalues({
         ...values,
