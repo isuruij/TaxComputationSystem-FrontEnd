@@ -124,11 +124,19 @@ function TaxPolicy() {
 
   return (
     <>
-      <div className="outer1 embed-responsive embed-responsive-16by9">
+      <div style={{
+        boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+        borderRadius: "10px",
+        padding: "10px",
+        marginBottom: "10px",
+        marginTop: "5px",
+        marginLeft: "0.5%",
+        backgroundColor: "#F3FFF5",
+        width: "77vw"
+      }}>
         <table className="table">
           <thead>
             <tr>
-            
               <th>
                 Policy
                 <FaPlus
