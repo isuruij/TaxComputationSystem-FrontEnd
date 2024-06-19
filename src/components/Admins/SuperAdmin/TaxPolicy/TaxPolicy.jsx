@@ -7,11 +7,9 @@ import { FaEdit, FaTrash, FaPlus } from "react-icons/fa"; // update and delete i
 import Axios from "axios";
 
 function TaxPolicy() {
-  // State to manage tax policies
   const [taxPolicies, setTaxPolicies] = useState([]);
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
-  // Fetch data from the API URL when the component mounts
   useEffect(() => {
     fetch(`${base_url}/api/superAdmin/policy`)
       .then((response) => {
@@ -32,14 +30,13 @@ function TaxPolicy() {
       });
   }, []);
 
-  // Update state and handlers
   const [isEditing, setIsEditing] = useState(false);
+  const [isCreating, setIsCreating] = useState(false);
   const [editingPolicyIndex, setEditingPolicyIndex] = useState(null);
   const [editedTitle, setEditedTitle] = useState("");
   const [editedAmount, setEditedAmount] = useState("");
   const [editedRate, setEditedRate] = useState("");
 
-  // Handle opening the modal for editing
   const handleEditClick = (index) => {
     const policy = taxPolicies[index];
     if (!policy) {
@@ -53,7 +50,6 @@ function TaxPolicy() {
     setIsEditing(true);
   };
 
-  // Handle updating the policy
   const handleUpdatePolicy = async () => {
     const updatedPolicy = {
       policyId: taxPolicies[editingPolicyIndex].policyId,
@@ -76,22 +72,34 @@ function TaxPolicy() {
         `${base_url}/api/superAdmin/updatePolicy/`,
         updatedPolicy
       );
-      console.log("Policy updated successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error updating policy:", error);
     }
   };
 
-  // Handle closing the modal
-  const handleCloseEditing = () => {
-    setIsEditing(false);
-    setEditingPolicyIndex(null);
+  const handleCreatePolicy = async () => {
+    const newPolicy = {
+      title: editedTitle,
+      amount: editedAmount,
+      rate: editedRate,
+    };
+
+    try {
+      const response = await Axios.post(
+        `${base_url}/api/superAdmin/createPolicy`,
+        newPolicy
+      );
+      window.location.reload();
+    } catch (error) {
+      console.error("Error creating policy:", error);
+    }
+    setIsCreating(false);
     setEditedTitle("");
     setEditedAmount("");
     setEditedRate("");
   };
 
-  // Handle deleting the policy
   const handleDeleteClick = async (index) => {
     const policyId = taxPolicies[index].policyId;
     console.log("Deleting policy with ID:", policyId);
@@ -99,10 +107,19 @@ function TaxPolicy() {
       await Axios.delete(`${base_url}/api/superAdmin/deletePolicy`, {
         data: { policyId },
       });
-      window.location.reload();
+      setTaxPolicies(taxPolicies.filter((_, i) => i !== index));
     } catch (error) {
       console.error("Error deleting policy:", error);
     }
+  };
+
+  const handleCloseEditing = () => {
+    setIsEditing(false);
+    setIsCreating(false);
+    setEditingPolicyIndex(null);
+    setEditedTitle("");
+    setEditedAmount("");
+    setEditedRate("");
   };
 
   return (
@@ -114,7 +131,7 @@ function TaxPolicy() {
               <th>
                 Policy
                 <FaPlus
-                  onClick={() => handleEditClick(index)}
+                  onClick={() => setIsCreating(true)}
                   style={{ cursor: "pointer" }}
                 />
               </th>
@@ -156,10 +173,10 @@ function TaxPolicy() {
         </table>
       </div>
 
-      {/* Modal for editing policy */}
-      <Modal show={isEditing} onHide={handleCloseEditing}>
+      {/* Modal for creating or editing policy */}
+      <Modal show={isEditing || isCreating} onHide={handleCloseEditing}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Policy</Modal.Title>
+          <Modal.Title>{isEditing ? "Edit Policy" : "Create Policy"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
@@ -193,9 +210,9 @@ function TaxPolicy() {
           <Button
             className="Button_cud"
             variant="primary"
-            onClick={handleUpdatePolicy}
+            onClick={isEditing ? handleUpdatePolicy : handleCreatePolicy}
           >
-            Update Policy
+            {isEditing ? "Update Policy" : "Create Policy"}
           </Button>
         </Modal.Footer>
       </Modal>
