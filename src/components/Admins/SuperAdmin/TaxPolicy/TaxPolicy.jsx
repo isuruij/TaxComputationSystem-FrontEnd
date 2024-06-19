@@ -9,6 +9,7 @@ import Axios from "axios";
 function TaxPolicy() {
   // State to manage tax policies
   const [taxPolicies, setTaxPolicies] = useState([]);
+  const [optionaltaxPolicies, setoptionalTaxPolicies] = useState([]);
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   // Fetch data from the API URL when the component mounts
@@ -21,12 +22,7 @@ function TaxPolicy() {
         return response.json();
       })
       .then((data) => {
-        if (Array.isArray(data.data)) {
-          setTaxPolicies(data.data);
-          console.log(taxPolicies) 
-        } else {
-          console.error("Expected an array but got", data);
-        }
+        setTaxPolicies(data.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -63,7 +59,7 @@ function TaxPolicy() {
       rate: editedRate,
     };
 
-    console.log(updatedPolicy)
+    console.log(updatedPolicy);
 
     const updatedTaxPolicies = [...taxPolicies];
     updatedTaxPolicies[editingPolicyIndex] = updatedPolicy;
@@ -76,8 +72,8 @@ function TaxPolicy() {
 
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     try {
-      console.log("started")
-      console.log(updatedTaxPolicies)
+      console.log("started");
+      console.log(updatedTaxPolicies);
       await Axios.patch(
         `${base_url}/api/superAdmin/updatePolicy/`,
         updatedPolicy
@@ -110,25 +106,45 @@ function TaxPolicy() {
             </tr>
           </thead>
           <tbody>
-            {Array.isArray(taxPolicies) && taxPolicies.length > 0 ? (
-              taxPolicies.map((policy, index) => (
-                <tr key={index}>
-                  <td>{policy.title}</td>
-                  <td>{policy.amount}</td>
-                  <td>{policy.rate}</td>
-                  <td>
-                    <FaEdit
-                      onClick={() => handleEditClick(index)}
-                      style={{ cursor: "pointer" }}
-                    />
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="4">No policies found.</td>
+            {taxPolicies.map((policy, index) => (
+              <tr key={index}>
+                <td>{policy.title}</td>
+                <td>{policy.amount}</td>
+                <td>{policy.rate}</td>
+                <td>
+                  <FaEdit
+                    onClick={() => handleEditClick(index)}
+                    style={{ cursor: "pointer" }}
+                  />
+                </td>
               </tr>
-            )}
+            ))}
+          </tbody>
+        </table>
+
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Rate</th>
+              <th>Update Policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            {taxPolicies.map((policy, index) => (
+              <tr key={index}>
+                <td>{policy.title}</td>
+                <td>{policy.amount}</td>
+                <td>{policy.rate}</td>
+                <td>
+                  <FaEdit
+                    onClick={() => handleEditClick(index)}
+                    style={{ cursor: "pointer" }}
+                  />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
