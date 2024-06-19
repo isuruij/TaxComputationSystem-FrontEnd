@@ -3,7 +3,7 @@ import "./Taxpolicy.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Modal, Button } from "react-bootstrap";
-import { FaEdit } from "react-icons/fa"; // update icon
+import { FaEdit, FaTrash } from "react-icons/fa"; // update and delete icons
 import Axios from "axios";
 
 function TaxPolicy() {
@@ -23,7 +23,6 @@ function TaxPolicy() {
       .then((data) => {
         if (Array.isArray(data.data)) {
           setTaxPolicies(data.data);
-          console.log(taxPolicies) 
         } else {
           console.error("Expected an array but got", data);
         }
@@ -63,8 +62,6 @@ function TaxPolicy() {
       rate: editedRate,
     };
 
-    console.log(updatedPolicy)
-
     const updatedTaxPolicies = [...taxPolicies];
     updatedTaxPolicies[editingPolicyIndex] = updatedPolicy;
     setTaxPolicies(updatedTaxPolicies);
@@ -74,10 +71,7 @@ function TaxPolicy() {
     setEditedAmount("");
     setEditedRate("");
 
-    const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     try {
-      console.log("started")
-      console.log(updatedTaxPolicies)
       await Axios.patch(
         `${base_url}/api/superAdmin/updatePolicy/`,
         updatedPolicy
@@ -97,6 +91,20 @@ function TaxPolicy() {
     setEditedRate("");
   };
 
+  // Handle deleting the policy
+  const handleDeleteClick = async (index) => {
+    const policyId = taxPolicies[index].policyId;
+    console.log("Deleting policy with ID:", policyId);
+    try {
+      await Axios.delete(`${base_url}/api/superAdmin/deletePolicy`, {
+        data: { policyId },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting policy:", error);
+    }
+  };
+
   return (
     <>
       <div className="outer1 embed-responsive embed-responsive-16by9">
@@ -107,6 +115,7 @@ function TaxPolicy() {
               <th>Amount</th>
               <th>Rate</th>
               <th>Update Policy</th>
+              <th>Delete Policy</th>
             </tr>
           </thead>
           <tbody>
@@ -122,11 +131,19 @@ function TaxPolicy() {
                       style={{ cursor: "pointer" }}
                     />
                   </td>
+                  <td>
+                    {policy.optional ? (
+                      <FaTrash
+                        onClick={() => handleDeleteClick(index)}
+                        style={{ cursor: "pointer", color: "red" }}
+                      />
+                    ) : null}
+                  </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="4">No policies found.</td>
+                <td colSpan="5">No policies found.</td>
               </tr>
             )}
           </tbody>
