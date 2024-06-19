@@ -15,7 +15,6 @@ export default function TaxPolicyCUD() {
         </div>
         <div
           style={{
-            width: "65vw",
             marginLeft: "5px",
             marginTop: "5px",
             display: "block",
