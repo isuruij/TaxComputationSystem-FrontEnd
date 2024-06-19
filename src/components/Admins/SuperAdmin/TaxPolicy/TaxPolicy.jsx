@@ -128,7 +128,7 @@ function TaxPolicy() {
         <table className="table">
           <thead>
             <tr>
-            <th>No</th>
+            
               <th>
                 Policy
                 <FaPlus
@@ -146,7 +146,7 @@ function TaxPolicy() {
             {Array.isArray(taxPolicies) && taxPolicies.length > 0 ? (
               taxPolicies.map((policy, index) => (
                 <tr key={index}>
-                  <td>{policy.policyId}</td>
+                  
                   <td>{policy.title}</td>
                   <td>{policy.amount}</td>
                   <td>{policy.rate}</td>
