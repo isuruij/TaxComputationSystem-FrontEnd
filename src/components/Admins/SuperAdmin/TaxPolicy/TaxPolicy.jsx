@@ -3,7 +3,7 @@ import "./Taxpolicy.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Modal, Button } from "react-bootstrap";
-import { FaEdit, FaTrash } from "react-icons/fa"; // update and delete icons
+import { FaEdit, FaTrash, FaPlus } from "react-icons/fa"; // update and delete icons
 import Axios from "axios";
 
 function TaxPolicy() {
@@ -111,7 +111,13 @@ function TaxPolicy() {
         <table className="table">
           <thead>
             <tr>
-              <th>Title</th>
+              <th>
+                Policy
+                <FaPlus
+                  onClick={() => handleEditClick(index)}
+                  style={{ cursor: "pointer" }}
+                />
+              </th>
               <th>Amount</th>
               <th>Rate</th>
               <th>Update Policy</th>
