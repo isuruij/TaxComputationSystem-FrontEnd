@@ -5,12 +5,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function FileUpload() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const cookieValue = Cookies.get("token");
   const userId = jwtDecode(cookieValue).id;
+
+  //Popup for confirmation
+  const [show, setShow] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  const handleClose = () => setShow(false);
 
   //navigator
   const navigate = useNavigate();
@@ -65,13 +73,33 @@ function FileUpload() {
       .post(`${base_url}/api/taxpayer/fileUpload/${userId}`, formData)
       .then((response) => {
         console.log(response);
-        navigate("/settings/basic");
+        setMsg(response.data.Status);
+        setShow(true);
+        // Delay navigation to allow the user to see the modal
+        setTimeout(() => {
+          navigate("/settings/basic");
+        }, 3000); // 3 seconds delay
       })
-      .catch((er) => console.log(er));
+      .catch((er) => {
+        console.log(er);
+        setMsg(er);
+        setShow(true);
+      });
   }
 
   return (
     <div className="Upload-Doc-div">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => navigate("/settings/basic")}>
+            Okey
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -396,6 +424,7 @@ function FileUpload() {
           </div> */}
           <div className="Button-div-2">
             <button
+              type="button"
               id="submit"
               className="btn btn-primary"
               onClick={() => handleUpload()}

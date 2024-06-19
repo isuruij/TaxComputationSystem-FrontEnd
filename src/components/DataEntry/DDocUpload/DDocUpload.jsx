@@ -4,10 +4,18 @@ import "./DDocUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 function FileUpload() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const [userDetails, setUserDetails] = useState([]);
+
+  //Popup for confirmation
+  const [show, setShow] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  const handleClose = () => setShow(false);
 
   //get user name and tin
   useEffect(() => {
@@ -75,13 +83,37 @@ function FileUpload() {
       .post(`${base_url}/api/dataentry/fileUpload/${id}`, formData)
       .then((response) => {
         console.log(response);
-        navigate(`/dataEntry/submission/enterData/${id}`);
+        // navigate(`/dataEntry/submission/enterData/${id}`);
+        setMsg(response.data.Status);
+        setShow(true);
+        // Delay navigation to allow the user to see the modal
+        setTimeout(() => {
+          navigate(`/dataEntry/submission/enterData/${id}`);
+        }, 3000); // 3 seconds delay
       })
-      .catch((er) => console.log(er));
+      .catch((er) => {
+        console.log(er);
+        setMsg(er);
+        setShow(true);
+      });
   }
 
   return (
     <div className="dUpload-Doc-div">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg}</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="success"
+            onClick={() => navigate(`/dataEntry/submission/enterData/${id}`)}
+          >
+            Okey
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -445,6 +477,7 @@ function FileUpload() {
           <div className="Button-div-2">
             <button
               id="submit"
+              type="button"
               className="btn btn-primary dcustom-button"
               onClick={handleUpload}
               // onClick={() => {

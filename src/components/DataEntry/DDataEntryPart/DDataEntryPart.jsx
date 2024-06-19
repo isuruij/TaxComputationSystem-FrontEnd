@@ -5,16 +5,22 @@ import Row from "react-bootstrap/Row";
 import "./DDataEntryPart.css";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Alert from "react-bootstrap/Alert";
+import Modal from "react-bootstrap/Modal";
 
 function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   //variable
   let { id } = useParams();
   const [userDetails, setUserDetails] = useState([]);
+
+  //Popup for confirmation
+  const [show, setShow] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  const handleClose = () => setShow(false);
 
   //get user details
   useEffect(() => {
@@ -78,11 +84,19 @@ function DDataEntry() {
       })
       .then((response) => {
         console.log(response.data.Status);
-        alert(response.data.Status);
-        navigate("/dataEntry/dashboard");
+        // alert(response.data.Status);
+        setMsg(response.data.Status);
+        setShow(true);
+        // Delay navigation to allow the user to see the modal
+        setTimeout(() => {
+          navigate("/dataEntry/dashboard");
+        }, 3000); // 3 seconds delay
+        // navigate("/dataEntry/dashboard");
       })
       .catch((error) => {
         console.error(error);
+        setMsg(error);
+        setShow(true);
       });
   };
 
@@ -139,6 +153,20 @@ function DDataEntry() {
         borderRadius: "10px",
       }}
     >
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg}</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="success"
+            onClick={() => navigate("/dataEntry/dashboard")}
+          >
+            Okey
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {/*Poppins font family*/}
       <link
         href="https://fonts.googleapis.com/css?family=Poppins"
