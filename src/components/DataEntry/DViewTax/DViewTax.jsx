@@ -1,29 +1,30 @@
 import React from "react";
-import "./TaxView.css";
+import "./DViewTax.css";
 
-function TaxView() {
+function DViewTax() {
   return (
-    <div className="Tax-view-page">
+    <div className="dTax-view-page">
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
-      <div className="Tax-view-header">
+      {/*This is User info box */}
+      <div className="dTax-view-header">
         <h6>Mr.XXXXXX_XXX</h6>
         <h6>TIN NO: XXXXXXX</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>YEAR OF ASSESSMENT 2022/2023</h6>
       </div>
-
-      <div className="Total-liability">
-        <h4 className="Topic-1">Total Tax Liability For Y/A 2022/23</h4>
-        <div className="Tot-amount">
+      {/*This is Total tax liability */}
+      <div className="dTotal-liability">
+        <h4 className="dTopic-1">Total Tax Liability For Y/A 2022/23</h4>
+        <div className="dTot-amount">
           LKR
           <br />
           <h1>589,400.00</h1>
           <p>*This is not certified.</p>
         </div>
-        <div className="nine-months">
+        <div className="dnine-months">
           <div>
             <h6>Total Tax Liability for 09 Months</h6>
           </div>
@@ -31,8 +32,8 @@ function TaxView() {
             <h6>200,400.00LKR</h6>
           </div>
         </div>
-        <p className="small-p-one">(01/04/2022-31/12/2022)</p>
-        <div className="three-months">
+        <p className="dsmall-p-one">(01/04/2022-31/12/2022)</p>
+        <div className="dthree-months">
           <div>
             <h6>Total Tax Liability for 09 Months</h6>
           </div>
@@ -40,13 +41,15 @@ function TaxView() {
             <h6>389,000.00LKR</h6>
           </div>
         </div>
-        <p className="small-p-one">(01/01/2023-31/03/2023)</p>
+        <p className="dsmall-p-one">(01/01/2023-31/03/2023)</p>
       </div>
 
-      <div className="container">
-        <div className="Cal-nine-months">
-          <h4 className="Topic-2">Calculation For 09 Months</h4>
-          <p className="Topic-2">(01/04/2022-31/12/2022)</p>
+      {/*This is tax liability for 9 months*/}
+
+      <div className="dcontainer">
+        <div className="dCal-nine-months">
+          <h4 className="dTopic-2">Calculation For 09 Months</h4>
+          <p className="dTopic-2">(01/04/2022-31/12/2022)</p>
           <div>
             <div>
               <h6>Total Income for 09 Months</h6>
@@ -63,7 +66,7 @@ function TaxView() {
               <h6>0.00LKR</h6>
             </div>
           </div>
-          <p className="small-p-two">*Max upto 0.9M</p>
+          <p className="dsmall-p-two">*Max upto 0.9M</p>
           <div>
             <div>
               <h6>Total Tax Credits</h6>
@@ -100,8 +103,8 @@ function TaxView() {
               <h6>0.00LKR</h6>
             </div>
           </div>
-          <p className="small-p-two">(ex:-Terminal, Capital gain, etc.)</p>
-          <div className="nine-liability">
+          <p className="dsmall-p-two">(ex:-Terminal, Capital gain, etc.)</p>
+          <div className="dnine-liability">
             <div>
               <h4>
                 <i className="fas fa-star"></i>Total Tax Liability
@@ -113,9 +116,11 @@ function TaxView() {
           </div>
         </div>
 
-        <div className="Cal-three-months">
-          <h4 className="Topic-3">Calculation For 03 Months</h4>
-          <p className="Topic-3">(01/01/2023-31/03/2023)</p>
+        {/*This is tax liability for 3 months*/}
+
+        <div className="dCal-three-months">
+          <h4 className="dTopic-3">Calculation For 03 Months</h4>
+          <p className="dTopic-3">(01/01/2023-31/03/2023)</p>
           <div>
             <div>
               <h6>Total Income for 03 Months</h6>
@@ -132,7 +137,7 @@ function TaxView() {
               <h6>0.00LKR</h6>
             </div>
           </div>
-          <p className="small-p-two">*Max upto 0.9M</p>
+          <p className="dsmall-p-two">*Max upto 0.9M</p>
           <div>
             <div>
               <h6>Total Tax Credits</h6>
@@ -169,8 +174,8 @@ function TaxView() {
               <h6>0.00LKR</h6>
             </div>
           </div>
-          <p className="small-p-two">(ex:-Terminal, Capital gain, etc.)</p>
-          <div className="three-liability">
+          <p className="dsmall-p-two">(ex:-Terminal, Capital gain, etc.)</p>
+          <div className="dthree-liability">
             <div>
               <h4>
                 <i className="fas fa-star"></i>Total Tax Liability
@@ -186,4 +191,4 @@ function TaxView() {
   );
 }
 
-export default TaxView;
+export default DViewTax;

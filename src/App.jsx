@@ -21,13 +21,23 @@ import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 import Notification from "./pages/Taxpayer/Notification.jsx";
-import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";
+import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
+import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
+import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
+import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 
 
 
 
 
 
+
+
+import DDashboard from "./pages/DataEntry/DDashboard.jsx";
+import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
+import DFileUploadPage from "./pages/DataEntry/DFileUploadPage.jsx";
+import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
+import DDataEntryPart from "./pages/DataEntry/DDataEnterPage.jsx";
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -53,9 +63,27 @@ function App() {
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
     <Route path="/notification" element={<Notification />}></Route>
     <Route path="/taxhistory" element={<TaxHistory/>}></Route>
+    <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+
     
 
-    {/* Data Entry routes */}
+    
+    {/*Data Entry routes*/}
+    <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
+        <Route path="/dataEntry/viewTax/:id" element={<DViewTaxPage />}></Route>
+        <Route
+          path="/dataEntry/submission/enterData/:id"
+          element={<DDataEntryPart />}
+        ></Route>
+
+        <Route
+          path="/dataEntry/submission/uploadDoc/:id"
+          element={<DFileUploadPage />}
+        ></Route>
+        <Route
+          path="/dataEntry/submission/dashboard"
+          element={<DSubmissionDashboard />}
+        ></Route>
 
 
     {/* Super Admin Routes */}
@@ -64,6 +92,10 @@ function App() {
     <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin/>}></Route>
     <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
     <Route path="/create/admin" element={<CreateNewAdminPage/>}></Route>
+    <Route path="/SuperAdminSubmissions" element={<SuperAdminSubmissions/>}></Route>
+    <Route path="/SuperAdminSubmissions/VerifyDocuments/:userId" element={<VerifyDocuments/>}></Route>
+    <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
+    <Route path="/view/PersonalDetails" element={<ViewPersonalDetails/>}></Route>
 
   </Routes>
   </BrowserRouter>    
