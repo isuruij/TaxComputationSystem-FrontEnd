@@ -389,6 +389,34 @@ const VerifyDocuments = () => {
     }
   };
   
+
+  //request button
+  const requestDocumnt = async (taxpayerId,documentName)=>{
+    try {
+      const obj = {taxpayerId: taxpayerId,documentName: documentName}
+
+      await axios.post(`${base_url}/api/SuperAdmin/requestDocument`, obj);
+      await axios.post(`${base_url}/api/SuperAdmin/addnotifications`, obj);
+      console.log(obj)
+      
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
+  
+  const requestAgainDocumnt = async (taxpayerId,documentName)=>{
+    try {
+      const obj = {taxpayerId: taxpayerId,documentName: documentName}
+
+      await axios.post(`${base_url}/api/SuperAdmin/requestAgainDocument`, obj);
+      console.log(obj)
+      
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
   
   
   
@@ -405,80 +433,80 @@ const VerifyDocuments = () => {
         <div className='title-1'>
           <h3 className='title-name'>Total Assessable Income</h3>
           <div className='businessIncomeDetails'>
-            {businessIncomeDetails ? (
-              <div className='title-1-submitted'>
-                <ListGroup variant="flush" style={containerStyle}>
-                  {businessIncomeDetails.map((income) => (
-                    <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.bI_docname === '' ? (
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                          <div style={{ width: "55%" }}>
-                            <button className="custom-button-2">
-                              <div>Business Income
-                                <Badge className='badge-1' bg="danger">Not submitted</Badge>
-                              </div>
-                            </button>
+              {businessIncomeDetails ? (
+                <div className='title-1-submitted'>
+                  <ListGroup variant="flush" style={containerStyle}>
+                    {businessIncomeDetails.map((income) => (
+                      <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                        {(income.filePath === null||income.filePath === "")? (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div>Business Income
+                                  <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                                </div>
+                              </button>
+                            </div>
+                            <div className='request-button' style={{ width: "12%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Business Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                Request
+                              </button>
+                            </div>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
-                            </button>
+                        ) : (
+                          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <div style={{ width: "55%" }}>
+                              <button className="custom-button-2">
+                                <div>Business Income
+                                  <Badge className='badge-1' bg="success">Submitted </Badge>
+                                  {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                                </div>
+                              </button>
+                            </div>
+                            <div style={{ width: "10%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                                <span>Download</span>
+                              </button>
+                            </div>
+                            <div style={{ width: "20%", marginLeft: "10px" }}>
+                              <label style={{ color: "#008060" }}>
+                                {income.isverified ? "verified" : "verify"}:
+                                <Switch
+                                  checked={income.isverified}
+                                  onChange={(e) => {
+                                    console.log(e.target.checked);
+                                    verifyBusinessIncome(income.incomeId, e.target.checked);
+                                  }}
+                                  color="success"
+                                  style={{
+                                    color: "#008060",
+                                  }}
+                                />
+                              </label>
+                            </div>
+                            <div style={{ width: "20%" }}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Business Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                Request Again
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      ) : (
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                          <div style={{ width: "55%" }}>
-                            <button className="custom-button-2">
-                              <div>Business Income
-                                <Badge className='badge-1' bg="success">Submitted </Badge>
-                                {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
-                              </div>
-                            </button>
-                          </div>
-                          <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.bI_docname)} >
-                              <span>Download</span>
-                            </button>
-                          </div>
-                          <div style={{ width: "20%", marginLeft: "10px" }}>
-                            <label style={{ color: "#008060" }}>
-                              {income.isverified ? "verified" : "verify"}:
-                              <Switch
-                                checked={income.isverified}
-                                onChange={(e) => {
-                                  console.log(e.target.checked);
-                                  verifyBusinessIncome(income.incomeId, e.target.checked);
-                                }}
-                                color="success"
-                                style={{
-                                  color: "#008060",
-                                }}
-                              />
-                            </label>
-                          </div>
-                          <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
-                              Request Again
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
-              </div>
-            ) : (
-              <p>Loading business income details...</p>
-            )}
-          </div>
-
+                        )}
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                </div>
+              ) : (
+                <p>Loading business income details...</p>
+              )}
+            </div>
+          
           <div className='employmentIncomeDetails'>
             {employmentIncomeDetails ? (
               <div className='title-1-submitted'>
                 <ListGroup variant="flush" style={containerStyle}>
                   {employmentIncomeDetails.map((income) => (
                     <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.eI_docname === '' ? (
+                      {income.filePath === null||income.filePath === ""? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -487,9 +515,9 @@ const VerifyDocuments = () => {
                               </div>
                             </button>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
+                          <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              Request
                             </button>
                           </div>
                         </div>
@@ -504,7 +532,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.eI_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -525,7 +553,7 @@ const VerifyDocuments = () => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request Again
                             </button>
                           </div>
@@ -541,72 +569,73 @@ const VerifyDocuments = () => {
           </div>
 
           <div className='investmentIncomeDetails'>
-            {investmentIncomeDetails ? (
-              <div className='title-1-submitted'>
-                <ListGroup variant="flush" style={containerStyle}>
-                  {investmentIncomeDetails.map((income) => (
-                    <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.iI_docname === '' ? (
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                          <div style={{ width: "55%" }}>
-                            <button className="custom-button-2">
-                              <div>Investment Income
-                                <Badge className='badge-1' bg="danger">Not submitted</Badge>
-                              </div>
-                            </button>
-                          </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
-                            </button>
-                          </div>
+          {investmentIncomeDetails ? (
+            <div className='title-1-submitted'>
+              <ListGroup variant="flush" style={containerStyle}>
+                {investmentIncomeDetails.map((income) => (
+                  <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                    {income.filePath === null || income.filePath === "" ? (
+                      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <div style={{ width: "55%" }}>
+                          <button className="custom-button-2">
+                            <div>Investment Income
+                              <Badge className='badge-1' bg="danger">Not submitted</Badge>
+                            </div>
+                          </button>
                         </div>
-                      ) : (
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                          <div style={{ width: "55%" }}>
-                            <button className="custom-button-2">
-                              <div>Investment Income
-                                <Badge className='badge-1' bg="success">Submitted </Badge>
-                                {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
-                              </div>
-                            </button>
-                          </div>
-                          <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.iI_docname)} >
-                              <span>Download</span>
-                            </button>
-                          </div>
-                          <div style={{ width: "20%", marginLeft: "10px" }}>
-                            <label style={{ color: "#008060" }}>
-                              {income.isverified ? "verified" : "verify"}:
-                              <Switch
-                                checked={income.isverified}
-                                onChange={(e) => {
-                                  console.log(e.target.checked);
-                                  verifyInvestmentIncome(income.incomeId, e.target.checked);
-                                }}
-                                color="success"
-                                style={{
-                                  color: "#008060",
-                                }}
-                              />
-                            </label>
-                          </div>
-                          <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
-                              Request Again
-                            </button>
-                          </div>
+                        <div className='request-button' style={{ width: "12%" }}>
+                          <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Investment Income"); const button = event.target; button.innerText = "Requested"; button.disabled = true; button.style.opacity = 0.8;}}>
+                            Request
+                          </button>
                         </div>
-                      )}
-                    </ListGroup.Item>
-                  ))}
-                </ListGroup>
-              </div>
-            ) : (
-              <p>Loading investment income details...</p>
-            )}
-          </div>
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <div style={{ width: "55%" }}>
+                          <button className="custom-button-2">
+                            <div>Investment Income
+                              <Badge className='badge-1' bg="success">Submitted </Badge>
+                              {income.isnewsubmission && (<Badge className='badge-2' bg="danger">new Submission</Badge>)}
+                            </div>
+                          </button>
+                        </div>
+                        <div style={{ width: "10%" }}>
+                          <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <span>Download</span>
+                          </button>
+                        </div>
+                        <div style={{ width: "20%", marginLeft: "10px" }}>
+                          <label style={{ color: "#008060" }}>
+                            {income.isverified ? "verified" : "verify"}:
+                            <Switch
+                              checked={income.isverified}
+                              onChange={(e) => {
+                                console.log(e.target.checked);
+                                verifyInvestmentIncome(income.incomeId, e.target.checked);
+                              }}
+                              color="success"
+                              style={{
+                                color: "#008060",
+                              }}
+                            />
+                          </label>
+                        </div>
+                        <div style={{ width: "20%" }}>
+                          <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            Request Again
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
+            </div>
+          ) : (
+            <p>Loading investment income details...</p>
+          )}
+        </div>
+
 
           <div className='otherIncomeDetails'>
             {otherIncomeDetails ? (
@@ -614,7 +643,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                   {otherIncomeDetails.map((income) => (
                     <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.oI_docname === '' ? (
+                      {income.filePath === null||income.filePath === "" ? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -623,9 +652,9 @@ const VerifyDocuments = () => {
                               </div>
                             </button>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
+                          <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Other Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              Request
                             </button>
                           </div>
                         </div>
@@ -640,7 +669,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.oI_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -661,7 +690,7 @@ const VerifyDocuments = () => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Other Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request Again
                             </button>
                           </div>
@@ -687,7 +716,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                   {reliefForExpenditure.map((income) => (
                     <ListGroup.Item key={income.reliefid} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.rE_docname === '' ? (
+                      {income.filePath === null||income.filePath === "" ? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -696,9 +725,9 @@ const VerifyDocuments = () => {
                               </div>
                             </button>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
+                          <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Expenditure"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              Request
                             </button>
                           </div>
                         </div>
@@ -713,7 +742,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.rE_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -734,7 +763,7 @@ const VerifyDocuments = () => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Expenditure"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request Again
                             </button>
                           </div>
@@ -754,7 +783,7 @@ const VerifyDocuments = () => {
                   <ListGroup variant="flush" style={containerStyle}>
                     {reliefForRentIncome.map((income) => (
                       <ListGroup.Item key={income.reliefid} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.rRI_docname === '' ? (
+                        {income.filePath === null||income.filePath === ""? (
                           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <div style={{ width: "55%" }}>
                               <button className="custom-button-2">
@@ -763,9 +792,9 @@ const VerifyDocuments = () => {
                                 </div>
                               </button>
                             </div>
-                            <div className='request-button' style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
+                            <div className='request-button' style={{ width: "12%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Rent Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                Request
                               </button>
                             </div>
                           </div>
@@ -780,7 +809,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.rRI_docname)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -801,7 +830,7 @@ const VerifyDocuments = () => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Rent Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request Again
                               </button>
                             </div>
@@ -823,7 +852,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                   {qualifyingPayments.map((income) => (
                     <ListGroup.Item key={income.reliefid} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.qP_docname === '' ? (
+                      {income.filePath === null||income.filePath === ""? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -832,9 +861,9 @@ const VerifyDocuments = () => {
                               </div>
                             </button>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
+                          <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                             Request
                             </button>
                           </div>
                         </div>
@@ -849,7 +878,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.qP_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -870,7 +899,7 @@ const VerifyDocuments = () => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Qualifying Payments"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request Again
                             </button>
                           </div>
@@ -902,7 +931,7 @@ const VerifyDocuments = () => {
                   <ListGroup variant="flush" style={containerStyle}>
                     {apit.map((income) => (
                       <ListGroup.Item key={income.APITId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.aPIT_docname === '' ? (
+                        {income.filePath === null||income.filePath === ""? (
                           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <div style={{ width: "55%" }}>
                               <button className="custom-button-2">
@@ -911,9 +940,9 @@ const VerifyDocuments = () => {
                                 </div>
                               </button>
                             </div>
-                            <div className='request-button' style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
+                            <div className='request-button' style={{ width: "12%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Apit"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                               Request
                               </button>
                             </div>
                           </div>
@@ -928,7 +957,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.aPIT_docname)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -949,7 +978,7 @@ const VerifyDocuments = () => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "APIT"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request Again
                               </button>
                             </div>
@@ -971,7 +1000,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                     {whtOnServiceFeeReceived.map((income) => (
                     <ListGroup.Item key={income.taxCreditId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.wHT_SFR_docname === '' ? (
+                        {income.filePath === "" || income.filePath === null ? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -980,9 +1009,9 @@ const VerifyDocuments = () => {
                                 </div>
                             </button>
                             </div>
-                            <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
+                            <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT on Service Fee Received"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                Request
                             </button>
                             </div>
                         </div>
@@ -997,7 +1026,7 @@ const VerifyDocuments = () => {
                             </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.wHT_SFR_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                                 <span>Download</span>
                             </button>
                             </div>
@@ -1018,7 +1047,7 @@ const VerifyDocuments = () => {
                             </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "WHT on Service Fee Received"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}} >
                                 Request Again
                             </button>
                             </div>
@@ -1042,7 +1071,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                     {whtOnInvestmentIncome.map((income) => (
                     <ListGroup.Item key={income.taxCreditId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.wHT_II_docname === '' ? (
+                        {income.filePath === null||income.filePath === ""? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -1051,9 +1080,9 @@ const VerifyDocuments = () => {
                                 </div>
                             </button>
                             </div>
-                            <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
+                            <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT On Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                Request
                             </button>
                             </div>
                         </div>
@@ -1068,7 +1097,7 @@ const VerifyDocuments = () => {
                             </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.wHT_II_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                                 <span>Download</span>
                             </button>
                             </div>
@@ -1089,7 +1118,7 @@ const VerifyDocuments = () => {
                             </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "WHT On Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request Again
                             </button>
                             </div>
@@ -1110,7 +1139,7 @@ const VerifyDocuments = () => {
                     <ListGroup variant="flush" style={containerStyle}>
                       {selfAssessmentPayment.map((income) => (
                         <ListGroup.Item key={income.taxCreditId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                          {income.sAP_docname === '' ? (
+                          {income.filePath === null||income.filePath === ""? (
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                               <div style={{ width: "55%" }}>
                                 <button className="custom-button-2">
@@ -1119,9 +1148,9 @@ const VerifyDocuments = () => {
                                   </div>
                                 </button>
                               </div>
-                              <div className='request-button' style={{ width: "10%" }}>
-                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                  <span>Request</span>
+                              <div className='request-button' style={{ width: "12%" }}>
+                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Self Assessment Payment"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                    Request
                                 </button>
                               </div>
                             </div>
@@ -1136,7 +1165,7 @@ const VerifyDocuments = () => {
                                 </button>
                               </div>
                               <div style={{ width: "10%" }}>
-                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.sAP_docname)} >
+                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                                   <span>Download</span>
                                 </button>
                               </div>
@@ -1157,7 +1186,7 @@ const VerifyDocuments = () => {
                                 </label>
                               </div>
                               <div style={{ width: "20%" }}>
-                                <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                                <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Self Assessment Payment"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                   Request Again
                                 </button>
                               </div>
@@ -1185,7 +1214,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                   {terminalBenefits.map((income) => (
                     <ListGroup.Item key={income.assessmentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.tB_docname === '' ? (
+                      {income.filePath === null||income.filePath === ""? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -1194,9 +1223,9 @@ const VerifyDocuments = () => {
                               </div>
                             </button>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
+                          <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Terminal Benefits"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                Request
                             </button>
                           </div>
                         </div>
@@ -1211,7 +1240,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.tB_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1232,7 +1261,7 @@ const VerifyDocuments = () => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Terminal Benefits"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request Again
                             </button>
                           </div>
@@ -1253,7 +1282,7 @@ const VerifyDocuments = () => {
                 <ListGroup variant="flush" style={containerStyle}>
                   {capitalValueGain.map((income) => (
                     <ListGroup.Item key={income.assessmentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                      {income.cVnG_docname === '' ? (
+                      {income.filePath === null||income.filePath === ""? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
                             <button className="custom-button-2">
@@ -1262,9 +1291,9 @@ const VerifyDocuments = () => {
                               </div>
                             </button>
                           </div>
-                          <div className='request-button' style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                              <span>Request</span>
+                          <div className='request-button' style={{ width: "12%" }}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Capital Value Gain"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                             Request
                             </button>
                           </div>
                         </div>
@@ -1279,7 +1308,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.cvg_docname)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1300,7 +1329,7 @@ const VerifyDocuments = () => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Capital Value Gain"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request Again
                             </button>
                           </div>
@@ -1322,7 +1351,7 @@ const VerifyDocuments = () => {
                   <ListGroup variant="flush" style={containerStyle}>
                     {whtWhichIsNotDeducted.map((income) => (
                       <ListGroup.Item key={income.assessmentId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
-                        {income.wHT_WND_docname === '' ? (
+                        {income.filePath === null||income.filePath === ""? (
                           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                             <div style={{ width: "55%" }}>
                               <button className="custom-button-2">
@@ -1331,9 +1360,9 @@ const VerifyDocuments = () => {
                                 </div>
                               </button>
                             </div>
-                            <div className='request-button' style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}>
-                                <span>Request</span>
+                            <div className='request-button' style={{ width: "12%" }}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT Which Is Not Deducted"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              Request
                               </button>
                             </div>
                           </div>
@@ -1348,7 +1377,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.wHT_WND_docname)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -1369,7 +1398,7 @@ const VerifyDocuments = () => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}>
+                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "WHT Which Is Not Deducted"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request Again
                               </button>
                             </div>
