@@ -13,35 +13,27 @@ function Header() {
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
-  });
+  }, []);
+
   return (
     <div
       style={{
         backgroundColor: "#F3FFF5",
         display: "flex",
+        alignItems: "center",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
         width: "98.5vw",
+        justifyContent: "flex-end", // aligns items to the right
+        paddingTop: "1vh",
+        paddingBottom: "1vh",
       }}
     >
-      <img
-        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
-        src={Notification}
-        alt="Notification"
-      />
-      {count != 0 ? (
-        <span
-          style={{ marginLeft: "73vw", marginTop: "3vh" }}
-          className="ncount position-absolute translate-middle badge rounded-pill bg-danger"
-        >
-          {count}
+      <div style={{marginRight: "20vw", display: "flex", alignItems: "center" }}>
+        <img src={Profile} alt="Profile" />
+        <span style={{ marginLeft: "1vw" }}>
+          <h6 className="headername">{name}</h6>
         </span>
-      ) : (
-        <h6></h6>
-      )}
-      <img src={Profile} alt="Profile" />
-      <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
-        <h6 className="headername">{name}</h6>
-      </span>
+      </div>
     </div>
   );
 }
