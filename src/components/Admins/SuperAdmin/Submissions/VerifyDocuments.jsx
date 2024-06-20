@@ -410,6 +410,7 @@ const VerifyDocuments = () => {
       const obj = {taxpayerId: taxpayerId,documentName: documentName}
 
       await axios.post(`${base_url}/api/SuperAdmin/requestAgainDocument`, obj);
+      await axios.post(`${base_url}/api/SuperAdmin/addnotifications2`, obj);
       console.log(obj)
       
     } catch (err) {
@@ -417,6 +418,136 @@ const VerifyDocuments = () => {
     }
 
   }
+
+  //update submission status
+  const updateSubmissionStatusBusinessIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusBusinessIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  const updateSubmissionStatusEmploymentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusEmploymentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  const updateSubmissionStatusInvestmentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusInvestmentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  const updateSubmissionStatusOtherIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusOtherIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+
+  const updateSubmissionStatusreliefForExpenditure = async(incomeId)=>{
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusreliefForExpenditure/${incomeId}`);
+      window.location.reload(); 
+    } catch (err) {
+      console.log(err);
+    } 
+
+  }
+
+  const updateSubmissionStatusCapitalValueGain = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusCapitalValueGain/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusReliefForRentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusReliefForRentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusQualifyingPayments = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusQualifyingPayments/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusTerminalBenefits = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusTerminalBenefits/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusWhtOnInvestmentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusWhtOnInvestmentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusWhtOnServiceFeeReceived = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusWhtOnServiceFeeReceived/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusWhtWhichIsNotDeducted = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusWhtWhichIsNotDeducted/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusApit = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusApit/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
+const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateSubmissionStatusSelfAssessmentPayment/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+};
+
   
   
   
@@ -464,7 +595,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusBusinessIncome(income.incomeId)}} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -532,7 +663,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath,updateSubmissionStatusEmploymentIncome(income.incomeId))}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -600,7 +731,7 @@ const VerifyDocuments = () => {
                           </button>
                         </div>
                         <div style={{ width: "10%" }}>
-                          <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                          <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusInvestmentIncome(income.incomeId)}} >
                             <span>Download</span>
                           </button>
                         </div>
@@ -669,7 +800,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusOtherIncome(income.incomeId)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -742,7 +873,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {downloadDocument(income.filePath),updateSubmissionStatusreliefForExpenditure(income.reliefid)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -809,7 +940,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusReliefForRentIncome(income.reliefid)}} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -878,7 +1009,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusQualifyingPayments(income.reliefid)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -957,7 +1088,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusApit(income.APITId)}} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -1026,7 +1157,7 @@ const VerifyDocuments = () => {
                             </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtOnServiceFeeReceived(income.taxCreditId)}} >
                                 <span>Download</span>
                             </button>
                             </div>
@@ -1097,7 +1228,7 @@ const VerifyDocuments = () => {
                             </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtOnInvestmentIncome(income.taxCreditId)}} >
                                 <span>Download</span>
                             </button>
                             </div>
@@ -1165,7 +1296,7 @@ const VerifyDocuments = () => {
                                 </button>
                               </div>
                               <div style={{ width: "10%" }}>
-                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusSelfAssessmentPayment(income.taxCreditId)}} >
                                   <span>Download</span>
                                 </button>
                               </div>
@@ -1240,7 +1371,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusTerminalBenefits(income.assessmentId)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1308,7 +1439,7 @@ const VerifyDocuments = () => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusCapitalValueGain(income.assessmentId)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1377,7 +1508,7 @@ const VerifyDocuments = () => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => downloadDocument(income.filePath)} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtWhichIsNotDeducted(income.assessmentId)}} >
                                 <span>Download</span>
                               </button>
                             </div>
