@@ -216,6 +216,21 @@ function FileUpload() {
               </div>
             </div>
 
+            <div className="div2-1">
+              <div className="div2-1-1">
+                <label>
+                  <h6>Rent Income</h6>
+                </label>
+              </div>
+              <div className="div2-1-2">
+                <input
+                  type="file"
+                  name="file"
+                  onChange={(e) => setFile5(e.target.files[0])} //5
+                />
+              </div>
+            </div>
+
             <div className="ddiv1-4">
               <div className="div1-4-1">
                 <label>
@@ -257,25 +272,10 @@ function FileUpload() {
 
         {show2 && (
           <div className="dContainer2">
-            <div className="div2-1">
-              <div className="div2-1-1">
-                <label>
-                  <h6>Relief for Rent Income(For last year)</h6>
-                </label>
-              </div>
-              <div className="div2-1-2">
-                <input
-                  type="file"
-                  name="file"
-                  onChange={(e) => setFile5(e.target.files[0])}
-                />
-              </div>
-            </div>
-
             <div className="ddiv2-2">
               <div className="div2-2-1">
                 <label>
-                  <h6>Relief for Expenditure</h6>
+                  <h6>Expenditure</h6>
                 </label>
               </div>
               <div className="div2-2-2">

@@ -35,10 +35,11 @@ function DDataEntry() {
   //navigator
   const navigate = useNavigate();
   // State to store input values (note and amount)
-  const [amountInputs, setAmountInputs] = useState(Array(14).fill(""));
+  const [amountInputs, setAmountInputs] = useState(Array(14).fill("")); //For 9 months
+  const [amount2Inputs, setAmount2Inputs] = useState(Array(14).fill("")); //for 3 months
   const [noteInputs, setNoteInputs] = useState(Array(14).fill(""));
 
-  // Handler for updating amount input value
+  // Handler for updating amount input value for 9 months
   const handleAmountInputChange = (event, index) => {
     const { value } = event.target;
     // Regex to match only numbers
@@ -49,6 +50,20 @@ function DDataEntry() {
       const newAmountInputs = [...amountInputs];
       newAmountInputs[index] = value;
       setAmountInputs(newAmountInputs);
+    }
+  };
+
+  // Handler for updating amount input value for 3 months
+  const handleAmount2InputChange = (event, index) => {
+    const { value } = event.target;
+    // Regex to match only numbers
+    const regex = /^\d*\.?\d*$/;
+
+    // If value matches regex or empty, update input value
+    if (value === "" || regex.test(value)) {
+      const newAmountInputs = [...amount2Inputs];
+      newAmountInputs[index] = value;
+      setAmount2Inputs(newAmountInputs);
     }
   };
 
@@ -64,7 +79,10 @@ function DDataEntry() {
   const handleSubmit = () => {
     // Validate each row
     for (let i = 0; i < 14; i++) {
-      if (noteInputs[i] != "" && amountInputs[i] === "") {
+      if (
+        noteInputs[i] != "" &&
+        (amountInputs[i] === "" || amount2Inputs[i] === "")
+      ) {
         alert(
           "Please fill in the AMOUNT field for row " +
             (i + 1) +
@@ -79,6 +97,7 @@ function DDataEntry() {
     axios
       .post(`${base_url}/api/dataentry/enterData`, {
         amount: amountInputs,
+        amount2: amount2Inputs,
         note: noteInputs,
         UserId: id,
       })
@@ -104,6 +123,7 @@ function DDataEntry() {
   const handleDiscard = () => {
     setAmountInputs(Array(14).fill(""));
     setNoteInputs(Array(14).fill(""));
+    setAmount2Inputs(Array(14).fill(""));
   };
 
   //Data input feilds names
@@ -111,13 +131,10 @@ function DDataEntry() {
     "Employment Income",
     "Business Income",
     "Investment Income",
+    "Rent Income",
     "Other Income",
   ];
-  const listofItems2 = [
-    "Relief for Rent Income",
-    "Relief for Expenditure ",
-    "Qualifying Payments",
-  ];
+  const listofItems2 = ["Expenditure ", "Qualifying Payments"];
   const listofItems3 = [
     "APIT",
     "WHT on Investment Income",
@@ -207,13 +224,33 @@ function DDataEntry() {
         {/*This is form*/}
         <Form className="DataEntry-Form">
           {/*This is Assessable Income field*/}
-          <h5>Assessable Income</h5>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <h5>Assessable Income</h5>
+            </div>
+            <div
+              style={{
+                marginRight: "15%",
+                marginLeft: "20%",
+              }}
+            >
+              <h5>For First 9 Months</h5>
+            </div>
+            <div>
+              <h5>For Last 3 Months</h5>
+            </div>
+          </div>
           {listofItems1.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={6}>
+                  <Col xs={4}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
@@ -229,31 +266,67 @@ function DDataEntry() {
                       onChange={(e) => handleAmountInputChange(e, key)} // Handle input change
                     />
                   </Col>
+                  <Col>
+                    <Form.Control
+                      placeholder="AMOUNT"
+                      style={inputFieldStyles}
+                      value={amount2Inputs[key]} // Set value from state
+                      onChange={(e) => handleAmount2InputChange(e, key)} // Handle input change
+                    />
+                  </Col>
                 </Row>
               </div>
             );
           })}
           {/*This is Qualifying Payments and Relife field*/}
-          <h5>Qualifying Payments and Relife</h5>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <h5>Relifes</h5>
+            </div>
+            <div
+              style={{
+                marginRight: "15%",
+                marginLeft: "35%",
+              }}
+            >
+              <h5>For First 9 Months</h5>
+            </div>
+            <div>
+              <h5>For Last 3 Months</h5>
+            </div>
+          </div>
           {listofItems2.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={6}>
+                  <Col xs={4}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
-                      value={noteInputs[key + 4]} // Set value from state
-                      onChange={(e) => handleNoteInputChange(e, key + 4)} // Handle input change
+                      value={noteInputs[key + 5]} // Set value from state
+                      onChange={(e) => handleNoteInputChange(e, key + 5)} // Handle input change
                     />
                   </Col>
                   <Col>
                     <Form.Control
                       placeholder="AMOUNT"
                       style={inputFieldStyles}
-                      value={amountInputs[key + 4]} // Set value from state
-                      onChange={(e) => handleAmountInputChange(e, key + 4)} // Handle input change
+                      value={amountInputs[key + 5]} // Set value from state
+                      onChange={(e) => handleAmountInputChange(e, key + 5)} // Handle input change
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Control
+                      placeholder="AMOUNT"
+                      style={inputFieldStyles}
+                      value={amount2Inputs[key + 5]} // Set value from state
+                      onChange={(e) => handleAmount2InputChange(e, key + 5)} // Handle input change
                     />
                   </Col>
                 </Row>
@@ -261,13 +334,33 @@ function DDataEntry() {
             );
           })}
           {/*This is Tax Credit Field*/}
-          <h5>Tax Credit</h5>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <h5>Tax Credit</h5>
+            </div>
+            <div
+              style={{
+                marginRight: "15%",
+                marginLeft: "32%",
+              }}
+            >
+              <h5>For First 9 Months</h5>
+            </div>
+            <div>
+              <h5>For Last 3 Months</h5>
+            </div>
+          </div>
           {listofItems3.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={6}>
+                  <Col xs={4}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
@@ -283,18 +376,46 @@ function DDataEntry() {
                       onChange={(e) => handleAmountInputChange(e, key + 7)} // Handle input change
                     />
                   </Col>
+                  <Col>
+                    <Form.Control
+                      placeholder="AMOUNT"
+                      style={inputFieldStyles}
+                      value={amount2Inputs[key + 7]} // Set value from state
+                      onChange={(e) => handleAmount2InputChange(e, key + 7)} // Handle input change
+                    />
+                  </Col>
                 </Row>
               </div>
             );
           })}
           {/*This is Other information Field*/}
-          <h5>Other</h5>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <h5>Other</h5>
+            </div>
+            <div
+              style={{
+                marginRight: "15%",
+                marginLeft: "37%",
+              }}
+            >
+              <h5>For First 9 Months</h5>
+            </div>
+            <div>
+              <h5>For Last 3 Months</h5>
+            </div>
+          </div>
           {listofItems4.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={6}>
+                  <Col xs={4}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
@@ -308,6 +429,14 @@ function DDataEntry() {
                       style={inputFieldStyles}
                       value={amountInputs[key + 11]} // Set value from state
                       onChange={(e) => handleAmountInputChange(e, key + 11)} // Handle input change
+                    />
+                  </Col>
+                  <Col>
+                    <Form.Control
+                      placeholder="AMOUNT"
+                      style={inputFieldStyles}
+                      value={amount2Inputs[key + 11]} // Set value from state
+                      onChange={(e) => handleAmount2InputChange(e, key + 11)} // Handle input change
                     />
                   </Col>
                 </Row>
