@@ -89,7 +89,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/");
         }}
         type="button"
         className="btn btn-primary custom-button"
@@ -151,7 +151,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/taxpolicy");
         }}
         type="button"
         className="btn btn-primary custom-button"
