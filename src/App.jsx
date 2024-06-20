@@ -26,6 +26,7 @@ import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx"
 import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
 import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx";
+import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
 
 import DDashboard from "./pages/DataEntry/DDashboard.jsx";
 import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
@@ -108,6 +109,7 @@ function App() {
           path="/view/PersonalDetails"
           element={<ViewPersonalDetails />}
         ></Route>
+        <Route path="/taxpolicy" element={<TaxPolicy />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -71,21 +71,7 @@ function Navigationbar() {
         <span>Dashboard</span>
       </button>
 
-      <button
-        onClick={() => {
-          
-        }}
-        type="button"
-        className="btn btn-primary custom-button"
-        style={buttonStyle}
-      >
-        <img
-          src={Settings}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Account Settings</span>
-      </button>
+
 
       <button
         onClick={() => {navigate("/SuperAdminSubmissions");}}
@@ -103,7 +89,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/");
         }}
         type="button"
         className="btn btn-primary custom-button"
@@ -165,7 +151,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/taxpolicy");
         }}
         type="button"
         className="btn btn-primary custom-button"
