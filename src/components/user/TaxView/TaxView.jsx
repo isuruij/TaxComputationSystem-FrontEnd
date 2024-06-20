@@ -13,14 +13,16 @@ function TaxView() {
   const userId = jwtDecode(cookieValue).id;
 
   const [userDetails, setUserDetails] = useState([]);
-  // const [listOfTaxDetails, setListOfTaxDetails] = useState([]);
+  const [listOfTaxDetails, setListOfTaxDetails] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get(`${base_url}/api/taxpayer/getTaxCalDetails`).then((response) => {
-  //     console.log(response.data.Data);
-  //     setListOfTaxDetails(response.data.Data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    Axios.get(`${base_url}/api/taxpayer/getTaxCalDetails/${userId}`).then(
+      (response) => {
+        console.log(response.data.Data);
+        setListOfTaxDetails(response.data.Data);
+      }
+    );
+  }, []);
 
   useEffect(() => {
     Axios.get(`${base_url}/api/taxpayer/getUserDetails/${userId}`).then(

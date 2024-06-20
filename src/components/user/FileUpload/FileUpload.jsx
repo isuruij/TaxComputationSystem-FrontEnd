@@ -77,12 +77,11 @@ function FileUpload() {
         setShow(true);
         // Delay navigation to allow the user to see the modal
         setTimeout(() => {
-          navigate("/settings/basic");
+          navigate("/userhomepage");
         }, 3000); // 3 seconds delay
       })
       .catch((er) => {
-        console.log(er);
-        setMsg(er);
+        setMsg(er.response.data.Status);
         setShow(true);
       });
   }
@@ -95,7 +94,7 @@ function FileUpload() {
         </Modal.Header>
         <Modal.Body>{msg}</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={() => navigate("/settings/basic")}>
+          <Button variant="primary" onClick={() => navigate("/userhomepage")}>
             Okey
           </Button>
         </Modal.Footer>

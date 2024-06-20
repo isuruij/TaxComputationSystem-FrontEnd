@@ -92,8 +92,7 @@ function FileUpload() {
         }, 3000); // 3 seconds delay
       })
       .catch((er) => {
-        console.log(er);
-        setMsg(er);
+        setMsg(er.response.data.Status);
         setShow(true);
       });
   }
