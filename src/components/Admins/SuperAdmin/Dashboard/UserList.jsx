@@ -77,7 +77,6 @@ const UserList = () => {
   };
 
   const handleUpdate = (id) => {
-    console.log(`Update user with id ${id}`);
     navigate(`/view/details?id=${id}`);
   };
 
