@@ -9,13 +9,12 @@ function MyButton({ id, isViewed }) {
   const [buttonText, setButtonText] = useState("view");
 
   const handleClick = async () => {
-
     try {
       const response = await Axios.patch(
         `${base_url}/api/taxpayer/updateNotificationStatus`,
         { id: id }
       );
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -23,11 +22,10 @@ function MyButton({ id, isViewed }) {
 
   return (
     <button
-      style={{ marginLeft: "10vw" }}
       className="btn btn-primary"
       onClick={handleClick}
     >
-      {isViewed?"viewed":"view"}
+      {isViewed ? "viewed" : "view"}
     </button>
   );
 }
@@ -45,8 +43,6 @@ function NotificationCom() {
         `${base_url}/api/taxpayer/getNotifications/${userId}`
       );
       setnotificationList(response.data.data);
-      //console.log(response.data.count);
-      //console.log(notificationList);
     } catch (error) {
       console.error(error);
     }
@@ -62,16 +58,20 @@ function NotificationCom() {
         <div
           key={index}
           style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
             fontWeight: notification.isViewed ? "100" : "500",
             marginTop: "6px",
             borderRadius: "10px",
-            paddingLeft: "3vw",
-            padding: "10px",
+            padding: "10px 3vw",
             backgroundColor: "#D3E9FE",
             boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
           }}
         >
-          {notification.message}
+          <div style={{ flex: 1 }}>
+            {notification.message}
+          </div>
           <MyButton id={notification.id} isViewed={notification.isViewed} />
         </div>
       ))}

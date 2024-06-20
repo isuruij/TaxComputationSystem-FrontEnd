@@ -1,0 +1,14 @@
+/* Apply custom background color to even rows */
+tr:nth-child(even) {
+    background-color: #F3FFF5;
+}
+
+/* Apply white background color to odd rows */
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+
+.Button_cud{
+    background-color: #049370;
+}
