@@ -23,7 +23,6 @@ import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 import Notification from "./pages/Taxpayer/Notification.jsx";
 import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
 import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
-import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
 
@@ -96,7 +95,6 @@ function App() {
     <Route path="/SuperAdminSubmissions" element={<SuperAdminSubmissions/>}></Route>
     <Route path="/SuperAdminSubmissions/VerifyDocuments/:userId" element={<VerifyDocuments/>}></Route>
     <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
-    <Route path="/view/PersonalDetails" element={<ViewPersonalDetails/>}></Route>
     <Route path="/taxpolicy" element={<TaxPolicy/>}></Route>
 
   </Routes>
