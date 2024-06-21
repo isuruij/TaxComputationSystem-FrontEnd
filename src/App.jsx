@@ -26,6 +26,9 @@ import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx"
 import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 
+import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx"
+import MailboxCompose from "./pages/SuperAdmin/MailboxCompose.jsx";
+
 
 
 
@@ -93,9 +96,13 @@ function App() {
     <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
     <Route path="/create/admin" element={<CreateNewAdminPage/>}></Route>
     <Route path="/SuperAdminSubmissions" element={<SuperAdminSubmissions/>}></Route>
+    
     <Route path="/SuperAdminSubmissions/VerifyDocuments/:userId" element={<VerifyDocuments/>}></Route>
     <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
     <Route path="/view/PersonalDetails" element={<ViewPersonalDetails/>}></Route>
+
+    <Route path="/MailboxInbox" element={<MailboxInbox/>}></Route>
+    <Route path="/MailboxCompose" element={<MailboxCompose/>}></Route>
 
   </Routes>
   </BrowserRouter>    

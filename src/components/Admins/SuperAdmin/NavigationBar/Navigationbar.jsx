@@ -102,9 +102,7 @@ function Navigationbar() {
       </button>
 
       <button
-        onClick={() => {
-          handleLogout();
-        }}
+        onClick={() => {navigate("/MailboxInbox"); }}
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
