@@ -9,12 +9,13 @@ import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
 import Homepage from "../../components/user/UserHomepage/Homepage";
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function UserHome() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
- 
+  const navigate = useNavigate();
 
   const handle = async () => {
     try {
@@ -23,10 +24,10 @@ export default function UserHome() {
         setauth("Verified");
         console.log(auth);
       } else {
-        setauth("Failed");
+        navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      navigate("/login");
     }
   };
 

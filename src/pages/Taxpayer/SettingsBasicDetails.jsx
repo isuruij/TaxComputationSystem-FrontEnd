@@ -5,12 +5,13 @@ import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
 import UpdatePersonalDetails from "../../components/user/PersonalDetails/UpdatePersonalDetails";
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SettingsBasicDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
- 
+  const navigate = useNavigate();
 
   const handle = async () => {
     try {
@@ -20,9 +21,10 @@ function SettingsBasicDetails() {
         console.log(auth);
       } else {
         setauth("Failed");
+        navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      navigate("/login");
     }
   };
 
@@ -51,7 +53,10 @@ function SettingsBasicDetails() {
               >
                 <SettingSubMenue />
               </div>
-              <div className="UserPageContent" style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+              <div
+                className="UserPageContent"
+                style={{ marginTop: "19.2vh", marginLeft: "20vw" }}
+              >
                 <UpdatePersonalDetails />
               </div>
             </div>
