@@ -12,7 +12,7 @@ function Notification() {
   const handle = async () => {
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     try {
-      const res = await Axios.get(`${base_url}/api/taxpayer/auth`);
+      const res = await Axios.get(`${base_url}/api/taxpayer/authtaxpayer`);
       if (res.data.Status === "Success") {
         setAuth("Verified");
       } else {
