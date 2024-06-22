@@ -22,6 +22,12 @@ function DDataEntry() {
 
   const handleClose = () => setShow(false);
 
+  //Popup for confirmation2
+  const [show2, setShow2] = useState(false);
+  const [msg2, setMsg2] = useState("");
+
+  const handleClose2 = () => setShow(false);
+
   //get user details
   useEffect(() => {
     axios
@@ -83,11 +89,12 @@ function DDataEntry() {
         noteInputs[i] != "" &&
         (amountInputs[i] === "" || amount2Inputs[i] === "")
       ) {
-        alert(
+        setMsg2(
           "Please fill in the AMOUNT field for row " +
             (i + 1) +
             " before submitting."
         );
+        setShow2(true);
         return;
       }
     }
@@ -184,6 +191,17 @@ function DDataEntry() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg2}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={() => setShow2(false)}>
+            Okey
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {/*Poppins font family*/}
       <link
         href="https://fonts.googleapis.com/css?family=Poppins"
@@ -228,17 +246,14 @@ function DDataEntry() {
             style={{
               display: "flex",
               flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <div>
               <h5>Assessable Income</h5>
             </div>
-            <div
-              style={{
-                marginRight: "15%",
-                marginLeft: "20%",
-              }}
-            >
+            <div>
               <h5>For First 9 Months</h5>
             </div>
             <div>
@@ -283,17 +298,14 @@ function DDataEntry() {
             style={{
               display: "flex",
               flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <div>
               <h5>Relifes</h5>
             </div>
-            <div
-              style={{
-                marginRight: "15%",
-                marginLeft: "35%",
-              }}
-            >
+            <div>
               <h5>For First 9 Months</h5>
             </div>
             <div>
@@ -338,17 +350,14 @@ function DDataEntry() {
             style={{
               display: "flex",
               flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <div>
               <h5>Tax Credit</h5>
             </div>
-            <div
-              style={{
-                marginRight: "15%",
-                marginLeft: "32%",
-              }}
-            >
+            <div>
               <h5>For First 9 Months</h5>
             </div>
             <div>
@@ -393,17 +402,14 @@ function DDataEntry() {
             style={{
               display: "flex",
               flexDirection: "row",
+              justifyContent: "space-around",
+              alignItems: "center",
             }}
           >
             <div>
               <h5>Other</h5>
             </div>
-            <div
-              style={{
-                marginRight: "15%",
-                marginLeft: "37%",
-              }}
-            >
+            <div>
               <h5>For First 9 Months</h5>
             </div>
             <div>
