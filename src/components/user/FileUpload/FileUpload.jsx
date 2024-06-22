@@ -286,7 +286,7 @@ function FileUpload() {
             <div className="div3-1">
               <div className="div3-1-1">
                 <label>
-                  <h6>APIT</h6>
+                  <h6>APIT</h6> {/*need T10 certificate*/}
                 </label>
               </div>
               <div className="div3-1-2">
@@ -302,6 +302,7 @@ function FileUpload() {
               <div className="div3-2-1">
                 <label>
                   <h6>WHT on Investment Income</h6>
+                  {/*WHT certificate*/}
                 </label>
               </div>
               <div className="div3-2-2">
