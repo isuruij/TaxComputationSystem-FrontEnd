@@ -103,7 +103,7 @@ const SubmissionsList = () => {
                     style={{ alignItems: "left", textAlign: "left",width:"12%",marginRight:"8px" }}
                     alt="Icon"
                   />
-                   <span>Verify Documents</span>
+                   <span>Verify Docs</span>
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
