@@ -84,11 +84,27 @@ function DDataEntry() {
   //handle form submission
   const handleSubmit = () => {
     // Validate each row
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 11; i++) {
+      if (i == 5 || i == 6) {
+        continue;
+      }
       if (
         noteInputs[i] != "" &&
         (amountInputs[i] === "" || amount2Inputs[i] === "")
       ) {
+        setMsg2(
+          "Please fill in the AMOUNT field for row " +
+            (i + 1) +
+            " before submitting."
+        );
+        setShow2(true);
+        return;
+      }
+    } // Validate each row
+    for (let i = 5; i < 14; i++) {
+      if (i <= 10 || i >= 7) {
+      }
+      if (noteInputs[i] != "" && amountInputs[i] === "") {
         setMsg2(
           "Please fill in the AMOUNT field for row " +
             (i + 1) +
@@ -334,17 +350,24 @@ function DDataEntry() {
                     />
                   </Col>
                   <Col>
-                    <Form.Control
-                      placeholder="AMOUNT"
-                      style={inputFieldStyles}
-                      value={amount2Inputs[key + 5]} // Set value from state
-                      onChange={(e) => handleAmount2InputChange(e, key + 5)} // Handle input change
-                    />
+                    <div
+                      style={{
+                        alignItems: "center",
+                        paddingLeft: "28%",
+                        paddingTop: "10px",
+                        color: "red",
+                      }}
+                    >
+                      {value === "Expenditure "
+                        ? "*Not applicable For Last 3 Months"
+                        : "*Enter Amount For Entire Year"}
+                    </div>
                   </Col>
                 </Row>
               </div>
             );
           })}
+
           {/*This is Tax Credit Field*/}
           <div
             style={{
@@ -410,18 +433,18 @@ function DDataEntry() {
               <h5>Other</h5>
             </div>
             <div>
-              <h5>For First 9 Months</h5>
+              <h5>For Year</h5>
             </div>
-            <div>
+            {/* <div>
               <h5>For Last 3 Months</h5>
-            </div>
+            </div> */}
           </div>
           {listofItems4.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={4}>
+                  <Col xs={6}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
@@ -435,14 +458,6 @@ function DDataEntry() {
                       style={inputFieldStyles}
                       value={amountInputs[key + 11]} // Set value from state
                       onChange={(e) => handleAmountInputChange(e, key + 11)} // Handle input change
-                    />
-                  </Col>
-                  <Col>
-                    <Form.Control
-                      placeholder="AMOUNT"
-                      style={inputFieldStyles}
-                      value={amount2Inputs[key + 11]} // Set value from state
-                      onChange={(e) => handleAmount2InputChange(e, key + 11)} // Handle input change
                     />
                   </Col>
                 </Row>
