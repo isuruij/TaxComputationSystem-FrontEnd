@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
-import Badge from 'react-bootstrap/Badge';
+import Badge from "react-bootstrap/Badge";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "./Homepagestyle.css";
 import profilepic from "./profilepic.jpg";
@@ -12,7 +12,7 @@ import profilepic from "./profilepic.jpg";
 export default function Homepage() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const cookieValue = Cookies.get("token");
-  const userId = jwtDecode(cookieValue).id 
+  const userId = jwtDecode(cookieValue).id;
 
   useEffect(() => {
     getUserDetails();
@@ -30,15 +30,17 @@ export default function Homepage() {
     homeno: "",
     birthday: "",
     id: "",
-    isVerifiedUser:"",
-    isVerifiedEmail:"",
+    isVerifiedUser: "",
+    isVerifiedEmail: "",
   });
 
   Axios.defaults.withCredentials = true;
 
   const getUserDetails = async () => {
     try {
-      const response = await Axios.get(`${base_url}/api/taxpayer/getuserbasicdetails/${userId}`);
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
+      );
       setUserData(response.data.Data);
 
       setValues({
@@ -65,14 +67,15 @@ export default function Homepage() {
   // const now = userData.progress || 0; // Use data or default to 0
 
   const calculateProgress = () => {
-    const nonEmptyFields = Object.values(userData).filter(value => value !== "").length;
+    const nonEmptyFields = Object.values(userData).filter(
+      (value) => value !== ""
+    ).length;
     const totalFields = Object.keys(userData).length;
     const progress = (nonEmptyFields / totalFields) * 100;
     return Math.round(progress);
   };
 
   const now = calculateProgress();
-
 
   return (
     <div
@@ -81,7 +84,7 @@ export default function Homepage() {
         padding: "20px 40px",
         backgroundColor: "#D3E9FE",
         width: "78vw",
-        height: "100vh",
+        height: "120vh",
         marginBottom: "20px",
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
       }}
@@ -96,14 +99,28 @@ export default function Homepage() {
               style={{ width: "200px" }}
             />
           </div>
-          <h2 style={{paddingTop: "30px",color: "#0085FF",extShadow: "2px 2px 4px rgba(0, 0, 0,0.3)",}}>
-            {userData.name}  
+          <h2
+            style={{
+              paddingTop: "30px",
+              color: "#0085FF",
+              extShadow: "2px 2px 4px rgba(0, 0, 0,0.3)",
+            }}
+          >
+            {userData.name}
           </h2>
-          <span><h5>{userData.isVerifiedUser && <Badge bg="success">Verified</Badge>}</h5></span> 
+          <span>
+            <h5>
+              {userData.isVerifiedUser && <Badge bg="success">Verified</Badge>}
+            </h5>
+          </span>
           <h4>TIN: {userData.tin}</h4>
           <div style={{ paddingTop: "10px" }}>
             <div style={{ paddingTop: "10px" }}>
-              <ProgressBar now={now} label={`${now}%`} style={{ boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} />
+              <ProgressBar
+                now={now}
+                label={`${now}%`}
+                style={{ boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }}
+              />
             </div>
             <p style={{ paddingTop: "30px" }}></p>
             <p>Birthday: {userData.birthday}</p>
