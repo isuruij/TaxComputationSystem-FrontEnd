@@ -663,7 +663,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request
                             </button>
                           </div>
