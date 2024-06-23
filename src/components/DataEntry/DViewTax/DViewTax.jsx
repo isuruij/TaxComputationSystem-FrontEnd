@@ -1,7 +1,25 @@
 import React from "react";
 import "./DViewTax.css";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function DViewTax() {
+  //get user name and tin
+
+  //variable
+  let { id } = useParams();
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+  const [userDetails, setUserDetails] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${base_url}/api/dataentry/getUserDetails/${id}`)
+      .then((response) => {
+        console.log(response.data.Data);
+        setUserDetails(response.data.Data);
+      });
+  }, []);
+
   return (
     <div className="dTax-view-page">
       <link
@@ -10,8 +28,8 @@ function DViewTax() {
       ></link>
       {/*This is User info box */}
       <div className="dTax-view-header">
-        <h6>Mr.XXXXXX_XXX</h6>
-        <h6>TIN NO: XXXXXXX</h6>
+        <h6>Mr. {userDetails.name}</h6>
+        <h6>TIN NO: {userDetails.tin}</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>YEAR OF ASSESSMENT 2022/2023</h6>
       </div>

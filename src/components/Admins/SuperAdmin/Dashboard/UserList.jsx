@@ -37,7 +37,7 @@ const UserList = () => {
     backgroundColor: "#049370",
     display: "block",
     marginBottom: "12px",
-    width: "90%",
+    width: "100%",
     marginLeft: "1%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
   };

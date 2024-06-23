@@ -29,7 +29,7 @@ function Login() {
         res.data.Status === "Success" &&
         res.data.Type === "secondAdmin"
       ) {
-        //navigate("/SuperAdminDashboard");
+        navigate("/dataEntry/dashboard");
         alert("second admin");
       } else {
         setLoading(false);
