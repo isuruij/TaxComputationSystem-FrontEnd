@@ -1,0 +1,57 @@
+/* styles.css */
+/* .bg-color {
+    background-color: yellow !important;
+  } */
+  .main-1 {
+    border-radius: 15px;
+    padding: 20px 40px;
+    background-color: #D3E9FE;
+    width: 78vw;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+    height: 100vh;
+}
+.start-and-end-date {
+  display: flex;
+  justify-content: space-between;
+}
+.vlidate-massege{
+  color: red;
+}
+.view-tax-button{
+  align-items:center;
+  margin-top: 50px;
+}
+.button-style {
+  text-align: center;
+  display: block;
+  margin-bottom: 12px;
+  width: 200px;
+  margin-left: 35%;
+  box-shadow: 1px 5px 3px -3px rgba(0,0,0,0.44);
+}
+.taxpayer-progress{
+  margin-top: 100px;
+}
+.taxpayer-progress-bar{
+  padding-top: 10px;
+}
+.taxpayer-progress-bar-style{
+  box-shadow:1px 5px 3px -3px rgba(0,0,0,0.44);
+}
+
+.taxpayer-progress-bar-dis-1{
+  color: #0085FF;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.taxpayer-progress-bar-dis-2{
+  color: Gray;
+  text-align: justify;
+  font-size: 20px;
+  margin-top: 40px;
+
+}

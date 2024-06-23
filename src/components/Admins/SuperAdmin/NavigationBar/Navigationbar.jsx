@@ -2,15 +2,17 @@ import Axios from "axios";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ApproveReport from "../../../../assets/Approve-Report.svg";
 import DownloadTaxreport from "../../../../assets/DownloadTaxreport.svg";
 import Settings from "../../../../assets/Settings.svg";
+import updatepolicies from "../../../../assets/Updatepolicies.svg";
 import home from "../../../../assets/home.svg";
 import logout from "../../../../assets/logout.svg";
 import mail from "../../../../assets/mail.svg";
-import plus from "../../../../assets/plus.svg";
-import ApproveReport from "../../../../assets/Approve-Report.svg";
 import newadmin from "../../../../assets/newadmin.svg";
-import updatepolicies from "../../../../assets/Updatepolicies.svg";
+import plus from "../../../../assets/plus.svg";
+
+
 import "./DSideNavBar.css";
 
 function Navigationbar() {
@@ -38,7 +40,7 @@ function Navigationbar() {
   const handleLogout = async (event) => {
     try {
       const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -59,16 +61,8 @@ function Navigationbar() {
       }}
     >
       <br></br>
-      <h2
-        style={{
-          color: "#008060",
-          paddingLeft: "20px",
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-        }}
-      >
-        Super Admin
-      </h2>
-      <button type="button" className="btn btn-primary custom-button-now">
+      <h2 style={{color:"#008060",paddingLeft:"20px",textShadow:"2px 2px 4px rgba(0, 0, 0, 0.5)"}}>Super Admin</h2>
+      <button  onClick={() => {navigate("/SuperAdminDashboard");}}type="button" className="btn btn-primary custom-button-now">
         <img
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
@@ -77,23 +71,10 @@ function Navigationbar() {
         <span>Dashboard</span>
       </button>
 
-      <button
-        onClick={() => {
-          
-        }}
-        type="button"
-        className="btn btn-primary custom-button"
-        style={buttonStyle}
-      >
-        <img
-          src={Settings}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Account Settings</span>
-      </button>
+
 
       <button
+        onClick={() => {navigate("/SuperAdminSubmissions");}}
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
@@ -108,7 +89,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/");
         }}
         type="button"
         className="btn btn-primary custom-button"
@@ -170,7 +151,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          handleLogout();
+          navigate("/taxpolicy");
         }}
         type="button"
         className="btn btn-primary custom-button"

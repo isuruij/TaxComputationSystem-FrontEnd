@@ -1,0 +1,113 @@
+.dTax-view-page {
+  width: 78vw;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #f3fff5;
+  /* min-width: min-content; */
+  box-shadow: 1px 3px 2px 1px rgba(0, 0, 0, 0.44);
+}
+
+.dTax-view-header {
+  margin: 0 auto;
+  width: fit-content;
+  background-color: #049370;
+  color: white;
+  padding: 5px 40px;
+  border-radius: 25px;
+  margin-bottom: 10px;
+}
+
+.dTax-view-header h6 {
+  text-align: left;
+}
+
+.dTotal-liability,
+.dCal-nine-months,
+.dCal-three-months {
+  margin: 0 auto;
+  width: max-content;
+  min-width: max-content;
+  background-color: #ffffff;
+  color: #049370;
+  padding: 10px 40px;
+  border-radius: 10px;
+  box-shadow: #acacac 2px 4px;
+  margin-top: 20px;
+}
+
+.dTopic-1,
+.dTopic-2,
+.dTopic-3 {
+  text-align: center;
+  color: #049370;
+}
+
+.dTot-amount {
+  background-color: #049370;
+  color: #ffffff;
+  margin: 0 auto;
+  width: fit-content;
+  padding: 5px 40px 5px 20px;
+  border-radius: 10px;
+}
+
+.dTot-amount h1 {
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.dTot-amount p {
+  font-size: small;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+
+.dsmall-p-one {
+  margin-left: 10%;
+  color: #049370;
+  font-size: small;
+}
+
+.dsmall-p-two {
+  color: #049370;
+  margin-left: 10%;
+  font-size: small;
+}
+
+.dnine-months,
+.dthree-months {
+  margin-left: 10%;
+  margin-right: 20%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.dCal-nine-months div,
+.dCal-three-months div {
+  margin-left: 2%;
+  margin-right: 5%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.dnine-liability h4,
+.dthree-liability h4 {
+  font-weight: 1000;
+}
+
+.dcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.dCal-nine-months,
+.dCal-three-months {
+  width: fit-content;
+  flex-grow: 1;
+}

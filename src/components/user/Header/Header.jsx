@@ -5,15 +5,36 @@ import { useState } from "react";
 import "./Header.css";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 function Header() {
-  const cookieValue = Cookies.get("token");
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+  const cookieValue = Cookies.get('token');
+  const userId = jwtDecode(cookieValue).id;
   const name = jwtDecode(cookieValue).name;
 
+  const navigate = useNavigate();
+  
   const [count, setcount] = useState(0);
   useEffect(() => {
-    setcount(2);
+    getUserDetails(); 
+
   });
+
+  const getUserDetails = async () => {
+    try {
+      const response = await Axios.get(
+        `${base_url}/api/taxpayer/getNotifications/${userId}`
+      );
+      //setnotificationList(response.data.data);
+      console.log(response.data.count);  
+      setcount(response.data.count);
+      //console.log(response.data.data[0]);  
+    } catch (error) { 
+      console.error(error);
+    }
+  };
   return (
     <div
       style={{
@@ -24,9 +45,10 @@ function Header() {
       }}
     >
       <img
-        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw" }}
+        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw",cursor:"pointer" }}
         src={Notification}
         alt="Notification"
+        onClick={() => navigate("/notification")}
       />
       {count != 0 ? (
         <span
