@@ -107,9 +107,6 @@ const SubmissionsList = () => {
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
-                  <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={() => handleDelete(user.id)}>
-                    Delete
-                  </button>
                 </div>
               </div>
             </ListGroup.Item>
