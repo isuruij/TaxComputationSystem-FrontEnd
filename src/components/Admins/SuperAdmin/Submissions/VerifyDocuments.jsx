@@ -188,6 +188,7 @@ const VerifyDocuments = () => {
   }, [userId]);
 
   const buttonStyle = {
+    textAlign:"center",
     backgroundColor: "#049370",
     display: "block",
     marginBottom: "12px",
@@ -594,7 +595,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Business Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Business Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request
                               </button>
                             </div>
@@ -610,7 +611,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusBusinessIncome(income.incomeId)}} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusBusinessIncome(income.incomeId)}} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -662,7 +663,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request
                             </button>
                           </div>
@@ -678,7 +679,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath,updateSubmissionStatusEmploymentIncome(income.incomeId))}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath,updateSubmissionStatusEmploymentIncome(income.incomeId))}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -730,7 +731,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                           </button>
                         </div>
                         <div className='request-button' style={{ width: "12%" }}>
-                          <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Investment Income"); const button = event.target; button.innerText = "Requested"; button.disabled = true; button.style.opacity = 0.8;}}>
+                          <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Investment Income"); const button = event.target; button.innerText = "Requested"; button.disabled = true; button.style.opacity = 0.8;}}>
                             Request
                           </button>
                         </div>
@@ -746,7 +747,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                           </button>
                         </div>
                         <div style={{ width: "10%" }}>
-                          <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusInvestmentIncome(income.incomeId)}} >
+                          <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusInvestmentIncome(income.incomeId)}} >
                             <span>Download</span>
                           </button>
                         </div>
@@ -788,7 +789,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
               <div className='title-1-submitted'>
                 <ListGroup variant="flush" style={containerStyle}>
                   {otherIncomeDetails.map((income) => (
-                    <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{ backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
+                    <ListGroup.Item key={income.incomeId} className='title-1-submitted-list' style={{  backgroundColor: '#B3F9D7', borderRadius: '10px', margin: '5px' }}>
                       {income.filePath === null||income.filePath === "" ? (
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
                           <div style={{ width: "55%" }}>
@@ -799,7 +800,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Other Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{  textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Other Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request
                             </button>
                           </div>
@@ -815,7 +816,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusOtherIncome(income.incomeId)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusOtherIncome(income.incomeId)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -872,7 +873,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Expenditure"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Expenditure"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request
                             </button>
                           </div>
@@ -888,7 +889,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {downloadDocument(income.filePath),updateSubmissionStatusreliefForExpenditure(income.reliefid)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {downloadDocument(income.filePath),updateSubmissionStatusreliefForExpenditure(income.reliefid)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -939,7 +940,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Rent Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Rent Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request
                               </button>
                             </div>
@@ -955,7 +956,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusReliefForRentIncome(income.reliefid)}} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusReliefForRentIncome(income.reliefid)}} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -1008,7 +1009,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                              Request
                             </button>
                           </div>
@@ -1024,7 +1025,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusQualifyingPayments(income.reliefid)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusQualifyingPayments(income.reliefid)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1087,7 +1088,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Apit"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Apit"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                Request
                               </button>
                             </div>
@@ -1103,7 +1104,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusApit(income.APITId)}} >
+                              <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusApit(income.APITId)}} >
                                 <span>Download</span>
                               </button>
                             </div>
@@ -1156,7 +1157,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT on Service Fee Received"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT on Service Fee Received"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request
                             </button>
                             </div>
@@ -1172,7 +1173,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtOnServiceFeeReceived(income.taxCreditId)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtOnServiceFeeReceived(income.taxCreditId)}} >
                                 <span>Download</span>
                             </button>
                             </div>
@@ -1227,7 +1228,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT On Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT On Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request
                             </button>
                             </div>
@@ -1243,7 +1244,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtOnInvestmentIncome(income.taxCreditId)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtOnInvestmentIncome(income.taxCreditId)}} >
                                 <span>Download</span>
                             </button>
                             </div>
@@ -1295,7 +1296,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                                 </button>
                               </div>
                               <div className='request-button' style={{ width: "12%" }}>
-                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Self Assessment Payment"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                                <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Self Assessment Payment"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                     Request
                                 </button>
                               </div>
@@ -1311,7 +1312,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                                 </button>
                               </div>
                               <div style={{ width: "10%" }}>
-                                <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusSelfAssessmentPayment(income.taxCreditId)}} >
+                                <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusSelfAssessmentPayment(income.taxCreditId)}} >
                                   <span>Download</span>
                                 </button>
                               </div>
@@ -1370,7 +1371,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Terminal Benefits"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Terminal Benefits"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                                 Request
                             </button>
                           </div>
@@ -1386,7 +1387,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusTerminalBenefits(income.assessmentId)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusTerminalBenefits(income.assessmentId)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1438,7 +1439,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Capital Value Gain"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Capital Value Gain"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                              Request
                             </button>
                           </div>
@@ -1454,7 +1455,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                             </button>
                           </div>
                           <div style={{ width: "10%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusCapitalValueGain(income.assessmentId)}} >
+                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusCapitalValueGain(income.assessmentId)}} >
                               <span>Download</span>
                             </button>
                           </div>
@@ -1507,7 +1508,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT Which Is Not Deducted"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT Which Is Not Deducted"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
                               Request
                               </button>
                             </div>
@@ -1523,7 +1524,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtWhichIsNotDeducted(income.assessmentId)}} >
+                              <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath),updateSubmissionStatusWhtWhichIsNotDeducted(income.assessmentId)}} >
                                 <span>Download</span>
                               </button>
                             </div>

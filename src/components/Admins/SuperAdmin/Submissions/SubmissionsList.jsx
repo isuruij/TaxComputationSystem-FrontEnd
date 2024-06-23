@@ -80,7 +80,7 @@ const SubmissionsList = () => {
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
-                  <button type="button" className="btn btn-primary custom-button" style={{ backgroundColor: "#049370",display: "block", marginBottom: "12px",width: "210%",marginLeft: "1%",boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)"}} onClick={() =>{ navigate(`/SuperAdminSubmissions/VerifyDocuments/${user.id}`)} }>
+                  <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370",display: "block", marginBottom: "12px",width: "210%",marginLeft: "1%",boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)"}} onClick={() =>{ navigate(`/SuperAdminSubmissions/VerifyDocuments/${user.id}`)} }>
                   <img
                     src={fileCheck}
                     style={{ alignItems: "left", textAlign: "left",width:"12%",marginRight:"8px" }}

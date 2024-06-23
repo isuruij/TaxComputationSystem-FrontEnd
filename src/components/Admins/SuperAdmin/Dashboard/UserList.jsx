@@ -33,6 +33,7 @@ const UserList = () => {
   );
 
   const buttonStyle = {
+    textAlign: "center",
     backgroundColor: "#049370",
     display: "block",
     marginBottom: "12px",
