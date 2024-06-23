@@ -40,7 +40,7 @@ function Navigationbar() {
   const handleLogout = async (event) => {
     try {
       const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
