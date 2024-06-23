@@ -15,6 +15,7 @@ const VerifyDocuments = () => {
   const navigate = useNavigate();
 
   const { userId } = useParams();
+  const [TaxpayerName,setTaxpayerName] = useState('');
   const [businessIncomeDetails, setBusinessIncomeDetails] = useState('');
   const [employmentIncomeDetails, setEmploymentIncomeDetails] = useState('');
   const [investmentIncomeDetails, setInvestmentIncomeDetails] = useState('');
@@ -30,7 +31,20 @@ const VerifyDocuments = () => {
   const [whtWhichIsNotDeducted, setWhtWhichIsNotDeducted] = useState('');
   const [apit, setApit] = useState('');
 
+  const fetchTaxpayer = async (userId)=>{
+    try{
+      const res = await axios.get(`${base_url}/api/SuperAdmin/fetchTaxpayer/${userId}`);
+      setTaxpayerName(res.data);
+    }
+    catch(error){
+      console.error('Error fetching Taxpayer income details:', error);
+    }
+  }
+
+  useEffect(() => {if (userId) {fetchTaxpayer(userId);}}, [userId]);
+
   useEffect(() => {
+    
     const fetchBusinessIncomeDetails = async (id) => {
       try {
         const res = await axios.get(`${base_url}/api/SuperAdmin/getbusinessincome/${id}`);
@@ -561,6 +575,7 @@ const updateSubmissionStatusSelfAssessmentPayment = async (incomeId) => {
   return (
     <div>
       <div>
+      <div>{TaxpayerName ? (<h4 style={{textAlign:"center",color:"#F86262"}}>{TaxpayerName}'s Submissions</h4>) : (<h4 style={{textAlign:"center",color:"#F86262"}}>Loading...</h4>)}</div>
         <div className='title-1'>
           <h3 className='title-name'>Total Assessable Income</h3>
           <div className='businessIncomeDetails'>
