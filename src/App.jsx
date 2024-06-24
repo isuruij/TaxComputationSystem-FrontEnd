@@ -25,6 +25,7 @@ import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";import SuperAdminSubmis
 import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
+import ManageAdminPage from "./pages/SuperAdmin/ManageAdminPage.jsx";
 
 
 
@@ -96,6 +97,7 @@ function App() {
     <Route path="/SuperAdminSubmissions/VerifyDocuments/:userId" element={<VerifyDocuments/>}></Route>
     <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
     <Route path="/taxpolicy" element={<TaxPolicy/>}></Route>
+    <Route path="/manageadmin" element={<ManageAdminPage/>}></Route>
 
   </Routes>
   </BrowserRouter>    
