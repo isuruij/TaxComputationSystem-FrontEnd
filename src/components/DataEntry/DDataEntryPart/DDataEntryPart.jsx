@@ -203,7 +203,7 @@ function DDataEntry() {
             variant="success"
             onClick={() => navigate("/dataEntry/dashboard")}
           >
-            Okey
+            Okay
           </Button>
         </Modal.Footer>
       </Modal>
@@ -214,7 +214,7 @@ function DDataEntry() {
         <Modal.Body>{msg2}</Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={() => setShow2(false)}>
-            Okey
+            Okay
           </Button>
         </Modal.Footer>
       </Modal>

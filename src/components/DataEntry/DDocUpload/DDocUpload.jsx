@@ -109,7 +109,7 @@ function FileUpload() {
             variant="success"
             onClick={() => navigate(`/dataEntry/submission/enterData/${id}`)}
           >
-            Okey
+            Okay
           </Button>
         </Modal.Footer>
       </Modal>

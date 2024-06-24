@@ -95,7 +95,7 @@ function FileUpload() {
         <Modal.Body>{msg}</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => navigate("/userhomepage")}>
-            Okey
+            Okay
           </Button>
         </Modal.Footer>
       </Modal>
