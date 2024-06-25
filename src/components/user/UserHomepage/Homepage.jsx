@@ -86,7 +86,7 @@ export default function Homepage() {
         boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
       }}
     >
-      <div className="container mt-5">
+      <div className="container1 mt-5" style={{backgroundColor: "#D3E9FE"}}>
         <div className="row">
           <div>
             <img

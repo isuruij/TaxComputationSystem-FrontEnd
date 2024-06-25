@@ -1,74 +1,16 @@
-/* EmailCompose.css */
 .container {
     max-width: 600px;
     margin: auto;
     padding: 20px;
-    background-color: white;
+    background-color: #B3F9D7 !important;
     box-shadow: 0px 0px 15px rgba(0, 128, 96, 0.2);
     border-radius: 8px;
 }
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    font-weight: bold;
-    color: #008060;
-}
-
-.form-control {
-    background-color: #B3F9D7;
-    border: 2px solid #008060;
-    color: #005040;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.form-control:focus {
-    background-color: #D1FFE7;
-    border: 2px solid #005040;
-    box-shadow: 0 0 5px rgba(0, 80, 60, 0.5);
-    outline: none;
-}
-
-.btn-primary {
-    background-color: #008060;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #005040;
-}
-
 textarea.form-control {
-    height: 250px; /* Increased height from 150px to 250px */
+    height: 250px;
     width: 500px;
 }
-
-/* Additional styles for file attachment and clear button */
-.file-name {
-    font-size: 14px;
-    color: #008060;
-    margin-bottom: 10px;
-}
-
-.btn-secondary {
-    background-color: #B3F9D7;
-    color: #008060;
-    border: 1px solid #005040;
-}
-
-.btn-secondary:hover {
-    background-color: #A0E0C9;
-    color: #002020;
-}
-
-
-.file-input {
+.file-input-composse {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -77,7 +19,7 @@ textarea.form-control {
     z-index: -1;
 }
 
-.file-input-label {
+.file-input-label-composse {
     background-color: #049370;
     color: white;
     padding: 8px 16px;
@@ -85,4 +27,4 @@ textarea.form-control {
     border-radius: 5px;
     cursor: pointer;
     display: inline-block;
-}
+} 

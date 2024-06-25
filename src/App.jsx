@@ -28,6 +28,7 @@ import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 
 import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx"
 import MailboxCompose from "./pages/SuperAdmin/MailboxCompose.jsx";
+import MailSent from "./pages/SuperAdmin/MailSent.jsx"
 
 
 
@@ -102,6 +103,7 @@ function App() {
     <Route path="/view/PersonalDetails" element={<ViewPersonalDetails/>}></Route>
 
     <Route path="/MailboxInbox" element={<MailboxInbox/>}></Route>
+    <Route path="/MailSent" element={<MailSent/>}></Route>
     <Route path="/MailboxCompose" element={<MailboxCompose/>}></Route>
 
   </Routes>

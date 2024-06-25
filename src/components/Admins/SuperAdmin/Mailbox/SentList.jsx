@@ -6,27 +6,27 @@ import trashCan from "../../../../assets/trash-can-solid.svg"
 
 import "./List.css";
 
-const InboxList = () => {
+const SentList = () => {
   const navigate = useNavigate();
-  const [recivedemail, setrecivedemail] = useState([]);
+  const [sentdemail, setsentdemail] = useState([]);
 
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
-    const fetchAllReciveemail = async () => {
+    const fetchAllsentemail = async () => {
       try {
-        const res = await axios.get(`${base_url}/api/SuperAdmin/getinboxemail`);
+        const res = await axios.get(`${base_url}/api/SuperAdmin/getsentemail`);
         console.log(res.data);
-        setrecivedemail(res.data);
+        setsentdemail(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchAllReciveemail();
+    fetchAllsentemail();
   }, []);
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredemail = recivedemail.filter((email) =>
+  const filteredemail = sentdemail.filter((email) =>
     email.Taxpayer?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -35,7 +35,7 @@ const InboxList = () => {
     try {
       const shouldDelete = window.confirm("Are you sure you want to delete this Eemail?");
       if (shouldDelete) {
-        await axios.delete(`${base_url}/api/SuperAdmin/deletetInboxemail/${emailId}`);
+        await axios.delete(`${base_url}/api/SuperAdmin/deleteSentemail/${emailId}`);
         window.location.reload();
       }
     } catch (err) {
@@ -57,7 +57,7 @@ const InboxList = () => {
         <input type="text" placeholder=" Search..." className="search-input" style={{ border: "none", backgroundColor: "white", borderRadius: "10px" }} onChange={(e) => setSearchTerm(e.target.value)}/>
       </div>
       <div>
-        <h3 style={{paddingLeft:"50px",color:"#008060"}}>Inbox</h3>
+        <h3 style={{paddingLeft:"50px",color:"#008060"}}>Sent Emails</h3>
         <ListGroup variant="flush" style={containerStyle}>
           {filteredemail.map((email) => (
             <ListGroup.Item key={email.emailId} style={{ borderRadius: "10px", margin: "5px", border: "2px solid #B3F9D7" }}>
@@ -65,8 +65,8 @@ const InboxList = () => {
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                       <div style={{ fontSize: "20px" }}>{email.Taxpayer?.name || 'No Taxpayer Name'}</div>
                       <div style={{ fontSize: "12px", textAlign: "right" , color:"#008060"}}>
-                        {new Date(email.receivedDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long' })}<br />
-                        {new Date(email.receivedDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}
+                        {new Date(email.sentDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long' })}<br />
+                        {new Date(email.sentDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}
                       </div>
                     </div>
                     <div style={{ fontSize: "15px", color:"#008060"}}>{email.subject || 'No Subject'} </div>
@@ -84,4 +84,4 @@ const InboxList = () => {
   );
 };
 
-export default InboxList;
+export default SentList;
