@@ -82,7 +82,7 @@ const UserList = () => {
 
   const handleProfile = (id) => {
     console.log(`View profile for user with id ${id}`);
-    navigate('/view/PersonalDetails');
+    navigate(`/view/alldetails?id=${id}`);
   };
 
   const handleApprovalToggle = async (id, value) => {
@@ -153,7 +153,7 @@ const UserList = () => {
                     style={buttonStyle}
                     onClick={() => handleUpdate(user.id)}
                   >
-                    View
+                    Update
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
