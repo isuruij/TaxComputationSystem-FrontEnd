@@ -574,32 +574,11 @@ const updateNoOfSubmissions = async (userId) => {
   
   
 
-const downloadDocument = async (docname) => {
-  try {
-    // Making the GET request using axios to obtain the file as a Blob
-    const response = await axios.get(`${base_url}/api/SuperAdmin/downloadDocument/${docname}`, { responseType: 'blob' });
-
-    // Creating a URL for the Blob
-    const downloadUrl = window.URL.createObjectURL(response.data);
-    
-    // Opening the PDF in a new tab
-    window.open(downloadUrl, '_blank');
-    
-    // Creating an anchor tag to download the file
-    const a = document.createElement('a');
-    a.href = downloadUrl;
-    a.download = docname;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    
-    // Revoking the Blob URL to free resources
-    window.URL.revokeObjectURL(downloadUrl);
-
-  } catch (error) {
-    console.error('Failed to download file:', error);
-  }
+const downloadDocument = (pdfUrl) => {
+  // Open the PDF link in a new tab
+  window.open(pdfUrl, '_blank');
 };
+
 
 
   return (
@@ -640,7 +619,7 @@ const downloadDocument = async (docname) => {
                               </button>
                             </div>
                             <div style={{ width: "10%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.docname);updateSubmissionStatusBusinessIncome(income.incomeId);if (income.isnewsubmission) {updateNoOfSubmissions(userId);}}} >
+                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "100%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {downloadDocument(income.filePath);updateSubmissionStatusBusinessIncome(income.incomeId);if (income.isnewsubmission) {updateNoOfSubmissions(userId);}}} >
                                 <span>Download</span>
                               </button>
                             </div>

@@ -266,10 +266,20 @@ const calculateProgress = () => {
               style={{ width: "200px"}}
             />
           </div>
-          <h2 style={{paddingTop: "30px",color: "#0085FF",extShadow: "2px 2px 4px rgba(0, 0, 0,0.3)",}}>
-            {userData.name}  
+          <h2
+            style={{
+              paddingTop: "30px",
+              color: "#0085FF",
+              extShadow: "2px 2px 4px rgba(0, 0, 0,0.3)",
+            }}
+          >
+            {userData.name}
           </h2>
-          <span><h5>{userData.isVerifiedUser && <Badge bg="success">Verified</Badge>}</h5></span> 
+          <span>
+            <h5>
+              {userData.isVerifiedUser && <Badge bg="success">Verified</Badge>}
+            </h5>
+          </span>
           <h4>TIN: {userData.tin}</h4>
           <div style={{ paddingTop: "10px" }}>
             <div style={{ paddingTop: "10px" }}>

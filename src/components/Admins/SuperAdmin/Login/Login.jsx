@@ -30,7 +30,6 @@ function Login() {
         res.data.Type === "secondAdmin"
       ) {
         navigate("/dataEntry/dashboard");
-        alert("second admin");
       } else {
         setLoading(false);
         alert("Login Failed!");

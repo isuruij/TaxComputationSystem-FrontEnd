@@ -8,7 +8,28 @@ import "./UserList.css";
 
 const UserList = () => {
   const navigate = useNavigate()
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([
+    // { id: 1, name: 'John Doe', approved: true },
+    // { id: 2, name: 'Jane Smith', approved: false },
+    // { id: 3, name: 'Alice Johnson', approved: true },
+    // { id: 4, name: 'Bob Williams', approved: false },
+    // { id: 5, name: 'Eva Davis', approved: true },
+    // { id: 6, name: 'Charlie Brown', approved: false },
+    // { id: 7, name: 'Grace Turner', approved: true },
+    // { id: 8, name: 'David Miller', approved: false },
+    // { id: 9, name: 'Sophia White', approved: true },
+    // { id: 10, name: 'Daniel Lee', approved: false },
+    // { id: 11, name: 'Emily Johnson', approved: true },
+    // { id: 12, name: 'Michael Davis', approved: false },
+    // { id: 13, name: 'Olivia Brown', approved: true },
+    // { id: 14, name: 'William Turner', approved: false },
+    // { id: 15, name: 'Ava Miller', approved: true },
+    // { id: 16, name: 'Matthew White', approved: false },
+    // { id: 17, name: 'Sophie Lee', approved: true },
+    // { id: 18, name: 'Benjamin Smith', approved: false },
+    // { id: 19, name: 'Lily Johnson', approved: true },
+    // { id: 20, name: 'James Williams', approved: false },
+  ]);
 
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
@@ -33,11 +54,10 @@ const UserList = () => {
   );
 
   const buttonStyle = {
-    textAlign: "center",
     backgroundColor: "#049370",
     display: "block",
     marginBottom: "12px",
-    width: "100%",
+    width: "90%",
     marginLeft: "1%",
     boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
   };
@@ -129,11 +149,11 @@ const UserList = () => {
                 <div style={{ width: "10%" }}>
                   <button
                     type="button"
-                    className="btn btn-primary custom-button"
+                    className="btn btn-primary custom-button-0"
                     style={buttonStyle}
                     onClick={() => handleUpdate(user.id)}
                   >
-                    Update
+                    update
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>

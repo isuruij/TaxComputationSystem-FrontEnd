@@ -1,7 +1,7 @@
 import React from "react";
 import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
 import Navigationbar from "../../components/Admins/SuperAdmin/NavigationBar/Navigationbar";
-import VerifyDocuments from "../../components/Admins/SuperAdmin/Submissions/VerifyDocuments";
+import VerifyDocuments from "../../components/Admins/SuperAdmin/Submissions/Verifydocuments";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

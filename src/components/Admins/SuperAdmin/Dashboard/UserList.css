@@ -1,4 +1,4 @@
-.custom-button {
+.custom-button-0 {
     background-color: #049370 !important;
     width: 100%;
     padding-left: 10px;
@@ -8,6 +8,7 @@
     width: 90%;
     box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
     border: 1px #008060;
+    text-align: center !important;
   }
   .custom-button-1 {
     background-color: #F86262 !important;
