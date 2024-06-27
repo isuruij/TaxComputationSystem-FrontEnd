@@ -82,7 +82,7 @@ const UserList = () => {
 
   const handleProfile = (id) => {
     console.log(`View profile for user with id ${id}`);
-    navigate('/view/PersonalDetails');
+    navigate(`/viewall?id=${id}`);
   };
 
   const handleApprovalToggle = async (id, value) => {
