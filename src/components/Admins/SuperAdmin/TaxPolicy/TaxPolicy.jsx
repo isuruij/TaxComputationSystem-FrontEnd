@@ -124,16 +124,18 @@ function TaxPolicy() {
 
   return (
     <>
-      <div style={{
-        boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
-        borderRadius: "10px",
-        padding: "10px",
-        marginBottom: "10px",
-        marginTop: "5px",
-        marginLeft: "0.5%",
-        backgroundColor: "#F3FFF5",
-        width: "77vw"
-      }}>
+      <div
+        style={{
+          boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+          borderRadius: "10px",
+          padding: "10px",
+          marginBottom: "10px",
+          marginTop: "5px",
+          marginLeft: "0.5%",
+          backgroundColor: "#F3FFF5",
+          width: "77vw",
+        }}
+      >
         <table className="table">
           <thead>
             <tr>
@@ -154,7 +156,6 @@ function TaxPolicy() {
             {Array.isArray(taxPolicies) && taxPolicies.length > 0 ? (
               taxPolicies.map((policy, index) => (
                 <tr key={index}>
-                  
                   <td>{policy.title}</td>
                   <td>{policy.amount}</td>
                   <td>{policy.rate}</td>
@@ -170,7 +171,9 @@ function TaxPolicy() {
                         onClick={() => handleDeleteClick(index)}
                         style={{ cursor: "pointer", color: "red" }}
                       />
-                    ) : <label>cannot delete</label>}
+                    ) : (
+                      <label>cannot delete</label>
+                    )}
                   </td>
                 </tr>
               ))
@@ -186,7 +189,9 @@ function TaxPolicy() {
       {/* Modal for creating or editing policy */}
       <Modal show={isEditing || isCreating} onHide={handleCloseEditing}>
         <Modal.Header closeButton>
-          <Modal.Title>{isEditing ? "Edit Policy" : "Create Policy"}</Modal.Title>
+          <Modal.Title>
+            {isEditing ? "Edit Policy" : "Create Policy"}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>

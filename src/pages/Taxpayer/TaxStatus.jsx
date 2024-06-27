@@ -15,7 +15,7 @@ export default function TaxStatus() {
 
   const handle = async () => {
     try {
-      const res = await Axios.get(`${base_url}/api/taxpayer/auth`);
+      const res = await Axios.get(`${base_url}/api/taxpayer/authtaxpayer`);
       if (res.data.Status === "Success") {
         setauth("Verified");
         console.log(auth);

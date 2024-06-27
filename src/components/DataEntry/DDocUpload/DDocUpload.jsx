@@ -1,32 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./DDocUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 
 function FileUpload() {
-  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-  const [userDetails, setUserDetails] = useState([]);
-
-  //Popup for confirmation
-  const [show, setShow] = useState(false);
-  const [msg, setMsg] = useState("");
-
-  const handleClose = () => setShow(false);
-
-  //get user name and tin
-  useEffect(() => {
-    axios
-      .get(`${base_url}/api/dataentry/getUserDetails/${id}`)
-      .then((response) => {
-        console.log(response.data.Data);
-        setUserDetails(response.data.Data);
-      });
-  }, []);
-
   //variable
   let { id } = useParams();
   //navigator
@@ -47,54 +26,91 @@ function FileUpload() {
   const [file13, setFile13] = useState();
   const [file14, setFile14] = useState();
 
+  // const [file2, setFile2] = useState();
+  // const [file3, setFile3] = useState();
+  // const [file4, setFile4] = useState();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
 
-  function handleUpload() {
-    // navigate(`/dataEntry/submission/enterData/${value.id}`);
-    const files = [
-      { file: file1, id: 1 },
-      { file: file2, id: 2 },
-      { file: file3, id: 3 },
-      { file: file4, id: 4 },
-      { file: file5, id: 5 },
-      { file: file6, id: 6 },
-      { file: file7, id: 7 },
-      { file: file8, id: 8 },
-      { file: file9, id: 9 },
-      { file: file10, id: 10 },
-      { file: file11, id: 11 },
-      { file: file12, id: 12 },
-      { file: file13, id: 13 },
-      { file: file14, id: 14 },
-    ];
-    const formData = new FormData();
-    files.forEach((item) => {
-      if (item.file) {
-        // Only append if the file is defined
-        formData.append("files", item.file);
-        formData.append("fileIds", item.id);
-      }
-    });
+  // const handleFile = (e) => {
+  //   setFile1(e.target.files[0]);
+  //   // switch (type) {
+  //   //   case "doc1":
+  //   //     setFile1(event.target.files[0]);
+  //   //     break;
+  //   //     case "doc2":
+  //   //     setFile2(event.target.files[0]);
+  //   //     break;
+  //   //     case "doc3":
+  //   //     setFile3(event.target.files[0]);
+  //   //     break;
+  //   //     case "doc4":
+  //   //     setFile4(event.target.files[0]);
+  //   //     break;
+  //   // };
 
-    axios
-      .post(`${base_url}/api/dataentry/fileUpload/${id}`, formData)
-      .then((response) => {
-        console.log(response);
-        // navigate(`/dataEntry/submission/enterData/${id}`);
-        setMsg(response.data.Status);
-        setShow(true);
-        // Delay navigation to allow the user to see the modal
-        setTimeout(() => {
-          navigate(`/dataEntry/submission/enterData/${id}`);
-        }, 3000); // 3 seconds delay
-      })
-      .catch((er) => {
-        setMsg(er.response.data.Status);
-        setShow(true);
-      });
+  //   //console.log(event.target.files[0])
+  // };
+
+  function handleUpload() {
+    navigate(`/dataEntry/submission/enterData/${value.id}`);
+
+    // console.log(
+    //   file1,
+    //   file2,
+    //   file3,
+    //   file4,
+    //   file5,
+    //   file6,
+    //   file7,
+    //   file8,
+    //   file9,
+    //   file10,
+    //   file11,
+    //   file12,
+    //   file13,
+    //   file14
+    // );
+    // const formData = new FormData();
+    // formData.append(
+    //   "doc1",
+    //   file1,
+    //   "doc2",
+    //   file2,
+    //   "doc3",
+    //   file3,
+    //   "doc4",
+    //   file4,
+    //   "doc5",
+    //   file5,
+    //   "doc6",
+    //   file6,
+    //   "doc7",
+    //   file7,
+    //   "doc8",
+    //   file8,
+    //   "doc9",
+    //   file9,
+    //   "doc10",
+    //   file10,
+    //   "doc11",
+    //   file11,
+    //   "doc12",
+    //   file12,
+    //   "doc13",
+    //   file13,
+    //   "doc14",
+    //   file14
+    // );
+    // axios
+    //   .post("http://localhost:8001/create", { Data: formData, UserId: id })
+    //   .then((response) => {
+    //     console.log(response);
+    //     navigate(`/dataEntry/submission/enterData/${value.id}`);
+    //   })
+    //   .catch((er) => console.log(er));
   }
 
   return (
@@ -140,8 +156,8 @@ function FileUpload() {
             fontSize: "smaller",
           }}
         >
-          <h5 style={{ marginTop: "15px" }}>MR. {userDetails.name}</h5>
-          <h5>TIN NO: {userDetails.tin}</h5>
+          <h5 style={{ marginTop: "15px" }}>MR. ANDORSON_JAMES</h5>
+          <h5>TIN NO: 24480Z</h5>
           <h5>INCOME TAX COMPUTATION REPORT</h5>
           <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
         </div>
@@ -216,21 +232,6 @@ function FileUpload() {
               </div>
             </div>
 
-            <div className="div2-1">
-              <div className="div2-1-1">
-                <label>
-                  <h6>Rent Income</h6>
-                </label>
-              </div>
-              <div className="div2-1-2">
-                <input
-                  type="file"
-                  name="file"
-                  onChange={(e) => setFile5(e.target.files[0])} //5
-                />
-              </div>
-            </div>
-
             <div className="ddiv1-4">
               <div className="div1-4-1">
                 <label>
@@ -272,10 +273,25 @@ function FileUpload() {
 
         {show2 && (
           <div className="dContainer2">
+            <div className="div2-1">
+              <div className="div2-1-1">
+                <label>
+                  <h6>Relief for Rent Income(For last year)</h6>
+                </label>
+              </div>
+              <div className="div2-1-2">
+                <input
+                  type="file"
+                  name="file"
+                  onChange={(e) => setFile5(e.target.files[0])}
+                />
+              </div>
+            </div>
+
             <div className="ddiv2-2">
               <div className="div2-2-1">
                 <label>
-                  <h6>Expenditure</h6>
+                  <h6>Relief for Expenditure</h6>
                 </label>
               </div>
               <div className="div2-2-2">
@@ -476,12 +492,11 @@ function FileUpload() {
           <div className="Button-div-2">
             <button
               id="submit"
-              type="button"
               className="btn btn-primary dcustom-button"
-              onClick={handleUpload}
-              // onClick={() => {
-              //   navigate(`/dataEntry/submission/enterData/${id}`);
-              // }}
+              // onClick={handleUpload}
+              onClick={() => {
+                navigate(`/dataEntry/submission/enterData/${id}`);
+              }}
             >
               Save & Continue
             </button>

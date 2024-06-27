@@ -152,8 +152,8 @@ function TaxView() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
       <div className="Tax-view-header">
-        <h6>Mr.{userDetails.name}</h6>
-        <h6>TIN NO: {userDetails.tin}</h6>
+        <h6>Mr.XXXXXX_XXX</h6>
+        <h6>TIN NO: XXXXXXX</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>
           YEAR OF ASSESSMENT {getYearFromDate(listOfTaxDetails.createdAt)}/

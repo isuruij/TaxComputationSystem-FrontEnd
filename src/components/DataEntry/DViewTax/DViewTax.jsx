@@ -1,8 +1,5 @@
 import React from "react";
 import "./DViewTax.css";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 
 function DViewTax() {
   //get user name and tin
@@ -49,8 +46,8 @@ function DViewTax() {
       ></link>
       {/*This is User info box */}
       <div className="dTax-view-header">
-        <h6>Mr. {userDetails.name}</h6>
-        <h6>TIN NO: {userDetails.tin}</h6>
+        <h6>Mr.XXXXXX_XXX</h6>
+        <h6>TIN NO: XXXXXXX</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>
           YEAR OF ASSESSMENT {getYearFromDate(listOfTaxDetails.createdAt)}/

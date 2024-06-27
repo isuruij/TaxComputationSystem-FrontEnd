@@ -4,48 +4,25 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "./DDataEntryPart.css";
 import Button from "react-bootstrap/Button";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import Alert from "react-bootstrap/Alert";
 
 function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   //variable
   let { id } = useParams();
-  const [userDetails, setUserDetails] = useState([]);
-
-  //Popup for confirmation
-  const [show, setShow] = useState(false);
-  const [msg, setMsg] = useState("");
-
-  const handleClose = () => setShow(false);
-
-  //Popup for confirmation2
-  const [show2, setShow2] = useState(false);
-  const [msg2, setMsg2] = useState("");
-
-  const handleClose2 = () => setShow(false);
-
-  //get user details
-  useEffect(() => {
-    axios
-      .get(`${base_url}/api/dataentry/getUserDetails/${id}`)
-      .then((response) => {
-        console.log(response.data.Data);
-        setUserDetails(response.data.Data);
-      });
-  }, []);
 
   //navigator
   const navigate = useNavigate();
+
   // State to store input values (note and amount)
-  const [amountInputs, setAmountInputs] = useState(Array(14).fill("")); //For 9 months
-  const [amount2Inputs, setAmount2Inputs] = useState(Array(14).fill("")); //for 3 months
+  const [amountInputs, setAmountInputs] = useState(Array(14).fill(""));
   const [noteInputs, setNoteInputs] = useState(Array(14).fill(""));
 
-  // Handler for updating amount input value for 9 months
+  // Handler for updating amount input value
   const handleAmountInputChange = (event, index) => {
     const { value } = event.target;
     // Regex to match only numbers
@@ -56,20 +33,6 @@ function DDataEntry() {
       const newAmountInputs = [...amountInputs];
       newAmountInputs[index] = value;
       setAmountInputs(newAmountInputs);
-    }
-  };
-
-  // Handler for updating amount input value for 3 months
-  const handleAmount2InputChange = (event, index) => {
-    const { value } = event.target;
-    // Regex to match only numbers
-    const regex = /^\d*\.?\d*$/;
-
-    // If value matches regex or empty, update input value
-    if (value === "" || regex.test(value)) {
-      const newAmountInputs = [...amount2Inputs];
-      newAmountInputs[index] = value;
-      setAmount2Inputs(newAmountInputs);
     }
   };
 
@@ -84,33 +47,13 @@ function DDataEntry() {
   //handle form submission
   const handleSubmit = () => {
     // Validate each row
-    for (let i = 0; i < 11; i++) {
-      if (i == 5 || i == 6) {
-        continue;
-      }
-      if (
-        noteInputs[i] != "" &&
-        (amountInputs[i] === "" || amount2Inputs[i] === "")
-      ) {
-        setMsg2(
-          "Please fill in the AMOUNT field for row " +
-            (i + 1) +
-            " before submitting."
-        );
-        setShow2(true);
-        return;
-      }
-    } // Validate each row
-    for (let i = 5; i < 14; i++) {
-      if (i <= 10 || i >= 7) {
-      }
+    for (let i = 0; i < 14; i++) {
       if (noteInputs[i] != "" && amountInputs[i] === "") {
-        setMsg2(
+        alert(
           "Please fill in the AMOUNT field for row " +
             (i + 1) +
             " before submitting."
         );
-        setShow2(true);
         return;
       }
     }
@@ -120,25 +63,16 @@ function DDataEntry() {
     axios
       .post(`${base_url}/api/dataentry/enterData`, {
         amount: amountInputs,
-        amount2: amount2Inputs,
         note: noteInputs,
         UserId: id,
       })
       .then((response) => {
         console.log(response.data.Status);
-        // alert(response.data.Status);
-        setMsg(response.data.Status);
-        setShow(true);
-        // Delay navigation to allow the user to see the modal
-        setTimeout(() => {
-          navigate("/dataEntry/dashboard");
-        }, 3000); // 3 seconds delay
-        // navigate("/dataEntry/dashboard");
+        alert(response.data.Status);
+        navigate("/dataEntry/dashboard");
       })
       .catch((error) => {
         console.error(error);
-        setMsg(error);
-        setShow(true);
       });
   };
 
@@ -146,7 +80,6 @@ function DDataEntry() {
   const handleDiscard = () => {
     setAmountInputs(Array(14).fill(""));
     setNoteInputs(Array(14).fill(""));
-    setAmount2Inputs(Array(14).fill(""));
   };
 
   //Data input feilds names
@@ -154,10 +87,13 @@ function DDataEntry() {
     "Employment Income",
     "Business Income",
     "Investment Income",
-    "Rent Income",
     "Other Income",
   ];
-  const listofItems2 = ["Expenditure ", "Qualifying Payments"];
+  const listofItems2 = [
+    "Relief for Rent Income",
+    "Relief for Expenditure ",
+    "Qualifying Payments",
+  ];
   const listofItems3 = [
     "APIT",
     "WHT on Investment Income",
@@ -246,8 +182,8 @@ function DDataEntry() {
             fontSize: "smaller",
           }}
         >
-          <h5 style={{ marginTop: "15px" }}>MR. {userDetails.name}</h5>
-          <h5>TIN NO: {userDetails.tin}</h5>
+          <h5 style={{ marginTop: "15px" }}>MR. ANDORSON_JAMES</h5>
+          <h5>TIN NO: 24480Z</h5>
           <h5>INCOME TAX COMPUTATION REPORT</h5>
           <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
         </div>
@@ -258,30 +194,13 @@ function DDataEntry() {
         {/*This is form*/}
         <Form className="DataEntry-Form">
           {/*This is Assessable Income field*/}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <h5>Assessable Income</h5>
-            </div>
-            <div>
-              <h5>For First 9 Months</h5>
-            </div>
-            <div>
-              <h5>For Last 3 Months</h5>
-            </div>
-          </div>
+          <h5>Assessable Income</h5>
           {listofItems1.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={4}>
+                  <Col xs={6}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
@@ -297,102 +216,45 @@ function DDataEntry() {
                       onChange={(e) => handleAmountInputChange(e, key)} // Handle input change
                     />
                   </Col>
-                  <Col>
-                    <Form.Control
-                      placeholder="AMOUNT"
-                      style={inputFieldStyles}
-                      value={amount2Inputs[key]} // Set value from state
-                      onChange={(e) => handleAmount2InputChange(e, key)} // Handle input change
-                    />
-                  </Col>
                 </Row>
               </div>
             );
           })}
           {/*This is Qualifying Payments and Relife field*/}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <h5>Relifes</h5>
-            </div>
-            <div>
-              <h5>For First 9 Months</h5>
-            </div>
-            <div>
-              <h5>For Last 3 Months</h5>
-            </div>
-          </div>
+          <h5>Qualifying Payments and Relife</h5>
           {listofItems2.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={4}>
+                  <Col xs={6}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
-                      value={noteInputs[key + 5]} // Set value from state
-                      onChange={(e) => handleNoteInputChange(e, key + 5)} // Handle input change
+                      value={noteInputs[key + 4]} // Set value from state
+                      onChange={(e) => handleNoteInputChange(e, key + 4)} // Handle input change
                     />
                   </Col>
                   <Col>
                     <Form.Control
                       placeholder="AMOUNT"
                       style={inputFieldStyles}
-                      value={amountInputs[key + 5]} // Set value from state
-                      onChange={(e) => handleAmountInputChange(e, key + 5)} // Handle input change
+                      value={amountInputs[key + 4]} // Set value from state
+                      onChange={(e) => handleAmountInputChange(e, key + 4)} // Handle input change
                     />
-                  </Col>
-                  <Col>
-                    <div
-                      style={{
-                        alignItems: "center",
-                        paddingLeft: "28%",
-                        paddingTop: "10px",
-                        color: "red",
-                      }}
-                    >
-                      {value === "Expenditure "
-                        ? "*Not applicable For Last 3 Months"
-                        : "*Enter Amount For Entire Year"}
-                    </div>
                   </Col>
                 </Row>
               </div>
             );
           })}
-
           {/*This is Tax Credit Field*/}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <h5>Tax Credit</h5>
-            </div>
-            <div>
-              <h5>For First 9 Months</h5>
-            </div>
-            <div>
-              <h5>For Last 3 Months</h5>
-            </div>
-          </div>
+          <h5>Tax Credit</h5>
           {listofItems3.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
                 <Row>
                   <label>{value}</label>
-                  <Col xs={4}>
+                  <Col xs={6}>
                     <Form.Control
                       placeholder="NOTE"
                       style={inputFieldStyles}
@@ -408,37 +270,12 @@ function DDataEntry() {
                       onChange={(e) => handleAmountInputChange(e, key + 7)} // Handle input change
                     />
                   </Col>
-                  <Col>
-                    <Form.Control
-                      placeholder="AMOUNT"
-                      style={inputFieldStyles}
-                      value={amount2Inputs[key + 7]} // Set value from state
-                      onChange={(e) => handleAmount2InputChange(e, key + 7)} // Handle input change
-                    />
-                  </Col>
                 </Row>
               </div>
             );
           })}
           {/*This is Other information Field*/}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <h5>Other</h5>
-            </div>
-            <div>
-              <h5>For Year</h5>
-            </div>
-            {/* <div>
-              <h5>For Last 3 Months</h5>
-            </div> */}
-          </div>
+          <h5>Other</h5>
           {listofItems4.map((value, key) => {
             return (
               <div key={key} className="Input-Rows">
@@ -470,7 +307,7 @@ function DDataEntry() {
                 variant="success"
                 className="custom_back_button"
                 onClick={() => {
-                  navigate(`/dataEntry/submission/uploadDoc/${id}`);
+                  navigate("/dataEntry/submission/uploadDoc");
                 }}
               >
                 Back

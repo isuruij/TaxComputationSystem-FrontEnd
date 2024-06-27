@@ -21,12 +21,17 @@ import CreateFirstAdmin from "./pages/SuperAdmin/CreateFirstAdmin.jsx";
 import ViewDetailsPage from "./pages/SuperAdmin/ViewDetailsPage.jsx";
 import CreateNewAdminPage from "./pages/SuperAdmin/CreateNewAdminPage.jsx";
 import Notification from "./pages/Taxpayer/Notification.jsx";
-import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";
-import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
+import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";import SuperAdminSubmissions from "./pages/SuperAdmin/SuperAdminSubmissions.jsx";
 import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
-import ViewPersonalDetails from "./pages/SuperAdmin/ViewPersonalDetails.jsx";
-import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx";
+import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
+
+
+
+
+
+
+
 
 import DDashboard from "./pages/DataEntry/DDashboard.jsx";
 import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
@@ -37,39 +42,35 @@ import DViewSubmissions from "./pages/DataEntry/DViewSubmissions.jsx";
 
 function App() {
   Axios.defaults.withCredentials = true;
-
+  
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Taxpayer Routes */}
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route
-          path="/settings/uploadfiles"
-          element={<SettingsFileUpload />}
-        ></Route>
-        <Route
-          path="/settings/income"
-          element={<SettingsIncomeDetails />}
-        ></Route>
-        <Route
-          path="/settings/basic"
-          element={<SettingsBasicDetails />}
-        ></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/viewtax" element={<Viewtax />}></Route>
-        <Route path="/UserHomePage" element={<UserHome />}></Route>
-        <Route path="/TaxStatus" element={<TaxStatus />}></Route>
-        <Route path="/TaxPayments" element={<TaxPayments />}></Route>
-        <Route path="/verify-email" element={<VerifyUserEmail />}></Route>
-        <Route path="/forgotpassword" element={<ForgetPasswordPage />}></Route>
-        <Route path="/resetpassword" element={<ResetPasswordPage />}></Route>
-        <Route path="/notification" element={<Notification />}></Route>
-        <Route path="/taxhistory" element={<TaxHistory />}></Route>
-        <Route path="/resetpassword" element={<ResetPasswordPage />}></Route>
+    
+  <BrowserRouter>
+  <Routes>
+    
+    {/* Taxpayer Routes */}
+    <Route path="/" element={<LandingPage/>}></Route>
+    <Route path="/settings/uploadfiles" element={<SettingsFileUpload/>}></Route>
+    <Route path="/settings/income" element={<SettingsIncomeDetails/>}></Route>
+    <Route path="/settings/basic" element={<SettingsBasicDetails/>}></Route>
+    <Route path="/login" element={<Login/>}></Route>
+    <Route path="/signup" element={<Signup/>}></Route>
+    <Route path="/viewtax" element={<Viewtax/>}></Route>
+    <Route path="/UserHomePage" element={<UserHome/>}></Route>
+    <Route path="/TaxStatus" element={<TaxStatus/>}></Route>
+    <Route path="/TaxPayments" element={<TaxPayments/>}></Route>
+    <Route path="/verify-email" element={<VerifyUserEmail/>}></Route>
+    <Route path="/forgotpassword" element={<ForgetPasswordPage/>}></Route>
+    <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+    <Route path="/notification" element={<Notification />}></Route>
+    <Route path="/taxhistory" element={<TaxHistory/>}></Route>
+    <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
 
-        {/*Data Entry routes*/}
-        <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
+    
+
+    
+    {/*Data Entry routes*/}
+    <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
         <Route path="/dataEntry/viewTax/:id" element={<DViewTaxPage />}></Route>
         <Route
           path="/dataEntry/submission/enterData/:id"
@@ -89,34 +90,21 @@ function App() {
           element={<DViewSubmissions />}
         ></Route>
 
-        {/* Super Admin Routes */}
-        <Route
-          path="/SuperAdminDashboard"
-          element={<SuperAdminDashboard />}
-        ></Route>
-        <Route path="/Admin/login" element={<AdminLoginPage />}></Route>
-        <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin />}></Route>
-        <Route path="/view/details" element={<ViewDetailsPage />}></Route>
-        <Route path="/create/admin" element={<CreateNewAdminPage />}></Route>
-        <Route
-          path="/SuperAdminSubmissions"
-          element={<SuperAdminSubmissions />}
-        ></Route>
-        <Route
-          path="/SuperAdminSubmissions/VerifyDocuments/:userId"
-          element={<VerifyDocuments />}
-        ></Route>
-        <Route
-          path="/update/PersonalDetails"
-          element={<UpdatePersonalDetails />}
-        ></Route>
-        <Route
-          path="/view/PersonalDetails"
-          element={<ViewPersonalDetails />}
-        ></Route>
-        <Route path="/taxpolicy" element={<TaxPolicy />}></Route>
-      </Routes>
-    </BrowserRouter>
+
+    {/* Super Admin Routes */}
+    <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard/>}></Route>
+    <Route path="/Admin/login" element={<AdminLoginPage/>}></Route>
+    <Route path="/Create/FirstAdmin" element={<CreateFirstAdmin/>}></Route>
+    <Route path="/view/details" element={<ViewDetailsPage/>}></Route>
+    <Route path="/create/admin" element={<CreateNewAdminPage/>}></Route>
+    <Route path="/SuperAdminSubmissions" element={<SuperAdminSubmissions/>}></Route>
+    <Route path="/SuperAdminSubmissions/VerifyDocuments/:userId" element={<VerifyDocuments/>}></Route>
+    <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
+    <Route path="/taxpolicy" element={<TaxPolicy/>}></Route>
+
+  </Routes>
+  </BrowserRouter>    
+
   );
 }
 

@@ -5,25 +5,27 @@ import Header from "../../components/user/Header/Header";
 import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
 import Incomedetails from "../../components/user/Settings/IncomeDetails";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function SettingsIncomeDetails() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
- 
+  const navigate = useNavigate();
 
   const handle = async () => {
     try {
-      const res = await Axios.get(`${base_url}/api/taxpayer/auth`);
+      const res = await Axios.get(`${base_url}/api/taxpayer/authtaxpayer`);
       if (res.data.Status === "Success") {
         setauth("Verified");
         console.log(auth);
       } else {
         setauth("Failed");
+        navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      navigate("/login");
     }
   };
 
@@ -52,14 +54,16 @@ function SettingsIncomeDetails() {
               >
                 <SettingSubMenue />
               </div>
-              <div className="UserPageContent" style={{ marginTop: "19.2vh", marginLeft: "20vw" }}>
+              <div
+                className="UserPageContent"
+                style={{ marginTop: "19.2vh", marginLeft: "20vw" }}
+              >
                 <Incomedetails />
               </div>
             </div>
           </div>
         </div>
       )}
-      {auth === "Failed" && <h1>Access Denied! Please Login Again</h1>}
     </div>
   );
 }

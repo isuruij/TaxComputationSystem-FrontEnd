@@ -4,24 +4,27 @@ import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
 import Navigationbar from "../../components/Admins/SuperAdmin/NavigationBar/Navigationbar";
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateNewAdminPage() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   const [auth, setauth] = useState("Started");
+  const navigate = useNavigate();
  
 
   const handle = async () => {
     try {
-      const res = await Axios.get(`${base_url}/api/taxpayer/auth`);
+      const res = await Axios.get(`${base_url}/api/SuperAdmin/authtsuperAdmin`);
       if (res.data.Status === "Success") {
         setauth("Verified");
         console.log(auth);
       } else {
         setauth("Failed");
+        navigate("/Admin/login");
       }
     } catch (error) {
-      console.log(error);
+      navigate("/Admin/login");
     }
   };
 
