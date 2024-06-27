@@ -115,6 +115,20 @@ function FileUpload() {
 
   return (
     <div className="dUpload-Doc-div">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg}</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="success"
+            onClick={() => navigate(`/dataEntry/submission/enterData/${id}`)}
+          >
+            Okay
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"

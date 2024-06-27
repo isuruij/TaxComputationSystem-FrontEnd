@@ -38,6 +38,7 @@ import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
 import DFileUploadPage from "./pages/DataEntry/DFileUploadPage.jsx";
 import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
 import DDataEntryPart from "./pages/DataEntry/DDataEnterPage.jsx";
+import DViewSubmissions from "./pages/DataEntry/DViewSubmissions.jsx";
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -83,6 +84,10 @@ function App() {
         <Route
           path="/dataEntry/submission/dashboard"
           element={<DSubmissionDashboard />}
+        ></Route>
+        <Route
+          path="/dataEntry/submission/view/:id"
+          element={<DViewSubmissions />}
         ></Route>
 
 

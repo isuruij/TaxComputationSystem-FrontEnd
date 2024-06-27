@@ -112,3 +112,10 @@
   width: fit-content;
   flex-grow: 1;
 }
+
+.custom-btn {
+  padding: 10px 20px;
+  font-size: larger;
+  background-color: #0085ff;
+  border-color: #0085ff;
+}

@@ -129,6 +129,31 @@ function DDataEntry() {
         borderRadius: "10px",
       }}
     >
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg}</Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="success"
+            onClick={() => navigate("/dataEntry/dashboard")}
+          >
+            Okay
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{msg2}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={() => setShow2(false)}>
+            Okay
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {/*Poppins font family*/}
       <link
         href="https://fonts.googleapis.com/css?family=Poppins"

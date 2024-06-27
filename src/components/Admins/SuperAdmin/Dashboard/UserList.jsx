@@ -149,11 +149,11 @@ const UserList = () => {
                 <div style={{ width: "10%" }}>
                   <button
                     type="button"
-                    className="btn btn-primary custom-button"
+                    className="btn btn-primary custom-button-0"
                     style={buttonStyle}
                     onClick={() => handleUpdate(user.id)}
                   >
-                    View
+                    update
                   </button>
                 </div>
                 <div style={{ width: "10%" }}>
