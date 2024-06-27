@@ -4,11 +4,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './MailboxCompose.css';
 import attach from "../../../../assets/attach.svg";
 import crossIcon from "../../../../assets/cross.svg"; // Ensure you have this icon
+import Axios from 'axios';
 
 const EmailCompose = () => {
+    const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     const [email, setEmail] = useState({ to: '', subject: '', body: '', attachedFile: null });
     const [fileName, setFileName] = useState('');
     const fileInputRef = useRef(null); // Reference to the hidden file input
+
+    const sendMail = async ()=>{
+        try{
+            const res = await Axios.post(
+                `${base_url}/api/SuperAdmin/composemail`,
+                email
+              );
+            console.log(email);
+
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,6 +31,7 @@ const EmailCompose = () => {
             ...prevState,
             [name]: value
         }));
+        console.log(email)
     };
 
     const handleFileChange = (e) => {
@@ -41,6 +57,7 @@ const EmailCompose = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
+        sendMail();
         alert('Email sent successfully!');
         setEmail({ to: '', subject: '', body: '', attachedFile: null });
         setFileName('');
