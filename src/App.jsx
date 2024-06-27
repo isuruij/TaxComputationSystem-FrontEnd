@@ -25,6 +25,7 @@ import TaxHistory from "./pages/Taxpayer/TaxHistory.jsx";import SuperAdminSubmis
 import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx";
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx"
 import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
+import ViewAllPage from "./pages/SuperAdmin/ViewAll.jsx";
 
 
 
@@ -65,6 +66,7 @@ function App() {
     <Route path="/notification" element={<Notification />}></Route>
     <Route path="/taxhistory" element={<TaxHistory/>}></Route>
     <Route path="/resetpassword" element={<ResetPasswordPage/>}></Route>
+    <Route path="/viewall" element={<ViewAllPage/>}></Route>
 
     
 
