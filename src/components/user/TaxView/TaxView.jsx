@@ -17,15 +17,16 @@ function TaxView() {
   const userId = jwtDecode(cookieValue).id;
 
   //Popup for confirmation
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false); //for modal
   const [msg, setMsg] = useState("");
+  const [filePath, setFilePath] = useState("");
+  const [show2, setShow2] = useState(true);
 
   const handleClose = () => setShow(false);
 
   const [userDetails, setUserDetails] = useState([]);
   const [listOfTaxDetails, setListOfTaxDetails] = useState([]);
   const [listOfTaxDetails2, setListOfTaxDetails2] = useState([]);
-  const [filePath, setFilePath] = useState("");
 
   const getYearFromDate = (dateString) => {
     if (dateString) {
@@ -38,11 +39,11 @@ function TaxView() {
     Axios.get(`${base_url}/api/taxpayer/generate-report/${userId}`)
       .then((response) => {
         if (response.data.Status) {
-          // const filePath = response.data.filePath;
-          setFilePath(response.data.filePath);
+          console.log(response.data.filepath);
+          setFilePath(response.data.filepath);
+          setShow2(false);
           setMsg(response.data.Status);
           setShow(true);
-          // downloadFile(filePath);
           setTimeout(() => {
             setShow(false);
           }, 3000); // 3 seconds delay
@@ -61,42 +62,57 @@ function TaxView() {
 
   //Download file(under development not working)
   const downloadPDF = (filePath) => {
-    Axios.get(filePath, {
-      responseType: "blob", // Ensure responseType is set to 'blob' for binary data
-    })
-      .then((response) => {
-        // Create a Blob from the PDF response data
-        const blob = new Blob([response.data], { type: "application/pdf" });
+    console.log(filePath);
+    window.open(filePath, "_blank");
+    // const link = document.createElement("a");
+    // link.href = filePath;
+    // link.download = `tax_report_${userId}.pdf`;
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+    // Axios({
+    //   url: filePath,
+    //   method: "GET",
+    //   responseType: "blob", // Ensure responseType is set to 'blob' for binary data
+    //   credentials: true,
+    // })
+    //   .then((response) => {
 
-        // Create a link element, hide it, direct it towards the Blob, and then 'click' it programmatically
-        const link = document.createElement("a");
-        link.href = window.URL.createObjectURL(blob);
-        link.download = `tax_report_${userId}.pdf`;
+    //     // Create a Blob from the PDF response data
+    //     const blob = new Blob([response.data], { type: "application/pdf" });
 
-        // Append the link to the body
-        document.body.appendChild(link);
+    //     // Create a link element, hide it, direct it towards the Blob, and then 'click' it programmatically
+    //     const link = document.createElement("a");
+    //     link.href = window.URL.createObjectURL(blob);
+    //     link.download = `tax_report_${userId}.pdf`;
 
-        // Programmatically click the link to trigger the download
-        link.click();
+    //     // Append the link to the body
+    //     document.body.appendChild(link);
 
-        // Remove the link from the body
-        document.body.removeChild(link);
-        setMsg("File Downloaded!");
-        setShow(true);
-        // downloadFile(filePath);
-        setTimeout(() => {
-          setShow(false);
-        }, 3000); // 3 seconds delay
-      })
-      .catch((error) => {
-        console.error("Error downloading PDF:", error);
-        setMsg("Error downloading PDF:");
-        setShow(true);
-        // downloadFile(filePath);
-        setTimeout(() => {
-          setShow(false);
-        }, 3000); // 3 seconds delay
-      });
+    //     try {
+    //       // Programmatically click the link to trigger the download
+    //       link.click();
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+
+    //     // Remove the link from the body
+    //     document.body.removeChild(link);
+    //     setMsg("File Downloaded!");
+    //     setShow(true);
+    //     setTimeout(() => {
+    //       setShow(false);
+    //     }, 3000); // 3 seconds delay
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error downloading PDF:", error);
+    //     setMsg("Error downloading PDF:");
+    //     setShow(true);
+    //     // downloadFile(filePath);
+    //     setTimeout(() => {
+    //       setShow(false);
+    //     }, 3000); // 3 seconds delay
+    //   });
   };
 
   //Get tax user details
@@ -395,28 +411,32 @@ function TaxView() {
           justifyContent: "space-around",
         }}
       >
-        <button
-          className="btn btn-primary custom-btn"
-          onClick={() => generatePDF()}
-        >
-          Generate PDF{" "}
-          <img
-            src={pdfgen}
-            style={{ alignItems: "left", textAlign: "left" }}
-            alt="Icon"
-          />
-        </button>
-        <button
-          className="btn btn-primary custom-btn"
-          onClick={() => downloadPDF(filePath)}
-        >
-          Download PDF{" "}
-          <img
-            src={pdfdown}
-            style={{ alignItems: "left", textAlign: "left" }}
-            alt="Icon"
-          />
-        </button>
+        {show2 && (
+          <button
+            className="btn btn-primary custom-btn"
+            onClick={() => generatePDF()}
+          >
+            Generate PDF{" "}
+            <img
+              src={pdfgen}
+              style={{ alignItems: "left", textAlign: "left" }}
+              alt="Icon"
+            />
+          </button>
+        )}
+        {!show2 && (
+          <button
+            className="btn btn-primary custom-btn"
+            onClick={() => downloadPDF(filePath)}
+          >
+            Download PDF{" "}
+            <img
+              src={pdfdown}
+              style={{ alignItems: "left", textAlign: "left" }}
+              alt="Icon"
+            />
+          </button>
+        )}
       </div>
     </div>
   );
