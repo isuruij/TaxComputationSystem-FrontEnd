@@ -89,7 +89,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          navigate("/");
+          navigate("/MailboxCompose");
         }}
         type="button"
         className="btn btn-primary custom-button"
