@@ -79,19 +79,7 @@ function Sidenavbar() {
         />
         <span>Registration</span>
       </button>
-      <button
-        type="button"
-        className="btn btn-primary user"
-        style={buttonStyle}
-      >
-        <img
-        className="navImage"
-          src={DownloadTaxreport}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Download Report</span>
-      </button>
+
       <button
         onClick={() => {
           navigate("/viewtax");
