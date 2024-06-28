@@ -110,7 +110,7 @@ const EmailCompose = () => {
                         </Button>
                     </div>
                     <div>
-                        <img src={attach} alt="Attach" style={{ width: "18px", marginRight: "10px", cursor: 'pointer',marginTop:'8px',  }} onClick={handleClickAttachIcon} />
+
                         <input type="file" id="file-input" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange}/>
                         {fileName && (
                             <div style={{ fontSize: "10px", marginTop: "10px" }}>
