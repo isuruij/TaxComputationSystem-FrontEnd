@@ -64,7 +64,7 @@ const EmailCompose = () => {
     };
 
     return (
-        <Container className="mt-5 email-to">
+        <Container className="mt-5 email-to added">
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="to">
                     <Form.Label>To</Form.Label>
