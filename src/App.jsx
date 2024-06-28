@@ -85,7 +85,7 @@ function App() {
           element={<DSubmissionDashboard />}
         ></Route>
         <Route
-          path="/dataEntry/submission/view/:id"
+          path="/dataEntry/submission/view/:userId"
           element={<DViewSubmissions />}
         ></Route>
 

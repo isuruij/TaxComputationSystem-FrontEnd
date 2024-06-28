@@ -16,7 +16,6 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
- 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,7 +29,7 @@ function Login() {
         res.data.Type === "secondAdmin"
       ) {
         navigate("/dataEntry/dashboard");
-        alert("second admin");
+        // alert("second admin");
       } else {
         setLoading(false);
         alert("Login Failed!");

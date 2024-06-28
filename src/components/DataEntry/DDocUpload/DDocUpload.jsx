@@ -28,7 +28,7 @@ function FileUpload() {
   }, []);
 
   //variable
-  let { id } = useParams();
+  const { id } = useParams();
   //navigator
   const navigate = useNavigate();
 
@@ -83,7 +83,6 @@ function FileUpload() {
       .post(`${base_url}/api/dataentry/fileUpload/${id}`, formData)
       .then((response) => {
         console.log(response);
-        // navigate(`/dataEntry/submission/enterData/${id}`);
         setMsg(response.data.Status);
         setShow(true);
         // Delay navigation to allow the user to see the modal
