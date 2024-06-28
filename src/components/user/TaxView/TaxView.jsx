@@ -19,7 +19,6 @@ function TaxView() {
   //Popup for confirmation
   const [show, setShow] = useState(false); //for modal
   const [msg, setMsg] = useState("");
-  const [filePath, setFilePath] = useState("");
   const [show2, setShow2] = useState(true);
 
   const handleClose = () => setShow(false);
@@ -36,11 +35,22 @@ function TaxView() {
   };
 
   function generatePDF() {
+    if (!userDetails.isVerifiedUser) {
+      console.log(userDetails.isVerifiedUser);
+      setMsg(
+        "First you have to be a Verified user! To do that upload necessary documents and data"
+      );
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000); // 3 seconds delay
+      return;
+    }
     Axios.get(`${base_url}/api/taxpayer/generate-report/${userId}`)
       .then((response) => {
         if (response.data.Status) {
-          console.log(response.data.filepath);
-          setFilePath(response.data.filepath);
+          // console.log(response.data.filepath);
+          // setFilePath(response.data.filepath);
           setShow2(false);
           setMsg(response.data.Status);
           setShow(true);
@@ -61,9 +71,23 @@ function TaxView() {
   }
 
   //Download file(under development not working)
-  const downloadPDF = (filePath) => {
-    console.log(filePath);
-    window.open(filePath, "_blank");
+  const downloadPDF = (userId) => {
+    Axios.get(`${base_url}/api/taxpayer/getSummaryReport/${userId}`).then(
+      (response) => {
+        let filePath = response.data.Data.path;
+        if (response.data.Data.isVerified) {
+          // console.log(filePath);
+          window.open(filePath, "_blank");
+        } else {
+          setMsg("Please wait for verification");
+          setShow(true);
+          setTimeout(() => {
+            setShow(false);
+          }, 3000); // 3 seconds delay
+        }
+      }
+    );
+
     // const link = document.createElement("a");
     // link.href = filePath;
     // link.download = `tax_report_${userId}.pdf`;
@@ -152,8 +176,8 @@ function TaxView() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
       <div className="Tax-view-header">
-        <h6>Mr.XXXXXX_XXX</h6>
-        <h6>TIN NO: XXXXXXX</h6>
+        <h6>Mr.{userDetails.name}</h6>
+        <h6>TIN NO: {userDetails.tin}</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>
           YEAR OF ASSESSMENT {getYearFromDate(listOfTaxDetails.createdAt)}/
@@ -427,7 +451,7 @@ function TaxView() {
         {!show2 && (
           <button
             className="btn btn-primary custom-btn"
-            onClick={() => downloadPDF(filePath)}
+            onClick={() => downloadPDF(userId)}
           >
             Download PDF{" "}
             <img
