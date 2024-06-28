@@ -36,6 +36,17 @@ function TaxView() {
   };
 
   function generatePDF() {
+    if (!userDetails.isVerifiedUser) {
+      console.log(userDetails.isVerifiedUser);
+      setMsg(
+        "First you have to be a Verified user! To do that upload necessary documents and data"
+      );
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000); // 3 seconds delay
+      return;
+    }
     Axios.get(`${base_url}/api/taxpayer/generate-report/${userId}`)
       .then((response) => {
         if (response.data.Status) {
@@ -152,8 +163,8 @@ function TaxView() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       ></link>
       <div className="Tax-view-header">
-        <h6>Mr.XXXXXX_XXX</h6>
-        <h6>TIN NO: XXXXXXX</h6>
+        <h6>Mr.{userDetails.name}</h6>
+        <h6>TIN NO: {userDetails.tin}</h6>
         <h6>INCOME TAX COMPUTATION REPORT</h6>
         <h6>
           YEAR OF ASSESSMENT {getYearFromDate(listOfTaxDetails.createdAt)}/
