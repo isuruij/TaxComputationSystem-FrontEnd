@@ -10,6 +10,7 @@ import logout from "../../../assets/logout.svg";
 import mail from "../../../assets/mail.svg";
 
 function DSideNavBar() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const buttonStyle = {
     backgroundColor: "#049370",
     textAlign: "left",
@@ -24,8 +25,8 @@ function DSideNavBar() {
 
   const handleLogout = async (event) => {
     try {
-      const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
-      navigate("/login");
+      const res = await Axios.get(`${base_url}/api/taxpayer/logout`);
+      navigate("/Admin/login");
       // location.reload(true);
     } catch (error) {
       console.log(error);
