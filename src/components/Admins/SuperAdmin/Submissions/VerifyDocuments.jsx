@@ -434,6 +434,260 @@ const VerifyDocuments = () => {
 
   }
 
+  //update request and requestagain
+  const updateRequestBusinessIncomeDetails= async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestBusinessIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const updateRequestEmploymentIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestEmploymentIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestInvestmentIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestInvestmentIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestOtherIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestOtherIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestCapitalValueGain = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestCapitalValueGain/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestReliefForExpenditure = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestReliefForExpenditure/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestReliefForRentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestReliefForRentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestSelfAssessmentPayment = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestSelfAssessmentPayment/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestTerminalBenefits = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestTerminalBenefits/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestQualifyingPayments = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestQualifyingPayments/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestWhtOnInvestmentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestWhtOnInvestmentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestWhtOnServiceFeeReceived = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestWhtOnServiceFeeReceived/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestWhtWhichIsNotDeducted = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestWhtWhichIsNotDeducted/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestApit = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestApit/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
+  const updateRequestAgainBusinessIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainBusinessIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainEmploymentIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainEmploymentIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainInvestmentIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainInvestmentIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainOtherIncomeDetails = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainOtherIncomeDetails/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainCapitalValueGain = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainCapitalValueGain/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainReliefForExpenditure = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainReliefForExpenditure/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainReliefForRentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainReliefForRentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainSelfAssessmentPayment = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainSelfAssessmentPayment/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainTerminalBenefits = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainTerminalBenefits/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainQualifyingPayments = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainQualifyingPayments/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainWhtOnInvestmentIncome = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainWhtOnInvestmentIncome/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainWhtOnServiceFeeReceived = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainWhtOnServiceFeeReceived/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainWhtWhichIsNotDeducted = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainWhtWhichIsNotDeducted/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateRequestAgainApit = async (incomeId) => {
+    try {
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainApit/${incomeId}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   //update submission status
   const updateSubmissionStatusBusinessIncome = async (incomeId) => {
     try {
@@ -603,9 +857,9 @@ const downloadDocument = (pdfUrl) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Business Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request
-                              </button>
+                              {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Business Income");updateRequestBusinessIncomeDetails(income.incomeId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                             </div>
                           </div>
                         ) : (
@@ -640,9 +894,9 @@ const downloadDocument = (pdfUrl) => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Business Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Business Income");updateRequestAgainBusinessIncomeDetails(income.incomeId)}}>
                                 Request Again
-                              </button>
+                              </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
                           </div>
                         )}
@@ -671,9 +925,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request
-                            </button>
+                          {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Employement Income");updateRequestEmploymentIncomeDetails(income.incomeId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                           </div>
                         </div>
                       ) : (
@@ -708,9 +962,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                          {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Employment Income");updateRequestAgainEmploymentIncomeDetails(income.incomeId)}}>
                               Request Again
-                            </button>
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                           </div>
                         </div>
                       )}
@@ -739,9 +993,9 @@ const downloadDocument = (pdfUrl) => {
                           </button>
                         </div>
                         <div className='request-button' style={{ width: "12%" }}>
-                          <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Investment Income"); const button = event.target; button.innerText = "Requested"; button.disabled = true; button.style.opacity = 0.8;}}>
-                            Request
-                          </button>
+                        {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Investment Income");updateRequestInvestmentIncomeDetails(income.incomeId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                         </div>
                       </div>
                     ) : (
@@ -776,9 +1030,9 @@ const downloadDocument = (pdfUrl) => {
                           </label>
                         </div>
                         <div style={{ width: "20%" }}>
-                          <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                            Request Again
-                          </button>
+                        {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Investment Income");updateRequestAgainInvestmentIncomeDetails(income.incomeId)}}>
+                          Request Again
+                        </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                         </div>
                       </div>
                     )}
@@ -806,9 +1060,9 @@ const downloadDocument = (pdfUrl) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Rent Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request
-                              </button>
+                            {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Relief For Rent Income");updateRequestReliefForRentIncome(income.reliefid);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                             </div>
                           </div>
                         ) : (
@@ -843,9 +1097,9 @@ const downloadDocument = (pdfUrl) => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Rent Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request Again
-                              </button>
+                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Rent Income");updateRequestAgainReliefForRentIncome(income.incomeId)}}>
+                              Request Again
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
                           </div>
                         )}
@@ -875,9 +1129,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{  textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Other Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request
-                            </button>
+                          {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Other Income");updateRequestOtherIncomeDetails(income.incomeId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                           </div>
                         </div>
                       ) : (
@@ -912,9 +1166,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Other Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                          {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Other Income");updateRequestAgainOtherIncomeDetails(income.incomeId)}}>
                               Request Again
-                            </button>
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                           </div>
                         </div>
                       )}
@@ -948,9 +1202,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Relief For Expenditure"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request
-                            </button>
+                          {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Relief For Expenditure");updateRequestReliefForExpenditure(income.reliefid);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                           </div>
                         </div>
                       ) : (
@@ -985,9 +1239,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle}onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Expenditure"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request Again
-                            </button>
+                          {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Expenditure");updateRequestAgainReliefForExpenditure(income.reliefid)}}>
+                            Request Again
+                          </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                           </div>
                         </div>
                       )}
@@ -1018,9 +1272,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Employment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                             Request
-                            </button>
+                          {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Qualifying Payments");updateRequestQualifyingPayments(income.reliefid);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                           </div>
                         </div>
                       ) : (
@@ -1055,9 +1309,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Qualifying Payments"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                          {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Qualifying Payments");updateRequestAgainQualifyingPayments(income.reliefid)}}>
                               Request Again
-                            </button>
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                           </div>
                         </div>
                       )}
@@ -1081,7 +1335,7 @@ const downloadDocument = (pdfUrl) => {
 
         <div className='title-3'>
           <h3 className='title-name'>Tax Credit</h3>
-                      <div className='apit'>
+            <div className='apit'>
               {apit ? (
                 <div className='title-1-submitted'>
                   <ListGroup variant="flush" style={containerStyle}>
@@ -1097,9 +1351,9 @@ const downloadDocument = (pdfUrl) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Apit"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                               Request
-                              </button>
+                            {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "APIT");updateRequestApit(income.APITId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                             </div>
                           </div>
                         ) : (
@@ -1134,9 +1388,9 @@ const downloadDocument = (pdfUrl) => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "APIT"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request Again
-                              </button>
+                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Apit");updateRequestAgainApit(income.APITId)}}>
+                              Request Again
+                              </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
                           </div>
                         )}
@@ -1166,9 +1420,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT on Service Fee Received"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request
-                            </button>
+                            {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "WHT on Service Fee Received");updateRequestWhtOnServiceFeeReceived(income.taxCreditId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                             </div>
                         </div>
                         ) : (
@@ -1203,9 +1457,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "WHT on Service Fee Received"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}} >
-                                Request Again
-                            </button>
+                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht On Service Fee Received");updateRequestAgainWhtOnServiceFeeReceived(income.taxCreditId)}}>
+                              Request Again
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
                         </div>
                         )}
@@ -1237,9 +1491,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT On Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request
-                            </button>
+                            {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "WHT On Investment Income");updateRequestWhtOnInvestmentIncome(income.taxCreditId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                             </div>
                         </div>
                         ) : (
@@ -1274,9 +1528,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "WHT On Investment Income"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request Again
-                            </button>
+                            {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht On Investment Income");updateRequestAgainWhtOnInvestmentIncome(income.taxCreditId)}}>
+                              Request Again
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
                         </div>
                         )}
@@ -1305,9 +1559,9 @@ const downloadDocument = (pdfUrl) => {
                                 </button>
                               </div>
                               <div className='request-button' style={{ width: "12%" }}>
-                                <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Self Assessment Payment"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
+                              {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Self Assessment Payment");updateRequestSelfAssessmentPayment(income.taxCreditId);} }}>
                                     Request
-                                </button>
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                               </div>
                             </div>
                           ) : (
@@ -1342,9 +1596,9 @@ const downloadDocument = (pdfUrl) => {
                                 </label>
                               </div>
                               <div style={{ width: "20%" }}>
-                                <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Self Assessment Payment"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                  Request Again
-                                </button>
+                              {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Self Assessment Payment");updateRequestAgainSelfAssessmentPayment(income.taxCreditId)}}>
+                                Request Again
+                              </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                               </div>
                             </div>
                           )}
@@ -1380,9 +1634,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Terminal Benefits"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request
-                            </button>
+                          {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Terminal Benefits");updateRequestTerminalBenefits(income.assessmentId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                           </div>
                         </div>
                       ) : (
@@ -1417,9 +1671,10 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Terminal Benefits"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request Again
-                            </button>
+                          {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Terminal Benefits");updateRequestAgainTerminalBenefits(income.incomeId)}}>
+                            Request Again
+                          </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
+
                           </div>
                         </div>
                       )}
@@ -1448,9 +1703,9 @@ const downloadDocument = (pdfUrl) => {
                             </button>
                           </div>
                           <div className='request-button' style={{ width: "12%" }}>
-                            <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "Capital Value Gain"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                             Request
-                            </button>
+                          {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "Capital Value & Gain");updateRequestCapitalValueGain(income.assessmentId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                           </div>
                         </div>
                       ) : (
@@ -1485,9 +1740,9 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                            <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Capital Value Gain"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request Again
-                            </button>
+                          {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Capital Value Gain");updateRequestAgainCapitalValueGain(income.assessmentId)}}>
+                            Request Again
+                          </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                           </div>
                         </div>
                       )}
@@ -1517,9 +1772,9 @@ const downloadDocument = (pdfUrl) => {
                               </button>
                             </div>
                             <div className='request-button' style={{ width: "12%" }}>
-                              <button type="button" className="btn btn-primary custom-button" style={{textAlign:"center", backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={(event) => {requestDocumnt(income.taxpayerId, "WHT Which Is Not Deducted"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                              Request
-                              </button>
+                            {(!income.requested)?(<button type="button" className="btn btn-primary custom-button" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)" }} onClick={() => {{requestDocumnt(income.taxpayerId, "WHT Which Is Not Deducted");updateRequestWhtWhichIsNotDeducted(income.assessmentId);} }}>
+                                    Request
+                              </button>):(<Badge className='badge-1' bg="success">Requested</Badge>)}
                             </div>
                           </div>
                         ) : (
@@ -1554,9 +1809,10 @@ const downloadDocument = (pdfUrl) => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                              <button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "WHT Which Is Not Deducted"); const button = event.target;button.innerText = "Requested";button.disabled = true;button.style.opacity = 0.8;}}>
-                                Request Again
-                              </button>
+                            {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht Which Is Not Deducted");updateRequestAgainWhtWhichIsNotDeducted(income.assessmentId)}}>
+                              Request Again
+                            </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
+
                             </div>
                           </div>
                         )}
