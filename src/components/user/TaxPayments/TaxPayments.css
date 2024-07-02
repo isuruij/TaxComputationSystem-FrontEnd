@@ -1,3 +1,17 @@
-h2{
-    color: aqua;
-}
+
+.tax-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+  
+  .tax-item span:first-child {
+    flex: 1;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px; /* Adjust the gap between buttons as needed */
+    margin-top: 10px; /* Optional: Add some margin on top if needed */
+  }
