@@ -446,7 +446,7 @@ const VerifyDocuments = () => {
 
   const updateRequestEmploymentIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestEmploymentIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestEmploymentIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -455,7 +455,7 @@ const VerifyDocuments = () => {
 
   const updateRequestInvestmentIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestInvestmentIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestInvestmentIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -464,7 +464,7 @@ const VerifyDocuments = () => {
 
   const updateRequestOtherIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestOtherIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestOtherIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -564,7 +564,7 @@ const VerifyDocuments = () => {
 
   const updateRequestAgainBusinessIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainBusinessIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainBusinessIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -573,7 +573,7 @@ const VerifyDocuments = () => {
 
   const updateRequestAgainEmploymentIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainEmploymentIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainEmploymentIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -582,7 +582,7 @@ const VerifyDocuments = () => {
 
   const updateRequestAgainInvestmentIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainInvestmentIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainInvestmentIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -591,7 +591,7 @@ const VerifyDocuments = () => {
 
   const updateRequestAgainOtherIncomeDetails = async (incomeId) => {
     try {
-      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainOtherIncomeDetails/${incomeId}`);
+      await axios.put(`${base_url}/api/SuperAdmin/updateRequestAgainOtherIncome/${incomeId}`);
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -1097,7 +1097,7 @@ const downloadDocument = (pdfUrl) => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Rent Income");updateRequestAgainReliefForRentIncome(income.incomeId)}}>
+                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Relief For Rent Income");updateRequestAgainReliefForRentIncome(income.reliefid)}}>
                               Request Again
                             </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
