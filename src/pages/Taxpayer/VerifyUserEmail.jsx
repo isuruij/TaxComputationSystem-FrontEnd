@@ -7,6 +7,7 @@ function VerifyUserEmail() {
   const location = useLocation();
   const [isVerified, setIsVerified] = useState("Started");
   const navigate = useNavigate();
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
   useEffect(() => {
     const handleVerification = async () => {
@@ -19,7 +20,7 @@ function VerifyUserEmail() {
 
         // Send a PATCH request to the server with the emailToken
         const response = await axios.patch(
-          "http://localhost:3000/api/taxpayer/verifyemail",
+          `${base_url}/api/taxpayer/verifyemail`,
           {
             emailToken: emailToken,
           }

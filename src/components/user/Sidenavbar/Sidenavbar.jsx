@@ -11,6 +11,7 @@ import taxhistory from "../../../assets/taxhistory.svg";
 import viewtax from "../../../assets/viewtax.svg";
 
 function Sidenavbar() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const buttonStyle = {
     textAlign: "left",
     display: "block",
@@ -25,7 +26,7 @@ function Sidenavbar() {
 
   const handleLogout = async (event) => {
     try {
-      const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
+      const res = await Axios.get(`${base_url}/api/taxpayer/logout`);
       navigate("/login");
       // location.reload(true);
     } catch (error) {
@@ -79,19 +80,7 @@ function Sidenavbar() {
         />
         <span>Registration</span>
       </button>
-      {/* <button
-        type="button"
-        className="btn btn-primary user"
-        style={buttonStyle}
-      >
-        <img
-        className="navImage"
-          src={DownloadTaxreport}
-          style={{ alignItems: "left", textAlign: "left" }}
-          alt="Icon"
-        />
-        <span>Download Report</span>
-      </button> */}
+
       <button
         onClick={() => {
           navigate("/viewtax");

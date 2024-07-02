@@ -34,6 +34,9 @@ import DFileUploadPage from "./pages/DataEntry/DFileUploadPage.jsx";
 import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
 import DDataEntryPart from "./pages/DataEntry/DDataEnterPage.jsx";
 import DViewSubmissions from "./pages/DataEntry/DViewSubmissions.jsx";
+import MailboxCompose from "./pages/SuperAdmin/MailboxCompose.jsx";
+import MailSent from "./pages/SuperAdmin/MailSent.jsx"
+import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx"
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -112,6 +115,9 @@ function App() {
           element={<UpdatePersonalDetails />}
         ></Route>
         <Route path="/taxpolicy" element={<TaxPolicy />}></Route>
+        <Route path="/MailboxCompose" element={<MailboxCompose/>}></Route>
+        <Route path="/MailboxInbox" element={<MailboxInbox/>}></Route>
+        <Route path="/MailSent" element={<MailSent/>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -16,6 +16,7 @@ import plus from "../../../../assets/plus.svg";
 import "./DSideNavBar.css";
 
 function Navigationbar() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const buttonStyle = {
     backgroundColor: "#049370",
     textAlign: "left",
@@ -39,8 +40,8 @@ function Navigationbar() {
 
   const handleLogout = async (event) => {
     try {
-      const res = await Axios.get("http://localhost:3000/api/taxpayer/logout");
-      navigate("/");
+      const res = await Axios.get(`${base_url}/api/taxpayer/logout`);
+      navigate("/Admin/login");
     } catch (error) {
       console.log(error);
     }
@@ -89,7 +90,7 @@ function Navigationbar() {
 
       <button
         onClick={() => {
-          navigate("/");
+          navigate("/MailboxCompose");
         }}
         type="button"
         className="btn btn-primary custom-button"
