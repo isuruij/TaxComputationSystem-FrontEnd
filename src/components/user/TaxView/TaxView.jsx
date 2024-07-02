@@ -75,7 +75,8 @@ function TaxView() {
     Axios.get(`${base_url}/api/taxpayer/getSummaryReport/${userId}`).then(
       (response) => {
         let filePath = response.data.Data.path;
-        if (response.data.Data.isVerified) {
+        if (response.data.Data.isVerified || 1) {
+          //change this after develop taxsummary report approve
           // console.log(filePath);
           window.open(filePath, "_blank");
         } else {

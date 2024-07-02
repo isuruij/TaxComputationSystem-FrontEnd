@@ -50,27 +50,29 @@ function DSubmissionDash() {
               borderRadius: "10px",
             }}
           >
-            <div style={{ display: "flex", marginLeft: "30px" }}>
-              <h5 style={{ marginLeft: "5px", cursor: "default" }}>
-                {value.name}
-              </h5>
-              <p
-                style={{
-                  backgroundColor: "#F86262",
-                  color: "white",
-                  borderRadius: "5px",
-                  marginLeft: "20px",
-                  padding: "5px",
-                  boxShadow: "1px 3px 2px 1px rgba(0, 0, 0, 0.44)",
-                  cursor: "default",
-                }}
-                onClick={() => {
-                  navigate(`/dataEntry/submission/view/${value.id}`);
-                }}
-              >
-                {value.numOfSubmissions} submissions
-              </p>
-            </div>
+            {
+              <div style={{ display: "flex", marginLeft: "30px" }}>
+                <h5 style={{ marginLeft: "5px", cursor: "default" }}>
+                  {value.name}
+                </h5>
+                <p
+                  style={{
+                    backgroundColor: "#F86262",
+                    color: "white",
+                    borderRadius: "5px",
+                    marginLeft: "20px",
+                    padding: "5px",
+                    boxShadow: "1px 3px 2px 1px rgba(0, 0, 0, 0.44)",
+                    cursor: "default",
+                  }}
+                  onClick={() => {
+                    navigate(`/dataEntry/submission/view/${value.id}`);
+                  }}
+                >
+                  {value.numOfSubmissions} submissions
+                </p>
+              </div>
+            }
 
             <div style={{ display: "flex", marginRight: "30px" }}>
               <Button
