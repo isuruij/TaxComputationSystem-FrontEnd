@@ -98,6 +98,7 @@ function App() {
     <Route path="/update/PersonalDetails" element={<UpdatePersonalDetails/>}></Route>
     <Route path="/view/PersonalDetails" element={<ViewPersonalDetails/>}></Route>
     <Route path="/taxpolicy" element={<TaxPolicy/>}></Route>
+    <Route path="/UserHistory" element={<UserHistory/>}></Route>
 
   </Routes>
   </BrowserRouter>    
