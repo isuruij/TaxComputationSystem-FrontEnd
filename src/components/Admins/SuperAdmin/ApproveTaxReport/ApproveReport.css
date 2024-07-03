@@ -1,0 +1,56 @@
+.report-list {
+  width: 77.5vw;
+  margin: 0 auto;
+  background-color: #f3fff5;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.report-list h2 {
+  text-align: center;
+  color: #049370;
+  font-weight: bold;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px; /* Adds space between the buttons */
+}
+
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-report,
+.approve-report {
+  background-color: #049370;
+  display: flex;
+  align-items: center;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.approve-report {
+  background-color: #049370;
+}
+
+.view-report:hover,
+.approve-report:hover {
+  opacity: 0.8;
+}
+
+.verified-label {
+  color: red;
+  font-weight: bold;
+  padding: 5px 10px;
+}
