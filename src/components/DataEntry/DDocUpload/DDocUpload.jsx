@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import cancel from "../../../assets/cancel.svg";
 
 function FileUpload() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -181,6 +182,12 @@ function FileUpload() {
                   type="file"
                   name="file"
                   onChange={(e) => setFile1(e.target.files[0])}
+                />
+                <img
+                  className="navImage"
+                  src={cancel}
+                  style={{ alignItems: "left", textAlign: "left" }}
+                  alt="Icon"
                 />
               </div>
             </div>
