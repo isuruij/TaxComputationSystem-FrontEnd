@@ -34,6 +34,21 @@ function TaxView() {
     return "";
   };
 
+  useEffect(() => {
+    Axios.get(`${base_url}/api/taxpayer/isTaxReportVerified/${userId}`)
+      .then((response) => {
+        console.log("this is");
+        console.log(response.data.Data);
+        // setReportRequests(response.data.data);
+        if (response.data.Data) {
+          setShow2(false);
+        }
+      })
+      .catch((error) =>
+        console.error("Error fetching report is verified column:", error)
+      );
+  }, []);
+
   function generatePDF() {
     if (!userDetails.isVerifiedUser) {
       console.log(userDetails.isVerifiedUser);
@@ -76,6 +91,7 @@ function TaxView() {
       (response) => {
         let filePath = response.data.Data.path;
         if (response.data.Data.isVerified) {
+          //change this after develop taxsummary report approve
           // console.log(filePath);
           window.open(filePath, "_blank");
         } else {

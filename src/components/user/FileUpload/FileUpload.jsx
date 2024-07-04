@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./FileUpload.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Cancel from "../../../assets/cancel.svg";
 
 function FileUpload() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -42,6 +43,62 @@ function FileUpload() {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
+
+  // Refs for file input elements
+  const fileInputRefs = useRef([]);
+
+  function handleFileRemove(fileNumber) {
+    switch (fileNumber) {
+      case 1:
+        setFile1(null);
+        break;
+      case 2:
+        setFile2(null);
+        break;
+      case 3:
+        setFile3(null);
+        break;
+      case 4:
+        setFile4(null);
+        break;
+      case 5:
+        setFile5(null);
+        break;
+      case 6:
+        setFile6(null);
+        break;
+      case 7:
+        setFile7(null);
+        break;
+      case 8:
+        setFile8(null);
+        break;
+      case 9:
+        setFile9(null);
+        break;
+      case 10:
+        setFile10(null);
+        break;
+      case 11:
+        setFile11(null);
+        break;
+      case 12:
+        setFile12(null);
+        break;
+      case 13:
+        setFile13(null);
+        break;
+      case 14:
+        setFile14(null);
+        break;
+      default:
+        break;
+    }
+
+    if (fileInputRefs.current[fileNumber - 1]) {
+      fileInputRefs.current[fileNumber - 1].value = "";
+    }
+  }
 
   function handleUpload() {
     const files = [
@@ -138,8 +195,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[0] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile1(e.target.files[0])}
                 />
+                {file1 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(1)}
+                  />
+                )}
               </div>
             </div>
 
@@ -153,8 +221,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[1] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile2(e.target.files[0])}
                 />
+                {file2 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(2)}
+                  />
+                )}
               </div>
             </div>
 
@@ -168,8 +247,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[2] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile3(e.target.files[0])}
                 />
+                {file3 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(3)}
+                  />
+                )}
               </div>
             </div>
 
@@ -183,8 +273,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[4] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile5(e.target.files[0])}
                 />
+                {file5 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(5)}
+                  />
+                )}
               </div>
             </div>
 
@@ -198,8 +299,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[3] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile4(e.target.files[0])}
                 />
+                {file4 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(4)}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -238,8 +350,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[5] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile6(e.target.files[0])}
                 />
+                {file6 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(6)}
+                  />
+                )}
               </div>
             </div>
 
@@ -253,8 +376,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[6] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile7(e.target.files[0])}
                 />
+                {file7 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(7)}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -293,8 +427,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[7] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile8(e.target.files[0])}
                 />
+                {file8 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(8)}
+                  />
+                )}
               </div>
             </div>
 
@@ -309,8 +454,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[8] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile9(e.target.files[0])}
                 />
+                {file9 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(9)}
+                  />
+                )}
               </div>
             </div>
 
@@ -324,8 +480,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[9] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile10(e.target.files[0])}
                 />
+                {file10 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(10)}
+                  />
+                )}
               </div>
             </div>
 
@@ -339,8 +506,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[10] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile11(e.target.files[0])}
                 />
+                {file11 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(11)}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -379,8 +557,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[11] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile12(e.target.files[0])}
                 />
+                {file12 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(12)}
+                  />
+                )}
               </div>
             </div>
 
@@ -394,8 +583,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[12] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile13(e.target.files[0])}
                 />
+                {file13 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(13)}
+                  />
+                )}
               </div>
             </div>
 
@@ -409,8 +609,19 @@ function FileUpload() {
                 <input
                   type="file"
                   name="files"
+                  ref={(el) => (fileInputRefs.current[13] = el)}
+                  style={{ marginRight: "-130px" }}
                   onChange={(e) => setFile14(e.target.files[0])}
                 />
+                {file14 && (
+                  <img
+                    className="navImage"
+                    src={Cancel}
+                    style={{ cursor: "pointer", marginLeft: "-5px" }}
+                    alt="Icon"
+                    onClick={() => handleFileRemove(14)}
+                  />
+                )}
               </div>
             </div>
           </div>

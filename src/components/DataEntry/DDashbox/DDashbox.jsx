@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function DDashbox() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const [listOfUsers, setListOfUsers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   let navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`${base_url}/api/dataentry/getusernames`).then((response) => {
-      console.log(response.data.Data);
-      setListOfUsers(response.data.Data);
+      const sortedUsers = response.data.Data.sort((a, b) => {
+        if (a.isVerifiedUser === b.isVerifiedUser) {
+          return a.name.localeCompare(b.name);
+        }
+        return a.isVerifiedUser ? -1 : 1;
+      });
+      setListOfUsers(sortedUsers);
     });
   }, []);
 
+  const filteredUsers = listOfUsers.filter((user) =>
+    user.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    //This is mapping part show all the users to data entry operator andalso show is Verified by admin or not
     <div
       style={{
         marginTop: "5px",
@@ -34,7 +42,25 @@ function DDashbox() {
         rel="stylesheet"
       ></link>
 
-      {listOfUsers.map((value, key) => {
+      <input
+        type="text"
+        placeholder="Search users..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        style={{
+          marginLeft: "5%",
+          marginBottom: "20px",
+          padding: "10px",
+          width: "90%",
+          borderRadius: "10px",
+          border: "0px",
+          fontFamily: "Poppins",
+          boxShadow: "1px 3px 2px 1px rgba(0, 0, 0, 0.44)",
+          outline: "none",
+        }}
+      />
+
+      {filteredUsers.map((value, key) => {
         return (
           <div
             key={key}
@@ -76,7 +102,7 @@ function DDashbox() {
                 paddingRight: "30px",
               }}
             >
-              {value.isVerifiedUser && (
+              {value.isVerifiedUser ? (
                 <div
                   style={{
                     color: "#049370",
@@ -86,8 +112,7 @@ function DDashbox() {
                 >
                   Verified
                 </div>
-              )}
-              {!value.isVerifiedUser && (
+              ) : (
                 <div
                   style={{
                     color: "#F86262",
