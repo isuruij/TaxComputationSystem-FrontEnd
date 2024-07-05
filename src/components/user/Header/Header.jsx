@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Notification from "../../../assets/Notification.svg";
-import Profile from "../../../assets/Profile.svg";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import "./Header.css";
 import Cookies from "js-cookie";
@@ -14,15 +14,27 @@ function Header() {
   const userId = jwtDecode(cookieValue).id;
   const name = jwtDecode(cookieValue).name;
 
+
   const navigate = useNavigate();
   
   const [count, setcount] = useState(0);
+  const [userData, setUserData] = useState({});
   useEffect(() => {
-    getUserDetails(); 
+    const getUserDetails = async () => {
+      try {
+        const response = await Axios.get(`${base_url}/api/taxpayer/getuserbasicdetails/${userId}`);
+        setUserData(response.data.Data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getNotifications(); 
+    getUserDetails();
+  },[userId]);
 
-  });
+  
 
-  const getUserDetails = async () => {
+  const getNotifications = async () => {
     try {
       const response = await Axios.get(
         `${base_url}/api/taxpayer/getNotifications/${userId}`
@@ -60,7 +72,14 @@ function Header() {
       ) : (
         <h6></h6>
       )}
-      <img src={Profile} alt="Profile" />
+      <div>
+            <img
+              src={userData.filePath}
+              alt="Profile"
+              className="img-fluid rounded-circle"
+              style={{ width: "40px", marginTop:"4px"}}
+            />
+          </div>
       <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
         <h6 className="headername">{name}</h6>
       </span>
