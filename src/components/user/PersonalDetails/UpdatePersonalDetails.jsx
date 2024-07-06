@@ -33,6 +33,7 @@ function UpdatePersonalDetails() {
     homeno: "",
     birthday: "",
     id: userId,
+    filePath: ""
   });
   const [OldPassword, setOldPassword] = useState("");
   const [Password, setPassword] = useState("");
@@ -71,6 +72,7 @@ function UpdatePersonalDetails() {
         homeno: response.data.Data.homeno,
         birthday: response.data.Data.birthday,
         id: response.data.Data.id,
+        filePath : response.data.Data.filePath,
       });
     } catch (error) {
       console.error(error);
@@ -169,11 +171,39 @@ function UpdatePersonalDetails() {
     }
   };
 
+    // Function to handle profile picture removal
+    const handleRemoveProPic = async () => {
+      try {
+        const shouldDelete = window.confirm(
+          "Are you sure you want to remove the profile pic?"
+        );
+        if (shouldDelete) {
+          const response = await Axios.put(`${base_url}/api/taxpayer/removepropic/${userId}`);
+          console.log(response.data);
+          window.location.reload();
+        }
+      } catch (error) {
+        if (error.response) {
+          console.log('Error Response:', error.response.data);
+        } else if (error.request) {
+          console.log('Error Request:', error.request);
+        } else {
+          console.log('Error Message:', error.message);
+        }
+      }
+    };
+    
+
   //Popup for confirmation
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
+
 
   return (
     <div>
@@ -387,9 +417,9 @@ function UpdatePersonalDetails() {
                         type="button"
                         className="btn btn-primary custom-button-1"
                       style={buttonStyle}
-                        onClick={{}}
+                        onClick={handleRemoveProPic}
                       >
-                        Delete
+                        remove
                       </button>
                   </div>
 
@@ -405,7 +435,7 @@ function UpdatePersonalDetails() {
                       >
                         upload
                       </Button>):(<Button
-                        onClick={handleProPic}
+                        onClick={handleShow1}
                         className="resetpasswordButton user"
                         style={{
                           marginTop: "5vh",
@@ -415,6 +445,20 @@ function UpdatePersonalDetails() {
                       >
                         Change
                       </Button>)}
+                      <Modal show={show1} onHide={handleClose1}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Are you Sure</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>Do you want to update or change profile picture ?</Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose1}>
+                            No
+                          </Button>
+                          <Button variant="primary" onClick={handleProPic}>
+                            Yes
+                          </Button>
+                        </Modal.Footer>
+                    </Modal>
 
                   </div>
                       
