@@ -38,6 +38,9 @@ import DViewSubmissions from "./pages/DataEntry/DViewSubmissions.jsx";
 import MailboxCompose from "./pages/SuperAdmin/MailboxCompose.jsx";
 import MailSent from "./pages/SuperAdmin/MailSent.jsx";
 import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx";
+import AdminsettingsPage from "./pages/SuperAdmin/SettingsPage.jsx";
+import DataentrysettingsPage from "./pages/DataEntry/DSettings.jsx";
+import DMailboxComposePage from "./pages/DataEntry/DMailboxCompose.jsx";
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -93,6 +96,11 @@ function App() {
           path="/dataEntry/submission/view/:userId"
           element={<DViewSubmissions />}
         ></Route>
+                <Route
+          path="/dataEntry/settings"
+          element={< DataentrysettingsPage/>}
+        ></Route>
+        <Route path="/dataEntry/MailboxComposePage" element={<DMailboxComposePage />}></Route>
 
         {/* Super Admin Routes */}
         <Route
@@ -123,6 +131,7 @@ function App() {
           path="SuperAdmin/approveReport"
           element={<ApproveReport />}
         ></Route>
+        <Route path="/adminsettings" element={<AdminsettingsPage />}></Route>
       </Routes>
     </BrowserRouter>
   );

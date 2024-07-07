@@ -87,6 +87,22 @@ function Navigationbar() {
 
       <button
         onClick={() => {
+          navigate("/adminsettings");
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={Settings}
+          style={{ alignItems: "left", textAlign: "left" }}
+          alt="Icon"
+        />
+        <span>Account Settings</span>
+      </button>
+
+      <button
+        onClick={() => {
           navigate("/SuperAdminSubmissions");
         }}
         type="button"

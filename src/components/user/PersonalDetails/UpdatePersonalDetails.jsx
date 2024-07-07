@@ -16,7 +16,6 @@ function UpdatePersonalDetails() {
 
   const cookieValue = Cookies.get("token");
   const userId = jwtDecode(cookieValue).id;
-  
 
   useEffect(() => {
     getUserDetails();
@@ -33,7 +32,7 @@ function UpdatePersonalDetails() {
     homeno: "",
     birthday: "",
     id: userId,
-    filePath: ""
+    filePath: "",
   });
   const [OldPassword, setOldPassword] = useState("");
   const [Password, setPassword] = useState("");
@@ -72,7 +71,7 @@ function UpdatePersonalDetails() {
         homeno: response.data.Data.homeno,
         birthday: response.data.Data.birthday,
         id: response.data.Data.id,
-        filePath : response.data.Data.filePath,
+        filePath: response.data.Data.filePath,
       });
     } catch (error) {
       console.error(error);
@@ -81,40 +80,39 @@ function UpdatePersonalDetails() {
 
   const handleProPic = async () => {
     try {
-
       const file = files;
       const formData = new FormData();
-      
-  
+
       if (file) {
         // Only append if the file is defined
-        formData.append("file", file); 
+        formData.append("file", file);
       }
-      console.log(file)
-      
-       await Axios
-        .post(`${base_url}/api/taxpayer/uploadpropic/${userId}`, formData)
+      console.log(file);
+
+      await Axios.post(
+        `${base_url}/api/taxpayer/uploadpropic/${userId}`,
+        formData
+      )
         .then((response) => {
           window.location.reload();
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
-
         });
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   //submiting PersonalDetails to backend
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-
       const res = await Axios.patch(
-      `${base_url}/api/taxpayer/updatebasicdetails`,values);
+        `${base_url}/api/taxpayer/updatebasicdetails`,
+        values
+      );
       if (res.data.Status === "Success") {
         window.location.reload();
       } else if (
@@ -171,28 +169,29 @@ function UpdatePersonalDetails() {
     }
   };
 
-    // Function to handle profile picture removal
-    const handleRemoveProPic = async () => {
-      try {
-        const shouldDelete = window.confirm(
-          "Are you sure you want to remove the profile pic?"
+  // Function to handle profile picture removal
+  const handleRemoveProPic = async () => {
+    try {
+      const shouldDelete = window.confirm(
+        "Are you sure you want to remove the profile pic?"
+      );
+      if (shouldDelete) {
+        const response = await Axios.put(
+          `${base_url}/api/taxpayer/removepropic/${userId}`
         );
-        if (shouldDelete) {
-          const response = await Axios.put(`${base_url}/api/taxpayer/removepropic/${userId}`);
-          console.log(response.data);
-          window.location.reload();
-        }
-      } catch (error) {
-        if (error.response) {
-          console.log('Error Response:', error.response.data);
-        } else if (error.request) {
-          console.log('Error Request:', error.request);
-        } else {
-          console.log('Error Message:', error.message);
-        }
+        console.log(response.data);
+        window.location.reload();
       }
-    };
-    
+    } catch (error) {
+      if (error.response) {
+        console.log("Error Response:", error.response.data);
+      } else if (error.request) {
+        console.log("Error Request:", error.request);
+      } else {
+        console.log("Error Message:", error.message);
+      }
+    }
+  };
 
   //Popup for confirmation
   const [show, setShow] = useState(false);
@@ -203,7 +202,6 @@ function UpdatePersonalDetails() {
 
   const handleClose1 = () => setShow1(false);
   const handleShow1 = () => setShow1(true);
-
 
   return (
     <div>
@@ -231,7 +229,7 @@ function UpdatePersonalDetails() {
             className="twoparts"
             style={{ display: "flex", flexDirection: "row" }}
           >
-            <div style={{width:"35%"}}>
+            <div style={{ width: "35%" }}>
               <div className="form-group">
                 <label className="lables">Email</label>
                 <div className="custom_input">
@@ -351,7 +349,7 @@ function UpdatePersonalDetails() {
 
             <div
               className="contactSection"
-              style={{ marginLeft: "5vw", marginTop: "5vh", width:"20%" }}
+              style={{ marginLeft: "5vw", marginTop: "5vh", width: "20%" }}
             >
               <label className="lables">Contact Numbers</label>
               <br></br>
@@ -401,8 +399,11 @@ function UpdatePersonalDetails() {
                 </div>
               </div>
             </div>
-            <div className="uploadProfilePic" style={{ marginLeft: "5vw", marginTop: "5vh" , width:"30%"}}>
-            <label className="lables">Upload your profile picture</label>
+            <div
+              className="uploadProfilePic"
+              style={{ marginLeft: "5vw", marginTop: "5vh", width: "30%" }}
+            >
+              <label className="lables">Upload your profile picture</label>
               <br></br>
               <br></br>
               <input
@@ -411,61 +412,63 @@ function UpdatePersonalDetails() {
                 id="propic"
                 onChange={(e) => setFiles(e.target.files[0])}
               />
-                  <div style={{display:"flex", gap:"2px"}}>
-                  <div style={{width:"40%"}}>
-                      <button
-                        type="button"
-                        className="btn btn-primary custom-button-1"
-                      style={buttonStyle}
-                        onClick={handleRemoveProPic}
-                      >
-                        remove
-                      </button>
-                  </div>
+              <div style={{ display: "flex", gap: "2px" }}>
+                <div style={{ width: "40%" }}>
+                  <button
+                    type="button"
+                    className="btn btn-primary custom-button-1"
+                    style={buttonStyle}
+                    onClick={handleRemoveProPic}
+                  >
+                    remove
+                  </button>
+                </div>
 
-                   <div style={{width:"40%"}}>
-                      {(userData.filePath === null||userData.filePath === "")? (<Button
-                        onClick={handleProPic}
-                        className="resetpasswordButton user"
-                        style={{
-                          marginTop: "5vh",
-                          borderRadius: "10px",
-                          marginLeft: "5vw",
-                        }}
-                      >
-                        upload
-                      </Button>):(<Button
-                        onClick={handleShow1}
-                        className="resetpasswordButton user"
-                        style={{
-                          marginTop: "5vh",
-                          borderRadius: "10px",
-                          marginLeft: "5vw",
-                        }}
-                      >
-                        Change
-                      </Button>)}
-                      <Modal show={show1} onHide={handleClose1}>
-                        <Modal.Header closeButton>
-                          <Modal.Title>Are you Sure</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Do you want to update or change profile picture ?</Modal.Body>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={handleClose1}>
-                            No
-                          </Button>
-                          <Button variant="primary" onClick={handleProPic}>
-                            Yes
-                          </Button>
-                        </Modal.Footer>
-                    </Modal>
-
-                  </div>
-                      
-                  </div>
-
+                <div style={{ width: "40%" }}>
+                  {userData.filePath === null || userData.filePath === "" ? (
+                    <Button
+                      onClick={handleProPic}
+                      className="resetpasswordButton user"
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                    >
+                      upload
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleShow1}
+                      className="resetpasswordButton user"
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                    >
+                      Change
+                    </Button>
+                  )}
+                  <Modal show={show1} onHide={handleClose1}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Are you Sure</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Do you want to update or change profile picture ?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose1}>
+                        No
+                      </Button>
+                      <Button variant="primary" onClick={handleProPic}>
+                        Yes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+              </div>
             </div>
-
           </div>
 
           <div className="updateDetails" style={{ display: "flex" }}>
@@ -501,8 +504,8 @@ function UpdatePersonalDetails() {
           </div>
         </div>
 
-        <div className="passwordChange" style={{ marginLeft: "6vw" }}>
-          <h5
+        <div style={{ marginLeft: "6vw" }}>
+          <h4
             style={{
               marginBottom: "1%",
               color: "#0085FF",
@@ -510,7 +513,7 @@ function UpdatePersonalDetails() {
             }}
           >
             Change Password
-          </h5>
+          </h4>
 
           <div className="form-group">
             <label className="lables">Current Password</label>

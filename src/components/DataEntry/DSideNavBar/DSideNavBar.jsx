@@ -66,9 +66,9 @@ function DSideNavBar() {
       </button>
 
       {/*This is Account Settings*/}
-      {/* <button
+      <button
         onClick={() => {
-          navigate("/dataEntry/dashboard");
+          navigate("/dataEntry/settings");
         }}
         type="button"
         className="btn btn-primary custom-button"
@@ -80,7 +80,7 @@ function DSideNavBar() {
           alt="Icon"
         />
         <span>Account Settings</span>
-      </button> */}
+      </button>
 
       {/*This is Submissions*/}
       <button
@@ -101,9 +101,9 @@ function DSideNavBar() {
 
       {/*This is MAil Box*/}
       <button
-        // onClick={() => {
-        //   navigate("/dataEntry/dashboard");
-        // }}
+        onClick={() => {
+          navigate("/dataEntry/MailboxComposePage");
+        }}
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
