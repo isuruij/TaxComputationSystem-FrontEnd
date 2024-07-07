@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
+
+import Inbox from "../../components/Admins/SuperAdmin/Mailbox/Inbox";
+
 import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
 import Navigationbar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
-import MailNavigation from '../../components/DataEntry/Mailbox/MailNavigation';
-import MailboxCompose from "../../components/Admins/SuperAdmin/Mailbox/MailboxCompose";
+import MailNavigation from "../../components/DataEntry/Mailbox/MailNavigation";
 
-export default function DMailboxComposePage() {
+export default function DMailboxInbox() {
   return (
     <div>
       <AdminHeader />
@@ -25,7 +27,7 @@ export default function DMailboxComposePage() {
                  <MailNavigation/>
             </div>
             <div style={{width:"80%"}}>
-                 <MailboxCompose/>
+                 <Inbox/>
             </div>
           </div>
         </div>

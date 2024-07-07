@@ -41,6 +41,8 @@ import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx";
 import AdminsettingsPage from "./pages/SuperAdmin/SettingsPage.jsx";
 import DataentrysettingsPage from "./pages/DataEntry/DSettings.jsx";
 import DMailboxComposePage from "./pages/DataEntry/DMailboxCompose.jsx";
+import DMailSent from "./pages/DataEntry/DMailSent.jsx";
+import DMailboxInbox from "./pages/DataEntry/DMailboxInbox.jsx";
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -101,6 +103,8 @@ function App() {
           element={< DataentrysettingsPage/>}
         ></Route>
         <Route path="/dataEntry/MailboxComposePage" element={<DMailboxComposePage />}></Route>
+        <Route path="/dataEntry/MailSent" element={<DMailSent />}></Route>
+        <Route path="/dataEntry/MailboxInbox" element={<DMailboxInbox />}></Route>
 
         {/* Super Admin Routes */}
         <Route
