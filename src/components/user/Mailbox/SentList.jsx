@@ -1,20 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import trashCan from "../../../../assets/trash-can-solid.svg";
+import trashCan from "../../../assets/trash-can-solid.svg";
+import closebutton from "../../../assets/closebutton.svg";
 import "./List.css";
 
 const SentList = () => {
   const navigate = useNavigate();
   const [sentdemail, setsentdemail] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-
   useEffect(() => {
     const fetchAllsentemail = async () => {
       try {
@@ -46,13 +43,11 @@ const SentList = () => {
     }
   };
 
-  const handleShowModal = (email) => {
+  const handleEmailClick = (email) => {
     setSelectedEmail(email);
-    setShowModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const handleClosePopup = () => {
     setSelectedEmail(null);
   };
 
@@ -76,15 +71,15 @@ const SentList = () => {
         />
       </div>
       <div>
-        <h3 style={{ paddingLeft: "50px", color: "#008060" }}>Sent Emails</h3>
-        <ListGroup variant="flush" style={containerStyle}>
+        <h3 style={{ paddingLeft: "50px", color: "#0085FF" }}>Inbox</h3>
+        <ListGroup variant="primary" style={containerStyle}>
           {filteredemail.map((email) => (
             <ListGroup.Item
               key={email.emailId}
-              style={{ borderRadius: "10px", margin: "5px", border: "2px solid #B3F9D7" }}
-              onClick={() => handleShowModal(email)}
+              style={{ borderRadius: "10px", margin: "5px", border: "2px solid #0085FF" }}
+              onClick={() => handleEmailClick(email)}
             >
-              <div className="custom-button-6">
+              <div className="custom-button-7">
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "20px" }}>{email.Taxpayer?.name || 'No Taxpayer Name'}</div>
                   <div style={{ fontSize: "12px", textAlign: "right", color: "#008060" }}>
@@ -100,7 +95,7 @@ const SentList = () => {
                   <div>
                     <button
                       type="button"
-                      className="btn btn-primary custom-button-0"
+                      className="btn btn-primary custom-button-7"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDelete(email.emailId);
@@ -115,33 +110,25 @@ const SentList = () => {
           ))}
         </ListGroup>
       </div>
-      {selectedEmail && (
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header>
-            <Modal.Title style={{ color: "#008060" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div>
-              <strong>To:</strong> {selectedEmail.Taxpayer?.name || 'No Taxpayer Name'}
-            </div>
-            <div>
-              <strong>Email:</strong> {selectedEmail.Taxpayer?.email || 'No Email'}
-            </div>
-            <div>
-              <strong>Sent:</strong> {new Date(selectedEmail?.sentDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })}
-            </div>
-            <hr />
-            <div>
-              {selectedEmail?.message || 'No content'}
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="danger" onClick={handleCloseModal}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
+      {/* {selectedEmail && (
+        <div className="popup-container">
+          <div className="popup">
+            <img
+              src={closebutton}
+              alt="Close"
+              className="close-button"
+              onClick={handleClosePopup}
+            />
+            <h2 className="popup-title">{selectedEmail.subject}</h2>
+            <p className="popup-text"><strong>To:</strong> {selectedEmail.Taxpayer?.name || 'No Taxpayer Name'}</p>
+            <p className="popup-text"><strong>Email:</strong> {selectedEmail.Taxpayer?.email || 'No Email'}</p>
+            <p className="popup-text"><strong>Date:</strong> {new Date(selectedEmail.sentDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+            <p className="popup-text"><strong>Time:</strong> {new Date(selectedEmail.sentDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}</p>
+            <p className="popup-text"><strong>Message:</strong></p>
+            <p className="popup-text">{selectedEmail.message}</p>
+          </div>
+        </div>
+      )} */}
     </div>
   );
 };

@@ -115,6 +115,22 @@ function Sidenavbar() {
       </button>
       <button
         onClick={() => {
+          navigate("/MailboxInboxTaxpayer");
+        }}
+        type="button"
+        className="btn btn-primary user"
+        style={buttonStyle}
+      >
+        <img
+        className="navImage"
+          src={taxhistory}
+          style={{ alignItems: "left", textAlign: "left" }}
+          alt="Icon"
+        />
+        <span>Message box</span>
+      </button>
+      <button
+        onClick={() => {
           handleLogout();
         }}
         type="button"

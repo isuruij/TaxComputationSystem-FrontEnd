@@ -2,26 +2,27 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './MailboxCompose.css';
-import attach from "../../../../assets/attach.svg";
-import crossIcon from "../../../../assets/cross.svg"; // Ensure you have this icon
-import Axios from 'axios';
+import Cookies from "js-cookie";
+import Axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import attach from "../../../assets/attach.svg";
+import crossIcon from "../../../assets/cross.svg"; // Ensure you have this icon
 
-const EmailCompose = ({ recipientEmail }) => {
+
+const cookieValue = Cookies.get("token");
+const userId = jwtDecode(cookieValue).id;
+
+const EmailCompose = () => {
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-    const [email, setEmail] = useState({ to: '', subject: '', body: '', attachedFile: null });
+    const [email, setEmail] = useState({ subject: '', body: '', attachedFile: null });
     const [fileName, setFileName] = useState('');
     const fileInputRef = useRef(null); // Reference to the hidden file input
 
-    useEffect(() => {
-        setEmail(prevState => ({ ...prevState, to: recipientEmail }));
-    }, [recipientEmail]);
 
     const sendMail = async () => {
         try {
-            const res = await Axios.post(
-                `${base_url}/api/SuperAdmin/composemail`,
-                email
-            );
+            const res = await Axios.post(`${base_url}/api/taxpayer/composemail/${userId}`, email);
+            console.log(res)
             console.log(email);
         } catch (err) {
             console.log(err);
@@ -62,24 +63,13 @@ const EmailCompose = ({ recipientEmail }) => {
         console.log(email);
         sendMail();
         alert('Email sent successfully!');
-        setEmail({ to: '', subject: '', body: '', attachedFile: null });
+        setEmail({subject: '', body: '', attachedFile: null });
         setFileName('');
     };
 
     return (
-        <Container className="mt-5 email-to added">
+        <Container className="mt-5 email-to added-1">
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="to">
-                    <Form.Label>To</Form.Label>
-                    <Form.Control
-                        type="email"
-                        name="to"
-                        value={email.to}
-                        onChange={handleChange}
-                        placeholder="Enter recipient's email"
-                        required
-                    />
-                </Form.Group>
 
                 <Form.Group className="mb-3 email-subject" controlId="subject">
                     <Form.Label>Subject</Form.Label>

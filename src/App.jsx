@@ -38,6 +38,11 @@ import MailboxCompose from "./pages/SuperAdmin/MailboxCompose.jsx";
 import MailSent from "./pages/SuperAdmin/MailSent.jsx"
 import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx"
 
+import MailboxInboxTaxpayer from "./pages/Taxpayer/MailboxInboxTaxpayer.jsx";
+import MailboxComposePage from "./pages/Taxpayer/MailboxCompose.jsx";
+
+import MailSentTaxpayer from "./pages/Taxpayer/MailSentTaxpayer.jsx"
+
 function App() {
   Axios.defaults.withCredentials = true;
 
@@ -71,6 +76,11 @@ function App() {
         <Route path="/taxhistory" element={<TaxHistory />}></Route>
         <Route path="/resetpassword" element={<ResetPasswordPage />}></Route>
         <Route path="/viewall" element={<ViewAllPage />}></Route>
+
+        <Route path="/MailboxInboxTaxpayer" element={<MailboxInboxTaxpayer/>}></Route>
+        <Route path="/MailboxComposeTaxpayer" element={<MailboxComposePage/>}></Route>
+        <Route path="/MailSentTaxpayer" element={<MailSentTaxpayer/>}></Route>
+        {/* <Route path="/MailSentTaxpayer" element={<MailSent/>}></Route> */}
 
         {/*Data Entry routes*/}
         <Route path="/dataEntry/dashboard" element={<DDashboard />}></Route>
