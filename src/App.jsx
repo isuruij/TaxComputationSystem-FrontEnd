@@ -43,6 +43,7 @@ import DataentrysettingsPage from "./pages/DataEntry/DSettings.jsx";
 import DMailboxComposePage from "./pages/DataEntry/DMailboxCompose.jsx";
 import DMailSent from "./pages/DataEntry/DMailSent.jsx";
 import DMailboxInbox from "./pages/DataEntry/DMailboxInbox.jsx";
+import ManageAdminPage from "./pages/SuperAdmin/ManageAdminPage.jsx";
 
 function App() {
   Axios.defaults.withCredentials = true;
@@ -136,6 +137,7 @@ function App() {
           element={<ApproveReport />}
         ></Route>
         <Route path="/adminsettings" element={<AdminsettingsPage />}></Route>
+        <Route path="/manageadmin" element={<ManageAdminPage/>}></Route>
       </Routes>
     </BrowserRouter>
   );

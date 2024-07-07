@@ -10,6 +10,7 @@ import home from "../../../../assets/home.svg";
 import logout from "../../../../assets/logout.svg";
 import mail from "../../../../assets/mail.svg";
 import newadmin from "../../../../assets/newadmin.svg";
+import removeadmin from "../../../../assets/removeadmin.svg";
 import plus from "../../../../assets/plus.svg";
 
 import "./DSideNavBar.css";
@@ -156,6 +157,27 @@ function Navigationbar() {
           alt="Icon"
         />
         <span>Create new Admin</span>
+      </button>
+
+      <button
+        onClick={() => {
+          navigate("../manageadmin");
+        }}
+        type="button"
+        className="btn btn-primary custom-button"
+        style={buttonStyle}
+      >
+        <img
+          src={removeadmin}
+          style={{
+            alignItems: "left",
+            textAlign: "left",
+            width: "10%",
+            marginRight: "10px",
+          }}
+          alt="Icon"
+        />
+        <span>Manage Admins</span>
       </button>
 
       <button
