@@ -86,7 +86,7 @@ function Header() {
           }
           alt="Profile"
           className="img-fluid rounded-circle"
-          style={{ width: "30px", marginTop: "10px" }}
+          style={{ width: "30px", marginTop: "10px" ,height:"30px"}}
         />
       </div>
       <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
