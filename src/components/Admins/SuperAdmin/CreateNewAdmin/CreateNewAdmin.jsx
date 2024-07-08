@@ -185,7 +185,7 @@ function CreateNewAdmin() {
             className="form-check-label lables"
             style={{ fontWeight: "700", color: "#008060" }}
           >
-            Admin
+            Data Entry Operator
           </label>
         </div>
 

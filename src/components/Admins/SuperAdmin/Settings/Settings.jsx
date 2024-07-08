@@ -128,10 +128,11 @@ function Settings() {
           <Button
             onClick={handleNameChange}
             style={{
-              marginTop: "1vh",
+              marginTop: "2vh",
               borderRadius: "10px",
               marginLeft: "0",
               backgroundColor: "#049370",
+              border:"none"
             }}
           >
             Change
@@ -200,10 +201,11 @@ function Settings() {
         <Button
           onClick={handlePasswordChange}
           style={{
-            marginTop: "5vh",
+            marginTop: "2vh",
             borderRadius: "10px",
-            marginLeft: "21vw",
+            marginLeft: "0vw",
             backgroundColor: "#049370",
+            border:"none"
           }}
         >
           Change
