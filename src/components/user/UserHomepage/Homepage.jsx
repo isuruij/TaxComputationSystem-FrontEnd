@@ -9,6 +9,8 @@ import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "./Homepagestyle.css";
+import defaultprofile from "../../../assets/defaultprofile.svg";
+
 
 
 export default function Homepage() {
@@ -260,10 +262,14 @@ const calculateProgress = () => {
         <div className="row">
           <div>
             <img
-              src={userData.filePath}
+              src={userData.filePath === null || userData.filePath === "" ? defaultprofile : userData.filePath}
               alt="Profile"
               className="img-fluid rounded-circle"
               style={{ width: "200px"}}
+              onError={(e) => {
+                e.target.onerror = null; // Prevents looping if default image also fails
+                e.target.src = "path/to/default/image.jpg";
+              }}
             />
           </div>
           <h2
