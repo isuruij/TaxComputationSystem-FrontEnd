@@ -101,9 +101,6 @@ function DSideNavBar() {
 
       {/*This is MAil Box*/}
       <button
-        onClick={() => {
-          navigate("/dataEntry/MailboxComposePage");
-        }}
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}

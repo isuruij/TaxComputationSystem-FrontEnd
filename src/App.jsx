@@ -40,9 +40,7 @@ import MailSent from "./pages/SuperAdmin/MailSent.jsx";
 import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx";
 import AdminsettingsPage from "./pages/SuperAdmin/SettingsPage.jsx";
 import DataentrysettingsPage from "./pages/DataEntry/DSettings.jsx";
-import DMailboxComposePage from "./pages/DataEntry/DMailboxCompose.jsx";
-import DMailSent from "./pages/DataEntry/DMailSent.jsx";
-import DMailboxInbox from "./pages/DataEntry/DMailboxInbox.jsx";
+
 import ManageAdminPage from "./pages/SuperAdmin/ManageAdminPage.jsx";
 
 import MailboxInboxTaxpayer from "./pages/Taxpayer/MailboxInboxTaxpayer.jsx";
@@ -51,7 +49,7 @@ import MailboxComposePage from "./pages/Taxpayer/MailboxCompose.jsx";
 import MailSentTaxpayer from "./pages/Taxpayer/MailSentTaxpayer.jsx"
 
 import DMailboxInbox from "./pages/DataEntry/DMailboxInbox.jsx";
-import DMailboxComposePage from "./pages/DataEntry/DMailboxCompose.jsx";
+import DMailboxComposePage from "./pages/DataEntry/DMailboxComposePage.jsx";
 import DMailSent from "./pages/DataEntry/DMailSent.jsx";
 
 function App() {
@@ -120,20 +118,6 @@ function App() {
         <Route path="/dataEntry/MailboxComposePage" element={<DMailboxComposePage />}></Route>
         <Route path="/dataEntry/MailSent" element={<DMailSent />}></Route>
         <Route path="/dataEntry/MailboxInbox" element={<DMailboxInbox />}></Route>
-
-        <Route
-          path="/dataEntry/Mailboxinbox"
-          element={<DMailboxInbox/>}
-        ></Route>
-        <Route
-          path="/dataEntry/Mailboxcompose"
-          element={<DMailboxComposePage/>}
-        ></Route>
-        <Route
-          path="/dataEntry/MailSent"
-          element={<DMailSent/>}
-        ></Route>
-
 
         {/* Super Admin Routes */}
         <Route

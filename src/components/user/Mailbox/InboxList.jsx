@@ -35,7 +35,6 @@ const InboxList = () => {
     email.Taxpayer?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Function to sort emails by receivedDate in descending order
   const sortedEmails = filteredemail.sort((a, b) => new Date(b.receivedDate) - new Date(a.receivedDate));
 
   const handleDelete = async (emailId) => {
@@ -88,7 +87,7 @@ const InboxList = () => {
               style={{ borderRadius: "10px", margin: "5px", border: "2px solid #0085FF" }}
               onClick={() => handleShowModal(email)}
             >
-              <button className="custom-button-7">
+              <div className="custom-button-7">
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "20px" }}>Tax Computation System</div>
                   <div style={{ fontSize: "12px", textAlign: "right", color: "#0085FF" }}>
@@ -107,7 +106,7 @@ const InboxList = () => {
                     </button>
                   </div>
                 </div>
-              </button>
+              </div>
             </ListGroup.Item>
           ))}
         </ListGroup>

@@ -99,10 +99,9 @@ const SentList = () => {
                     {email.message ? email.message.split(' ').slice(0, 25).join(' ') + '...' : 'No content'}
                   </div>
                   <div>
-                  <button type="button" className="btn btn-primary custom-button-0" onClick={(e) => { e.stopPropagation(); handleDelete(email.emailId); }}>
+                    <button type="button" className="btn btn-primary custom-button-0" onClick={(e) => { e.stopPropagation(); handleDelete(email.emailId); }}>
                       <img src={trashCan} alt="" style={{ width: "20px" }} />
                     </button>
-
                   </div>
                 </div>
               </div>

@@ -9,8 +9,8 @@ export default function DMailNavigation() {
   return (
     <div>
         <div style={{margin:"40px"}}>
-            <div> <button type="button" className="btn btn-success" style={{margin:"10px", width:"150px"}} onClick={() => {navigate("/dataEntry/Mailboxcompose")}}> <img src={compose} alt="" style={{width:"20px", marginRight:"5px"}} /> Compose</button></div>
-            <div><button type="button" className="btn btn-success" style={{margin:"10px" , width:"150px"}} onClick={() => {navigate("/dataEntry/Mailboxinbox")}}><img src={inbox} alt="" style={{width:"22px", marginRight:"10px"}} /> InBox</button></div>
+            <div> <button type="button" className="btn btn-success" style={{margin:"10px", width:"150px"}} onClick={() => {navigate("/dataEntry/MailboxComposePage")}}> <img src={compose} alt="" style={{width:"20px", marginRight:"5px"}} /> Compose</button></div>
+            <div><button type="button" className="btn btn-success" style={{margin:"10px" , width:"150px"}} onClick={() => {navigate("/dataEntry/MailboxInbox")}}><img src={inbox} alt="" style={{width:"22px", marginRight:"10px"}} /> InBox</button></div>
             <div> <button type="button" className="btn btn-success" style={{margin:"10px" , width:"150px"}}onClick={() => {navigate("/dataEntry/MailSent")}}><img src={sent} alt="" style={{width:"27px", marginRight:"10px"}} /> Sent</button></div> 
         </div>
     </div>

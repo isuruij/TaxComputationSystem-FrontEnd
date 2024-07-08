@@ -9,15 +9,15 @@ import attach from "../../../assets/attach.svg";
 import crossIcon from "../../../assets/cross.svg"; // Ensure you have this icon
 
 
-const cookieValue = Cookies.get("token");
-const userId = jwtDecode(cookieValue).id;
+
 
 const EmailCompose = () => {
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     const [email, setEmail] = useState({ subject: '', body: '', attachedFile: null });
     const [fileName, setFileName] = useState('');
     const fileInputRef = useRef(null); // Reference to the hidden file input
-
+     const cookieValue = Cookies.get("token");
+    const userId = jwtDecode(cookieValue).id;
 
     const sendMail = async () => {
         try {
