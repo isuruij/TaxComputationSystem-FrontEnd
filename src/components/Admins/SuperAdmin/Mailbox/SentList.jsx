@@ -12,6 +12,7 @@ const SentList = () => {
   const [sentdemail, setsentdemail] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
 
@@ -26,13 +27,14 @@ const SentList = () => {
       }
     };
     fetchAllsentemail();
-  }, []);
-
-  const [searchTerm, setSearchTerm] = useState("");
+  }, [base_url]);
 
   const filteredemail = sentdemail.filter((email) =>
     email.Taxpayer?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Function to sort emails by sentDate in descending order
+  const sortedEmails = filteredemail.sort((a, b) => new Date(b.sentDate) - new Date(a.sentDate));
 
   const handleDelete = async (emailId) => {
     try {
@@ -78,7 +80,7 @@ const SentList = () => {
       <div>
         <h3 style={{ paddingLeft: "50px", color: "#008060" }}>Sent Emails</h3>
         <ListGroup variant="flush" style={containerStyle}>
-          {filteredemail.map((email) => (
+          {sortedEmails.map((email) => (
             <ListGroup.Item
               key={email.emailId}
               style={{ borderRadius: "10px", margin: "5px", border: "2px solid #B3F9D7" }}

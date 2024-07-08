@@ -108,7 +108,7 @@ const InboxList = () => {
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title style={{ color: "#008060" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -119,7 +119,7 @@ const InboxList = () => {
             <strong>Email:</strong> {selectedEmail?.Taxpayer?.email || 'No Email'}
           </div>
           <div>
-            <strong>Received:</strong> {selectedEmail?.sentDate ? new Date(selectedEmail.sentDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : 'Date not available'}
+            <strong>Received:</strong> {selectedEmail?.receivedDate ? new Date(selectedEmail.receivedDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : 'Date not available'}
           </div>
           <hr />
           <div>

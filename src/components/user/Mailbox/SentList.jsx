@@ -3,33 +3,37 @@ import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useNavigate } from "react-router-dom";
 import trashCan from "../../../assets/trash-can-solid.svg";
-import closebutton from "../../../assets/closebutton.svg";
 import "./List.css";
+import { Modal, Button } from "react-bootstrap";
 
 const SentList = () => {
   const navigate = useNavigate();
-  const [sentdemail, setsentdemail] = useState([]);
+  const [sentEmails, setSentEmails] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
+
   useEffect(() => {
-    const fetchAllsentemail = async () => {
+    const fetchAllSentEmails = async () => {
       try {
         const res = await axios.get(`${base_url}/api/SuperAdmin/getsentemail`);
         console.log(res.data);
-        setsentdemail(res.data);
+        setSentEmails(res.data);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchAllsentemail();
-  }, []);
+    fetchAllSentEmails();
+  }, [base_url]);
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredemail = sentdemail.filter((email) =>
+  const filteredEmails = sentEmails.filter((email) =>
     email.Taxpayer?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const sortedEmails = filteredEmails.sort((a, b) => new Date(b.sentDate) - new Date(a.sentDate));
 
   const handleDelete = async (emailId) => {
     try {
@@ -43,11 +47,13 @@ const SentList = () => {
     }
   };
 
-  const handleEmailClick = (email) => {
+  const handleShowModal = (email) => {
     setSelectedEmail(email);
+    setShowModal(true);
   };
 
-  const handleClosePopup = () => {
+  const handleCloseModal = () => {
+    setShowModal(false);
     setSelectedEmail(null);
   };
 
@@ -73,36 +79,30 @@ const SentList = () => {
       <div>
         <h3 style={{ paddingLeft: "50px", color: "#0085FF" }}>Inbox</h3>
         <ListGroup variant="primary" style={containerStyle}>
-          {filteredemail.map((email) => (
+          {sortedEmails.map((email) => (
             <ListGroup.Item
               key={email.emailId}
               style={{ borderRadius: "10px", margin: "5px", border: "2px solid #0085FF" }}
-              onClick={() => handleEmailClick(email)}
+              onClick={() => handleShowModal(email)}
             >
               <div className="custom-button-7">
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "20px" }}>{email.Taxpayer?.name || 'No Taxpayer Name'}</div>
-                  <div style={{ fontSize: "12px", textAlign: "right", color: "#008060" }}>
+                  <div style={{ fontSize: "12px", textAlign: "right", color: "blue" }}>
                     {new Date(email.sentDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long' })}<br />
                     {new Date(email.sentDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}
                   </div>
                 </div>
-                <div style={{ fontSize: "15px", color: "#008060" }}>{email.subject || 'No Subject'}</div>
+                <div style={{ fontSize: "15px", color: "blue" }}>{email.subject || 'No Subject'}</div>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "12px", fontStyle: "italic", width: "80%" }}>
                     {email.message ? email.message.split(' ').slice(0, 25).join(' ') + '...' : 'No content'}
                   </div>
                   <div>
-                    <button
-                      type="button"
-                      className="btn btn-primary custom-button-7"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(email.emailId);
-                      }}
-                    >
+                  <button type="button" className="btn btn-primary custom-button-0" onClick={(e) => { e.stopPropagation(); handleDelete(email.emailId); }}>
                       <img src={trashCan} alt="" style={{ width: "20px" }} />
                     </button>
+
                   </div>
                 </div>
               </div>
@@ -110,25 +110,30 @@ const SentList = () => {
           ))}
         </ListGroup>
       </div>
-      {/* {selectedEmail && (
-        <div className="popup-container">
-          <div className="popup">
-            <img
-              src={closebutton}
-              alt="Close"
-              className="close-button"
-              onClick={handleClosePopup}
-            />
-            <h2 className="popup-title">{selectedEmail.subject}</h2>
-            <p className="popup-text"><strong>To:</strong> {selectedEmail.Taxpayer?.name || 'No Taxpayer Name'}</p>
-            <p className="popup-text"><strong>Email:</strong> {selectedEmail.Taxpayer?.email || 'No Email'}</p>
-            <p className="popup-text"><strong>Date:</strong> {new Date(selectedEmail.sentDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
-            <p className="popup-text"><strong>Time:</strong> {new Date(selectedEmail.sentDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}</p>
-            <p className="popup-text"><strong>Message:</strong></p>
-            <p className="popup-text">{selectedEmail.message}</p>
-          </div>
-        </div>
-      )} */}
+      {selectedEmail && (
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header>
+            <Modal.Title style={{ color: "#0085FF" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div>
+              <strong>From:</strong> Tax computatation System
+            </div>
+            <div>
+              <strong>Received:</strong> {selectedEmail?.sentDate ? new Date(selectedEmail.sentDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : 'Date not available'}
+            </div>
+            <hr />
+            <div>
+              {selectedEmail?.message || 'No content'}
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleCloseModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </div>
   );
 };

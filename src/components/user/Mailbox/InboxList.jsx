@@ -27,7 +27,7 @@ const InboxList = () => {
       }
     };
     fetchAllReciveemail();
-  }, []);
+  }, [base_url]);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,9 +35,12 @@ const InboxList = () => {
     email.Taxpayer?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Function to sort emails by receivedDate in descending order
+  const sortedEmails = filteredemail.sort((a, b) => new Date(b.receivedDate) - new Date(a.receivedDate));
+
   const handleDelete = async (emailId) => {
     try {
-      const shouldDelete = window.confirm("Are you sure you want to delete this Eemail?");
+      const shouldDelete = window.confirm("Are you sure you want to delete this email?");
       if (shouldDelete) {
         await axios.delete(`${base_url}/api/SuperAdmin/deletetInboxemail/${emailId}`);
         window.location.reload();
@@ -79,7 +82,7 @@ const InboxList = () => {
       <div>
         <h3 style={{ paddingLeft: "50px", color: "#0085FF" }}>Sent Messages</h3>
         <ListGroup variant="flush" style={containerStyle}>
-          {filteredemail.map((email) => (
+          {sortedEmails.map((email) => (
             <ListGroup.Item
               key={email.emailId}
               style={{ borderRadius: "10px", margin: "5px", border: "2px solid #0085FF" }}
@@ -88,18 +91,18 @@ const InboxList = () => {
               <button className="custom-button-7">
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "20px" }}>Tax Computation System</div>
-                  <div style={{ fontSize: "12px", textAlign: "right", color: "blue" }}>
+                  <div style={{ fontSize: "12px", textAlign: "right", color: "#0085FF" }}>
                     {new Date(email.receivedDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long' })}<br />
                     {new Date(email.receivedDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}
                   </div>
                 </div>
-                <div style={{ fontSize: "15px", color: "blue" }}>{email.subject || 'No Subject'}</div>
+                <div style={{ fontSize: "15px", color: "#0085FF" }}>{email.subject || 'No Subject'}</div>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <div style={{ fontSize: "12px", fontStyle: "italic", width: "80%" }}>
                     {email.message ? email.message.split(' ').slice(0, 25).join(' ') + '...' : 'No content'}
                   </div>
                   <div>
-                    <button type="button" className="btn btn-primary custom-button-0" onClick={() => handleDelete(email.emailId)}>
+                    <button type="button" className="btn btn-primary custom-button-0" onClick={(e) => { e.stopPropagation(); handleDelete(email.emailId); }}>
                       <img src={trashCan} alt="" style={{ width: "20px" }} />
                     </button>
                   </div>
@@ -112,14 +115,17 @@ const InboxList = () => {
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header>
-          <Modal.Title style={{ color: "blue" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
+          <Modal.Title style={{ color: "#0085FF" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div>
-            <strong>From:</strong> Tax Computation System
+            <strong>To:</strong> {selectedEmail?.Taxpayer?.name || 'No Taxpayer Name'}
           </div>
           <div>
-            <strong>Sent:</strong> {new Date(selectedEmail?.sentDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })}
+            <strong>Email:</strong> {selectedEmail?.Taxpayer?.email || 'No Email'}
+          </div>
+          <div>
+            <strong>Sent:</strong> {new Date(selectedEmail?.receivedDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })}
           </div>
           <hr />
           <div>

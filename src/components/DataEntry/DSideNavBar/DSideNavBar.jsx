@@ -107,6 +107,9 @@ function DSideNavBar() {
         type="button"
         className="btn btn-primary custom-button"
         style={buttonStyle}
+        onClick={() => {
+          navigate("/dataEntry/Mailboxinbox");
+        }}
       >
         <img
           src={mail}
