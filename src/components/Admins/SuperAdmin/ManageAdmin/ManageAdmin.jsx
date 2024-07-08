@@ -78,7 +78,7 @@ function ManageAdmin() {
             <label>{admin.name}</label>
           </div>
           <div style={{ flex: 1, textAlign: "center" }}>
-            <label>{admin.issuperadmin ? "super admin" : "Admin"}</label>
+            <label>{admin.issuperadmin ? "Super admin" : "Data Entry Operator"}</label>
           </div>
           <div style={{ flex: 1, textAlign: "center" }}>
             <button
