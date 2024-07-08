@@ -1,6 +1,7 @@
 @media screen and (max-width: 700px) {
   .details-input {
     width: 55vw !important;
+    text-align: center !important; 
   }
 
   .twoparts {
@@ -50,6 +51,19 @@
 }
 
 .custom-button-1 {
+  background-color: #F86262 !important;
+  width: 100%;
+  padding-left: 10px;
+  font-size: smaller;
+  display: block;
+  margin-bottom: 12px;
+  width: 90%;
+  margin-left: 1%;
+  box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
+  border: 1px #008060;
+}
+
+.custom-button-9 {
   background-color: #F86262 !important;
   width: 100%;
   padding-left: 10px;

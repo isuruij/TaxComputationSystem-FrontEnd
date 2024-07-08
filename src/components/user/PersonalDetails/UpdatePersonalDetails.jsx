@@ -41,13 +41,22 @@ function UpdatePersonalDetails() {
   const [files, setFiles] = useState();
 
   const buttonStyle = {
-    backgroundColor: "#049370",
+    backgroundColor: "#F86262",
     display: "block",
     marginBottom: "12px",
     width: "100%",
     marginLeft: "1%",
     marginTop: "5vh",
-    boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+    border: "none",
+  };
+
+  const buttonStyle2 = {
+    backgroundColor: "#F86262",
+    display: "block",
+    marginBottom: "12px",
+    width: "100%",
+    marginLeft: "45%",
+    marginTop: "5vh",
   };
 
   const navigate = useNavigate();
@@ -411,31 +420,29 @@ function UpdatePersonalDetails() {
                 type="file"
                 id="propic"
                 onChange={(e) => setFiles(e.target.files[0])}
+                style={{ textAlign: "center" }} 
               />
               <div style={{ display: "flex", gap: "2px" }}>
                 <div style={{ width: "40%" }}>
-                  <button
+                  <Button
                     type="button"
-                    className="btn btn-primary custom-button-1"
+                    className=""
                     style={buttonStyle}
                     onClick={handleRemoveProPic}
                   >
                     remove
-                  </button>
+                  </Button>
                 </div>
 
                 <div style={{ width: "40%" }}>
                   {userData.filePath === null || userData.filePath === "" ? (
                     <Button
-                      onClick={handleProPic}
+                      type="button"
                       className="resetpasswordButton user"
-                      style={{
-                        marginTop: "5vh",
-                        borderRadius: "10px",
-                        marginLeft: "5vw",
-                      }}
+                      style={buttonStyle2}
+                      onClick={handleProPic}
                     >
-                      upload
+                      update
                     </Button>
                   ) : (
                     <Button

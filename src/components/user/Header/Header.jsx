@@ -7,32 +7,32 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import defaultprofile from "../../../assets/defaultprofile.svg";
 
 function Header() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-  const cookieValue = Cookies.get('token');
+  const cookieValue = Cookies.get("token");
   const userId = jwtDecode(cookieValue).id;
   const name = jwtDecode(cookieValue).name;
 
-
   const navigate = useNavigate();
-  
+
   const [count, setcount] = useState(0);
   const [userData, setUserData] = useState({});
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-        const response = await Axios.get(`${base_url}/api/taxpayer/getuserbasicdetails/${userId}`);
+        const response = await Axios.get(
+          `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
+        );
         setUserData(response.data.Data);
       } catch (error) {
         console.error(error);
       }
     };
-    getNotifications(); 
+    getNotifications();
     getUserDetails();
-  },[userId]);
-
-  
+  }, [userId]);
 
   const getNotifications = async () => {
     try {
@@ -40,10 +40,10 @@ function Header() {
         `${base_url}/api/taxpayer/getNotifications/${userId}`
       );
       //setnotificationList(response.data.data);
-      console.log(response.data.count);  
+      console.log(response.data.count);
       setcount(response.data.count);
-      //console.log(response.data.data[0]);  
-    } catch (error) { 
+      //console.log(response.data.data[0]);
+    } catch (error) {
       console.error(error);
     }
   };
@@ -57,7 +57,12 @@ function Header() {
       }}
     >
       <img
-        style={{ marginLeft: "71vw", paddingTop: "2vh", paddingRight: "1vw",cursor:"pointer" }}
+        style={{
+          marginLeft: "71vw",
+          paddingTop: "2vh",
+          paddingRight: "1vw",
+          cursor: "pointer",
+        }}
         src={Notification}
         alt="Notification"
         onClick={() => navigate("/notification")}
@@ -73,13 +78,17 @@ function Header() {
         <h6></h6>
       )}
       <div>
-            <img
-              src={userData.filePath}
-              alt="Profile"
-              className="img-fluid rounded-circle"
-              style={{ width: "40px", marginTop:"4px"}}
-            />
-          </div>
+        <img
+          src={
+            userData.filePath === null || userData.filePath === ""
+              ? defaultprofile
+              : userData.filePath
+          }
+          alt="Profile"
+          className="img-fluid rounded-circle"
+          style={{ width: "30px", marginTop: "10px" }}
+        />
+      </div>
       <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
         <h6 className="headername">{name}</h6>
       </span>
