@@ -58,6 +58,12 @@ const InboxList = () => {
     setSelectedEmail(null);
   };
 
+  const handleOpenDocument = () => {
+    if (selectedEmail && selectedEmail.filePath) {
+      window.open(selectedEmail.filePath, '_blank');
+    }
+  };
+
   const containerStyle = {
     textAlign: "left",
     display: "block",
@@ -107,31 +113,36 @@ const InboxList = () => {
         </ListGroup>
       </div>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header>
-          <Modal.Title style={{ color: "#008060" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div>
-            <strong>From:</strong> {selectedEmail?.Taxpayer?.name || 'No Taxpayer Name'}
-          </div>
-          <div>
-            <strong>Email:</strong> {selectedEmail?.Taxpayer?.email || 'No Email'}
-          </div>
-          <div>
-            <strong>Received:</strong> {selectedEmail?.receivedDate ? new Date(selectedEmail.receivedDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : 'Date not available'}
-          </div>
-          <hr />
-          <div>
-            {selectedEmail?.message || 'No content'}
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleCloseModal}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {selectedEmail && (
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header>
+            <Modal.Title style={{ color: "#008060" }}>{selectedEmail?.subject || 'No Subject'}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div>
+              <strong>From:</strong> {selectedEmail?.Taxpayer?.name || 'No Taxpayer Name'}
+            </div>
+            <div>
+              <strong>Email:</strong> {selectedEmail?.Taxpayer?.email || 'No Email'}
+            </div>
+            <div>
+              <strong>Received:</strong> {selectedEmail?.receivedDate ? new Date(selectedEmail.receivedDate).toLocaleString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) : 'Date not available'}
+            </div>
+            <hr />
+            <div>
+              {selectedEmail?.message || 'No content'}
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleOpenDocument}>
+              Open Document
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </div>
   );
 };
