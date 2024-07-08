@@ -1,16 +1,19 @@
-import React from 'react';
-import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
-import Navigationbar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
-import MailNavigation from '../../components/DataEntry/Mailbox/MailNavigation';
-import MailboxCompose from "../../components/Admins/SuperAdmin/Mailbox/MailboxCompose";
+import React from "react";
 
-export default function DMailboxComposePage() {
+
+
+import Header from "../../components/user/Header/Header";
+import Sidenavbar from "../../components/user/Sidenavbar/Sidenavbar";
+import MailNavigation from "../../components/user/Mailbox/MailNavigationTaxpayer";
+import MailSentTaxpayer from "../../components/user/Mailbox/MailSentTaxpayer";
+
+export default function MailboxInboxTaxpayer() {
   return (
     <div>
-      <AdminHeader />
+      <Header/>
       <div style={{ display: "flex" }}>
         <div style={{ marginTop: "5px" }}>
-          <Navigationbar />
+          <Sidenavbar/>
         </div>
         <div
           style={{
@@ -25,7 +28,7 @@ export default function DMailboxComposePage() {
                  <MailNavigation/>
             </div>
             <div style={{width:"80%"}}>
-                 <MailboxCompose/>
+                 <MailSentTaxpayer/>
             </div>
           </div>
         </div>

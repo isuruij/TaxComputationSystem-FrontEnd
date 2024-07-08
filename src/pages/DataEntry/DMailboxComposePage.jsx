@@ -1,19 +1,19 @@
 
 import React, { useState } from 'react';
-import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
-import Navigationbar from "../../components/Admins/SuperAdmin/NavigationBar/Navigationbar";
-import MailNavigation from '../../components/Admins/SuperAdmin/Mailbox/MailNavigation';
+import DHeader from "../../components/DataEntry/Header/DHeader";
+import DSideNavBar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
+import DMailNavigation from '../../components/DataEntry/Mailbox/DMailNavigation';
 import MailboxCompose from "../../components/Admins/SuperAdmin/Mailbox/MailboxCompose";
 import UserList from '../../components/Admins/SuperAdmin/Mailbox/UserList';
 
-export default function MailboxComposePage() {
+export default function DMailboxComposePage() {
   const [recipientEmail, setRecipientEmail] = useState('');
   return (
     <div>
-      <AdminHeader />
+      <DHeader />
       <div style={{ display: "flex" }}>
         <div style={{ marginTop: "5px" }}>
-          <Navigationbar />
+          <DSideNavBar/>
         </div>
         <div
           style={{
@@ -25,7 +25,7 @@ export default function MailboxComposePage() {
         >
           <div style={{ display: "flex", flexDirection: "row"}} >
             <div style={{width:"20%"}}>
-                 <MailNavigation/>
+                 <DMailNavigation/>
                  <UserList setRecipientEmail={setRecipientEmail} />
             </div>
             <div style={{width:"80%"}}>

@@ -1,18 +1,17 @@
 import React from "react";
 
 import MailSent from "../../components/Admins/SuperAdmin/Mailbox/MailSent";
+import DHeader from "../../components/DataEntry/Header/DHeader";
+import DMailNavigation from '../../components/DataEntry/Mailbox/DMailNavigation';
+import DSideNavBar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
 
-import AdminHeader from "../../components/Admins/SuperAdmin/Header/AdminHeader";
-import Navigationbar from "../../components/DataEntry/DSideNavBar/DSideNavBar";
-import MailNavigation from "../../components/DataEntry/Mailbox/MailNavigation";
-
-export default function MailboxInbox() {
+export default function DMailSent() {
   return (
     <div>
-      <AdminHeader />
+      <DHeader/>
       <div style={{ display: "flex" }}>
         <div style={{ marginTop: "5px" }}>
-          <Navigationbar />
+          <DSideNavBar/>
         </div>
         <div
           style={{
@@ -24,7 +23,7 @@ export default function MailboxInbox() {
         >
           <div style={{ display: "flex", flexDirection: "row"}} >
             <div style={{width:"20%"}}>
-                 <MailNavigation/>
+                 <DMailNavigation/>
             </div>
             <div style={{width:"80%"}}>
                  <MailSent/>

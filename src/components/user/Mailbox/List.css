@@ -22,8 +22,8 @@
   }
  
 
-  .custom-button-6 {
-    background-color: #B3F9D7 !important;
+  .custom-button-7 {
+    background-color: rgb(211, 233, 254) !important;
     color: #555;
     padding: 10px 15px;
     border: none;
@@ -75,4 +75,4 @@
     transform: translateY(-50%);
     color: #9D9393;
   }
-  
+

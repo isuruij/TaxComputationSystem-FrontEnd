@@ -4,7 +4,7 @@ import compose from "../../../assets/compose.svg"
 import sent from "../../../assets/sent.svg"
 import { useNavigate } from 'react-router-dom'
 
-export default function MailNavigation() {
+export default function DMailNavigation() {
     const navigate = useNavigate();
   return (
     <div>

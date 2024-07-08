@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './MailboxCompose.css';
@@ -6,21 +6,24 @@ import attach from "../../../../assets/attach.svg";
 import crossIcon from "../../../../assets/cross.svg"; // Ensure you have this icon
 import Axios from 'axios';
 
-const EmailCompose = () => {
+const EmailCompose = ({ recipientEmail }) => {
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
     const [email, setEmail] = useState({ to: '', subject: '', body: '', attachedFile: null });
     const [fileName, setFileName] = useState('');
     const fileInputRef = useRef(null); // Reference to the hidden file input
 
-    const sendMail = async ()=>{
-        try{
+    useEffect(() => {
+        setEmail(prevState => ({ ...prevState, to: recipientEmail }));
+    }, [recipientEmail]);
+
+    const sendMail = async () => {
+        try {
             const res = await Axios.post(
                 `${base_url}/api/SuperAdmin/composemail`,
                 email
-              );
+            );
             console.log(email);
-
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
     }
@@ -31,12 +34,12 @@ const EmailCompose = () => {
             ...prevState,
             [name]: value
         }));
-        console.log(email)
+        console.log(email);
     };
 
     const handleFileChange = (e) => {
         if (e.target.files[0]) {
-            setEmail(prevState => ({...prevState, attachedFile: e.target.files[0] }));
+            setEmail(prevState => ({ ...prevState, attachedFile: e.target.files[0] }));
             setFileName(e.target.files[0].name);
         }
     };
@@ -46,11 +49,11 @@ const EmailCompose = () => {
     };
 
     const clearTextArea = () => {
-        setEmail(prevState => ({...prevState, body: '' }));
+        setEmail(prevState => ({ ...prevState, body: '' }));
     };
 
     const handleRemoveFile = () => {
-        setEmail(prevState => ({...prevState, attachedFile: null }));
+        setEmail(prevState => ({ ...prevState, attachedFile: null }));
         setFileName('');
     };
 
@@ -110,11 +113,13 @@ const EmailCompose = () => {
                         </Button>
                     </div>
                     <div>
-
-                        <input type="file" id="file-input" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange}/>
+                        <img src={attach} alt="Attach" onClick={handleClickAttachIcon} style={{ cursor: 'pointer', width: '18px', marginTop: '8px' }} />
+                    </div>
+                    <div>
+                        <input type="file" id="file-input" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
                         {fileName && (
                             <div style={{ fontSize: "10px", marginTop: "10px" }}>
-                                Attached File: {fileName} <img src={crossIcon} alt="Remove file" style={{ cursor: 'pointer', width: '15px' }} onClick={handleRemoveFile}/>
+                                Attached File: {fileName} <img src={crossIcon} alt="Remove file" style={{ cursor: 'pointer', width: '15px' }} onClick={handleRemoveFile} />
                             </div>
                         )}
                     </div>
