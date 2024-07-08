@@ -32,11 +32,23 @@ function UpdatePersonalDetails() {
     homeno: "",
     birthday: "",
     id: userId,
+    filePath: "",
   });
   const [OldPassword, setOldPassword] = useState("");
   const [Password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [warning, setWarning] = useState("");
+  const [files, setFiles] = useState();
+
+  const buttonStyle = {
+    backgroundColor: "#049370",
+    display: "block",
+    marginBottom: "12px",
+    width: "100%",
+    marginLeft: "1%",
+    marginTop: "5vh",
+    boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)",
+  };
 
   const navigate = useNavigate();
 
@@ -59,9 +71,37 @@ function UpdatePersonalDetails() {
         homeno: response.data.Data.homeno,
         birthday: response.data.Data.birthday,
         id: response.data.Data.id,
+        filePath: response.data.Data.filePath,
       });
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleProPic = async () => {
+    try {
+      const file = files;
+      const formData = new FormData();
+
+      if (file) {
+        // Only append if the file is defined
+        formData.append("file", file);
+      }
+      console.log(file);
+
+      await Axios.post(
+        `${base_url}/api/taxpayer/uploadpropic/${userId}`,
+        formData
+      )
+        .then((response) => {
+          window.location.reload();
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -129,11 +169,39 @@ function UpdatePersonalDetails() {
     }
   };
 
+  // Function to handle profile picture removal
+  const handleRemoveProPic = async () => {
+    try {
+      const shouldDelete = window.confirm(
+        "Are you sure you want to remove the profile pic?"
+      );
+      if (shouldDelete) {
+        const response = await Axios.put(
+          `${base_url}/api/taxpayer/removepropic/${userId}`
+        );
+        console.log(response.data);
+        window.location.reload();
+      }
+    } catch (error) {
+      if (error.response) {
+        console.log("Error Response:", error.response.data);
+      } else if (error.request) {
+        console.log("Error Request:", error.request);
+      } else {
+        console.log("Error Message:", error.message);
+      }
+    }
+  };
+
   //Popup for confirmation
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
 
   return (
     <div>
@@ -161,7 +229,7 @@ function UpdatePersonalDetails() {
             className="twoparts"
             style={{ display: "flex", flexDirection: "row" }}
           >
-            <div>
+            <div style={{ width: "35%" }}>
               <div className="form-group">
                 <label className="lables">Email</label>
                 <div className="custom_input">
@@ -281,7 +349,7 @@ function UpdatePersonalDetails() {
 
             <div
               className="contactSection"
-              style={{ marginLeft: "10vw", marginTop: "5vh" }}
+              style={{ marginLeft: "5vw", marginTop: "5vh", width: "20%" }}
             >
               <label className="lables">Contact Numbers</label>
               <br></br>
@@ -331,6 +399,76 @@ function UpdatePersonalDetails() {
                 </div>
               </div>
             </div>
+            <div
+              className="uploadProfilePic"
+              style={{ marginLeft: "5vw", marginTop: "5vh", width: "30%" }}
+            >
+              <label className="lables">Upload your profile picture</label>
+              <br></br>
+              <br></br>
+              <input
+                className="details-input form-control"
+                type="file"
+                id="propic"
+                onChange={(e) => setFiles(e.target.files[0])}
+              />
+              <div style={{ display: "flex", gap: "2px" }}>
+                <div style={{ width: "40%" }}>
+                  <button
+                    type="button"
+                    className="btn btn-primary custom-button-1"
+                    style={buttonStyle}
+                    onClick={handleRemoveProPic}
+                  >
+                    remove
+                  </button>
+                </div>
+
+                <div style={{ width: "40%" }}>
+                  {userData.filePath === null || userData.filePath === "" ? (
+                    <Button
+                      onClick={handleProPic}
+                      className="resetpasswordButton user"
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                    >
+                      upload
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleShow1}
+                      className="resetpasswordButton user"
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                    >
+                      Change
+                    </Button>
+                  )}
+                  <Modal show={show1} onHide={handleClose1}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Are you Sure</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Do you want to update or change profile picture ?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose1}>
+                        No
+                      </Button>
+                      <Button variant="primary" onClick={handleProPic}>
+                        Yes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="updateDetails" style={{ display: "flex" }}>
@@ -366,8 +504,8 @@ function UpdatePersonalDetails() {
           </div>
         </div>
 
-        <div className="passwordChange" style={{ marginLeft: "6vw" }}>
-          <h5
+        <div style={{ marginLeft: "6vw" }}>
+          <h4
             style={{
               marginBottom: "1%",
               color: "#0085FF",
@@ -375,7 +513,7 @@ function UpdatePersonalDetails() {
             }}
           >
             Change Password
-          </h5>
+          </h4>
 
           <div className="form-group">
             <label className="lables">Current Password</label>

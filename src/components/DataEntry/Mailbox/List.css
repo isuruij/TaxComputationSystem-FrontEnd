@@ -22,29 +22,32 @@
   }
  
 
-.custom-button-6 {
-  background-color: #B3F9D7 !important;
-  color: #555;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  text-align: left;
-  min-width: 100%;
-}
+  .custom-button-6 {
+    background-color: #B3F9D7 !important;
+    color: #555;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease; 
+    text-align: left;
+    min-width: 100%;
+  }
+  
+  .custom-button-2:hover {
+    color: #000; 
+  }
+  .custom-button:hover {
+    color: #B3F9D7; 
+    
+  }
+  .custom-button-1:hover {
+    color: #ecbdbd;
+    
+  }
 
-.custom-button-2:hover {
-  color: #000;
-}
 
-.custom-button:hover {
-  color: #B3F9D7;
-}
 
-.custom-button-1:hover {
-  color: #ecbdbd;
-}
 
 .search-container {
     position: relative;

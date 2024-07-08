@@ -9,7 +9,7 @@ import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ProgressBar from "react-bootstrap/ProgressBar";
 import "./Homepagestyle.css";
-import profilepic from "./profilepic.jpg";
+
 
 export default function Homepage() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -260,7 +260,7 @@ const calculateProgress = () => {
         <div className="row">
           <div>
             <img
-              src={profilepic}
+              src={userData.filePath}
               alt="Profile"
               className="img-fluid rounded-circle"
               style={{ width: "200px"}}

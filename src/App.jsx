@@ -27,6 +27,7 @@ import UpdatePersonalDetails from "./pages/SuperAdmin/UpdatePersonalDetails.jsx"
 import VerifyDocuments from "./pages/SuperAdmin/VerifyDocuments.jsx";
 import TaxPolicy from "./pages/SuperAdmin/TaxPolicyCUD.jsx";
 import ViewAllPage from "./pages/SuperAdmin/ViewAll.jsx";
+import ApproveReport from "./pages/SuperAdmin/ApproveReportPage.jsx";
 
 import DDashboard from "./pages/DataEntry/DDashboard.jsx";
 import DViewTaxPage from "./pages/DataEntry/DViewTaxPage.jsx";
@@ -35,8 +36,14 @@ import DSubmissionDashboard from "./pages/DataEntry/DSubmissionDashboard.jsx";
 import DDataEntryPart from "./pages/DataEntry/DDataEnterPage.jsx";
 import DViewSubmissions from "./pages/DataEntry/DViewSubmissions.jsx";
 import MailboxCompose from "./pages/SuperAdmin/MailboxCompose.jsx";
-import MailSent from "./pages/SuperAdmin/MailSent.jsx"
-import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx"
+import MailSent from "./pages/SuperAdmin/MailSent.jsx";
+import MailboxInbox from "./pages/SuperAdmin/MailboxInbox.jsx";
+import AdminsettingsPage from "./pages/SuperAdmin/SettingsPage.jsx";
+import DataentrysettingsPage from "./pages/DataEntry/DSettings.jsx";
+import DMailboxComposePage from "./pages/DataEntry/DMailboxCompose.jsx";
+import DMailSent from "./pages/DataEntry/DMailSent.jsx";
+import DMailboxInbox from "./pages/DataEntry/DMailboxInbox.jsx";
+import ManageAdminPage from "./pages/SuperAdmin/ManageAdminPage.jsx";
 
 import MailboxInboxTaxpayer from "./pages/Taxpayer/MailboxInboxTaxpayer.jsx";
 import MailboxComposePage from "./pages/Taxpayer/MailboxCompose.jsx";
@@ -106,6 +113,13 @@ function App() {
           path="/dataEntry/submission/view/:userId"
           element={<DViewSubmissions />}
         ></Route>
+                <Route
+          path="/dataEntry/settings"
+          element={< DataentrysettingsPage/>}
+        ></Route>
+        <Route path="/dataEntry/MailboxComposePage" element={<DMailboxComposePage />}></Route>
+        <Route path="/dataEntry/MailSent" element={<DMailSent />}></Route>
+        <Route path="/dataEntry/MailboxInbox" element={<DMailboxInbox />}></Route>
 
         <Route
           path="/dataEntry/Mailboxinbox"
@@ -143,9 +157,15 @@ function App() {
           element={<UpdatePersonalDetails />}
         ></Route>
         <Route path="/taxpolicy" element={<TaxPolicy />}></Route>
-        <Route path="/MailboxCompose" element={<MailboxCompose/>}></Route>
-        <Route path="/MailboxInbox" element={<MailboxInbox/>}></Route>
-        <Route path="/MailSent" element={<MailSent/>}></Route>
+        <Route path="/MailboxCompose" element={<MailboxCompose />}></Route>
+        <Route path="/MailboxInbox" element={<MailboxInbox />}></Route>
+        <Route path="/MailSent" element={<MailSent />}></Route>
+        <Route
+          path="SuperAdmin/approveReport"
+          element={<ApproveReport />}
+        ></Route>
+        <Route path="/adminsettings" element={<AdminsettingsPage />}></Route>
+        <Route path="/manageadmin" element={<ManageAdminPage/>}></Route>
       </Routes>
     </BrowserRouter>
   );

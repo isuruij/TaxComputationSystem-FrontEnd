@@ -57,7 +57,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
-        className="navImage"
+          className="navImage"
           src={home}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -90,7 +90,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
-        className="navImage"
+          className="navImage"
           src={viewtax}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -106,7 +106,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
-        className="navImage"
+          className="navImage"
           src={taxhistory}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
@@ -138,7 +138,7 @@ function Sidenavbar() {
         style={buttonStyle}
       >
         <img
-        className="navImage"
+          className="navImage"
           src={logout}
           style={{ alignItems: "left", textAlign: "left" }}
           alt="Icon"
