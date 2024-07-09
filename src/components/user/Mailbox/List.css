@@ -49,7 +49,7 @@
 
 
 
-.search-container {
+.search-container-ts {
     position: relative;
     width: 90%;
     box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
@@ -59,14 +59,14 @@
 
   }
   
-  .search-input {
+  .search-input-ts {
     width: 100%;
     padding: 8px;
     padding-right: 40px; 
     outline: none;
   }
   
-  .search-input::before {
+  .search-input-ts::before {
     content: '\1F50D'; 
     font-size: 18px;
     position: absolute;

@@ -68,11 +68,11 @@ const SentList = () => {
 
   return (
     <div>
-      <div className="search-container">
+      <div className="search-container-as">
         <input
           type="text"
           placeholder=" Search..."
-          className="search-input"
+          className="search-input-as"
           style={{ border: "none", backgroundColor: "white", borderRadius: "10px" }}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

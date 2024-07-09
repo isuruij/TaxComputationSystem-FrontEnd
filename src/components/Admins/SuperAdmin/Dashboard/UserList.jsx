@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useNavigate } from "react-router-dom";
+import defaultprofile from "../../../../assets/defaultprofile.svg";
 import "./SearchBar.css";
 import "./UserList.css";
 
@@ -87,11 +88,11 @@ const UserList = () => {
 
   return (
     <div>
-      <div className="search-container">
+      <div className="search-container-1">
         <input
           type="text"
           placeholder=" Search..."
-          className="search-input"
+          className="search-input-1"
           style={{
             border: "none",
             backgroundColor: "white",
