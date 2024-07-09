@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import defaultprofile from "../../../../assets/defaultprofile.svg";
 import "./SearchBar.css";
 import "./UserList.css";
-import defaultprofile from "../../../../assets/defaultprofile.svg";
 const UserList = () => {
   const navigate = useNavigate()
   const [users, setUsers] = useState([
