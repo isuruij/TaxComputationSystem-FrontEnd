@@ -3,9 +3,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useNavigate } from "react-router-dom";
+import defaultprofile from "../../../../assets/defaultprofile.svg";
 import "./SearchBar.css";
 import "./UserList.css";
-
+import defaultprofile from "../../../../assets/defaultprofile.svg";
 const UserList = () => {
   const navigate = useNavigate()
   const [users, setUsers] = useState([
@@ -87,11 +88,11 @@ const UserList = () => {
 
   return (
     <div>
-      <div className="search-container">
+      <div className="search-container-1">
         <input
           type="text"
           placeholder=" Search..."
-          className="search-input"
+          className="search-input-1"
           style={{
             border: "none",
             backgroundColor: "white",
@@ -118,6 +119,19 @@ const UserList = () => {
                   justifyContent: "space-between",
                 }}
               >
+             <div>
+                <img
+                  src={
+                   user.filePath === null || user.filePath === ""
+                      ? defaultprofile
+                      : user.filePath
+                  }
+                  alt="Profile"
+                  className="img-fluid rounded-circle"
+                  style={{ width: "30px", marginTop: "10px" ,height:"30px"}}
+                />
+              </div>
+
                 <div style={{ width: "55%" }}>
                   <button
                     className="custom-button-2"

@@ -74,11 +74,11 @@ const InboxList = () => {
 
   return (
     <div>
-      <div className="search-container">
+      <div className="search-container-ts">
         <input
           type="text"
           placeholder=" Search..."
-          className="search-input"
+          className="search-input-ts"
           style={{ border: "none", backgroundColor: "white", borderRadius: "10px" }}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

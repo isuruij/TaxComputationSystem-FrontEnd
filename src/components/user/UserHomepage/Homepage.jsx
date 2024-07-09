@@ -265,7 +265,7 @@ const calculateProgress = () => {
               src={userData.filePath === null || userData.filePath === "" ? defaultprofile : userData.filePath}
               alt="Profile"
               className="img-fluid rounded-circle"
-              style={{ width: "200px"}}
+              style={{ width: "200px", height:"200px"}}
               onError={(e) => {
                 e.target.onerror = null; // Prevents looping if default image also fails
                 e.target.src = "path/to/default/image.jpg";
