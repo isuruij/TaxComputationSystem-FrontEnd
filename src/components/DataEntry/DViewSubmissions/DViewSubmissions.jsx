@@ -6,6 +6,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { useNavigate, useParams } from "react-router-dom";
 import "./DViewSubmissions.css";
 import { useLocation } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 const DViewSubmissions = () => {
   const titlestyle = {
@@ -687,7 +688,17 @@ const DViewSubmissions = () => {
   return (
     <div>
       <div>
-      <div>{TaxpayerName ? (<h4 style={{marginLeft:"23vw",color:"#F86262"}}>{TaxpayerName}'s Submissions</h4>) : (<h4 style={{textAlign:"center",color:"#F86262"}}>Loading...</h4>)}</div>
+        <div>
+          {TaxpayerName ? (
+            <h4 style={{ marginLeft: "23vw", color: "#F86262" }}>
+              {TaxpayerName}'s Submissions
+            </h4>
+          ) : (
+            <h4 style={{ textAlign: "center", color: "#F86262" }}>
+              Loading...
+            </h4>
+          )}
+        </div>
         <div className="title-1">
           <h3 style={titlestyle} className="title-name">
             Total Assessable Income
@@ -2275,6 +2286,13 @@ const DViewSubmissions = () => {
             )}
           </div>
         </div>
+        <Button
+          style={{ marginLeft: "65vw" }}
+          variant="success"
+          onClick={() => navigate(`/dataEntry/submission/enterData/${userId}`)}
+        >
+          Next
+        </Button>
       </div>
     </div>
   );
