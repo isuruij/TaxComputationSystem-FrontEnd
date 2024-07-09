@@ -41,6 +41,78 @@ function ViewDetails() {
     birthday: "",
     id: userId,
   });
+  const [files, setFiles] = useState();
+
+  const buttonStyle = {
+    backgroundColor: "#F86262",
+    display: "block",
+    marginBottom: "12px",
+    width: "100%",
+    marginLeft: "1%",
+    marginTop: "5vh",
+    border: "none",
+  };
+
+  const buttonStyle2 = {
+    backgroundColor: "#F86262",
+    display: "block",
+    marginBottom: "12px",
+    width: "100%",
+    marginLeft: "45%",
+    marginTop: "5vh",
+  };
+
+  const handleProPic = async () => {
+    try {
+      const file = files;
+      const formData = new FormData();
+
+      if (file) {
+        // Only append if the file is defined
+        formData.append("file", file);
+      }
+      console.log(file);
+
+      await Axios.post(
+        `${base_url}/api/taxpayer/uploadpropic/${userId}`,
+        formData
+      )
+        .then((response) => {
+          window.location.reload();
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+    // Function to handle profile picture removal
+    const handleRemoveProPic = async () => {
+      try {
+        const shouldDelete = window.confirm(
+          "Are you sure you want to remove the profile pic?"
+        );
+        if (shouldDelete) {
+          const response = await Axios.put(
+            `${base_url}/api/taxpayer/removepropic/${userId}`
+          );
+          console.log(response.data);
+          window.location.reload();
+        }
+      } catch (error) {
+        if (error.response) {
+          console.log("Error Response:", error.response.data);
+        } else if (error.request) {
+          console.log("Error Request:", error.request);
+        } else {
+          console.log("Error Message:", error.message);
+        }
+      }
+    };
+  
 
   //get user basic details from backend
   const getUserDetails = async () => {
@@ -145,9 +217,13 @@ function ViewDetails() {
 
   //Popup for personal details update confirmation
   const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleClose1 = () => setShow1(false);
+  const handleShow1 = () => setShow1(true);
 
   //Popup for personal details update confirmation
   const [incomeshow, setincomeShow] = useState(false);
@@ -349,6 +425,74 @@ function ViewDetails() {
                       setvalues({ ...values, homeno: e.target.value });
                     }}
                   />
+                </div>
+              </div>
+            </div>
+            <div
+              className="uploadProfilePic"
+              style={{ marginLeft: "5vw", marginTop: "5vh", width: "30%" }}
+            >
+              <label className="lables">Upload your profile picture</label>
+              <br></br>
+              <br></br>
+              <input
+                className="details-input form-control"
+                type="file"
+                id="propic"
+                onChange={(e) => setFiles(e.target.files[0])}
+                style={{ textAlign: "center" }}
+              />
+              <div style={{ display: "flex", gap: "2px" }}>
+                <div style={{ width: "40%" }}>
+                  <Button
+                    type="button"
+                    className=""
+                    style={buttonStyle}
+                    onClick={handleRemoveProPic}
+                  >
+                    remove
+                  </Button>
+                </div>
+
+                <div style={{ width: "40%" }}>
+                  {userData.filePath === null || userData.filePath === "" ? (
+                    <Button
+                      type="button"
+                      className="resetpasswordButton user"
+                      style={buttonStyle2}
+                      onClick={handleProPic}
+                    >
+                      update
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={handleShow1}
+                      className="resetpasswordButton user"
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                    >
+                      Change
+                    </Button>
+                  )}
+                  <Modal show={show1} onHide={handleClose1}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Are you Sure</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      Do you want to update or change profile picture ?
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose1}>
+                        No
+                      </Button>
+                      <Button variant="primary" onClick={handleProPic}>
+                        Yes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
               </div>
             </div>

@@ -420,7 +420,7 @@ function UpdatePersonalDetails() {
                 type="file"
                 id="propic"
                 onChange={(e) => setFiles(e.target.files[0])}
-                style={{ textAlign: "center" }} 
+                style={{ textAlign: "center" }}
               />
               <div style={{ display: "flex", gap: "2px" }}>
                 <div style={{ width: "40%" }}>
