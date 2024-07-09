@@ -2,6 +2,7 @@ import React from "react";
 import "./SearchBar.css";
 import UserList from "./UserList";
 
+
 export default function Dashboard() {
   return (
     <div>
