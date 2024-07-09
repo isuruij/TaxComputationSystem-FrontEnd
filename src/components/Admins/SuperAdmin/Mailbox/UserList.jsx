@@ -45,11 +45,11 @@ const UserList = ({ setRecipientEmail }) => {
 
   return (
     <div>
-      <div className="search-container">
+      <div className="search-container-mA">
         <input
           type="text"
           placeholder=" Search..."
-          className="search-input"
+          className="search-input-mA"
           style={{
             border: "none",
             backgroundColor: "white",

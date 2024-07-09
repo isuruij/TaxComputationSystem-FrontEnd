@@ -47,7 +47,7 @@
   }
   /* SearchBar.css */
 
-.search-container {
+.search-container-mA {
   position: relative;
   width: 90%; /* Adjust the width as needed */
   box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
@@ -57,14 +57,14 @@
 
 }
 
-.search-input {
+.search-input-mA {
   width: 100%;
   padding: 8px;
   padding-right: 40px; /* Space for the search icon */
   outline: none;
 }
 
-.search-input::before {
+.search-input-mA::before {
   content: '\1F50D'; /* Unicode for the search icon (🔍) */
   font-size: 18px;
   position: absolute;

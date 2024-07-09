@@ -46,7 +46,7 @@
   color: #ecbdbd;
 }
 
-.search-container {
+.search-container-as {
     position: relative;
     width: 90%;
     box-shadow: 1px 5px 3px -3px rgba(0, 0, 0, 0.44);
@@ -56,14 +56,14 @@
 
   }
   
-  .search-input {
+  .search-input-as{
     width: 100%;
     padding: 8px;
     padding-right: 40px; 
     outline: none;
   }
   
-  .search-input::before {
+  .search-input-as::before {
     content: '\1F50D'; 
     font-size: 18px;
     position: absolute;
