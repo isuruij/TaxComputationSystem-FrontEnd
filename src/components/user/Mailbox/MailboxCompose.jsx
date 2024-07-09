@@ -19,9 +19,23 @@ const EmailCompose = () => {
      const cookieValue = Cookies.get("token");
     const userId = jwtDecode(cookieValue).id;
 
+
     const sendMail = async () => {
         try {
-            const res = await Axios.post(`${base_url}/api/taxpayer/composemail/${userId}`, email);
+            const formData = new FormData();
+            formData.append('subject', email.subject);
+            formData.append('body', email.body);
+            if (email.attachedFile) {
+            formData.append('attachedFile', email.attachedFile);
+        }
+            const res = await Axios.post(`${base_url}/api/taxpayer/composemail/${userId}`, formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+            
             console.log(res)
             console.log(email);
         } catch (err) {

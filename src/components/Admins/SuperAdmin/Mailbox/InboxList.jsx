@@ -87,28 +87,35 @@ const InboxList = () => {
         <h3 style={{ paddingLeft: "50px", color: "#008060" }}>Inbox</h3>
         <ListGroup variant="flush" style={containerStyle}>
           {sortedEmails.map((email) => (
-            <ListGroup.Item key={email.emailId} style={{ borderRadius: "10px", margin: "5px", border: "2px solid #B3F9D7" }}>
-              <button className="custom-button-6" onClick={() => handleShowModal(email)}>
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                  <div style={{ fontSize: "20px" }}>{email.Taxpayer?.name || 'No Taxpayer Name'}</div>
-                  <div style={{ fontSize: "12px", textAlign: "right", color: "#008060" }}>
-                    {new Date(email.receivedDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long' })}<br />
-                    {new Date(email.receivedDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}
+              <ListGroup.Item key={email.emailId} style={{ borderRadius: "10px", margin: "5px", border: "2px solid #B3F9D7" }}>
+                <div className="custom-button-6" onClick={() => handleShowModal(email)} style={{ cursor: "pointer" }}>
+                  <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                    <div style={{ fontSize: "20px" }}>{email.Taxpayer?.name || 'No Taxpayer Name'}</div>
+                    <div style={{ fontSize: "12px", textAlign: "right", color: "#008060" }}>
+                      {new Date(email.receivedDate).toLocaleDateString('en-GB', { day: '2-digit', month: 'long' })}<br />
+                      {new Date(email.receivedDate).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false })}
+                    </div>
                   </div>
-                </div>
-                <div style={{ fontSize: "15px", color: "#008060" }}>{email.subject || 'No Subject'}</div>
-                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                  <div style={{ fontSize: "12px", fontStyle: "italic", width: "80%" }}>
-                    {email.message ? email.message.split(' ').slice(0, 25).join(' ') + '...' : 'No content'}
-                  </div>
-                  <div>
-                    <button type="button" className="btn btn-primary custom-button-0" onClick={(e) => { e.stopPropagation(); handleDelete(email.emailId); }}>
+                  <div style={{ fontSize: "15px", color: "#008060" }}>{email.subject || 'No Subject'}</div>
+                  <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                    <div style={{ fontSize: "12px", fontStyle: "italic", width: "80%" }}>
+                      {email.message ? email.message.split(' ').slice(0, 25).join(' ') + '...' : 'No content'}
+                    </div>
+                    <div>
+                    <button
+                      type="button"
+                      className="btn btn-primary custom-button-0"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(email.emailId);
+                      }}
+                    >
                       <img src={trashCan} alt="" style={{ width: "20px" }} />
                     </button>
+                    </div>
                   </div>
                 </div>
-              </button>
-            </ListGroup.Item>
+              </ListGroup.Item>
           ))}
         </ListGroup>
       </div>
