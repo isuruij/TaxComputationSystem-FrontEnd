@@ -109,9 +109,10 @@ export default function TaxPayment() {
     (total, item) => total + item.amount,
     0
   );
-  const totalPayment =
-    taxPayments.reduce((total, item) => total + item.Paid, 0) || 0;
-
+  const totalPayment = taxPayments.reduce(
+    (total, item) => total + parseFloat(item.totalPaid || 0),
+    0
+  );
   //Data input field styles
   const inputFieldStyles = {
     backgroundColor: "white",
