@@ -16,9 +16,14 @@ function ManageAdmin() {
 
   const deleteAdmin = async (adminId, isSuperAdmin) => {
     try {
-      await Axios.delete(`${base_url}/api/superAdmin/deleteadmin/${adminId}/${isSuperAdmin}`);
-      // Update the state to remove the deleted admin
-      setadminlist(adminlist.filter((admin) => admin.id !== adminId));
+      const confirmDelete = window.confirm("Are you sure you want to delete this admin?");
+      if (confirmDelete){
+        await Axios.delete(`${base_url}/api/superAdmin/deleteadmin/${adminId}/${isSuperAdmin}`);
+        // Update the state to remove the deleted admin
+        window.location.reload();
+      }else{
+        return;
+      }
     } catch (error) {
       console.error("Error deleting admin:", error);
     }
