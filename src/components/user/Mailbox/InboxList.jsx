@@ -58,6 +58,11 @@ const InboxList = () => {
     setShowModal(false);
     setSelectedEmail(null);
   };
+  const handleOpenDocument = () => {
+    if (selectedEmail && selectedEmail.filePath) {
+      window.open(selectedEmail.filePath, '_blank');
+    }
+  };
 
   const containerStyle = {
     textAlign: "left",
@@ -135,6 +140,9 @@ const InboxList = () => {
           <Button variant="danger" onClick={handleCloseModal}>
             Close
           </Button>
+          <Button variant="primary" onClick={handleOpenDocument}>
+              Open Document
+            </Button>
         </Modal.Footer>
       </Modal>
     </div>

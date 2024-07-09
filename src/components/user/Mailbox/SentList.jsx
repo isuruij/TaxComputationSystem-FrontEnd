@@ -57,6 +57,12 @@ const SentList = () => {
     setSelectedEmail(null);
   };
 
+  const handleOpenDocument = () => {
+    if (selectedEmail && selectedEmail.filePath) {
+      window.open(selectedEmail.filePath, '_blank');
+    }
+  };
+
   const containerStyle = {
     textAlign: "left",
     display: "block",
@@ -129,6 +135,9 @@ const SentList = () => {
           <Modal.Footer>
             <Button variant="danger" onClick={handleCloseModal}>
               Close
+            </Button>
+            <Button variant="primary" onClick={handleOpenDocument}>
+              Open Document
             </Button>
           </Modal.Footer>
         </Modal>

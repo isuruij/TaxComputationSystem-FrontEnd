@@ -29,7 +29,7 @@ const UserList = ({ setRecipientEmail }) => {
   const handleProfile = (id) => {
     const selectedUser = users.find((user) => user.id === id);
     if (selectedUser) {
-      setRecipientEmail(selectedUser.email);
+      setRecipientEmail({ email: selectedUser.email, id: selectedUser.id });
     }
   };
 

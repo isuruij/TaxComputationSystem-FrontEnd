@@ -8,19 +8,39 @@ import Axios from 'axios';
 
 const EmailCompose = ({ recipientEmail }) => {
     const base_url = import.meta.env.VITE_APP_BACKEND_URL;
-    const [email, setEmail] = useState({ to: '', subject: '', body: '', attachedFile: null });
+    const [email, setEmail] = useState({
+        to: recipientEmail ? recipientEmail.email : '', // Ensure default values are not undefined
+        subject: '',
+        body: '',
+        attachedFile: null
+    });
     const [fileName, setFileName] = useState('');
     const fileInputRef = useRef(null); // Reference to the hidden file input
 
     useEffect(() => {
-        setEmail(prevState => ({ ...prevState, to: recipientEmail }));
+        if (recipientEmail && recipientEmail.email) {
+            setEmail(prevState => ({ ...prevState, to: recipientEmail.email }));
+        }
     }, [recipientEmail]);
 
     const sendMail = async () => {
+        const formData = new FormData();
+        formData.append('to', email.to);
+        formData.append('subject', email.subject);
+        formData.append('body', email.body);
+        if (email.attachedFile) {
+            formData.append('attachedFile', email.attachedFile);
+        }
+
         try {
             const res = await Axios.post(
-                `${base_url}/api/SuperAdmin/composemail`,
-                email
+                `${base_url}/api/SuperAdmin/composemail/${recipientEmail.id}`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
             );
             console.log(email);
         } catch (err) {
@@ -34,7 +54,6 @@ const EmailCompose = ({ recipientEmail }) => {
             ...prevState,
             [name]: value
         }));
-        console.log(email);
     };
 
     const handleFileChange = (e) => {
@@ -59,10 +78,9 @@ const EmailCompose = ({ recipientEmail }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
         sendMail();
         alert('Email sent successfully!');
-        setEmail({ to: '', subject: '', body: '', attachedFile: null });
+        setEmail({ to: recipientEmail ? recipientEmail.email : '', subject: '', body: '', attachedFile: null });
         setFileName('');
     };
 
@@ -81,7 +99,7 @@ const EmailCompose = ({ recipientEmail }) => {
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3 email-subject" controlId="subject">
+                <Form.Group className="mb3 email-subject" controlId="subject">
                     <Form.Label>Subject</Form.Label>
                     <Form.Control
                         type="text"
