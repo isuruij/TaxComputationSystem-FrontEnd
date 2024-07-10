@@ -143,7 +143,7 @@ function FileUpload() {
         setShow(true);
         // Delay navigation to allow the user to see the modal
         setTimeout(() => {
-          navigate(`/dataEntry/submission/enterData/${id}`);
+          navigate(`../dataEntry/dashboard`);
         }, 3000); // 3 seconds delay
       })
       .catch((er) => {
@@ -162,7 +162,7 @@ function FileUpload() {
         <Modal.Footer>
           <Button
             variant="success"
-            onClick={() => navigate(`/dataEntry/submission/enterData/${id}`)}
+            onClick={() => navigate(`../dataEntry/dashboard`)}
           >
             Okay
           </Button>

@@ -491,7 +491,7 @@ function DDataEntry() {
                 variant="success"
                 className="custom_back_button"
                 onClick={() => {
-                  navigate(`/dataEntry/submission/uploadDoc/${id}`);
+                  navigate(`/dataEntry/submission/view/${id}`);
                 }}
               >
                 Back
