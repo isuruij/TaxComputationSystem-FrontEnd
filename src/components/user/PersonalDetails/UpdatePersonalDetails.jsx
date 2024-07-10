@@ -422,27 +422,20 @@ function UpdatePersonalDetails() {
                 onChange={(e) => setFiles(e.target.files[0])}
                 style={{ textAlign: "center" }}
               />
-              <div style={{ display: "flex", gap: "2px" }}>
-                <div style={{ width: "40%" }}>
-                  <Button
-                    type="button"
-                    className=""
-                    style={buttonStyle}
-                    onClick={handleRemoveProPic}
-                  >
-                    remove
-                  </Button>
-                </div>
-
+              <div className="change-remove-button" style={{ display: "flex", gap: "2px" }}>
                 <div style={{ width: "40%" }}>
                   {userData.filePath === null || userData.filePath === "" ? (
                     <Button
                       type="button"
                       className="resetpasswordButton user"
-                      style={buttonStyle2}
-                      onClick={handleProPic}
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                      onClick={handleShow1}
                     >
-                      update
+                      upload
                     </Button>
                   ) : (
                     <Button
@@ -473,6 +466,20 @@ function UpdatePersonalDetails() {
                       </Button>
                     </Modal.Footer>
                   </Modal>
+                </div>
+                <div style={{ width: "40%" }}>
+                <Button
+                      type="button"
+                      className="resetpasswordButton user"
+                      style={{
+                        marginTop: "5vh",
+                        borderRadius: "10px",
+                        marginLeft: "5vw",
+                      }}
+                      onClick={handleRemoveProPic}
+                    >
+                      remove
+                    </Button>
                 </div>
               </div>
             </div>

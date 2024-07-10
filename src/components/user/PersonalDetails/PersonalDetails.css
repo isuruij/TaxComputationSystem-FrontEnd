@@ -13,6 +13,10 @@
     display: flex;
     flex-direction: column !important;
   }
+  .change-remove-button{
+    display: flex;
+    flex-direction: column !important;
+  }
 
   .confirmPassword {
     margin-left: 0vw !important;

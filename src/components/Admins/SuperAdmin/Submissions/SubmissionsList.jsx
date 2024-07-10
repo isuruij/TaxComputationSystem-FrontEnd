@@ -57,11 +57,11 @@ const SubmissionsList = () => {
 
   return (
     <div>
-      <div className="search-container">
+      <div className="search-container-100">
         <input
           type="text"
           placeholder=" Search..."
-          className="search-input"
+          className="search-input-100"
           style={{ border: "none", backgroundColor: "white", borderRadius: "10px" }}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

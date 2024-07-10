@@ -60,9 +60,9 @@ export default function TaxStatus() {
    
   
     // Calculate the total amount
-    const totalAmount = listOfItems.reduce((total, item) => total + item.amount, 0);
+    const totalAmount = listOfItems.reduce((total, item) => total + item.amount, 0) || 0;
     const totalPayment = taxPayments.reduce((total, item) => total + item.Paid, 0) || 0;
-    const progress = (totalPayment/totalAmount)*100;
+    const progress = (totalPayment/totalAmount)*100 || 0;
     
     const now = Math.round(progress);
 
