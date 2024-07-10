@@ -7,9 +7,8 @@ import defaultprofile from "../../../../assets/defaultprofile.svg";
 import "./SearchBar.css";
 import "./UserList.css";
 const UserList = () => {
-  const navigate = useNavigate()
-  const [users, setUsers] = useState([
-  ]);
+  const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
 
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   useEffect(() => {
@@ -19,7 +18,9 @@ const UserList = () => {
 
         console.log(res.data);
 
-        setUsers(res.data);
+        // Sort users alphabetically by name
+        const sortedUsers = res.data.sort((a, b) => a.name.localeCompare(b.name));
+        setUsers(sortedUsers);
       } catch (err) {
         console.log(err);
       }
@@ -68,7 +69,7 @@ const UserList = () => {
   const handleApprovalToggle = async (id, value) => {
     try {
       // Make an API call to update the user's approval status
-      await axios.put(`${base_url}/api/SuperAdmin/updateUserApprovalStatus`, { id:id,isVerifiedUser: value });
+      await axios.put(`${base_url}/api/SuperAdmin/updateUserApprovalStatus`, { id: id, isVerifiedUser: value });
       window.location.reload();
     } catch (err) {
       console.log(err);
@@ -118,18 +119,18 @@ const UserList = () => {
                   justifyContent: "space-between",
                 }}
               >
-             <div>
-                <img
-                  src={
-                   user.filePath === null || user.filePath === ""
-                      ? defaultprofile
-                      : user.filePath
-                  }
-                  alt="Profile"
-                  className="img-fluid rounded-circle"
-                  style={{ width: "30px", marginTop: "10px" ,height:"30px"}}
-                />
-              </div>
+                <div>
+                  <img
+                    src={
+                      user.filePath === null || user.filePath === ""
+                        ? defaultprofile
+                        : user.filePath
+                    }
+                    alt="Profile"
+                    className="img-fluid rounded-circle"
+                    style={{ width: "30px", marginTop: "10px", height: "30px" }}
+                  />
+                </div>
 
                 <div style={{ width: "55%" }}>
                   <button
@@ -163,7 +164,7 @@ const UserList = () => {
                   <label style={{ color: "#008060" }}>
                     {user.isVerifiedUser ? "Approved" : "Approve"}:
                     <Switch
-                    checked={user.isVerifiedUser}
+                      checked={user.isVerifiedUser}
                       onChange={(e) => {
                         console.log(e.target.checked);
                         handleApprovalToggle(user.id, e.target.checked);
@@ -185,7 +186,3 @@ const UserList = () => {
 };
 
 export default UserList;
-
-
-
-
