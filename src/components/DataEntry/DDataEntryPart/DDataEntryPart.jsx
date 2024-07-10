@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import defaultprofile from "../../../assets/defaultprofile.svg";
 
 function DDataEntry() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -227,13 +228,29 @@ function DDataEntry() {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div
           style={{
-            backgroundColor: "#049370",
-            width: "150px",
-            height: "150px",
+            // backgroundColor: "#049370",
+            // width: "150px",
+            // height: "150px",
             borderRadius: "75px",
-            marginLeft: "10%",
+            // marginLeft: "10%",
           }}
-        ></div>
+        >
+          <img
+            src={
+              userDetails.filePath === null || userDetails.filePath === ""
+                ? defaultprofile
+                : userDetails.filePath
+            }
+            alt="Profile"
+            className="img-fluid rounded-circle"
+            style={{
+              width: "150px",
+              marginLeft: "10vw",
+              marginRight: "0px",
+              height: "150px",
+            }}
+          />
+        </div>
         <div
           className="userInfo"
           style={{
