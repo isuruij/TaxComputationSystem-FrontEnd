@@ -1,13 +1,12 @@
-import React from "react";
-import { useState, useRef } from "react";
-import "./FileUpload.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import React, { useRef, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 import Cancel from "../../../assets/cancel.svg";
+import "./FileUpload.css";
 
 function FileUpload() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -196,7 +195,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[0] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile1(e.target.files[0])}
                 />
                 {file1 && (
@@ -222,7 +221,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[1] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile2(e.target.files[0])}
                 />
                 {file2 && (
@@ -248,7 +247,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[2] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile3(e.target.files[0])}
                 />
                 {file3 && (
@@ -274,7 +273,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[4] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile5(e.target.files[0])}
                 />
                 {file5 && (
@@ -300,7 +299,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[3] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile4(e.target.files[0])}
                 />
                 {file4 && (
@@ -351,7 +350,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[5] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile6(e.target.files[0])}
                 />
                 {file6 && (
@@ -377,7 +376,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[6] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile7(e.target.files[0])}
                 />
                 {file7 && (
@@ -428,7 +427,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[7] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile8(e.target.files[0])}
                 />
                 {file8 && (
@@ -455,7 +454,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[8] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile9(e.target.files[0])}
                 />
                 {file9 && (
@@ -481,7 +480,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[9] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile10(e.target.files[0])}
                 />
                 {file10 && (
@@ -507,7 +506,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[10] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile11(e.target.files[0])}
                 />
                 {file11 && (
@@ -558,7 +557,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[11] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile12(e.target.files[0])}
                 />
                 {file12 && (
@@ -584,7 +583,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[12] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile13(e.target.files[0])}
                 />
                 {file13 && (
@@ -610,7 +609,7 @@ function FileUpload() {
                   type="file"
                   name="files"
                   ref={(el) => (fileInputRefs.current[13] = el)}
-                  style={{ marginRight: "-130px" }}
+                  style={{ marginRight: "0px" }}
                   onChange={(e) => setFile14(e.target.files[0])}
                 />
                 {file14 && (
