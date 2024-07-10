@@ -19,6 +19,7 @@ function Header() {
 
   const [count, setcount] = useState(0);
   const [userData, setUserData] = useState({});
+  const [username, setusername] = useState();
   useEffect(() => {
     const getUserDetails = async () => {
       try {
@@ -26,6 +27,8 @@ function Header() {
           `${base_url}/api/taxpayer/getuserbasicdetails/${userId}`
         );
         setUserData(response.data.Data);
+        setusername(response.data.Data.name);
+        console.log(response.data.Data)
       } catch (error) {
         console.error(error);
       }
@@ -90,7 +93,7 @@ function Header() {
         />
       </div>
       <span style={{ display: "flex", marginTop: "2vh", marginLeft: "1vw" }}>
-        <h6 className="headername">{name}</h6>
+        <h6 className="headername">{username}</h6>
       </span>
     </div>
   );

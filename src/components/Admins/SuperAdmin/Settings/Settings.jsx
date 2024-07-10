@@ -78,6 +78,7 @@ function Settings() {
       if (res.data.status) {
         alert("Name Change Successful");
         setName(name); // Update the current name to the new name
+        window.location.reload();
       } else {
         alert("Error in Updating Name");
       }

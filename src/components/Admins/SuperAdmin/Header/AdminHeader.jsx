@@ -5,15 +5,34 @@ import { useState } from "react";
 import "./DHeader.css";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Axios from "axios";
 
 function Header() {
+  const base_url = import.meta.env.VITE_APP_BACKEND_URL;
   const cookieValue = Cookies.get("token");
   const name = jwtDecode(cookieValue).name;
+  const [username, setusername] = useState();
 
   const [count, setcount] = useState(0);
   useEffect(() => {
     setcount(2);
   }, []);
+
+    // Fetch the current admin name on component mount
+    useEffect(() => {
+      const fetchName = async () => {
+        try {
+          const res = await Axios.get(`${base_url}/api/SuperAdmin/getname`);
+          if(res.data.status){
+            setusername(res.data.data)
+          }
+          
+        } catch (error) {
+          console.error("Error fetching name:", error);
+        }
+      };
+      fetchName();
+    }, []);
 
   return (
     <div
@@ -31,7 +50,7 @@ function Header() {
       <div style={{marginRight: "20vw", display: "flex", alignItems: "center" }}>
         <img src={Profile} alt="Profile" />
         <span style={{ marginLeft: "1vw" }}>
-          <h6 className="headername">{name}</h6>
+          <h6 className="headername">{username}</h6>
         </span>
       </div>
     </div>
@@ -39,3 +58,9 @@ function Header() {
 }
 
 export default Header;
+
+
+
+
+
+
