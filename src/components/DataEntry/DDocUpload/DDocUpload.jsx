@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import Cancel from "../../../assets/cancel.svg";
 import "./DDocUpload.css";
+import defaultprofile from "../../../assets/defaultprofile.svg";
 
 function FileUpload() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;

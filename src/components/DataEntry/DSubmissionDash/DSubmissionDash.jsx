@@ -18,17 +18,36 @@ function DSubmissionDash() {
     axios
       .get(`${base_url}/api/dataentry/getusersubmission`)
       .then((response) => {
-        const sortedSubmissions = response.data.Data.sort(
+        const submissions = response.data.Data;
+
+        // Separate the submissions
+        const submissionsWithCount = submissions.filter(
+          (submission) => submission.numOfSubmissions > 0
+        );
+        const submissionsWithoutCount = submissions.filter(
+          (submission) => submission.numOfSubmissions === 0
+        );
+
+        // Sort each list
+        const sortedSubmissionsWithCount = submissionsWithCount.sort(
           (a, b) => b.numOfSubmissions - a.numOfSubmissions
         );
+        const sortedSubmissionsWithoutCount = submissionsWithoutCount.sort(
+          (a, b) => a.name.localeCompare(b.name)
+        );
+
+        // Combine the lists
+        const sortedSubmissions = [
+          ...sortedSubmissionsWithCount,
+          ...sortedSubmissionsWithoutCount,
+        ];
+
         setListOfSubmissions(sortedSubmissions);
       });
   }, []);
 
-  const filteredSubmissions = listOfSubmissions.filter(
-    (submission) =>
-      submission.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-      submission.numOfSubmissions > 0
+  const filteredSubmissions = listOfSubmissions.filter((submission) =>
+    submission.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -69,22 +88,24 @@ function DSubmissionDash() {
             <h5 style={{ marginLeft: "5px", cursor: "default" }}>
               {value.name}
             </h5>
-            <p
-              style={{
-                backgroundColor: "#F86262",
-                color: "white",
-                borderRadius: "5px",
-                marginLeft: "20px",
-                padding: "5px",
-                boxShadow: "1px 3px 2px 1px rgba(0, 0, 0, 0.44)",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                navigate(`/dataEntry/submission/view/${value.id}`);
-              }}
-            >
-              {value.numOfSubmissions} submissions
-            </p>
+            {value.numOfSubmissions > 0 && (
+              <p
+                style={{
+                  backgroundColor: "#F86262",
+                  color: "white",
+                  borderRadius: "5px",
+                  marginLeft: "20px",
+                  padding: "5px",
+                  boxShadow: "1px 3px 2px 1px rgba(0, 0, 0, 0.44)",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  navigate(`/dataEntry/submission/view/${value.id}`);
+                }}
+              >
+                {value.numOfSubmissions} submissions
+              </p>
+            )}
           </div>
           <div style={{ display: "flex", marginRight: "30px" }}>
             <Button
