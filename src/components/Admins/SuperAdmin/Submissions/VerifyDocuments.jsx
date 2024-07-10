@@ -1528,7 +1528,7 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht On Investment Income");updateRequestAgainWhtOnInvestmentIncome(income.taxCreditId)}}>
+                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht On Investment Income");updateRequestAgainWhtOnInvestmentIncome(income.taxCreditId)}}>
                               Request Again
                             </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                             </div>
@@ -1596,7 +1596,7 @@ const downloadDocument = (pdfUrl) => {
                                 </label>
                               </div>
                               <div style={{ width: "20%" }}>
-                              {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Self Assessment Payment");updateRequestAgainSelfAssessmentPayment(income.taxCreditId)}}>
+                              {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Self Assessment Payment");updateRequestAgainSelfAssessmentPayment(income.taxCreditId)}}>
                                 Request Again
                               </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                               </div>
@@ -1671,7 +1671,7 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                          {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Terminal Benefits");updateRequestAgainTerminalBenefits(income.incomeId)}}>
+                          {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Terminal Benefits");updateRequestAgainTerminalBenefits(income.incomeId)}}>
                             Request Again
                           </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
 
@@ -1740,7 +1740,7 @@ const downloadDocument = (pdfUrl) => {
                             </label>
                           </div>
                           <div style={{ width: "20%" }}>
-                          {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Capital Value Gain");updateRequestAgainCapitalValueGain(income.assessmentId)}}>
+                          {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Capital Value Gain");updateRequestAgainCapitalValueGain(income.assessmentId)}}>
                             Request Again
                           </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
                           </div>
@@ -1809,7 +1809,7 @@ const downloadDocument = (pdfUrl) => {
                               </label>
                             </div>
                             <div style={{ width: "20%" }}>
-                            {(!income.requestedAgain)?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht Which Is Not Deducted");updateRequestAgainWhtWhichIsNotDeducted(income.assessmentId)}}>
+                            {((!income.requestedAgain) && (!income.isverified))?(<button type="button" className="btn btn-primary custom-button-1" style={buttonStyle} onClick={(event) => {requestAgainDocumnt(income.taxpayerId, "Wht Which Is Not Deducted");updateRequestAgainWhtWhichIsNotDeducted(income.assessmentId)}}>
                               Request Again
                             </button>):((income.isverified)?(<></>): (<button type="button" className="btn btn-primary custom-button-1" style={{ textAlign:"center",backgroundColor: "#049370", display: "block", marginBottom: "12px", width: "90%", marginLeft: "1%", boxShadow: "1px 5px 3px -3px rgba(0,0,0,0.44)", opacity: 0.8 }} disabled>Requested</button>))}
 
