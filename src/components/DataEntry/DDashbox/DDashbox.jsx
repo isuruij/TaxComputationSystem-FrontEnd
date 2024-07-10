@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import defaultprofile from "../../../assets/defaultprofile.svg";
 
 function DDashbox() {
   const base_url = import.meta.env.VITE_APP_BACKEND_URL;
@@ -90,6 +91,21 @@ function DDashbox() {
                 fontFamily: "Poppins",
               }}
             >
+              <img
+                src={
+                  value.filePath === null || value.filePath === ""
+                    ? defaultprofile
+                    : value.filePath
+                }
+                alt="Profile"
+                className="img-fluid rounded-circle"
+                style={{
+                  width: "30px",
+                  marginTop: "0px",
+                  marginRight: "10px",
+                  height: "30px",
+                }}
+              />
               {value.name}
             </div>
 
