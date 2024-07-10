@@ -175,13 +175,29 @@ function FileUpload() {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div
           style={{
-            backgroundColor: "#049370",
-            width: "150px",
-            height: "150px",
+            // backgroundColor: "#049370",
+            // width: "150px",
+            // height: "150px",
             borderRadius: "75px",
-            marginLeft: "20px",
+            // marginLeft: "10%",
           }}
-        ></div>
+        >
+          <img
+            src={
+              userDetails.filePath === null || userDetails.filePath === ""
+                ? defaultprofile
+                : userDetails.filePath
+            }
+            alt="Profile"
+            className="img-fluid rounded-circle"
+            style={{
+              width: "150px",
+              marginLeft: "10vw",
+              marginRight: "0px",
+              height: "150px",
+            }}
+          />
+        </div>
         <div
           className="userInfo"
           style={{
@@ -194,10 +210,14 @@ function FileUpload() {
             fontSize: "smaller",
           }}
         >
-          <h5 style={{ marginTop: "15px" }}>MR. {userDetails.name}</h5>
-          <h5>TIN NO: {userDetails.tin}</h5>
-          <h5>INCOME TAX COMPUTATION REPORT</h5>
-          <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
+          <h5 className="Toph5" style={{ marginTop: "15px" }}>
+            MR. {userDetails.name}
+          </h5>
+          <h5 className="Toph5">TIN NO: {userDetails.tin}</h5>
+          <h5 className="Toph5">INCOME TAX COMPUTATION REPORT</h5>
+          <h5 className="Toph5" style={{ marginBottom: "15px" }}>
+            YEAR OF ASSESSMENT 2022/2023
+          </h5>
         </div>
       </div>
       <form>

@@ -263,10 +263,14 @@ function DDataEntry() {
             fontSize: "smaller",
           }}
         >
-          <h5 style={{ marginTop: "15px" }}>MR. {userDetails.name}</h5>
-          <h5>TIN NO: {userDetails.tin}</h5>
-          <h5>INCOME TAX COMPUTATION REPORT</h5>
-          <h5 style={{ marginBottom: "15px" }}>YEAR OF ASSESSMENT 2022/2023</h5>
+          <h5 className="Toph5" style={{ marginTop: "15px" }}>
+            MR. {userDetails.name}
+          </h5>
+          <h5 className="Toph5">TIN NO: {userDetails.tin}</h5>
+          <h5 className="Toph5">INCOME TAX COMPUTATION REPORT</h5>
+          <h5 className="Toph5" style={{ marginBottom: "15px" }}>
+            YEAR OF ASSESSMENT 2022/2023
+          </h5>
         </div>
       </div>
 
